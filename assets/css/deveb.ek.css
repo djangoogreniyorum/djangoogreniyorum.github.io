@@ -105,7 +105,7 @@
   [data-menü~="tip1"] ul li a,
   [data-menü~="tip1"] ul li label[for^="menü-"]{
     color:#79589F;
-    padding:10px 20px;
+    padding:10px;
     border-bottom: 1px solid #EEF1F6;
     display: block;
       cursor: pointer;
