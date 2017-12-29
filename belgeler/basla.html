@@ -105,22 +105,22 @@ def band_listing(request):
     <p>Django'nun şablon dili güç ile kolaylık arasında denge kuracak şekilde tasarlandı. Tasarımcılar ve ön uç geliştiricileri gibi HTML işlerinde rahat ve öğrenimi kolay hissetmek için tasarlandı. Fakat esnek ve son derece genişletilebilir, böylece geliştiricilerin şablon dilini gerektiği gibi genişletmeleri sağlanır.</p>
     <a href="/belgeler/2.0/basliklar/temalar.html">Devamını Oku</a>
     <pre data-gnl="1 1p"><code class="language-html">
-<html>
-  <head>
-    <title>Band Listing</title>
-  </head>
-  <body>
-    <h1>All Bands</h1>
-    <ul>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Band Listing&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;All Bands&lt;/h1&gt;
+    &lt;ul&gt;
     {% for band in bands %}
-      <li>
-        <h2><a href="{{ band.get_absolute_url }}">{{ band.name }}</a></h2>
-        {% if band.can_rock %}<p>This band can rock!</p>{% endif %}
-      </li>
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;{{ band.get_absolute_url }}&quot;&gt;{{ band.name }}&lt;/a&gt;&lt;/h2&gt;
+        {% if band.can_rock %}&lt;p&gt;This band can rock!&lt;/p&gt;{% endif %}
+      &lt;/li&gt;
     {% endfor %}
-    </ul>
-  </body>
-</html>
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
     </code></pre>
   </div>
   <div>
@@ -186,30 +186,30 @@ def homepage(request):
     </code></pre>
     <pre data-gnl="1 1p"><code class="language-html">
 {% load i18n %}
-<html>
-  <head>
-    <title>{% trans 'Homepage - Hall of Fame' %}</title>
-  </head>
-  <body>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;{% trans 'Homepage - Hall of Fame' %}&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
     {# Translated in the view: #}
-    <h1>{{ message }}</h1>
-    <p>
+    &lt;h1&gt;{{ message }}&lt;/h1&gt;
+    &lt;p&gt;
       {% blocktrans count member_count=bands.count %}
       Here is the only band in the hall of fame:
       {% plural %}
       Here are all the {{ member_count }} bands in the hall of fame:
       {% endblocktrans %}
-    </p>
-    <ul>
+    &lt;/p&gt;
+    &lt;ul&gt;
     {% for band in bands %}
-      <li>
-        <h2><a href="{{ band.get_absolute_url }}">{{ band.name }}</a></h2>
-        {% if band.can_rock %}<p>{% trans 'This band can rock!' %}</p>{% endif %}
-      </li>
+      &lt;li&gt;
+        &lt;h2&gt;&lt;a href=&quot;{{ band.get_absolute_url }}&quot;&gt;{{ band.name }}&lt;/a&gt;&lt;/h2&gt;
+        {% if band.can_rock %}&lt;p&gt;{% trans 'This band can rock!' %}&lt;/p&gt;{% endif %}
+      &lt;/li&gt;
     {% endfor %}
-    </ul>
-  </body>
-</html>
+    &lt;/ul&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
     </code></pre>
   </div>
   <div>
