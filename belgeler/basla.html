@@ -112,12 +112,12 @@ def band_listing(request):
   &lt;body&gt;
     &lt;h1&gt;All Bands&lt;/h1&gt;
     &lt;ul&gt;
-    {% for band in bands %}
+    {&#37; for band in bands &#37;}
       &lt;li&gt;
         &lt;h2&gt;&lt;a href=&quot;{{ band.get_absolute_url }}&quot;&gt;{{ band.name }}&lt;/a&gt;&lt;/h2&gt;
-        {% if band.can_rock %}&lt;p&gt;This band can rock!&lt;/p&gt;{% endif %}
+        {&#37; if band.can_rock &#37;} &lt;p&gt;This band can rock!&lt;/p&gt;{&#37; endif &#37;}
       &lt;/li&gt;
-    {% endfor %}
+    {&#37; endfor &#37;}
     &lt;/ul&gt;
   &lt;/body&gt;
 &lt;/html&gt;
@@ -185,28 +185,28 @@ def homepage(request):
     return render(request, 'homepage.html', {'message': message})
     </code></pre>
     <pre data-gnl="1 1p"><code class="language-html">
-{% load i18n %}
+{&#37; load i18n &#37;}
 &lt;html&gt;
   &lt;head&gt;
-    &lt;title&gt;{% trans 'Homepage - Hall of Fame' %}&lt;/title&gt;
+    &lt;title&gt;{&#37; trans 'Homepage - Hall of Fame' &#37;} &lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
     {# Translated in the view: #}
     &lt;h1&gt;{{ message }}&lt;/h1&gt;
     &lt;p&gt;
-      {% blocktrans count member_count=bands.count %}
+      {&#37; blocktrans count member_count=bands.count &#37;}
       Here is the only band in the hall of fame:
-      {% plural %}
+      {&#37; plural &#37;}
       Here are all the {{ member_count }} bands in the hall of fame:
-      {% endblocktrans %}
+      {&#37; endblocktrans &#37;}
     &lt;/p&gt;
     &lt;ul&gt;
-    {% for band in bands %}
+    {&#37; for band in bands &#37;}
       &lt;li&gt;
         &lt;h2&gt;&lt;a href=&quot;{{ band.get_absolute_url }}&quot;&gt;{{ band.name }}&lt;/a&gt;&lt;/h2&gt;
-        {% if band.can_rock %}&lt;p&gt;{% trans 'This band can rock!' %}&lt;/p&gt;{% endif %}
+        {&#37; if band.can_rock &#37;} &lt;p&gt;{&#37; trans 'This band can rock!' &#37;} &lt;/p&gt;{&#37; endif &#37;}
       &lt;/li&gt;
-    {% endfor %}
+    {&#37; endfor &#37;} 
     &lt;/ul&gt;
   &lt;/body&gt;
 &lt;/html&gt;
