@@ -16,6 +16,21 @@ font-weight: 700;
 width: 240px;
 display: block;
 }
+.büyük-bilget{
+  padding: 50px 0;
+  background: white;
+  text-align: center;
+  border-bottom: 1px solid #CFE3DC
+}
+.büyük-bilget .açıklama{
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin: 1em auto .5em;
+  color: #0C3C26;
+  font-size: 36px;
+  font-size: 3.6rem;
+}
 dl.özellik-listesi{
   margin: 50px 0 40px;
 }
