@@ -13,6 +13,9 @@ header{
   font-size:24px;
   background-color: #44B78B;
   color:#C9F0DD;
+  margin:10px 0 -10px 0;
+  padding:10px 0;
+  font-weight: 300;
 }
 .headertext em{
   color:#fff;
