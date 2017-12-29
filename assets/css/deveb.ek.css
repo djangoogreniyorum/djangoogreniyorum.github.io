@@ -1,4 +1,30 @@
-
+body{
+  color:#0C3C26;
+}
+header{
+  background: #0C4B33;
+  overflow: hidden;
+  margin: 0;
+  padding: 10px 0 6px;
+  position: relative;
+  z-index: 0;
+}
+dl.özellik-listesi{
+  margin: 50px 0 40px;
+}
+dl.özellik-listesi dt{
+  padding: 20px 0 0px 0px;
+  font-size: 18px;
+  font-size: 1.8rem;
+  border-top: 0;
+  margin-top: 0;
+}
+dl.özellik-listesi dd{
+  font-size:16px;
+  margin:0;
+  padding-bottom:10px;
+}
+/* Özel */
 [data-menü] > label[for^="menü-"]{
   padding:10px;
   font-weight: bold;
