@@ -193,14 +193,14 @@ def yillik_arsiv(request, yil):
   <p>Son olarak, Django "şablon kalıtımı" kavramını kullanmaktadır. {&#37; Extends "temel.html" &#37;} ne işe yarar? İlk önce bir blok yığını tanımlayan "temel" adındaki şablonu yükleyin ve blogkları aşağıdaki bloklarla doldurun anlamına gelir. Kısacası, şablonlarda fazlalıkları önemli ölçüde azaltabilirsiniz. Her şablon yalnızca ilgili şablon için benzersi olanları tanımlamalıdır.</p>
   <p>İşe sabit dosyaların kullanımı da dahil olmak üzere "temel.html" şablonu şöyle görünebilir.</p>
   <pre data-gnl="1 1p"><code class="language-html">
-{% load static %}
+{&#37;load static &#37;}
 &lt;html&gt;
 &lt;head&gt;
-    &lt;title&gt;{% block title %}{% endblock %}&lt;/title&gt;
+    &lt;title&gt;{&#37;block title &#37;}{&#37;endblock &#37;}&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
-    &lt;img src=&quot;{% static &quot;images/sitelogo.png&quot; %}&quot; alt=&quot;Logo&quot; /&gt;
-    {% block content %}{% endblock %}
+    &lt;img src=&quot;{&#37;static &quot;images/sitelogo.png&quot; &#37;}&quot; alt=&quot;Logo&quot; /&gt;
+    {&#37;block content &#37;}{&#37;endblock &#37;}
 &lt;/body&gt;
 &lt;/html&gt;
   </code></pre>
