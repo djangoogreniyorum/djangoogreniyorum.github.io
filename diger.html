@@ -1,9 +1,7 @@
 ---
 layout: general
 title: Django Öğreniyorum
-belgeler: testi
-2.0_belgeler: testi2
-/2.0/belgeler: test3
+{% include links.html %}
 ---
 <div data-gnl="kaplama">
   <p>
@@ -12,8 +10,6 @@ belgeler: testi
   <a href="https://www.facebook.com/groups/1574377365924729/">Facebook Gruplar: Django Öğreniyorum</a> <br>
   <a href="https://github.com/djangoogreniyorum/djangoogreniyorum.github.io/issues">Hata bildir</a> <br>
   <a href="{{ page.belgeler }}.html">testx</a>
-  <a href="{{ page.2.0_belgeler }}.html">test2</a>
-  <a href="{{ page./2.0/belgeler }}.html">test21</a>
   </p>
 
 
