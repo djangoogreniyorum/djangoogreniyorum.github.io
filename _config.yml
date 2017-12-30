@@ -10,4 +10,4 @@ github_username:  data-deveb
 markdown: kramdown
 theme: minima
 
-/2.0/belgeler/: test
+_2.0_belgeler: test
