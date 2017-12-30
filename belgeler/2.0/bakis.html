@@ -40,74 +40,74 @@ $ python manage.py migrate
   <h2>Ücretsiz API'nin tadını çıkarın</h2>
   <p>Bununla, verilerinize erişmek için özgür ve zengin bir Python API'si var. API anında oluşturulur, kod üretimi gerekli değildir:</p>
   <pre data-gnl="1 1p"><code class="language-python">
-# Oluşturduğumuz modelleri "haber" uygulamamızdan içe aktarın
->>> from news.models import Haberci, Makale
+# Oluşturduğumuz modelleri &quot;haber&quot; uygulamamızdan i&ccedil;e aktarın
+&gt;&gt;&gt; from news.models import Haberci, Makale
 
-# Haberciler henüz örgüde değiller.
->>> Haberci.objects.all()
-<QuerySet []>
+# Haberciler hen&uuml;z &ouml;rg&uuml;de değiller.
+&gt;&gt;&gt; Haberci.objects.all()
+&lt;QuerySet []&gt;
 
 # Yeni bir Haberci oluştur
->>> r = Haberci(tam_adi='Çapanoğlu Agâh Efendi')
+&gt;&gt;&gt; r = Haberci(tam_adi='&Ccedil;apanoğlu Ag&acirc;h Efendi')
 
-# Nesneyi veritabanına kaydedin. save() ögesini eklem olarak çağırmalısınız.
->>> r.save()
+# Nesneyi veritabanına kaydedin. save() &ouml;gesini eklem olarak &ccedil;ağırmalısınız.
+&gt;&gt;&gt; r.save()
 
-# Şimdi bir kimliği (ID) var. id ögesini eklem olarak çağırıp görebilirsiniz.
->>> r.id
+# Şimdi bir kimliği (ID) var. id &ouml;gesini eklem olarak &ccedil;ağırıp g&ouml;rebilirsiniz.
+&gt;&gt;&gt; r.id
 1
 
 # Şimdi yeni haberci veritabanında.
->>> Haberci.objects.all()
-<QuerySet [<Haberci: Çapanoğlu Agâh Efendi>]>
+&gt;&gt;&gt; Haberci.objects.all()
+&lt;QuerySet [&lt;Haberci: &Ccedil;apanoğlu Ag&acirc;h Efendi&gt;]&gt;
 
-# Alanlar, Python nesnesinde öznitelikler olarak temsil edilir. tam_adi özniteliği ögesini eklem olarak gösterek çağırın.
->>> r.tam_adi
-'Çapanoğlu Agâh Efendi'
+# Alanlar, Python nesnesinde &ouml;znitelikler olarak temsil edilir. tam_adi &ouml;zniteliği &ouml;gesini eklem olarak g&ouml;sterek &ccedil;ağırın.
+&gt;&gt;&gt; r.tam_adi
+'&Ccedil;apanoğlu Ag&acirc;h Efendi'
 
 # Django zengin bir veritabanı arama API'si sağlar.
->>> Haberci.objects.get(id=1)
-<Haberci: Çapanoğlu Agâh Efendi>
->>> Haberci.objects.get(tam_adi__startswith='Çapanoğlu')
-<Haberci: Çapanoğlu Agâh Efendi>
->>> Haberci.objects.get(tam_adi__contains='pano')
-<Haberci: Çapanoğlu Agâh Efendi>
->>> Haberci.objects.get(id=2)
+&gt;&gt;&gt; Haberci.objects.get(id=1)
+&lt;Haberci: &Ccedil;apanoğlu Ag&acirc;h Efendi&gt;
+&gt;&gt;&gt; Haberci.objects.get(tam_adi__startswith='&Ccedil;apanoğlu')
+&lt;Haberci: &Ccedil;apanoğlu Ag&acirc;h Efendi&gt;
+&gt;&gt;&gt; Haberci.objects.get(tam_adi__contains='pano')
+&lt;Haberci: &Ccedil;apanoğlu Ag&acirc;h Efendi&gt;
+&gt;&gt;&gt; Haberci.objects.get(id=2)
 Traceback (most recent call last):
     ...
 DoesNotExist: Reporter matching query does not exist.
 
 # Makale oluştur.
->>> from datetime import date
->>> a = Makale(yayim_tarihi=date.today(), baslik='Django harika',
+&gt;&gt;&gt; from datetime import date
+&gt;&gt;&gt; a = Makale(yayim_tarihi=date.today(), baslik='Django harika',
 ...     icerik='Ivır zıvır.', haberci=r)
->>> a.save()
+&gt;&gt;&gt; a.save()
 
 # Şimdi makale veritabanında.
->>> Makale.objects.all()
-<QuerySet [<Makale: Django harika>]>
+&gt;&gt;&gt; Makale.objects.all()
+&lt;QuerySet [&lt;Makale: Django harika&gt;]&gt;
 
 # Makale nesneleri, ilgili Haberci nesnelerine API erişimi sağlar.
->>> r = a.haberci
->>> r.tam_adi
-'Çapanoğlu Agâh Efendi'
+&gt;&gt;&gt; r = a.haberci
+&gt;&gt;&gt; r.tam_adi
+'&Ccedil;apanoğlu Ag&acirc;h Efendi'
 
 # Ve tam tersi: Haberci nesneleri Makale nesnelerine API erişimi sağlar.
->>> r.makale_set.all()
-<QuerySet [<Makale: Django harika>]>
+&gt;&gt;&gt; r.makale_set.all()
+&lt;QuerySet [&lt;Makale: Django harika&gt;]&gt;
 
-# API, ilişkileri ihtiyacınız olan kadarıyla izler ve verimli bir şekilde gerçekleştirir.
-# Sahnelerin arkasında sizin için birleşir.
-# Bu, "Çapanoğlu" ile başlayan bir haberci tanımlı tüm makaleleri bulur.
->>> Makale.objects.filter(haberci__tam_adi__startswith='Çapanoğlu')
-<QuerySet [<Makale: Django harika>]>
+# API, ilişkileri ihtiyacınız olan kadarıyla izler ve verimli bir şekilde ger&ccedil;ekleştirir.
+# Sahnelerin arkasında sizin i&ccedil;in birleşir.
+# Bu, &quot;&Ccedil;apanoğlu&quot; ile başlayan bir haberci tanımlı t&uuml;m makaleleri bulur.
+&gt;&gt;&gt; Makale.objects.filter(haberci__tam_adi__startswith='&Ccedil;apanoğlu')
+&lt;QuerySet [&lt;Makale: Django harika&gt;]&gt;
 
-# Bir nesneyi niteliklerini değiştirerek ve save() yöntemini kullanarak değiştirin.
->>> r.tam_adi = 'Şinasi'
->>> r.save()
+# Bir nesneyi niteliklerini değiştirerek ve save() y&ouml;ntemini kullanarak değiştirin.
+&gt;&gt;&gt; r.tam_adi = 'Şinasi'
+&gt;&gt;&gt; r.save()
 
 # Bir nesneyi delete() eklemi ile silebilirsiniz.
->>> r.delete()
+&gt;&gt;&gt; r.delete()
   </code></pre>
   <h2>Dinamik bir yönetici arayüzü: sadece iskele değil, tüm ev var.</h2>
   <p>Django, modelleriniz tanımlandıktan sonra kimliği doğrulanmış kullanıcıların nesneleri ekleme, değiştirme ve silme olanağı veren bir ağ sitesi olan, usta, üretime hazır bir idari arabirimi doğal olarak oluşturabilir. Modelinizi yönetici sitesine kaydetmek kadar kolaydır:</p>
@@ -142,9 +142,9 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('makaleler/<int:yil>/', views.yillik_arsiv),
-    path('makaleler/<int:yil>/<int:ay>/', views.aylik_arsiv),
-    path('makaleler/<int:yil>/<int:ay>/<int:pk>/', views.makale_ayrintisi),
+    path('makaleler/&lt;int:yil&gt;/', views.yillik_arsiv),
+    path('makaleler/&lt;int:yil&gt;/&lt;int:ay&gt;/', views.aylik_arsiv),
+    path('makaleler/&lt;int:yil&gt;/&lt;int:ay&gt;/&lt;int:pk&gt;/', views.makale_ayrintisi),
 ]
   </code></pre>
   <p>Yukarıdaki kod, URL yollarını Python geri arama işlevlerine ("views") eşleştirir. Yol dizeleri, URL'lerden değerleri "yakalama" için değiştirge etiketleri kullanır. Bir kullanıcı bir sayfayı istediğinde, Django her yoldan sırayla geçer ve istenen URL ile eşleşen ilk satırda durur. (Hiçbiri eşleşmezse, Django özel durum 404 görünümü çağırır.) Yollar, yükleme zamanında normal ifadeler halinde derlendiğinden, çok hızlıdır.</p>
