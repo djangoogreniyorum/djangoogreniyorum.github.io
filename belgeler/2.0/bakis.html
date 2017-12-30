@@ -175,15 +175,15 @@ def yillik_arsiv(request, yil):
   <pre data-gnl="1 1p"><code class="language-html">
 {&#37; extends &quot;temel.html&quot; &#37;}
 
-{&#37; block title &#37;}{{ yil }} i&ccedil;in makaleler{&#37; endblock &#37;}
+{&#37; block title &#37;}&#123;&#123; yil &#125;&#125; i&ccedil;in makaleler{&#37; endblock &#37;}
 
 {&#37; block content &#37;}
-&lt;h1&gt;{{ yil }} i&ccedil;in makaleler&lt;/h1&gt;
+&lt;h1&gt;&#123;&#123; yil &#125;&#125; i&ccedil;in makaleler&lt;/h1&gt;
 
 {&#37; for makale in makale_listesi &#37;}
-    &lt;p&gt;{{ makale.baslik }}&lt;/p&gt;
-    &lt;p&gt;{{ makale.haberci.tam_adi }} tarafından&lt;/p&gt;
-    &lt;p&gt;Yayımlanma {{ makale.yayim_tarihi|date:&quot;F j, Y&quot; }}&lt;/p&gt;
+    &lt;p&gt;&#123;&#123; makale.baslik &#125;&#125;&lt;/p&gt;
+    &lt;p&gt;&#123;&#123; makale.haberci.tam_adi &#125;&#125; tarafından&lt;/p&gt;
+    &lt;p&gt;Yayımlanma &#123;&#123; makale.yayim_tarihi|date:&quot;F j, Y&quot; &#125;&#125;&lt;/p&gt;
 {&#37; endfor &#37;}
 {&#37; endblock &#37;}
   </code></pre>
