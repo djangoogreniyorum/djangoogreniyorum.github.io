@@ -26,12 +26,12 @@ title: Önbakış - Django Öğreniyorum
   <div>
     <h1>İlk Django Uygulamanı Yaz</h1>
     <p>
-      Django kurulumu tamam mı? Güzel... Şimdi <a href="#">bu eğitimi dene.</a> Bunun vasıtasıyla temel bir anket uygulaması oluşturacaksın. İki bölümün var.
+      Django kurulumu tamam mı? Güzel... Şimdi <a href="/belgeler/2.0/giris.html">bu eğitimi dene.</a> Bunun vasıtasıyla temel bir anket uygulaması oluşturacaksın. İki bölümün var.
       <ul>
         <li>Herkesin anketlere katılmasını sağlayan genel bir site.</li>
         <li>Anketleri eklemenize, silmenize, değiştirmenize olanak sağlayan yönetim arabirimi.</li>
       </ul>
-      <a href="/belgeler/2.0/egitim/adim1.html">Eğitime Geç</a>
+      <a href="/belgeler/2.0/giris.html">Eğitime Geç</a>
     </p>
   </div>
   <div>
@@ -206,7 +206,7 @@ def homepage(request):
         &lt;h2&gt;&lt;a href=&quot;{{ band.get_absolute_url }}&quot;&gt;{{ band.name }}&lt;/a&gt;&lt;/h2&gt;
         {&#37; if band.can_rock &#37;} &lt;p&gt;{&#37; trans 'This band can rock!' &#37;} &lt;/p&gt;{&#37; endif &#37;}
       &lt;/li&gt;
-    {&#37; endfor &#37;} 
+    {&#37; endfor &#37;}
     &lt;/ul&gt;
   &lt;/body&gt;
 &lt;/html&gt;
