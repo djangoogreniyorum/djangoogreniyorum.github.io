@@ -9,6 +9,9 @@ header{
   position: relative;
   z-index: 0;
 }
+a{
+  color:crimson;
+}
 .headertext{
   font-size:24px;
   background-color: #44B78B;
