@@ -9,7 +9,3 @@ github_username:  data-deveb
 # Build settings
 markdown: kramdown
 theme: minima
-
-belgeler: testi
-2.0_belgeler: testi2
-/2.0/belgeler: test3
