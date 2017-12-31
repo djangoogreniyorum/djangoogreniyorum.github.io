@@ -15,6 +15,7 @@ basla: /belgeler/basla.html
 onbakis: /belgeler/basla/onbakis.html
 belgeler: /belgeler/index.html
 belgeler_bakis: /belgeler/2.0/bakis.html
+belgeler_giris: /belgeler/2.0/giris.html
 
 # Ders bağları
 dersler_onbakis: /diger.html
