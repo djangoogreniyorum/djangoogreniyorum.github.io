@@ -11,8 +11,8 @@ markdown: kramdown
 theme: minima
 
 # Açık bağlar
-başla: /belgeler/basla.html
-önbakış: /belgeler/basla/onbakis.html
+başla: '/belgeler/basla.html'
+önbakış: '/belgeler/basla/onbakis.html'
 
 # Ders bağları
 dersler_önbakış: /diger.html
