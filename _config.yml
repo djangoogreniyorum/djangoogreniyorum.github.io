@@ -11,8 +11,8 @@ markdown: kramdown
 theme: minima
 
 # Açık bağlar
-başla: https://djangoogreniyorum.github.io/belgeler/basla.html
-önbakış: https://djangoogreniyorum.github.io/belgeler/basla/onbakis.html
+başla: "https://djangoogreniyorum.github.io/belgeler/basla.html"
+önbakış: "https://djangoogreniyorum.github.io/belgeler/basla/onbakis.html"
 
 # Ders bağları
 dersler_önbakış: /diger.html
