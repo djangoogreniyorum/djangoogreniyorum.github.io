@@ -13,6 +13,8 @@ theme: minima
 # Açık bağlar
 basla: /belgeler/basla.html
 onbakis: /belgeler/basla/onbakis.html
+belgeler: /belgeler/index.html
+belgeler_bakis: /belgeler/2.0/bakis.html
 
 # Ders bağları
 dersler_onbakis: /diger.html
