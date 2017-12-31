@@ -53,7 +53,7 @@ title: Önbakış - Django Öğreniyorum
     <h1>Django Önbilgi</h1>
     <h2>İlişkili-Nesne İmgeleyici (Object-relational mapper)</h2>
     <p>Veri kalıplarınızı baştan sona Python'da çözün. Ücretsiz olarak zengin, dinamik bir veritabanı erişimi API'si elde edersiniz, ancak gerekir ise SQL yazabilirsiniz.</p>
-    <a href="/belgeler/2.0/basliklar/db/kaliplar.html">Devamını Oku</a>
+    <a href="#">Devamını Oku</a>
     <pre data-gnl="1 1p"><code class="language-python">
 class Band(models.Model):
     """Bir rock bandının kalıbı."""
@@ -79,7 +79,7 @@ class Member(models.Model):
     <h2>URLler Ve Görünümler (URLs and views)</h2>
     <p>Temiz, şık bir URL şeması, yüksek kalitede bir ağ uygulamasında önemli bir ayrıntıdır. Django güzel bir URL tasarımını destekler ve PHP veya ASP gibi URL'lerde herhangi bir hata yapmaz.</p>
     <p>Bir uygulama için URLlerin tasarımlarına URLconf adlı bir Python eklemi oluşturursunuz. İçindekiler tablosu gibi uygulamanız için URL kalıpları ve görünümleri arasında basit bir imgeleme içerir.</p>
-    <a href="/belgeler/2.0/basliklar/http/urls.html">Devamını Oku</a>
+    <a href="#">Devamını Oku</a>
     <pre data-gnl="1 1p"><code class="language-python">
 from django.conf.urls import url
 
@@ -103,7 +103,7 @@ def band_listing(request):
   <div>
     <h2>Temalar (Templates)</h2>
     <p>Django'nun şablon dili güç ile kolaylık arasında denge kuracak şekilde tasarlandı. Tasarımcılar ve ön uç geliştiricileri gibi HTML işlerinde rahat ve öğrenimi kolay hissetmek için tasarlandı. Fakat esnek ve son derece genişletilebilir, böylece geliştiricilerin şablon dilini gerektiği gibi genişletmeleri sağlanır.</p>
-    <a href="/belgeler/2.0/basliklar/temalar.html">Devamını Oku</a>
+    <a href="#">Devamını Oku</a>
     <pre data-gnl="1 1p"><code class="language-html">
 &lt;html&gt;
   &lt;head&gt;
@@ -126,7 +126,7 @@ def band_listing(request):
   <div>
     <h2>Formlar (Forms)</h2>
     <p>Django, formları HTML olarak işleyen, kullanıcı tarafından gönderilen verileri doğrulayan ve bu verileri yerel Python türlerine dönüştüren güçlü bir form kütüphanesi sunar. Django ayrıca mevcut kalıplarınızdan (models) formlar üretmenin ve bu formları veri oluşturmak ve güncelleştirmek için kullanmanın bir yolunu sağlar.</p>
-    <a href="/belgeler/2.0/basliklar/formlar.html">Devamını Oku</a>
+    <a href="#">Devamını Oku</a>
     <pre data-gnl="1 1p"><code class="language-python">
 from django import forms
 
@@ -140,7 +140,7 @@ class BandContactForm(forms.Form):
   <div>
     <h2>Kimlik Doğrulama (Authentication)</h2>
     <p>Django tam özellikli ve güvenli doğrulama örgüsüyle gelir. Kullanıcı hesaplarını, grupları, izinleri ve kurabiye tabanlı kullanıcı oturumlarını yönetir. Bu, kullanıcıların hesap oluşturmasına ve güvenli bir şekilde giriş/çıkış yapmasına izin veren siteleri kolayca oluşturmanızı sağlar.</p>
-    <a href="/belgeler/2.0/basliklar/kimlik.html">Devamını Oku</a>
+    <a href="#">Devamını Oku</a>
     <pre data-gnl="1 1p"><code class="language-python">
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
@@ -154,7 +154,7 @@ def my_protected_view(request):
   <div>
     <h2>Yönetici (Admin)</h2>
     <p>Django'nun en güçlü kısımlarından biri, doğal yönetici arayüzüdür. İçerik üreticilerinin sitenizdeki içeriği yönetmeye hemen başlayabilecek güçlü ve üretime hazır bir arabirim sağlamak için kalıplarınızdaki meta verileri okur. Kurulumu kolaydır ve özelleştirme için pek çok takı bulunur.</p>
-    <a href="/belgeler/2.0/ref/contrib/yonetici.html">Devamını Oku</a>
+    <a href="#">Devamını Oku</a>
     <pre data-gnl="1 1p"><code class="language-python">
 from django.contrib import admin
 from bands.models import Band, Member
@@ -171,7 +171,7 @@ admin.site.register(Member, MemberAdmin)  # Use the customized options
   <div>
     <h2>Uluslararasılaşma (Internationalization)</h2>
     <p>Django, metni farklı dillere çevirmenin yanı sıra tarih, saat, sayı ve saat dilimlerinin yerel ayara özel biçimlendirilmesi için tam destek sunar. Geliştiricilerin ve şablon yazarlarının, uygulamanın hangi bölümlerinin yerel diller ve kültürler için tercüme edilmesi veya biçimlendirilmesi gerektiğini belirtmesine ve bu kancaları belirli kullanıcılara yönetlik ağ uygulamalarını kendi tercihlerine göre yerelleştirmesi için kullanıyor.</p>
-    <a href="/belgeler/2.0/basliklar/i18n.html">Devamını Oku</a>
+    <a href="#">Devamını Oku</a>
     <pre data-gnl="1 1p"><code class="language-python">
 from django.shortcuts import render
 from django.utils.translation import ugettext
@@ -222,6 +222,6 @@ def homepage(request):
       <li>SQL yerleştirme (SQL injection)</li>
       <li>Uzaktan kod yürütülmesi (Remote code execution)</li>
     </ul>
-    <a href="/belgeler/2.0/belgeler/guvenlik.html">Devamını Oku</a>
+    <a href="#">Devamını Oku</a>
   </div>
 </div>
