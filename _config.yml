@@ -18,6 +18,12 @@ belgeler_kurulum: /belgeler/2.0/kurulum.html
 belgeler_bakis: /belgeler/2.0/bakis.html
 belgeler_giris: /belgeler/2.0/giris.html
 belgeler_ogretici1: /belgeler/2.0/ogretici1.html
+belgeler_ogretici2: /belgeler/2.0/ogretici2.html
+belgeler_ogretici3: /belgeler/2.0/ogretici3.html
+belgeler_ogretici4: /belgeler/2.0/ogretici4.html
+belgeler_ogretici5: /belgeler/2.0/ogretici5.html
+belgeler_ogretici6: /belgeler/2.0/ogretici6.html
+belgeler_ogretici7: /belgeler/2.0/ogretici7.html
 
 # Ders bağları
 dersler_onbakis: /diger.html
