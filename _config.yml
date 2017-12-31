@@ -10,4 +10,6 @@ github_username:  data-deveb
 markdown: kramdown
 theme: minima
 
+# Ders bağları
+dersler_önbakış: /diger.html
 belgeler: testi
