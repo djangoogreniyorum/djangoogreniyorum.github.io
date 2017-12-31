@@ -12,6 +12,15 @@ header{
 a{
   color:crimson;
 }
+[data-bilget~="genel"] {
+    width: 100%;
+    background: #F1FFF7;
+    padding: 10px 20px 10px 30px;
+    border: 1px solid #C9F0DD;
+    border-radius: 4px;
+    margin: 25px 0;
+    position: relative;
+}
 .headertext{
   font-size:24px;
   background-color: #44B78B;
