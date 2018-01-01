@@ -1,0 +1,423 @@
+---
+layout: general
+title: Öğretici 2 - Django Öğreniyorum
+---
+<div data-gnl="kaplama">
+<h1>İlk Django Uygulamanızı Yazma, Bölüm #2</h1>
+<p>Bu eğitim <a href="{{site.belgeler_ogretici1}}">öğretici 1</a>'in kaldığı yerden devam ediyor. Veritabanını kuracağız, ilk kalıbımızı oluşturacağız ve Django'nun doğal olarak oluşturulan yönetici sitesine hızlı bir giriş yapacağız.</p>
+<h2>Veritabanu Kurulumu</h2>
+<p>Şimdi, benimsite/settings.py dosyasını açın. Bu dosya, Django ayarlarını temsil eden kalıp düzerinde değişkenleri olan normal bir Python modülüdür.</p>
+<p>Varsayılan olarak yapılandırılmış veritabanı SQLite'dır. Veritabanları konusunda yeniyseniz veya sadece Django'yu denemekle ilgileniyorsanız, bu en kolay seçimdir. SQLite Python'a dahildir. Bu nedenle veritabanınızı desteklemek için başka bir şey yüklemeniz gerekmez. Bununla birlikte, ilk gerçek projenizi başlatırken, veritabanı geçişindeki baş ağılarından kaçınmak için PostgreSQL gibi daha ölçeklenebilir bir veritabanı kullanmak isteyebilirsiniz.</p>
+<p>Başka bir veritabanı kullanmak isterseniz, uygun <a href="#">veritabanı bağlamalarını</a> yükleyin ve aşağıdaki anahtarları <a href="#">DATABASES</a>'ın varsayılan ('default') öğesinde veritabanı bağlantı ayarlarınıza uyacak şekilde değiştirin:</p>
+
+<ul>
+  <li><a href="#">ENGINE</a>: 'django.db.backends.sqlite3', 'django.db.backends.postgresql', 'django.db.backends.mysql' veya 'django.db.backends.oracle'. Diğer <a href="#">arka uçlar</a> da mevcuttur.</li>
+  <li><a href="#">NAME</a>: Veritabanızın adı. SQLite kullanıyorsanız, veritabanı bilgisayarındaki bir dosya olacaktır. Bu durumda, <a href="#">NAME</a> dosyasının dosya adı da dahil olmak üzere tam mutlak yol olmalıdır. Varsayılan değer olan os.path.join(BASE_DIR, 'db.sqlite3'), dosyayı proje dizininizde depolar.</li>
+</ul>
+
+<p>SQLite veritabanınız olarak kullanılıyorsa, <a href="#">KULLANICI</a>, <a href="#">ŞİFRE</a> ve <a href="#">SUNUCU</a> gibi ek ayarlar eklenmelidir. Daha fazla bilgi için, <a href="#">DATABASES</a> etkinleştirme belgelerine bakın.</p>
+<div data-bilget="genel">
+  <h3>SQLite dışındaki veritabanları için</h3>
+  <p>SQLite dışıdna bir veritabanı kullanıyorsanız, bu noktaya kadar bir veritabanı oluşturduğunuzdan emin olun. Bunu "CREATE DATABASE database_name;" ile veritabanınızın etkileşimli isteminde yapın.</p>
+  <p>Ayrıca, benimsite/settings.py dosyasında sağlanan veritabanı kullanıcısının "veritabanı oluştur" ayrılacılıklarına sahip olduğundan emin olun. Bu, daha sonraki bir öğreticide ihtiyaç duyulacak bir <a href="#">test veritabanının</a> doğal olarak oluşturulmasını sağlar.</p>
+  <p>SQLite kullanıyorsanız, önceden bir şey oluşturmanız gerekmez - veritabanı dosyası gerektiğinde doğal olarak oluşacaktır.</p>
+</div>
+
+<p>benimsite/settings.py dosyasını düzenlerken, <a href="#">TIME_ZONE</a> değerini sat diliminizde ayarlayın.</p>
+<p>Ayrıca, dosyanın üst kısmındaki <a href="#">INSTALLED_APPS</a> ayarına dikkat edin. Bu Django örneğinde etkinleştirilen tüm Django uygulamalarının adlarını tutar. Uygulamalar birden fazla projede kullanılabilir ve bunları başkaları tarafından projelerinde kullanılmak üzere paketleyebilir veya dağıtabilirsiniz.</p>
+<p>Varsayılan olarak, <a href="#">INSTALLED_APPS</a>, hepsi Django ile birlikte gelen aşağıdaki uygulamaları içerir:</p>
+<ul>
+  <li><a href="#">django.contrib.admin</a>: Yönetici sitesi. Kısa süre kullanacaksın. </li>
+  <li><a href="#">django.contrib.auth</a>: Bir kimlik doğrulama örgüsü. </li>
+  <li><a href="#">django.contrib.contenttypes</a>: İçerik türleri için bir çatı. </li>
+  <li><a href="#">django.contrib.sessions</a>: Bir oturum çatısı. </li>
+  <li><a href="#">django.contrib.messages</a>: Bir mesajlaşma çatısı. </li>
+  <li><a href="#">django.contrib.staticfiles</a>: Sabit dosyaları yönetmek için bir çatı. </li>
+</ul>
+<p>Bu uygulamalar, genel durum için bir kolaylık olarak varsayılan olarak bulunur.</p>
+<p>Bu uygulamalardan bazıları en az bir veritabanı tablosu kullanıyor, bu nedenle tabloları kullanabilmeniz için önce veritabanında oluşturmamız gerekiyor. Bunu yapmak için aşağıdaki komutu çalıştırın:</p>
+<pre data-gnl="1 1p"><code class="language-python">
+$ python manage.py migrate
+</code></pre>
+<p>Geçiş komutu, <a href="#">INSTALLED_APPS</a>ayarına bakar ve benimsite/settings.py dosyanızdaki veritabanı ayarlarına ve uygulama ile birlikte gelen veritabanı göçlerine göre gerekli tüm veritabanı tablolarını oluşturur (bunları daha sonra ele alacağız). Uygulandığı her bir taşıma işlemi için bir ileti görürsünüz. Eğer ilgileniyorsanız, veritabanınız için komut satırı istemcisini çalıştırın ve <br>\dt (PostgreSQL),<br> SHOW_TABLES; (MySQL),<br> .schema (SQLite) veya<br> SELECT TABLE_NAME FROM USER_TABLES; (Oracle)<br> Django'nun oluşturduğu tabloları görüntülemek için.</p>
+<div data-bilget="genel">
+  <p>Minimalistler için</p>
+  <p>
+    Yukarıda söylediğimiz gibi, varsayılan durum, genel durum için dahil edilmiş ancak herkesin bunlara ihtiyacı yok. Bunların herhangi birine veya tamamına ihtiyacınız yoksa, <a href="#">INSTALLED_APPS</a>çalıştırmadan önce <a href="#">INSTALLED_APPS</a>uygun satırları yorumlamaktan veya silmekten çekinmeyin. Geçiş komutu yalnızca <a href="#">INSTALLED_APPS</a>uygulamasındaki taşıma işlemlerini <a href="#">INSTALLED_APPS</a>.
+  </p>
+</div>
+<hr>
+<h2>Kalıp (Model) Oluşturma</h2>
+<p>Şimdi, modellerinizi - aslında, veritabanı düzeninizle (ek meta verilerle) tanımlayacağız.</p>
+<div data-bilget="genel">
+  <h3>Felsefe</h3>
+  <p>Bir model, verilerinizle ilgili gerçeğin tek ve kesin kaynağıdır. Sakladığınız verilerin önemli alanlarını ve davranışlarını içerir. Django, KURU Prensibi'ni izler. Amaç, veri modelinizi tek bir yerde tanımlamak ve bunlardan doğal olarak türetmektir.</p>
+  <p>Bu, göçleri de içerir - örneğin Ruby On Rails'in aksine, göçler tamamen modeller dosyanızdan türetilir ve aslında yalnızca mevcut modellerinize uyacak şekilde veritabanı şemasını güncellemek için Django'nun kullanabileceği bir geçmişi vardır.</p>
+</div>
+<p>Basit anket uygulamamızda, iki model oluşturacağız: Soru ve Seçim . Bir sorunun bir soru ve yayın tarihi vardır. Seçim iki alana sahiptir: seçim metni ve oy toplaması. Her Seçim bir Soru ile ilişkilendirilir.</p>
+<p>anketler/models.py</p>
+<pre data-gnl="1 1p"><code class="language-python">
+from django.db import models
+
+
+class Soru(models.Model):
+    soru_metni = models.CharField(max_length=200)
+    yayim_tarihi = models.DateTimeField('date published')
+
+
+class Secim(models.Model):
+    soru = models.ForeignKey(Soru, on_delete=models.CASCADE)
+    secim_metni = models.CharField(max_length=200)
+    oylar = models.IntegerField(default=0)
+</code></pre>
+<p>Kod basittir. Her model, <a href="#">django.db.models.Model</a> alt sınıflarının sınıfıyla temsil edilir. Her modelin sınıf değişkenleri vardır, bunların her biri modelin bir veritabanı alanını temsil eder.</p>
+<p>Her alan bir <a href="#">Field</a> sınıfı örneği ile temsil edilir - örneğin, karakter alanları için CharField ve tarih CharField için DateTimeField . Bu, Django'ya her alanın ne tür verilere sahip olduğunu söyler.</p>
+<p>Her bir <a href="#">Field</a> örneğinin adı (örneğin; soru_metni veya yayim_tarihi) makinenin dostu biçiminde olduğu alanın adıdır. Bu değeri Python kodunuzda kullanacaksınız ve veritabanınız bu sütun adı olarak kullanılacaktır. </p>
+<p>İnsanlar tarafından okunabilen bir isim belirlemek için <a href="#">Field</a> isteğe bağlı olarak ilk konumsal durumunu kullanabilirsiniz. Bu, Django'nun içgözlem birkaç bölümünde kullanılır ve belgelendirme olarak iki katına çıkar. Bu alan sağlanmazsa, Django makine tarafından okunabilen adı kullanacaktır. Bu örnekte, yalnızca Soru.yayim_tarihi için insan taraınfan okunabilen bir tanım tanımladık. Bu modeldeki diğer tüm alanlar için alanın makine tarafından okunabilen adı insan tarafından okunabilir bir ad olarak yeterlidir.  </p>
+<p>Bazı <a href="#">Field</a> sınıflarının durumları gereklidir. Örneğin, <a href="#">CharField</a>, size bir <a href="#">max_length</a> gerektirir. Bu, yalnızca veritabanı şemasında değil, doğrulamada da kullanılmaktadır. Yakında yakından göreceğiz. </p>
+<p>Bir <a href="#">Field</a> ayrıca çeşitli isteğe bağlı bağımsız değişkenlere sahip olabilir; Bu durumda, oylar alanının <a href="#">default</a> değeri 0 olması gerekir.  </p>
+<p>Son olarak <a href="#">ForeignKey</a> kullanarak bir ilişkinin tanımlandığını unutmayın. Django'ya her Seçim'in tek bir Soru ile alakalı olduğunu söyler. Django, tüm ortak veritabanı ilişkilerini desteklemektedir. Bire-bir, bire-çok, çoğa-bir, çoğa-çok  </p>
+<hr>
+<h2>Kalıpları (Model) Etkinleştirme</h2>
+<p>Model kodun birazı bile Django'ya çok fazla bilgi verir. Bununla birlikte, Django şunları yapabilir:</p>
+<ul>
+  <li>Bu uygulama için bir veritabanı şeması oluşturun (CREATE TABLE ifadeleri)</li>
+  <li>Soru ve Seçim nesnelerine erişmek için bir Python veritabanı erişim API'si oluşturun.</li>
+</ul>
+<p>Ancak önce projemize anketler uygulamasının yüklenmesini söylemeleyiz.</p>
+<div data-bilget="genel">
+  <h3>Felsefe</h3>
+  <p>Django uygulamaları "takılabilir": Bir uygulamayı birden fazla projede kullanabilirsiniz ve belirli bir Django yüklemesine bağlı olmak zorunda olmadıkları için uygulamaları dağıtabilirsiniz.</p>
+</div>
+<p>Uygulamayı projemize eklemek için <a href="#">INSTALLED_APPS</a> ayar bölümünde yapılandırma sınıfına bir kaynakça eklememiz gerekiyor. AnketlerAyar sınıfı anketler/apps.py dosyasında yer alır. Bu nedenle noktalı yolu 'anketler.apps.AnketlerAyar' bu şekildedir. benimsite/settings.py dosyasını düzenleyin ve bu noktalı yolu <a href="#">INSTALLED_APPS</a> ayarına ekleyin. Dosya şöyledir: </p>
+<p>benimsite/settings.py</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  INSTALLED_APPS = [
+       'anketler.apps.AnketlerAyar' ,
+       'django.contrib.admin' ,
+       'django.contrib.auth' ,
+       'django.contrib.contenttypes' ,
+       'django.contrib.sessions' ,
+       'django.contrib.messages'
+       'django.contrib.staticfiles' ,
+   ]
+</code></pre>
+<p>Şimdi Django anketler uygulamasını projeye nasıl eklendiğini biliyorsunuz. Örgüye tamamen dahil etmek için devam ediyoruz. Aşağıdaki komutu çalıştırın.</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  $ python manage.py makemigrations anketler
+</code></pre>
+<p>Sonuç olarak şöyle bir karşılık almalısınız:</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  Migrations for 'anketler':
+    anketler/migrations/0001_initial.py:
+      - Create model Secim
+      - Create model Soru
+      - Add field soru to secim
+</code></pre>
+<p>makemigrations çalıştırarak, modellerinizde bazı değişiklikler yaptınız (bu durumda yeni olanları) ve değişikliklerin bir geçiş olarak saklanmasını istediğinizi Django'ya belirttiniz.</p>
+<p>Geçişler (migrations), Django'nun modellerinizdeki değişiklikleri depolamasını sağlar. Bunlar sadece diskte olan dosyalardır. İsterseniz yeni modeliniz için taşıma işlemini okuyabilirsiniz; bu dosya anketler/migrations/0001_initial.py dosyasıdır. Endişelenmeyin, Django birtane oluşturdğunda bunları okumayı beklemeyin. Ancak Django'nun birşeyleri nasıl değiştirdiğini elle değiştirmek istiyorsanız yeniden düzenlenebilir olacak şekilde tasarlanmıştır.</p>
+<p>Geçişleri sizin için gerçekleştirecek ve veritabanınızın şemasını doğal olarak yönetebilecek bir komut var. Bu komuta <a href="#">migrate</a> veriyoruz. Ancak önce hangi göç işleminin olacağını göreceğiz. <a href="#">sqlmigrate</a> komutu geçiş adlarını alır ve <a href="#">sqlmigrate</a> döndürür: </p>
+<pre data-gnl="1 1p"><code class="language-python">
+  $ python manage.py sqlmigrate anketler 0001
+</code></pre>
+<p>Aşağıdakine benzer bir şey görmelisiniz (okunabilirlik için yeniden biçimlendirdik):</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  BEGIN;
+  --
+  -- Secim modelini oluştur
+  --
+  CREATE TABLE "anketler_secim" (
+      "id" serial NOT NULL PRIMARY KEY,
+      "secim_metni" varchar(200) NOT NULL,
+      "oylar" integer NOT NULL
+  );
+  --
+  -- Create model Question
+  --
+  CREATE TABLE "polls_question" (
+      "id" serial NOT NULL PRIMARY KEY,
+      "question_text" varchar(200) NOT NULL,
+      "pub_date" timestamp with time zone NOT NULL
+  );
+  --
+  -- Add field soru to secim
+  --
+  ALTER TABLE "anketler_secim" ADD COLUMN "soru_id" integer NOT NULL;
+  ALTER TABLE "anketler_secim" ALTER COLUMN "soru_id" DROP DEFAULT;
+  CREATE INDEX "anketler_secim_7aa0f6ee" ON "anketler_secim" ("soru_id");
+  ALTER TABLE "anketler_secim"
+    ADD CONSTRAINT "anketler_secim_soru_id_246c99a640fbbd72_fk_anketler_soru_id"
+      FOREIGN KEY ("soru_id")
+      REFERENCES "anketler_soru" ("id")
+      DEFERRABLE INITIALLY DEFERRED;
+
+  COMMIT;
+</code></pre>
+<p>Aşağıdakilere dikkat edin:</p>
+<ul>
+  <li>Tablo isimleri, uygulamanın adını (anketler) ve modelin küçük harf adını - soru ve secim birleştirerek doğal olarak oluşturuluyor. (Bu davranışı geçersiz kılabilirsiniz.)</li>
+  <li>Birincil anahtarlar (id) doğal olarak eklenir. (Bunu da geçersiz kılabilirsiniz.)</li>
+  <li>Sözleşmeye göre, Django "_id" yabancı anahtar alan adına ekler. (Evet, bu da geçersiz kılınabilir.)</li>
+  <li>Yabancı anahtar ilişkisi, bir ForeignKey kısıtlaması ile açıkça belirtilir. DEFERRABLE parçaları hakkında endişelenmeyin. Bu sadece PostgreSQL'e işlemin sonuna kadar yabancı anahtarı zorlamamasını söylüyor.</li>
+  <li>Kullanmakta olduğunuz veritabanına uyacak şekilde tasarlandığından, auto_increment (MySQL), seri (PostgreSQL) veya tamsayı birincil anahtar otomatik artış (SQLite) gibi veritabanına özel alan türleri otomatik olarak sizin için ele alınır. Aynı, alan adlarının alıntılanması için de geçerlidir. Örnek, çift tırnak işareti veya tek tırnak işareti kullanmak.</li>
+  <li> <a href="#">sqlmigrate</a> komutu, veritabanınızdaki geçiş işlemini gerçekte yürütmez. Yalnızca SQL Django'nun düşündüğünü görebilmeniz için ekranda yazdırır. Django'nun ne yapacağını kontrol etmek veya değişiklikler için SQL komut dosyaları gerektiren veritabanı yöneticileri varsa yararlıdır.</li>
+</ul>
+<p>İlginizi çekiyorsa <a href="#">python manage.py check</a> de çalıştırabilirsiniz; bu, göç yapmadan veya veritabanına dokunmadan projenizdeki herhangi bir sorunu denetler. </p>
+<p>Şimdi, veritabanınızda bu model tablolarını oluşturmak için <a href="#">migrate</a> komutunu tekrar çalıştırın. </p>
+<pre data-gnl="1 1p"><code class="language-python">
+$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, anketler, sessions
+Running migrations:
+  Rendering model states... DONE
+  Applying anketler.0001_initial... OK
+</code></pre>
+<p>Geçiş komutu, uygulanmış olan tüm göçleri alır (Django, hangilerinin veritabanında django_migrations olarak adlandırılan özel bir tablo kullanılarak uygulandığını izler) ve bunları veritabanınıza karşı çalıştırır; aslında, modellerinizde yaptığınız değişiklikleri şema ile uyumlu yapar.</p>
+<p>Geçişler çok güçlüdür ve veritabanınızı veya tablolarınızı silmenize, yenilikler yapmanıza gerek kalmadan projenizi geliştirirken zamanla modellerinizi değiştirmenizi sağlar. Veri kaybetmeden canlı olarak veritabanınızı güncelleme konusunda uzmanlaşmıştır. Öğreticinin daha sonraki bölümünde ayrıntılı bir şekilde değineceğiz. Ancak şimdilik, model değişikliklerini yapmak için üç adımlı kılavuzu unutmayın:</p>
+<ul>
+  <li>Modellerinizi değiştirin (models.py içinde)</li>
+  <li>Bu değişiklikleri geçirmek için <a href="#">python manage.py makemigrations</a> çalıştırın. </li>
+  <li>Bu değişiklikleri veritabanına geçirmek için <a href="#">python manage.py migrate</a> çalıştırın </li>
+</ul>
+<p>Taşıma işlemleri yapmak ve uygulamak için ayrı komutların bulunmasının nedeni, sürüm denetimi sistemimize taşıma işlemlerini taahhüt etmeniz ve bunları uygulamanızla birlikte göndereceğiniz olmasıdır. Yalnızca gelişiminizi kolaylaştırmakla kalmaz aynı zamanda diğer geliştiriciler tarafından da kullanılabilirler ve üretim aşamasında olurlar.</p>
+<p>manage.py yardımcı programının neler yapabileceği hakkında tam bilgi için <a href="#">django-admin belgelerini</a> okuyun.</p>
+<hr>
+<h2>API ile oynamak</h2>
+<p>Şimdi etkileşimli Python kabuğuna atlayalım ve Django'nun sunduğu ücretsiz API ile oynamaya başlayalım. Python kabuğunu çağırmak için şu komutu kullanın:</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  $ python manage.py shell
+</code></pre>
+<p>Bunu yalnızca basitçe "python" yazarak kullanıyoruz. Çünkü manage.py, DJANGO_SETTINGS_MODULE ortam değişkenini ayarlar; Django'ya benimsite/settings.py dosyanıza Python içe aktarma yolu verir. </p>
+<div data-bilget="genel">
+  <h3>Manage.py'yi atlama</h3>
+  <p>manage.py kullanmayı tercih ederseniz sorun değil. Sadece DJANGO_SETTINGS_MODULE ortam değişkeni benimsite.settings, düz bir Python kabuğu başlatın ve Django'yu kurun:</p>
+<pre data-gnl="1 1p"><code class="language-python">
+>>> import django
+>>> django.setup()
+</code></pre>
+  <p>Bu bir <a href="#">AttributeError</a> oluşturursa, muhtemelen Django'nun bu öğretici sürümle eşleşmeyen bir sürümünü kullanıyorsunuz demektir. Ya eski öğreticiye veya daya yeni Django sürümüne geçmek isteyeceksiniz.</p>
+<p>Manage.py dosyasının bulunduğu dizinden python çalıştırmalısınız veya bu dizinin python yolunda olduğundan emin olun. Böylece import benimsite çalışacaktır.</p>
+<p>Tüm bunlar hakkında daha fazla bilgi için <a href="#">django-admin belgelerine</a> bakın. </p>
+</div>
+<p>Kabukta iken <a href="#">veritabanı API</a>'sini keşfedin:</p>
+<pre data-gnl="1 1p"><code class="language-python">
+>>> from anketler.models import Soru, Secim   # Sadece yazdığımız model sınıflarını içe aktarın.
+
+# Sistemde henüz hiçbir soru yok.
+>>> Soru.objects.all()
+<QuerySet []>
+
+# Yeni bir Soru oluştur.
+# Varsayılan ayarlar dosyasında zaman dilimlerinin desteği etkin olduğundan,
+# bu nedenle Django yayim_tarihi için tzinfo ile bir datetime bekliyor.
+# timezone.now() kullanın datatime.datetime.now() yerine... Ve doğru olanı yapacağız.
+>>> from django.utils import timezone
+>>> q = Soru(soru_metni="Yenilikler ne?", yayim_tarihi=timezone.now())
+
+# Nesneyi veritabanına kaydedin. save() öğesini açıkça çağırmalısınız.
+>>> q.save()
+
+# Şimdi bir ID'si var.
+>>> q.id
+1
+
+# Python nitelikleri üzerinden model alan değerlerine erişir.
+>>> q.soru_metni
+"Yenilikler ne?"
+>>> q.yayim_tarihi
+datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=<UTC>)
+
+# Öznitelikleri değiştirip sonra save() yöntemini çağırarak değerleri değiştirin.
+>>> q.soru_metni = "N'haber?"
+>>> q.save()
+
+# objects.all() veritabanındaki tüm soruları görüntüler.
+>>> Soru.objects.all()
+<QuerySet [<Soru: Soru object (1)>]>
+</code></pre>
+<p>Bir dakika bekle. <Soru: Soru object (1)>, bu nesnenin yararlı bir gösterimi değil. Soru modelini (anketler/models.py dosyasında) düzebkeyerej ve hen Sıry hen de Secim bir __str__() yöntemi ekleyerek düzeltelim:</p>
+<p>anketler/models.py</p>
+<pre data-gnl="1 1p"><code class="language-python">
+from django.db import models
+
+class Soru(models.Model):
+    # ...
+    def __str__(self):
+        return self.soru_metni
+
+class Secim(models.Model):
+    # ...
+    def __str__(self):
+        return self.secim_metni
+</code></pre>
+<p>__str__() yöntemlerini modellerinize eklemek önemlidir; yalnızca etkileşimli istemle uğraşırken kendi kolaylığınız için değil, aynı zamanda nesnelerin temsilleri Django'nun doğal olarak oluşturulan yönetici tarafından kullanıldığı için de geçerlidir.</p>
+<p>Bunların olağan Python yöntemleri olduğuna dikkat edin. Demo için özel bir yöntem ekleyelim:</p>
+<p>anketler/models.py</p>
+<pre data-gnl="1 1p"><code class="language-python">
+import datetime
+
+from django.db import models
+from django.utils import timezone
+
+
+class Soru(models.Model):
+    # ...
+    def was_published_recently(self):
+        return self.yayim_tarihi >= timezone.now() - datetime.timedelta(days=1)
+</code></pre>
+<p>İçe aktarma datetime ekini ve django.utils import timezone'u, sırasıyla django.utils.timezone içindeki Python standart datetime modülüne ve Django saat dilimi ile ilgili yardımcı programlara başvurmaya dikkat edin. Python'da saat dilimini işleme konusunda bilginiz yoksa, <a href="#"> saat dilimi destek belgeleri</a>nde daha fazla bilgi edinebilirsiniz.</p>
+<p>Bu değişiklikleri kaydedin ve python manage.py kabuğunu tekrar çalıştırarak yeni bir Python etkileşimli kabuğu başlatın:</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  >>> from polls.models import Soru, Secim
+
+  # __str__() ekimizin çalıştığından emin olun.
+  >>> Soru.objects.all()
+  <QuerySet [<Soru: Yenilikler ne?>]>
+
+  # Django, tamamen anahtar sözcükler tarafından yönlendirilen
+  # zengin bir veritabanı arama API'si sağlar.
+  >>> Soru.objects.filter(id=1)
+  <QuerySet [<Soru: Yenilikler ne?>]>
+  >>> Soru.objects.filter(soru_metni__startswith='Yenilikler')
+  <QuerySet [<Soru: Yenilikler ne?>]>
+
+  # Bu yıl yayınlanan soruyu cevaplayın.
+  >>> from django.utils import timezone
+  >>> simdiki_yil = timezone.now().year
+  >>> Soru.objects.get(yayim_tarihi__year=simdiki_yil)
+  <Soru: Yenilikler ne?>
+
+  # Var olmayan bir kimlik isteğinde bulunduğunuzda, bu bir istisna oluşturacaktır.
+  >>> Soru.objects.get(id=2)
+  Traceback (most recent call last):
+      ...
+  DoesNotExist: Soru matching query does not exist.
+
+  # Birincil anahtarla arama en yaygın olanıdır. bu yüzden Django, birincil anahtar tam aramaları için kısayol sağlar.
+  # Aşağıdakiler Soru.objects.get(id=1) ile aynıdır.
+  >>> Soru.objects.get(pk=1)
+  <Soru: Yenilikler ne?>
+
+  # Özel yöntemimizin çalıştığından emin olun.
+  >>> q = Soru.objects.get(pk=1)
+  >>> q.was_published_recently()
+  True
+
+  # Soru için birkaç seçenek verin. Create çağrısı yeni bir
+  # Secim nesnesi oluşturur, INSERT deyimi yapar, seiçimi kullanılabilir seçenekler
+  # grubuna ekler ve yeni Secim nesnesini döndürür.
+  >>> q = Soru.objects.get(pk=1)
+
+  # İlgili nesne setinden herhangi bir seçeneği görüntüler. Şimdiye kadar hiçbiri görüntüleniyor.
+  >>> q.secim_set.all()
+  <QuerySet []>
+
+  # Üç seçenek oluşturun.
+  >>> q.secim_set.create(secim_metni='Fazla değil', oylar=0)
+  <Choice: Not much>
+  >>> q.secim_set.create(secim_metni='Gökyüzü', oylar=0)
+  <Choice: The sky>
+  >>> c = q.secim_set.create(secim_metni='Sadece tekrar hackleniyor', oylar=0)
+
+  # Seçim nesnelerinin, ilgili Soru nesnelerine API erişimi vardır.
+  >>> c.soru
+  <Question: Yenilikler ne?>
+
+  # Ve tersi de mümkün: Soru nesneleri Secim nesnelerine erişebilir.
+  >>> q.secim_set.all()
+  <QuerySet [<Secim: Fazla değil>, <Secim: Gökyüzü>, <Secim: Sadece tekrar hackleniyor>]>
+  >>> q.secim_set.count()
+  3
+
+  # API, ilişkileri ihtiyacınız olan yere kadar doğal olarak izler. İlişkileri ayırmak için çift altçizgi kullanın.
+  # Bu istediğiniz kadar çok derinlikli olarak çalışır. Yani sınır yok. Bu sene yayim_tarihi olan herhangi bir sorunun
+  # seçimini yapın (yukarıda oluşturduğumuz 'simdiki_yil' değişkenini tekrar kullanın.)
+  >>> Choice.objects.filter(question__pub_date__year=current_year)
+  <QuerySet [<Secim: Fazla değil>, <Secim: Gökyüzü>, <Secim: Sadece tekrar hackleniyor>]>
+
+  # Seçimlerden birini silelim. Bunun için delete() kullanın.
+  >>> c = q.secim_set.filter(secim_metni__startswith='Sadece tekrar')
+  >>> c.delete()
+</code></pre>
+<p>Model ilişkileri hakkında daha fazla bilgi için bkz. <a href="#">İlgili nesnelere erişme</a>. API aracılığıyla alan araştırmaları yapmak için çift altçizgi kullanma konusunda daha fazla bilgi için bkz: <a href="#">Alan arama</a>. Veritabanı API'si ile ilgili tüm ayrıntılar için <a href="#">Veritabanı API'si başvuru</a>muza bakın. </p>
+<hr>
+<h2>Django Yönetici Tanıtımı</h2>
+<div data-bilget="genel">
+  <h3>Felsefe</h3>
+  <p>Personeliniz veya müşterileriniz için içerik eklemek, değiştirmek ve silmek için yönetici siteleri oluşturmak çok yaratıcılık gerektirmeyen sıkıcı bir iştir. Bu nedenle, Django tamamen modeller için yönetici arayüzlerinin oluşturulmasını doğallaştırır.</p>
+  <p>Django, "içerik yayıncıları" ile "kamu" sitesi arasında çok net bir ayrımla, bir habercilik odası ortamında yazılmıştır. Site yöneticileri, haber öyküleri, etkinlikler, spor skorları vb. eklemek için örgüyü kullanır ve bu içerik genel sitede görüntülenir. Django, site yöneticilerinin içeriği düzenlemeleri için birleşik bir arabirim oluşturma sorunu çözer.</p>
+  <p>Yönetici, site ziyaretçileri tarafından kullanılacak şekilde tasarlanmamıştır. Site yöneticileri içindir.</p>
+</div>
+<h2>Yönetici kullanıcısı oluşturma</h2>
+<p>Önce, yönetici siteye giriş yapabilecek bir kullanıcı oluşturmamız gerekecek. Aşağıdaki komutu çalıştırın:</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  $ python manage.py createsuperuser
+</code></pre>
+<p>İstediğiniz kullanıcı adını girin ve enter tuşuna basın:</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  Username: admin
+</code></pre>
+<p>Ardından istediğiniz e-posta adresini girmeniz istenir:</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  Email address: admin@example.com
+</code></pre>
+<p>Son adım şifrenizi girmektir. İki kez şifrenizi girmeniz istenecek ve ikinci seferinde ilk şifrenizi onaylayacaksınız.</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  Password: **********
+  Password (again): *********
+  Superuser created successfully.
+</code></pre>
+<hr>
+<h2>Geliştirme sunucunusu başlatmak (yerel sunucu)</h2>
+<p>Django admin sitesi varsayılan olarak etkinleştirilir. Gelişim sunucusuna başlayalım ve keşfedelim.</p>
+<p>Sunucu çalışmıyorsa, şu şekilde başlatın:</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  $ python manage.py runserver
+</code></pre>
+<p>Şimdi, bir internet ağı tarayıcısı açın ve yerel etki alanınızdaki "/admin/" adresine gidin. Örneğin http://127.0.0.1:8000/admin/</p>
+<p>Yöneticinin giriş ekranı karşınıza gelecektir.</p>
+<img src="" alt="">
+<p><a href="#">Çeviri</a> varsayılan olarak açık olduğundan, giriş ekranı, tarayıcınızın ayarlarına ve Django'nun bu dil için bir çeviri yapmasına bağlı olarak kendi dilinizde görüntülenebilir. </p>
+<hr>
+<h2>Admin sitesini giriniz</h2>
+<p>Şimdi, önceki adımda oluşturduğunuz süper kullanıcı hesabı ile giriş yapmayı deneyin. Django admin dizin sayfasını görmelisiniz:</p>
+<img src="" alt="">
+<p>Düzenlenebilir içerik türlerinden bazılarını görmelisiniz: gruplar ve kullanıcılar. Django tarafından gönderilen kimlik doğrulama çerçevesi olan <a href="#">django.contrib.auth</a> tarafından sağlanmaktadır. </p>
+<hr>
+<h2>Anket uygulamasını admin'de değiştirilebilir yapın</h2>
+<p>Ama bizim anket uygulaması nerede? Yönetici dizini sayfasında görüntülenmez.</p>
+<p>Yapmanız gereken tek şey: Yöneticiye, Soru nesnelerinin yönetici arayüzüne sahip oldğunu söylememiz gerekiyor. Bunu yapmak için anketler/admin.py dosyasını açın ve şu şekilde düzenleyin:</p>
+<p>anketler/admin.py</p>
+<pre data-gnl="1 1p"><code class="language-python">
+  from django.contrib import admin
+
+  from .models import Soru
+
+  admin.site.register(Soru)
+</code></pre>
+<hr>
+<h2>Ücretsiz admin işlevini keşfedin</h2>
+<p>Artık Soru kaydettik, Django bunun admin dizini sayfasında gösterileceğini biliyor:</p>
+<img src="" alt="">
+<p>"Sorular"'ı tıklayın Artık sorularınız için "değişim listesi" sayfasındasınız. Bu sayfada veritabanındaki tüm sorular görüntülenir ve bunları değiştirmek için birini seçmenizi sağlar. Daha önce yarattığımız "Yenilikler ne?" sorusu var:</p>
+<img src="" alt="">
+<p>Düzenlemek için "Yenilikler ne?" sorusuna tıklayın:</p>
+<img src="" alt="">
+<p>Burada dikkat edilmesi gereken hususlar:</p>
+<ul>
+  <li>Form: Soru modelinden doğal olarak oluşturulur.</li>
+  <li>Farklı model alan türleri (<a href="#">DateTimeField</a>, <a href="#">CharField</a>) uygun HTML girişi <a href="#">CharField</a> karşılık gelir. Her alan türü kendisini Django admininde nasıl görüntüleyeceğini bilir. </li>
+  <li>Her <a href="#">DateTimeField</a> ücretsiz JavaScript kısayollarını alır. Tarihler bir "Bugün" kısayolu ve takvim açılır penceresi alıyor ve zamanlarda "Şimdi" kısayolu ve sık girilen saatleri listeleyen uygun bir açılır pencere elde ediliyor. </li>
+</ul>
+<p>Sayfanın alt kısmı size birkaç seçenek sunar:</p>
+<ul>
+  <li>Kaydet: Değişiklikleri kaydeder ve bu tür nesne için değişim listesi sayfasına geri döner.</li>
+  <li>Kaydet ve devam et: Değişiklikleri kaydeder ve bu nesne için yönetici sayfasını yeniden yükler.</li>
+  <li>Kaydet ve başka ekle: Değişiklikleri kaydeder ve bu nesne türü için yeni, boş bir form yükler.</li>
+  <li>Sil: Silme onayı sayfası görüntüler.</li>
+</ul>
+<p>"Yayınlanan tarih" in değeri <a href="{{site.belgeler_ogretici1}}">Öğretici 1</a>'de soru oluşturduğunuz saatle eşleşmiyorsa, muhtemelen <a href="#">TIME_ZONE</a> ayarı için doğru değeri ayarlamayı unuttuğunuz anlamına gelir. Değiştirin, sayfayı yeniden yükleyin ve doğru değerin göründüğünden emin olun. </p>
+<p>"Bugün" ve "Şimdi" kısayollarını tıklatarak "Yayınlanan tarihi" değiştirin. Daha sonra "Kaydet ve devam et"i tıklayın. Ardından sağ üst köşedeki "Geçmiş"i tıklayın. Bu nesne yapılan değişikliklerin tümünü Django yöneticisi aracılığıyla, değişikliği yapan kişinin zaman damgası ve kullanıcı adı ile birlikte listelendiği bir sayfa görürsünüz:</p>
+<img src="" alt="">
+<p>Modeller API'sinden memnun kaldıysanız ve kendinizi yönetici sitesiyle tanıdıysanız, anket uygulamalarımıza daha fazla görünüm ekleme hakkında bilgi edinmek için <a href="{{site.belgeler_ogretici3}}">Öğretici 3</a> bölümünü okuyun. </p>
+</div>
