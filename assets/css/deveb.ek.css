@@ -12,6 +12,11 @@ header{
 a{
   color:crimson;
 }
+hr{
+height: 3px;
+border: 1px dotted #cfcfcf;
+width: 100%;
+}
 [data-bilget~="genel"] {
     width: 100%;
     background: #F1FFF7;
