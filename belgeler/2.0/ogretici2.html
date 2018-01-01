@@ -132,15 +132,15 @@ class Secim(models.Model):
       "oylar" integer NOT NULL
   );
   --
-  -- Create model Question
+  -- Soru modelini oluştur
   --
-  CREATE TABLE "polls_question" (
+  CREATE TABLE "anketler_soru" (
       "id" serial NOT NULL PRIMARY KEY,
-      "question_text" varchar(200) NOT NULL,
-      "pub_date" timestamp with time zone NOT NULL
+      "soru_metni" varchar(200) NOT NULL,
+      "yayim_tarihi" timestamp with time zone NOT NULL
   );
   --
-  -- Add field soru to secim
+  -- Secim'e soru alanı ekle
   --
   ALTER TABLE "anketler_secim" ADD COLUMN "soru_id" integer NOT NULL;
   ALTER TABLE "anketler_secim" ALTER COLUMN "soru_id" DROP DEFAULT;
