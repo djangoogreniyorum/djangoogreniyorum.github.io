@@ -17,6 +17,19 @@ height: 3px;
 border: 1px dotted #cfcfcf;
 width: 100%;
 }
+[data-basmal~="genel"]{
+  display: inline-block;
+padding: 1em 50px 1.1em;
+margin-bottom: 40px;
+background: #44B78B;
+color: white;
+border: 0;
+font-weight: 700;
+font-size: 1.2rem;
+}
+[data-basmal~="genel"]:hover{
+  background-color: #51be95;
+}
 [data-bilget~="genel"] {
     width: 100%;
     background: #F1FFF7;
