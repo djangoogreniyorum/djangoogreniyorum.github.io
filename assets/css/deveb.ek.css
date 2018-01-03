@@ -1,3 +1,4 @@
+
 body{
   color:#0C3C26;
 }
@@ -12,6 +13,7 @@ header{
 a{
   color:crimson;
 }
+ul li{list-style: disc;}
 hr{
 height: 3px;
 border: 1px dotted #cfcfcf;
