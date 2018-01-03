@@ -3,44 +3,46 @@ layout: general
 title: Modeller - Django Öğreniyorum
 ---
 <div data-gnl="kaplama">
-  <h1>Models</h1>
-  <p>A model is the single, definitive source of information about your data. It contains the essential fields and behaviors of the data you’re storing. Generally, each model maps to a single database table.</p>
+  <h1>Modeller</h1>
+  <p>Bir model verileriniz hakkında kesin bilgi kaynağıdır. 
+    Sakladığınız verilerin önemli alanlarını ve davranışlarını içerir.
+    Genellikle, her model tek bir veritabanı tablosuna eşlenir.</p>
   <p>The basics:</p>
   <ul>
-    <li>Each model is a Python class that subclasses <a href="#">django.db.models.Model</a>.</li>
-    <li>Each attribute of the model represents a database field.</li>
-    <li>With all of this, Django gives you an automatically-generated database-access API; see <a href="#">Making queries</a>.</li>
+    <li>Her model, <a href="#">django.db.models.Model</a> alt sınıflarının bulunduğu bir Python sınıfıdır.</li>
+    <li>Modelin her özniteliği bir veritabanı alanını temsil eder.</li>
+    <li>Bütün bunlarla birlikte, Django size otomatik olarak üretilen bir veritabanı erişim API'sı sağlar; bkz. <a href="#">Sorgu oluşturma</a>.</li>
   </ul>
-  <h2>Quick example</h2>
-  <p>This example model defines a Person, which has a first_name and last_name:</p>
+  <h2>Hızlı Örnek</h2>
+  <p>Bu örnek model isim ve soy_isim bulunduran bir şahsı tanımlıyor:</p>
   <pre data-gnl="1 1p"><code class="language-python">
 from django.db import models
 
-class Person(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+class Sahis(models.Model):
+    isim = models.CharField(max_length=30)
+    soy_isim = models.CharField(max_length=30)
   </code>
   </pre>
-  <p>first_name and last_name are fields of the model. Each field is specified as a class attribute, and each attribute maps to a database column.</p>
-  <p>The above Person model would create a database table like this:</p>
+  <p>isim ve soy_isim modelin bir alanınır. Her alan bir sınıf özniteğiyle belirtilir ve her öznikelik bir veritabanı sütunuyla eşleştirilir.</p>
+  <p>Yukarıdaki Sahis modeli şöyle bir veritabanı tablosu oluşturur:</p>
   <pre data-gnl="1 1p"><code class="language-python">
-CREATE TABLE myapp_person (
+CREATE TABLE myapp_sahis (
     "id" serial NOT NULL PRIMARY KEY,
-    "first_name" varchar(30) NOT NULL,
-    "last_name" varchar(30) NOT NULL
+    "isim" varchar(30) NOT NULL,
+    "soy_isim" varchar(30) NOT NULL
 );
   </code>
   </pre>
-  <p>Some technical notes:</p>
+  <p>Bazı teknik notlar:</p>
   <ul>
-    <li>The name of the table, myapp_person, is automatically derived from some model metadata but can be overridden. See <a href="#">Table names</a> for more details.</li>
-    <li>An id field is added automatically, but this behavior can be overridden. See <a href="#">Automatic primary key fields.</a></li>
-    <li>The CREATE TABLE SQL in this example is formatted using PostgreSQL syntax, but it’s worth noting Django uses SQL tailored to the database backend specified in your settings file.</li>
+    <li>Tablonun adı myapp_sahis, otomatik olarak bazı model meta verilerinden türetilir ancak geçersiz kılınabilir. Bkz. <a href="#">Tablo İsimleri</a></li>
+    <li>Bir id alanı otomatik olarak eklenir, ancak bu davranış geçersiz kılınabilir. Bkz. <a href="#">Otomatik birincil anahtar alanları.</a></li>
+    <li>Bu örnekte CREATE TABLE SQL, PostgreSQL sözdizimini kullanarak biçimlendirilir, ancak Django, ayar dosyanızda belirtilen veritabanı arka uçuna göre hazırlanmış SQL kullandığına dikkati çekmektedir.</li>
   </ul>
   <hr>
-  <h2>Using models</h2>
-  <p>Once you have defined your models, you need to tell Django you’re going to use those models. Do this by editing your settings file and changing the INSTALLED_APPS setting to add the name of the module that contains your models.py.</p>
-  <p>For example, if the models for your application live in the module myapp.models (the package structure that is created for an application by the manage.py startapp script), INSTALLED_APPS should read, in part:</p>
+  <h2>Modelleri Kullanma</h2>
+  <p>Modellerinizi tanımladıktan sonra, Django'ya bu modelleri kullanacağını söylemelisiniz. Bunu, ayarlar dosyanızı düzenleyerek ve models.py dosyasını içeren modülün adını eklemek için INSTALLED_APPS ayarını değiştirerek yapın.</p>
+  <p>Örneğin, uygulamanızın modelleri myapp.models modülündeyse (bir uygulama için manage.py startapp komut dosyası tarafından oluşturulan paket yapısı), INSTALLED_APPS okunmalı:</p>
   <pre data-gnl="1 1p"><code class="language-python">
     INSTALLED_APPS = [
         #...
@@ -49,7 +51,7 @@ CREATE TABLE myapp_person (
     ]
   </code>
   </pre>
-  <p>When you add new apps to INSTALLED_APPS, be sure to run manage.py migrate, optionally making migrations for them first with manage.py makemigrations.</p>
+  <p>INSTALLED_APPS ürününe yeni uygulamalar eklediğinizde, manage.py migrate çalıştırın, isteğe bağlı olarak manage.py makemigrations ile geçiş yapabilirsiniz.</p>
   <hr>
   <h2>Fields</h2>
   <p>The most important part of a model – and the only required part of a model – is the list of database fields it defines. Fields are specified by class attributes. Be careful not to choose field names that conflict with the models API like clean, save, or delete.</p>
