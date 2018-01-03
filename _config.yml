@@ -11,21 +11,21 @@ markdown: kramdown
 theme: minima
 
 # Açık bağlar
-basla: /belgeler/basla.html
-onbakis: /belgeler/basla/onbakis.html
-belgeler: /belgeler/index.html
-belgeler_kurulum: /belgeler/2.0/kurulum.html
-belgeler_bakis: /belgeler/2.0/bakis.html
-belgeler_giris: /belgeler/2.0/giris.html
-belgeler_ogretici1: /belgeler/2.0/ogretici1.html
-belgeler_ogretici2: /belgeler/2.0/ogretici2.html
-belgeler_ogretici3: /belgeler/2.0/ogretici3.html
-belgeler_ogretici4: /belgeler/2.0/ogretici4.html
-belgeler_ogretici5: /belgeler/2.0/ogretici5.html
-belgeler_ogretici6: /belgeler/2.0/ogretici6.html
-belgeler_ogretici7: /belgeler/2.0/ogretici7.html
+basla: /belgeler/basla
+onbakis: /belgeler/basla/onbakis
+belgeler: /belgeler/index
+belgeler_kurulum: /belgeler/2.0/kurulum
+belgeler_bakis: /belgeler/2.0/bakis
+belgeler_giris: /belgeler/2.0/giris
+belgeler_ogretici1: /belgeler/2.0/ogretici1
+belgeler_ogretici2: /belgeler/2.0/ogretici2
+belgeler_ogretici3: /belgeler/2.0/ogretici3
+belgeler_ogretici4: /belgeler/2.0/ogretici4
+belgeler_ogretici5: /belgeler/2.0/ogretici5
+belgeler_ogretici6: /belgeler/2.0/ogretici6
+belgeler_ogretici7: /belgeler/2.0/ogretici7
 
-basliklar_models: /belgeler/2.0/basliklar/models.html
+basliklar_models: /belgeler/2.0/basliklar/models
 
 # Ders bağları
-dersler_onbakis: /diger.html
+dersler_onbakis: /diger
