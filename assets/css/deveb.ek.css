@@ -13,8 +13,8 @@ header{
 a{
   color:crimson;
 }
-ul li{list-style: disc;
-margin-left:15px;}
+ul.liste li{list-style: disc;
+margin-left:15px; margin-bottom:15px;}
 hr{
 height: 3px;
 border: 1px dotted #cfcfcf;

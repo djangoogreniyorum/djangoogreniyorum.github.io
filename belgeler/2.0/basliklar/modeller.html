@@ -4,11 +4,11 @@ title: Modeller - Django Öğreniyorum
 ---
 <div data-gnl="kaplama">
   <h1>Modeller</h1>
-  <p>Bir model verileriniz hakkında kesin bilgi kaynağıdır. 
+  <p>Bir model verileriniz hakkında kesin bilgi kaynağıdır.
     Sakladığınız verilerin önemli alanlarını ve davranışlarını içerir.
     Genellikle, her model tek bir veritabanı tablosuna eşlenir.</p>
   <p>The basics:</p>
-  <ul>
+  <ul class="liste">
     <li>Her model, <a href="#">django.db.models.Model</a> alt sınıflarının bulunduğu bir Python sınıfıdır.</li>
     <li>Modelin her özniteliği bir veritabanı alanını temsil eder.</li>
     <li>Bütün bunlarla birlikte, Django size otomatik olarak üretilen bir veritabanı erişim API'sı sağlar; bkz. <a href="#">Sorgu oluşturma</a>.</li>
@@ -34,7 +34,7 @@ CREATE TABLE myapp_sahis (
   </code>
   </pre>
   <p>Bazı teknik notlar:</p>
-  <ul>
+  <ul class="liste">
     <li>Tablonun adı myapp_sahis, otomatik olarak bazı model meta verilerinden türetilir ancak geçersiz kılınabilir. Bkz. <a href="#">Tablo İsimleri</a></li>
     <li>Bir id alanı otomatik olarak eklenir, ancak bu davranış geçersiz kılınabilir. Bkz. <a href="#">Otomatik birincil anahtar alanları.</a></li>
     <li>Bu örnekte CREATE TABLE SQL, PostgreSQL sözdizimini kullanarak biçimlendirilir, ancak Django, ayar dosyanızda belirtilen veritabanı arka uçuna göre hazırlanmış SQL kullandığına dikkati çekmektedir.</li>
@@ -73,7 +73,7 @@ CREATE TABLE myapp_sahis (
   </pre>
   <h3>Field types</h3>
   <p>Each field in your model should be an instance of the appropriate Field class. Django uses the field class types to determine a few things:</p>
-  <ul>
+  <ul class="liste">
     <li>The column type, which tells the database what kind of data to store (e.g. INTEGER, VARCHAR, TEXT).</li>
     <li>The default HTML widget to use when rendering a form field (e.g. < input type="text" >, < select >).</li>
     <li>The minimal validation requirements, used in Django’s admin and in automatically-generated forms.</li>
@@ -281,7 +281,7 @@ place = models.OneToOneField(
   </pre>
   <p>When you set up the intermediary model, you explicitly specify foreign keys to the models that are involved in the many-to-many relationship. This explicit declaration defines how the two models are related.</p>
   <p>There are a few restrictions on the intermediate model:</p>
-  <ul>
+  <ul class="liste">
     <li>Your intermediate model must contain one - and only one - foreign key to the source model (this would be Group in our example), or you must explicitly specify the foreign keys Django should use for the relationship using ManyToManyField.through_fields. If you have more than one foreign key and through_fields is not specified, a validation error will be raised. A similar restriction applies to the foreign key to the target model (this would be Person in our example).</li>
     <li>For a model which has a many-to-many relationship to itself through an intermediary model, two foreign keys to the same model are permitted, but they will be treated as the two (different) sides of the many-to-many relationship. If there are more than two foreign keys though, you must also specify through_fields as above, or a validation error will be raised.</li>
     <li>When defining a many-to-many relationship from a model to itself, using an intermediary model, you must use symmetrical=False (see the model field reference).</li>
@@ -403,7 +403,7 @@ place = models.OneToOneField(
   <hr>
   <h3>Field name restrictions</h3>
   <p>Django places only two restrictions on model field names:</p>
-  <ul>
+  <ul class="liste">
     <li>A field name cannot be a Python reserved word, because that would result in a Python syntax error. For example:
       <pre data-gnl="1 1p"><code class="language-python">
         class Example(models.Model):
@@ -529,7 +529,7 @@ place = models.OneToOneField(
   <p>Model inheritance in Django works almost identically to the way normal class inheritance works in Python, but the basics at the beginning of the page should still be followed. That means the base class should subclass django.db.models.Model.</p>
   <p>The only decision you have to make is whether you want the parent models to be models in their own right (with their own database tables), or if the parents are just holders of common information that will only be visible through the child models.</p>
   <p>There are three styles of inheritance that are possible in Django.</p>
-  <ul>
+  <ul class="liste">
     <li>Often, you will just want to use the parent class to hold information that you don’t want to have to type out for each child model. This class isn’t going to ever be used in isolation, so Abstract base classes are what you’re after.</li>
     <li>If you’re subclassing an existing model (perhaps something from another application entirely) and want each model to have its own database table, Multi-table inheritance is the way to go.</li>
     <li>Finally, if you only want to modify the Python-level behavior of a model, without changing the models fields in any way, you can use Proxy models.</li>
@@ -576,7 +576,7 @@ place = models.OneToOneField(
   <h2>Be careful with related_name and related_query_name</h2>
   <p>If you are using related_name or related_query_name on a ForeignKey or ManyToManyField, you must always specify a unique reverse name and query name for the field. This would normally cause a problem in abstract base classes, since the fields on this class are included into each of the child classes, with exactly the same values for the attributes (including related_name and related_query_name) each time.</p>
   <p>To work around this problem, when you are using related_name or related_query_name in an abstract base class (only), part of the value should contain '%(app_label)s' and '%(class)s'.</p>
-  <ul>
+  <ul class="liste">
     <li>'%(class)s' is replaced by the lower-cased name of the child class that the field is used in.</li>
     <li>'%(app_label)s' is replaced by the lower-cased name of the app the child class is contained within. Each installed application name must be unique and the model class names within each app must also be unique, therefore the resulting name will end up being different.</li>
   </ul>
@@ -768,7 +768,7 @@ place = models.OneToOneField(
   <p>With careful setting of Meta.db_table you could create an unmanaged model that shadows an existing model and adds Python methods to it. However, that would be very repetitive and fragile as you need to keep both copies synchronized if you make any changes.</p>
   <p>On the other hand, proxy models are intended to behave exactly like the model they are proxying for. They are always in sync with the parent model since they directly inherit its fields and managers.</p>
   <p>The general rules are:</p>
-  <ul>
+  <ul class="liste">
     <li>If you are mirroring an existing model or database table and don’t want all the original database table columns, use Meta.managed=False. That option is normally useful for modeling database views and tables not under the control of Django.</li>
     <li>If you are wanting to change the Python-only behavior of a model, but keep all the same fields as in the original, use Meta.proxy=True. This sets things up so that the proxy model is an exact copy of the storage structure of the original model when data is saved.</li>
   </ul>

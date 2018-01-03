@@ -10,7 +10,7 @@ title: Öğretici 2 - Django Öğreniyorum
 <p>Varsayılan olarak yapılandırılmış veritabanı SQLite'dır. Veritabanları konusunda yeniyseniz veya sadece Django'yu denemekle ilgileniyorsanız, bu en kolay seçimdir. SQLite Python'a dahildir. Bu nedenle veritabanınızı desteklemek için başka bir şey yüklemeniz gerekmez. Bununla birlikte, ilk gerçek projenizi başlatırken, veritabanı geçişindeki baş ağılarından kaçınmak için PostgreSQL gibi daha ölçeklenebilir bir veritabanı kullanmak isteyebilirsiniz.</p>
 <p>Başka bir veritabanı kullanmak isterseniz, uygun <a href="#">veritabanı bağlamalarını</a> yükleyin ve aşağıdaki anahtarları <a href="#">DATABASES</a>'ın varsayılan ('default') öğesinde veritabanı bağlantı ayarlarınıza uyacak şekilde değiştirin:</p>
 
-<ul>
+<ul class="liste">
   <li><a href="#">ENGINE</a>: 'django.db.backends.sqlite3', 'django.db.backends.postgresql', 'django.db.backends.mysql' veya 'django.db.backends.oracle'. Diğer <a href="#">arka uçlar</a> da mevcuttur.</li>
   <li><a href="#">NAME</a>: Veritabanızın adı. SQLite kullanıyorsanız, veritabanı bilgisayarındaki bir dosya olacaktır. Bu durumda, <a href="#">NAME</a> dosyasının dosya adı da dahil olmak üzere tam mutlak yol olmalıdır. Varsayılan değer olan os.path.join(BASE_DIR, 'db.sqlite3'), dosyayı proje dizininizde depolar.</li>
 </ul>
@@ -26,7 +26,7 @@ title: Öğretici 2 - Django Öğreniyorum
 <p>benimsite/settings.py dosyasını düzenlerken, <a href="#">TIME_ZONE</a> değerini sat diliminizde ayarlayın.</p>
 <p>Ayrıca, dosyanın üst kısmındaki <a href="#">INSTALLED_APPS</a> ayarına dikkat edin. Bu Django örneğinde etkinleştirilen tüm Django uygulamalarının adlarını tutar. Uygulamalar birden fazla projede kullanılabilir ve bunları başkaları tarafından projelerinde kullanılmak üzere paketleyebilir veya dağıtabilirsiniz.</p>
 <p>Varsayılan olarak, <a href="#">INSTALLED_APPS</a>, hepsi Django ile birlikte gelen aşağıdaki uygulamaları içerir:</p>
-<ul>
+<ul class="liste">
   <li><a href="#">django.contrib.admin</a>: Yönetici sitesi. Kısa süre kullanacaksın. </li>
   <li><a href="#">django.contrib.auth</a>: Bir kimlik doğrulama örgüsü. </li>
   <li><a href="#">django.contrib.contenttypes</a>: İçerik türleri için bir çatı. </li>
@@ -80,7 +80,7 @@ class Secim(models.Model):
 <hr>
 <h2>Kalıpları (Model) Etkinleştirme</h2>
 <p>Model kodun birazı bile Django'ya çok fazla bilgi verir. Bununla birlikte, Django şunları yapabilir:</p>
-<ul>
+<ul class="liste">
   <li>Bu uygulama için bir veritabanı şeması oluşturun (CREATE TABLE ifadeleri)</li>
   <li>Soru ve Seçim nesnelerine erişmek için bir Python veritabanı erişim API'si oluşturun.</li>
 </ul>
@@ -154,7 +154,7 @@ class Secim(models.Model):
   COMMIT;
 </code></pre>
 <p>Aşağıdakilere dikkat edin:</p>
-<ul>
+<ul class="liste">
   <li>Tablo isimleri, uygulamanın adını (anketler) ve modelin küçük harf adını - soru ve secim birleştirerek doğal olarak oluşturuluyor. (Bu davranışı geçersiz kılabilirsiniz.)</li>
   <li>Birincil anahtarlar (id) doğal olarak eklenir. (Bunu da geçersiz kılabilirsiniz.)</li>
   <li>Sözleşmeye göre, Django "_id" yabancı anahtar alan adına ekler. (Evet, bu da geçersiz kılınabilir.)</li>
@@ -174,7 +174,7 @@ Running migrations:
 </code></pre>
 <p>Geçiş komutu, uygulanmış olan tüm göçleri alır (Django, hangilerinin veritabanında django_migrations olarak adlandırılan özel bir tablo kullanılarak uygulandığını izler) ve bunları veritabanınıza karşı çalıştırır; aslında, modellerinizde yaptığınız değişiklikleri şema ile uyumlu yapar.</p>
 <p>Geçişler çok güçlüdür ve veritabanınızı veya tablolarınızı silmenize, yenilikler yapmanıza gerek kalmadan projenizi geliştirirken zamanla modellerinizi değiştirmenizi sağlar. Veri kaybetmeden canlı olarak veritabanınızı güncelleme konusunda uzmanlaşmıştır. Öğreticinin daha sonraki bölümünde ayrıntılı bir şekilde değineceğiz. Ancak şimdilik, model değişikliklerini yapmak için üç adımlı kılavuzu unutmayın:</p>
-<ul>
+<ul class="liste">
   <li>Modellerinizi değiştirin (models.py içinde)</li>
   <li>Bu değişiklikleri geçirmek için <a href="#">python manage.py makemigrations</a> çalıştırın. </li>
   <li>Bu değişiklikleri veritabanına geçirmek için <a href="#">python manage.py migrate</a> çalıştırın </li>
@@ -404,13 +404,13 @@ class Soru(models.Model):
 <p>Düzenlemek için "Yenilikler ne?" sorusuna tıklayın:</p>
 <img src="" alt="">
 <p>Burada dikkat edilmesi gereken hususlar:</p>
-<ul>
+<ul class="liste">
   <li>Form: Soru modelinden doğal olarak oluşturulur.</li>
   <li>Farklı model alan türleri (<a href="#">DateTimeField</a>, <a href="#">CharField</a>) uygun HTML girişi <a href="#">CharField</a> karşılık gelir. Her alan türü kendisini Django admininde nasıl görüntüleyeceğini bilir. </li>
   <li>Her <a href="#">DateTimeField</a> ücretsiz JavaScript kısayollarını alır. Tarihler bir "Bugün" kısayolu ve takvim açılır penceresi alıyor ve zamanlarda "Şimdi" kısayolu ve sık girilen saatleri listeleyen uygun bir açılır pencere elde ediliyor. </li>
 </ul>
 <p>Sayfanın alt kısmı size birkaç seçenek sunar:</p>
-<ul>
+<ul class="liste">
   <li>Kaydet: Değişiklikleri kaydeder ve bu tür nesne için değişim listesi sayfasına geri döner.</li>
   <li>Kaydet ve devam et: Değişiklikleri kaydeder ve bu nesne için yönetici sayfasını yeniden yükler.</li>
   <li>Kaydet ve başka ekle: Değişiklikleri kaydeder ve bu nesne türü için yeni, boş bir form yükler.</li>

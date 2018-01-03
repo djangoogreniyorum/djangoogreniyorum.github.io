@@ -28,7 +28,7 @@ title: Kurulum - Django Öğreniyorum
   <p>If you are developing a simple project or something you don’t plan to deploy in a production environment, SQLite is generally the simplest option as it doesn’t require running a separate server. However, SQLite has many differences from other databases, so if you are working on something substantial, it’s recommended to develop with the same database as you plan on using in production.</p>
   <p>In addition to the officially supported databases, there are <a href="#">backends provided by 3rd parties</a> that allow you to use other databases with Django.</p>
   <p>In addition to a database backend, you’ll need to make sure your Python database bindings are installed.</p>
-  <ul>
+  <ul class="liste">
     <li>If you’re using PostgreSQL, you’ll need the <a href="http://initd.org/psycopg/">psycopg2</a> package. Refer to the <a href="#">PostgreSQL</a> notes for further details.</li>
     <li>If you’re using MySQL, you’ll need a <a href="#">DB API driver</a> like mysqlclient. See <a href="#">notes for the MySQL backend</a> for details.</li>
     <li>If you’re using SQLite you might want to read the <a href="#">SQLite backend notes</a>.</li>
@@ -51,7 +51,7 @@ $ python -c "import django; print(django.__path__)"
   <p>It’s easy, no matter which way you choose.</p>
   <h3>Installing an official release with pip</h3>
   <p>This is the recommended way to install Django.</p>
-  <ul>
+  <ul class="liste">
     <li>Install <a href="https://pip.pypa.io/">pip</a>. The easiest is to use the <a href="https://pip.pypa.io/en/latest/installing/#installing-with-get-pip-py">standalone pip installer</a>. If your distribution already has pip installed, you might need to update it if it’s outdated. If it’s outdated, you’ll know because installation won’t work.</li>
     <li>Take a look at <a href="https://virtualenv.pypa.io/">virtualenv</a> and <a href="https://virtualenvwrapper.readthedocs.io/en/latest/">virtualenvwrapper</a>. These tools provide isolated Python environments, which are more practical than installing packages systemwide. They also allow installing packages without administrator privileges. The <a href="#">contributing tutorial</a> walks through how to create a virtualenv.</li>
     <li>After you’ve created and activated a virtual environment, enter the command pip install Django at the shell prompt.</li>
@@ -66,7 +66,7 @@ $ python -c "import django; print(django.__path__)"
     <p>If you decide to use the latest development version of Django, you’ll want to pay close attention to <a href="#">the development timeline</a>, and you’ll want to keep an eye on the <a href="#">release notes for the upcoming release</a>. This will help you stay on top of any new features you might want to use, as well as any changes you’ll need to make to your code when updating your copy of Django. (For stable releases, any necessary changes are documented in the release notes.)</p>
   </div>
   <p>If you’d like to be able to update your Django code occasionally with the latest bug fixes and improvements, follow these instructions:</p>
-  <ul>
+  <ul class="liste">
     <li>Make sure that you have <a href="https://git-scm.com/">Git</a> installed and that you can run its commands from a shell. (Enter git help at a shell prompt to test this.)</li>
     <li><p>Check out Django’s main development branch like so:</p>
       <pre data-gnl="1 1p"><code class="language-python">
