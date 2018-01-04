@@ -1,0 +1,183 @@
+---
+layout: general
+title: Öğretici 5 - Django Öğreniyorum
+---
+<div data-gnl="kaplama">
+  <h1>İlk Django Uygulamanızı Yazma, Bölüm #5</h1>
+  <p>Bu eğitim, <a href="{{site.belgeler_ogretici4}}">Öğretici 4</a>'ün kaldığı yerden devam ediyor. Anket uygulaması yaptık ve bunun için bazı doğal sınamalar oluşturacağız.</p>
+  <h2>Doğal sınama tanıtma</h2>
+  <h3>Doğal sınamalar nedir?</h3>
+  <p>Deneyler, kodunuzun çalışmasını sınayan basit işlemlerdir.</p>
+  <p>Sınamalar farklı seviyelerde çalışır. Bazı sınamalar küçücük bir ayrıntı için geçerli olabilir (belirli bir kalıp yöntemi, değerleri beklendiği gibi döndürür mü?). Diğerleri yazılımın genel işlemini incelemektedir (sitedeki bir dizi kullanıcı girişi istenilen sonucu verir mi?). <a href="{{site.belgeler_ogretici2}}">Öğretici 2</a>'de daha önce yapılan sınamalardan farklı değil, bir yöntemin davranışını incelemek için kabuğu kullanarak veya uygulamayı çalıştırarak veri girme işlemi yapılır.</p>
+  <p>Doğal sınamalarda farklı olan şey, sınama çalışmalarının sizin tarafınızdan yapılmasıdır. Bir kez bir dizi sınama oluşturursunuz ve daha sonra uygulamanızda değişiklik yaparken, kodunuzun başlangıçta tasarlandığı gibi çalışıp çalışmadığını zaman alıcı el sınamaları yapmak zorunda kalamadan halledebilirsiniz.</p>
+  <hr>
+  <h2>Neden sınamalar oluşturmamız gerekiyor?</h2>
+  <p>Durduk yere neden sınamalar oluşturuyoruz acaba?</p>
+  <p>Python Django'yu öğrenmek için yeterli seviyeye eriştiğinizi düşünebilirsiniz. Öğrenmek ve yapmak için başka bir şeyler daha olması can sıkıcı belki de gereksiz görünebilir. Ne de olsa anketlerimiz şimdi mutlu edici şekilde çalışıyor. Doğal testler oluşturma sorununu geçmesi daha iyi çalışmasını sağlamayacak. Anketler uygulamasını oluşturmak, Django programlamanın en son aşamasını oluşturuyor olsaydı bunlar doğru kabul edilirdi. Doğal sınamaları nasıl oluşturulacağını bilmenize gerek olmazdı. Ancak durum böyle değil. Şimdi öğrenmek için en uygun zamandasın.</p>
+  <h3>Sınamalar zaman kazandıracaktır</h3>
+  <p>Belirli bir noktaya kadar, 'işe yarayıp yaramayacağının teyid edilmesi', tatmin edici bir sınama olacaktır. Daha katmanlı bir uygulamada, bileşenler arasında düzinelerce karmaşık etkileşime sahip olabilirsiniz.</p>
+  <p>Bu bileşenlerden herhangi birinde bir değişiklik, uygulamanın davranışı üzerinde beklenmedik sonuçlara neden olabilir. Yine de 'işe yarıyor' gibi görünüp görünmediğini kontrol etmek, kodunuzun işlevselliğiyle, sınama verilerinizin yirmi farklı yüzüyle kullanarak, yalnızca zamanınızı iyi bir şekilde kullanmadığınız, bir şeyi kırmadığınızdan emin olmak anlamına gelebilir.</p>
+  <p>Doğal sınamalar özellikle sizin için saniyeler içinde bunu yaparken geçerlidir. Bir şeyler yanlış giderse, sınamalar beklenmedik davranışa neden olan kodun tanımlanmasında da yardımcı olur.</p>
+  <p>Bazen, özellikle kodunuzun düzgün çalışıp çalışmadığını bildiğiniz durumlarda, sınama yazma işiyle yüz yüze gelme durumları olabilir.</p>
+  <p>Bununla birlikte sınama yazma görevi uygulamanızı elle denemekten veya yeni girilen bir sorunun nedeni belirlemeye çalışmaktan çok daha uygundur.</p>
+  <hr>
+  <h3>Sınırlamalar yalnızca sorunları tanımlamaz, onları engeller</h3>
+  <p>Deneyleri yalnızca gelişimin olumsuz bir yönüne bakmak olarak düşünmek yanlış olur.</p>
+  <p>Sınamalar yapılmadığında, bir uygulamanın amacı oldukça sığ olabilir. Kendi kodunuz olsa bile, bazen kendisinin tam olarak ne yaptığını aramakla meşgul olurken kendizini bulabilirsiniz.</p>
+  <p>Sınamalar bu durumu değiştirir; kodunuzu içeriden aydınlatırlar. Bir şeyler ters gittiğinde, yalnız gittiğini fark etmemiş olsanız bile yanlış giden parçaya ışık tutarlar.</p>
+  <h2>Sınamalar kodunuzu daha çekici hale getirir</h2>
+  <p>Parlak bir yazılım parçası oluşturmuş olabilirsiniz. Ancak birçok geliştiricinin sınamalara ihtiyacı olmadığından ona bakmayı reddedeceğini göreceksiniz. Sınamalar olmadan güvenemezler ama... Django'nun asıl geliştiricilerinden Jacob Kaplan-Moss, 'Deneylenmeyen kodlar tasarım gereği bozuldu' diyor.</p>
+  <p>Diğer geliştiriciler, sınamaları ciddiye almadan önce yazılımınızda görmek istedikleri için sınama yazmaya başlamanızın bir başka nedeni var.</p>
+  <hr>
+  <h3>Sınamalar takımların birlikte çalışmasına yardımcıdır</h3>
+  <p>Önceki noktalar, bir uygulamayu sürdüren tek bir geliştiricinin bakış açısından yazılmıştır. Karmaşık yugulamalar takımlar tarafından yönetilecektir. Deneyler, meslektaşlarınızın yanlışlıkla kodunuzu kırmamalarını garanti eder (ve bilmeden onlarınkini kırmazsınız). Bir django programcısı gibi yaşamak istiyorsanız, sınama yazarken iyi olmalısınız!</p>
+  <hr>
+  <h2>Temel sınama kurmayları</h2>
+  <p>Sınama yazmanın birçok yolu vardır.</p>
+  <p>Bazı programcılar "<a href="https://en.wikipedia.org/wiki/Test-driven_development">sınama odaklı geliştirme</a>" adlı bir kararlılığı izlemektedir. Aslında kodlarını yazmadan önce sınamalarını yazıyorlar. Bu, zıt-sezgisel görünebilir, ancak aslında çoğunluklar insanların yapacakları şeyle benzerdir. Bir sorunu açıklarlar ve çözmek için bazı kodlar oluştururlar. Sınama odaklı geliştirme sorunu basitçe bir Python sınama durumunda biçimlendirilir.</p>
+  <p>Daha sıklıkla, sınamaya yeni başlayanlar bazı kodlar oluşturur ve daha sonra bazı sınamalara sahip olmalarına karar verirler. Belki daha önce bazı sınamalar yazmak daha iyi olurdu, ancak başlamak için hiçbir zaman çok geç değildir.</p>
+  <p>Bazen sınama yazmaya nederen başlayacağınızı bulmak zordur. Binlerce Python satırı yazdıysanız, sınayabilecek bir şey seçmek kolay olmayabilir. Böyle bir durumda, yeni bir özellik eklediğinizde veya bir hatayı düzelttiğinizde, bir sonraki değişiklik yapışınız ilk sınamanızı yazmak verimli olur.</p>
+  <p>O halde hemen yapmaya başlayalım.</p>
+  <hr>
+  <h2>İlk sınamamızı yazıyoruz</h2>
+  <p>Önce bir hata tespit ediyoruz.</p>
+  <p>Neyse ki, anket uygulamamızda derhal düzeltilecek küçük bir hata var. Soru son gün içinde yayınlanırsa (doğru) Soru.was_published_recently() yöntemi true değerini döndürür ancak aynı zamanda eğer sorunun yayim_tarihi alanı da gelecektir (kesin değil).</p>
+  <p>Hatanın gerçekten olup olmadığını sınamak için yöneticiyi kullanarak tarihini gelecekte olan bir soruya dönüştürün ve kamuğu kullanarak yöntemi kontrol edin:</p>
+  <pre data-gnl="1 1p"><code class="language-python">
+    >>> import datetime
+    >>> from django.utils import timezone
+    >>> from polls.models import Soru
+    >>> # 30 gün sonra yayım tarihli bir Soru örneği oluşturma
+    >>> gelecegin_sorusu = Soru(yayim_tarihi=timezone.now() + datetime.timedelta(days=30))
+    >>> # Son zamanlarda basıldı mı?
+    >>> gelecegin_sorusu.was_published_recently()
+    True
+  </code></pre>
+  <p>Gelecekteki şeyler 'son' içine girmemesi gerektiği için bu yanlış (false) olarak dönmeliydi. True verdiği için açıkça yanlıştır.</p>
+  <hr>
+  <h3>Hatayı açığa çıkarmak için bir sınama oluşturun</h3>
+  <p>Kabukta sorunun sınanması için yaptığımız şey, doğal bir sınamada tam olarak neler yapabileceğimiz. Bu yüzden bunu doğal sınama haline getirelim.</p>
+  <p>Bir uygulamanın sınamaları için geleneksek bir yer bulunur, uygulamanın tests.py dosyası. Sınama örgüsü adı test ile başlayan herhangi bir dosyada sınamaları doğal olarak bulacaktır.</p>
+  <p>Anket uygulamasında tests.py dosyasına şunu koyun:</p>
+  <p>anketler/tests.py</p>
+  <pre data-gnl="1 1p"><code class="language-python">
+    import datetime
+
+    from django.utils import timezone
+    from django.test import TestCase
+
+    from .models import Soru
+
+
+    class SoruModelTests(TestCase):
+
+        def sinama_gelecegin_sorusu_son_zamanlarda_gelme(self):
+            """
+            was_published_recently() yayim_tarihi gelecekte olan sorular için False döndürür.
+            """
+            zaman = timezone.now() + datetime.timedelta(days=30)
+            gelecegin_sorusu = Question(yayim_tarihi=zaman)
+            self.assertIs(gelecegin_sorusu.was_published_recently(), False)
+  </code></pre>
+  <p>Burada yaptığımız şey gelecekte olan bir yayim_tarihi ile bir Soru örneği oluşturan bir yöntem kullanılarak django.test.TestCase alt sınıfı oluşturuldu. Daha sonra, yanlış olması gereken was_published_recently() çıktısını kontrol ederiz.</p>
+  <hr>
+  <h3>Sınamayı yürütmek</h3>
+  <p>Kabukta sınamamızı yapabiliriz:</p>
+  <pre data-gnl="1 1p"><code class="language-python">
+$ python manage.py test anketler
+  </code></pre>
+  <p>ve şöyle bir şey göreceksiniz:</p>
+  <pre data-gnl="1 1p"><code class="language-python">
+    Creating test database for alias 'default'...
+    System check identified no issues (0 silenced).
+    F
+    ======================================================================
+    FAIL: sinama_gelecegin_sorusu_son_zamanlarda_gelme (anketler.tests.SoruModelTests)
+    ----------------------------------------------------------------------
+    Traceback (most recent call last):
+      File "/path/to/benimsite/anketler/tests.py", line 16, in sinama_gelecegin_sorusu_son_zamanlarda_gelme
+        self.assertIs(gelecegin_sorusu.was_published_recently(), False)
+    AssertionError: True is not False
+
+    ----------------------------------------------------------------------
+    Ran 1 test in 0.001s
+
+    FAILED (failures=1)
+    Destroying test database for alias 'default'...
+  </code></pre>
+  <p>Burada ne oldu:</p>
+  <ul class="liste">
+    <li>python manage.py test anketler sınama için anketler uygulamasına baktı</li>
+    <li>django.test.TestCase sınıfının bir alt sınıfı bulundu.</li>
+    <li>Sınamanın amacı için özel bir veritabanı oluşturuldu.</li>
+    <li>Sınama yöntemleri için neyin adı 'test' ile başlıyor diye bakıldı.</li>
+    <li>sinama_gelecegin_sorusu_son_zamanlarda_gelme içinde yayim_tarihi 30 gün ertelenmiş olarak soru oluşturuldu.</li>
+    <li>ve assertls() yöntemi kullanılarak, was_published_recently() öğesinin True döndürdüğünü keşfettik, ancak False değeri bekliyorduk.</li>
+  </ul>
+  <p>Sınama, hangi sınamanın başarısız olduğunu ve hatanın hangi satırda meydana geldiğini bildirir.</p>
+  <hr>
+  <h3>Hatayı giderme</h3>
+  <p>Biz sorunun ne olduğunu zaten biliyoruz: Soru.was_published_recently() eğer yayim_tarihi ileri bir tarihse False döndürmeli. models.py içindeki yöntem düzeltilmeli. Böylece tarih sadece geçmişte olursa True döndürecek:</p>
+  <p>anketler/models.py</p>
+  <pre data-gnl="1 1p"><code class="language-python">
+    def was_published_recently(self):
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+  </code></pre>
+  <p>ve tekrar sınayın:</p>
+  <pre data-gnl="1 1p"><code class="language-python">
+    Creating test database for alias 'default'...
+    System check identified no issues (0 silenced).
+    .
+    ----------------------------------------------------------------------
+    Ran 1 test in 0.001s
+
+    OK
+    Destroying test database for alias 'default'...
+  </code></pre>
+  <p>Bir hatayı tespit ettikten sonra, onu açığa çıkaran bir sınama yazdık ve sınamadaki hatalar giderildi. Böylece hatadaki hatayı düzelttik.</p>
+  <p>Gelecekte uygulamanızla birlikte başka birçok şey yanlış olabilir, ancak yanlışlıkla bu hatayı tekrar başlatmayacağımızdan emin olabiliriz. Çünkü sınamayı çalıştırmak derhal bizi uyaracaktır. Uygulamanın bu küçük kısmını güvenli bir şekilde sonsuza dek sabitlenmiş düşünebiliriz.</p>
+  <hr>
+  <h3>Daha kapsamlı sınamalar</h3>
+  <p>Buradayken, was_published_recently() yöntemini daha da kısaltabiliriz. Aslında, bir hatayı başka bir hatayla düzeltmek durumunda olsaydık utanç verici olurdu.</p>
+  <p>Yöntemin davranışını daha kapsamlı bir şekilde sınamak için, aynı sınıfa iki tane daha sınama yöntemi ekleyin:</p>
+  <p>anketler/tests.py</p>
+  <pre data-gnl="1 1p"><code class="language-python">
+    def sinama_gecmisin_sorusu_son_zamanlarda_gelme(self):
+        """
+        was_published_recently() yayim_tarihi 1 günden daha eski olan sorular için False döndürecek.
+        """
+        time = timezone.now() - datetime.timedelta(days=1, seconds=1)
+        gecmisin_sorusu = Soru(yayim_tarihi=time)
+        self.assertIs(gecmisin_sorusu.was_published_recently(), False)
+
+    def sinama_bugunun_sorusu_son_zamanlarda_gelme(self):
+        """
+        was_published_recently()yayim_tarihi son 24 saat olan sorular için True döndürecek.
+        """
+        time = timezone.now() - datetime.timedelta(hours=23, minutes=59, seconds=59)
+        bugunun_sorusu = Soru(yayim_tarihi=time)
+        self.assertIs(bugunun_sorusu.was_published_recently(), True)
+  </code></pre>
+  <p>Ve şimdi, Soru.was_published_recently() geçmiş, bugün ve gelecek tarihine sahip sorular için değerler döndürerek sınayan üç sınayıcımız var.</p>
+  <p>Yine anketler basit bir uygulamadır. Ancak gelecekte ve etkileşimde bulunan kod ne olursan olsun karmaşık olmasına karşın, artık sınamalar için yazdığımız yöntemin beklenen yollarla davranacağına dair bazı güvencelerimiz vardır.</p>
+  <pre data-gnl="1 1p"><code class="language-python">
+    devamı gelecek
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+</div>
