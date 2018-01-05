@@ -3,26 +3,26 @@ layout: general
 title: ooo - Django Öğreniyorum
 ---
 <div data-gnl="kaplama" markdown="1">
-# İlk Django Uygulamanızı Yazma, Bölüm 6
+  # İlk Django Uygulamanızı Yazma, Bölüm 6
 
-Bu eğitim [Öğretici 5]({{site.belgeler_ogretici5}}) 'in kaldığı yerden devam ediyor. Sınanmış bir anket uygulaması yaptık ve şimdi bir biçem düzeniyle resim ekleyeceğiz.
+  Bu eğitim [Öğretici 5]({{site.belgeler_ogretici5}}) 'in kaldığı yerden devam ediyor. Sınanmış bir anket uygulaması yaptık ve şimdi bir biçem düzeniyle resim ekleyeceğiz.
 
-Sunucu tarafıdnan üretilen HTML dışında, ağ uygulamalarının genellikle, eksiksiz ağ sayfasını oluşturmak için gerekli olan resimler, JavaScript veya CSS gibi ek dosyalar sunmaları gerekir. Django'da, bu dosyalara durgun dosyalar diyoruz. Teknik olarak statik dosya diyeceğiz.
+  Sunucu tarafıdnan üretilen HTML dışında, ağ uygulamalarının genellikle, eksiksiz ağ sayfasını oluşturmak için gerekli olan resimler, JavaScript veya CSS gibi ek dosyalar sunmaları gerekir. Django'da, bu dosyalara durgun dosyalar diyoruz. Teknik olarak statik dosya diyeceğiz.
 
-Küçük projeler için bu önemli bir mesele değildir. Çünkü durgun dosyaları ağ sunucunuzun bulabileceği bir yerde tutabilirsiniz. Bununla birlikte, daha büyük projelerde, özellikle de birden fazla uygulamadan oluşan her uygulama tarafından sağlanan birden fazla durgun dosyayı ele almak karmaşıklaşmayı başlatır.
+  Küçük projeler için bu önemli bir mesele değildir. Çünkü durgun dosyaları ağ sunucunuzun bulabileceği bir yerde tutabilirsiniz. Bununla birlikte, daha büyük projelerde, özellikle de birden fazla uygulamadan oluşan her uygulama tarafından sağlanan birden fazla durgun dosyayı ele almak karmaşıklaşmayı başlatır.
 
-Django.contrib.staticfiles'in amacı şudur: her uygulamanızdan (ve belirttiğiniz diğer yerlerden) durgun dosyaları, üretimde kolayca sunabilecek tek bir yere toplar.
+  Django.contrib.staticfiles'in amacı şudur: her uygulamanızdan (ve belirttiğiniz diğer yerlerden) durgun dosyaları, üretimde kolayca sunabilecek tek bir yere toplar.
 
-## Uygulamanızın görünümünü özelleştirin
+  ## Uygulamanızın görünümünü özelleştirin
 
-Önce, anketler dizininizde "static" adında bir dizin oluşturun. Django, durgun dosyaları Django'nun şablonları anketler/templates/ içinde araması gibi bu dizinde arayacaktır.
+  Önce, anketler dizininizde "static" adında bir dizin oluşturun. Django, durgun dosyaları Django'nun şablonları anketler/templates/ içinde araması gibi bu dizinde arayacaktır.
 
-Django'nun STATICFILES_FINDERS ayarı, çeşitli kaynaklardan durgun dosyaları nasıl bulacağını bilen bir bulucu listesi içerir. Varsayılanlarından biri, sadece oluşturduğumuz anketlerde olduğu gibi INSTALLED_APPS'in her birinde "static" bir alt dizin arayan AppDirectoriesFinder vardır. Yönetici sitesi, durgun dosyalar için aynı dizin yapısını kullanır.
+  Django'nun STATICFILES_FINDERS ayarı, çeşitli kaynaklardan durgun dosyaları nasıl bulacağını bilen bir bulucu listesi içerir. Varsayılanlarından biri, sadece oluşturduğumuz anketlerde olduğu gibi INSTALLED_APPS'in her birinde "static" bir alt dizin arayan AppDirectoriesFinder vardır. Yönetici sitesi, durgun dosyalar için aynı dizin yapısını kullanır.
 
-Yeni oluşturduğunuz durgun dizininde anketler adlı başka bir dizin oluşturun ve bunun içinde style.css adlı bir dosya oluşturun. Başka bir deyişle, biçem sayfanız anketler/static/style.css olmalıdır. AppDirectoriesFinder durgun dosya bulucu nasıl çalıştığından dolayı, Django'daki bu durgun doyası, şablonların yolunu kaynakça alanına benzer şekilde, anketler/style.css olarak atabilirsiniz.
+  Yeni oluşturduğunuz durgun dizininde anketler adlı başka bir dizin oluşturun ve bunun içinde style.css adlı bir dosya oluşturun. Başka bir deyişle, biçem sayfanız anketler/static/style.css olmalıdır. AppDirectoriesFinder durgun dosya bulucu nasıl çalıştığından dolayı, Django'daki bu durgun doyası, şablonların yolunu kaynakça alanına benzer şekilde, anketler/style.css olarak atabilirsiniz.
 
 <div data-bilget="genel" markdown="1">
-# Durgun dosya adları yerleştirme
+### Durgun dosya adları yerleştirme
 Topkı şablonlar gibi, durgun dozyalarınızı doğrudan anketler/static (başka bir anket alt dizini oluşturmaktan ziyade) koyarak kurtulabiliriz, ancak aslında kötö bir fikir olacaktır. Django, bulduğu ilk durgun dosyayı adıyla eşleştirecek ve farklı bir uygulamada aynı ada sahip durgun bir dosyanız olsaydı onları ayırt edemeyecekti. Django'yu doğru olana yönlendirebilmemiz lazım ve bunları sağlamak için en kolay yol onları isimlendirmektir. Yani, bu durgun dosyaları uygulamanın kendisi için adlandırılan başka bir dizine koymaktır.
 </div>
 Biçem sayfasında aşağıdaki kodu ekleyin:
