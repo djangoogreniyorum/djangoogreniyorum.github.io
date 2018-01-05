@@ -32,22 +32,22 @@ title: ooo - Django Öğreniyorum
   Biçem sayfasında aşağıdaki kodu ekleyin:
 
   anketler/static/anketler/style.css
-  ```css
+  <pre data-gnl="1 1p"><code class="language-css">
     li a {
       color: green;
     }
-  ```
+  </code></pre>
 
   Sonra, anketler/templates/anketler/index.html'in başına aşağıdakileri ekleyin:
 
   anketler/templates/anketler/index.html
-  ```html
-    {% load static %}
+  <pre data-gnl="1 1p"><code class="language-html">
+    {&#37; load static &#37;}
 
-    <link rel="stylesheet" type="text/css" href="{% static 'anketler/style.css' %}" />
-  ```
+    &lt;link rel="stylesheet" type="text/css" href="{&#37; static 'anketler/style.css' &#37;}" /&gt;
+  </code></pre>
 
-  {% static %} şablon etiketi, durgun dosyaların mutlak URL'lerini üretir.
+  {&#37; static &#37;} şablon etiketi, durgun dosyaların mutlak URL'lerini üretir.
 
   Geliştirme için yapmanız gereken tek şey bu. Yeniden yükle http://localhost:8000/anketler/ ve soru bağlantılarının yeşil (Django biçemi!) olduğunu görmelisiniz. Bu da biçem sayfanızın düzgün yüklendiği anlamına gelir.
 
@@ -60,18 +60,18 @@ title: ooo - Django Öğreniyorum
   Ardından, biçem sayfanıza ekleyin:
 
   anketler/static/anketler/style.css
-  ```css
+  <pre data-gnl="1 1p"><code class="language-css">
     body {
       background: white url("images/arkaplan.png") no-repeat right bottom;
     }
-  ```
+  </code></pre>
   http://localhost:8000/anketler/ tarayıcıda yeniden yükleyin. Sağ alt kısmında yüklü arkaplan resmini görmelisiniz.
 
   <div data-bilget="uyarı">
 
 ### Uyarı
 
-  Elbette {% static %} şablon etiketi, biçem sayfanız gibi Django tarafından üretilmeyen durgun dosyalarda kullanılamaz. Durgun dosyalarınızı birbirine bağlamak için her an göreli yolları kullanmalısınız, zira static dosyalarınızdaki bir sürü yolu değiştirmeden STATIC_URL'yi (URL'lerini oluşturmak için durgun şablon etiketi tarafından kullanılır.) değiştirebilirsiniz.
+  Elbette {&#37; static &#37;} şablon etiketi, biçem sayfanız gibi Django tarafından üretilmeyen durgun dosyalarda kullanılamaz. Durgun dosyalarınızı birbirine bağlamak için her an göreli yolları kullanmalısınız, zira static dosyalarınızdaki bir sürü yolu değiştirmeden STATIC_URL'yi (URL'lerini oluşturmak için durgun şablon etiketi tarafından kullanılır.) değiştirebilirsiniz.
 
   </div>
 
