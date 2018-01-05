@@ -32,7 +32,7 @@ anketler/static/anketler/style.css
   li a {
     color: green;
   }
-'''
+```
 
 Sonra, anketler/templates/anketler/index.html'in başına aşağıdakileri ekleyin:
 anketler/templates/anketler/index.html
