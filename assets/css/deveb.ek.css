@@ -13,6 +13,9 @@ header{
 a{
   color:crimson;
 }
+p{
+  line-height: 1.5em;
+}
 ul.liste li{list-style: disc;
 margin-left:15px; margin-bottom:15px;}
 hr{
