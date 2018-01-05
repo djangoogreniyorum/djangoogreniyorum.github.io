@@ -22,44 +22,61 @@ title: ooo - Django Öğreniyorum
   Yeni oluşturduğunuz durgun dizininde anketler adlı başka bir dizin oluşturun ve bunun içinde style.css adlı bir dosya oluşturun. Başka bir deyişle, biçem sayfanız anketler/static/style.css olmalıdır. AppDirectoriesFinder durgun dosya bulucu nasıl çalıştığından dolayı, Django'daki bu durgun doyası, şablonların yolunu kaynakça alanına benzer şekilde, anketler/style.css olarak atabilirsiniz.
 
 <div data-bilget="genel" markdown="1">
+
 ### Durgun dosya adları yerleştirme
-Topkı şablonlar gibi, durgun dozyalarınızı doğrudan anketler/static (başka bir anket alt dizini oluşturmaktan ziyade) koyarak kurtulabiliriz, ancak aslında kötö bir fikir olacaktır. Django, bulduğu ilk durgun dosyayı adıyla eşleştirecek ve farklı bir uygulamada aynı ada sahip durgun bir dosyanız olsaydı onları ayırt edemeyecekti. Django'yu doğru olana yönlendirebilmemiz lazım ve bunları sağlamak için en kolay yol onları isimlendirmektir. Yani, bu durgun dosyaları uygulamanın kendisi için adlandırılan başka bir dizine koymaktır.
+
+  Topkı şablonlar gibi, durgun dozyalarınızı doğrudan anketler/static (başka bir anket alt dizini oluşturmaktan ziyade) koyarak kurtulabiliriz, ancak aslında kötö bir fikir olacaktır. Django, bulduğu ilk durgun dosyayı adıyla eşleştirecek ve farklı bir uygulamada aynı ada sahip durgun bir dosyanız olsaydı onları ayırt edemeyecekti. Django'yu doğru olana yönlendirebilmemiz lazım ve bunları sağlamak için en kolay yol onları isimlendirmektir. Yani, bu durgun dosyaları uygulamanın kendisi için adlandırılan başka bir dizine koymaktır.
+
 </div>
-Biçem sayfasında aşağıdaki kodu ekleyin:
-anketler/static/anketler/style.css
 
+  Biçem sayfasında aşağıdaki kodu ekleyin:
 
-```css
-  li a {
-    color: green;
-  }
-```
+  anketler/static/anketler/style.css
+  ```css
+    li a {
+      color: green;
+    }
+  ```
 
-Sonra, anketler/templates/anketler/index.html'in başına aşağıdakileri ekleyin:
-anketler/templates/anketler/index.html
-<pre data-gnl="1 1p"><code class="language-html">
-  {&#37; load static &#37;}
+  Sonra, anketler/templates/anketler/index.html'in başına aşağıdakileri ekleyin:
 
-  &lt;link rel="stylesheet" type="text/css" href="{&#37; static 'anketler/style.css' &#37;}" /&gt;
-</code></pre>
-{&#37; static &#37;} şablon etiketi, durgun dosyaların mutlak URL'lerini üretir.
-Geliştirme için yapmanız gereken tek şey bu. Yeniden yükle http://localhost:8000/anketler/ ve soru bağlantılarının yeşil (Django biçemi!) olduğunu görmelisiniz. Bu da biçem sayfanızın düzgün yüklendiği anlamına gelir.
-<hr>
+  anketler/templates/anketler/index.html
+  ```html
+    {&#37; load static &#37;}
+
+    &lt;link rel="stylesheet" type="text/css" href="{&#37; static 'anketler/style.css' &#37;}" /&gt;
+  ```
+
+  {&#37; static &#37;} şablon etiketi, durgun dosyaların mutlak URL'lerini üretir.
+
+  Geliştirme için yapmanız gereken tek şey bu. Yeniden yükle http://localhost:8000/anketler/ ve soru bağlantılarının yeşil (Django biçemi!) olduğunu görmelisiniz. Bu da biçem sayfanızın düzgün yüklendiği anlamına gelir.
+
+  <hr>
+
 ## Arka plan resmi ekleme
-Ardından, resimler için bir alt dizin oluşturacağız. anketler/static/anketler/ dizininde bir görseller alt dizini oluşturun. Bu dizin içine arkaplan.png adlı bir resim koyun. Başka bir deyişle, resminizi anketler/static/anketler/images/arkaplan.png dosyasına koyun.
-Ardından, biçem sayfanıza ekleyin:
-anketler/static/anketler/style.css
-<pre data-gnl="1 1p"><code class="language-css">
-body {
-  background: white url("images/arkaplan.png") no-repeat right bottom;
-}
-</code></pre>
-http://localhost:8000/anketler/ tarayıcıda yeniden yükleyin. Sağ alt kısmında yüklü arkaplan resmini görmelisiniz.
-<div data-bilget="uyarı">
+
+  Ardından, resimler için bir alt dizin oluşturacağız. anketler/static/anketler/ dizininde bir görseller alt dizini oluşturun. Bu dizin içine arkaplan.png adlı bir resim koyun. Başka bir deyişle, resminizi anketler/static/anketler/images/arkaplan.png dosyasına koyun.
+
+  Ardından, biçem sayfanıza ekleyin:
+
+  anketler/static/anketler/style.css
+  ```css
+    body {
+      background: white url("images/arkaplan.png") no-repeat right bottom;
+    }
+  ```
+  http://localhost:8000/anketler/ tarayıcıda yeniden yükleyin. Sağ alt kısmında yüklü arkaplan resmini görmelisiniz.
+
+  <div data-bilget="uyarı">
+
 ### Uyarı
-Elbette {&#37; static &#37;} şablon etiketi, biçem sayfanız gibi Django tarafından üretilmeyen durgun dosyalarda kullanılamaz. Durgun dosyalarınızı birbirine bağlamak için her an göreli yolları kullanmalısınız, zira static dosyalarınızdaki bir sürü yolu değiştirmeden STATIC_URL'yi (URL'lerini oluşturmak için durgun şablon etiketi tarafından kullanılır.) değiştirebilirsiniz.
-</div>
-Bunların temelleri, Ayarlarla ve çerçeveyle birlikte gelen diğer bitlerle ilgili daha fazla bilgi için [durgun dosyalar](#)a ve [staticfiles kaynakçası](#)na bakın. [Durgun dosyaları dağıtmak](#), durgun dosyaların gerçek bir sunucuda nasıl kullanılacağını anlatır.
-Durgun dosyalardan memnun olduğunuzda, Django'nun doğal oalrak oluşturulan yönetici sitesini nasıl özelleştireceğinizi öğrenmek için [Öğretici 7]({{site.belgeler_ogretici7}}) bölümünü okuyun.
+
+  Elbette {&#37; static &#37;} şablon etiketi, biçem sayfanız gibi Django tarafından üretilmeyen durgun dosyalarda kullanılamaz. Durgun dosyalarınızı birbirine bağlamak için her an göreli yolları kullanmalısınız, zira static dosyalarınızdaki bir sürü yolu değiştirmeden STATIC_URL'yi (URL'lerini oluşturmak için durgun şablon etiketi tarafından kullanılır.) değiştirebilirsiniz.
+
+  </div>
+
+  Bunların temelleri, Ayarlarla ve çerçeveyle birlikte gelen diğer bitlerle ilgili daha fazla bilgi için [durgun dosyalar](#)a ve [staticfiles kaynakçası](#)na bakın. [Durgun dosyaları dağıtmak](#), durgun dosyaların gerçek bir sunucuda nasıl kullanılacağını anlatır.
+
+  Durgun dosyalardan memnun olduğunuzda, Django'nun doğal oalrak oluşturulan yönetici sitesini nasıl özelleştireceğinizi öğrenmek için [Öğretici 7]({{site.belgeler_ogretici7}}) bölümünü okuyun.
 
 </div>
