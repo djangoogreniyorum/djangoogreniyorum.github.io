@@ -28,11 +28,12 @@ Topkı şablonlar gibi, durgun dozyalarınızı doğrudan anketler/static (başk
 Biçem sayfasında aşağıdaki kodu ekleyin:
 anketler/static/anketler/style.css
 
-<pre data-gnl="1 1p"><code class="language-css">
+
+```css{:data-gnl="1 1p"}
   li a {
     color: green;
   }
-</code></pre>
+```
 
 Sonra, anketler/templates/anketler/index.html'in başına aşağıdakileri ekleyin:
 anketler/templates/anketler/index.html
