@@ -2,8 +2,8 @@
 layout: general
 title: ooo - Django Öğreniyorum
 ---
-<div data-gnl="kaplama" data-markdown="1">
-  # İlk Django Uygulamanızı Yazma, Bölüm 6
+<div data-gnl="kaplama" markdown="1">
+# İlk Django Uygulamanızı Yazma, Bölüm 6
 
   Bu eğitim [Öğretici 5]({{site.belgeler_ogretici5}}) 'in kaldığı yerden devam ediyor. Sınanmış bir anket uygulaması yaptık ve şimdi bir biçem düzeniyle resim ekleyeceğiz.
 
@@ -13,7 +13,7 @@ title: ooo - Django Öğreniyorum
 
   Django.contrib.staticfiles'in amacı şudur: her uygulamanızdan (ve belirttiğiniz diğer yerlerden) durgun dosyaları, üretimde kolayca sunabilecek tek bir yere toplar.
 
-  ## Uygulamanızın görünümünü özelleştirin
+## Uygulamanızın görünümünü özelleştirin
 
   Önce, anketler dizininizde "static" adında bir dizin oluşturun. Django, durgun dosyaları Django'nun şablonları anketler/templates/ içinde araması gibi bu dizinde arayacaktır.
 
