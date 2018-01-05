@@ -42,12 +42,12 @@ title: ooo - Django Öğreniyorum
 
   anketler/templates/anketler/index.html
   ```html
-    {&#37; load static &#37;}
+    {% load static %}
 
-    &lt;link rel="stylesheet" type="text/css" href="{&#37; static 'anketler/style.css' &#37;}" /&gt;
+    <link rel="stylesheet" type="text/css" href="{% static 'anketler/style.css' %}" />
   ```
 
-  {&#37; static &#37;} şablon etiketi, durgun dosyaların mutlak URL'lerini üretir.
+  {% static %} şablon etiketi, durgun dosyaların mutlak URL'lerini üretir.
 
   Geliştirme için yapmanız gereken tek şey bu. Yeniden yükle http://localhost:8000/anketler/ ve soru bağlantılarının yeşil (Django biçemi!) olduğunu görmelisiniz. Bu da biçem sayfanızın düzgün yüklendiği anlamına gelir.
 
@@ -71,7 +71,7 @@ title: ooo - Django Öğreniyorum
 
 ### Uyarı
 
-  Elbette {&#37; static &#37;} şablon etiketi, biçem sayfanız gibi Django tarafından üretilmeyen durgun dosyalarda kullanılamaz. Durgun dosyalarınızı birbirine bağlamak için her an göreli yolları kullanmalısınız, zira static dosyalarınızdaki bir sürü yolu değiştirmeden STATIC_URL'yi (URL'lerini oluşturmak için durgun şablon etiketi tarafından kullanılır.) değiştirebilirsiniz.
+  Elbette {% static %} şablon etiketi, biçem sayfanız gibi Django tarafından üretilmeyen durgun dosyalarda kullanılamaz. Durgun dosyalarınızı birbirine bağlamak için her an göreli yolları kullanmalısınız, zira static dosyalarınızdaki bir sürü yolu değiştirmeden STATIC_URL'yi (URL'lerini oluşturmak için durgun şablon etiketi tarafından kullanılır.) değiştirebilirsiniz.
 
   </div>
 
