@@ -2,7 +2,7 @@
 layout: general
 title: ooo - Django Öğreniyorum
 ---
-<div>
+<div data-gnl="kaplama" markdown="1">
 # başlık
 
 # başlık 2
