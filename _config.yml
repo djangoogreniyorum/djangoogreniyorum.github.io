@@ -26,6 +26,7 @@ belgeler_ogretici6: /belgeler/2.0/ogretici6
 belgeler_ogretici7: /belgeler/2.0/ogretici7
 
 basliklar_models: /belgeler/2.0/basliklar/models
+basliklar_kurulum: /belgeler/2.0/basliklar/kurulum
 
 # Ders bağları
 dersler_onbakis: /diger

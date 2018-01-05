@@ -1,0 +1,244 @@
+---
+layout: general
+title: İleri Seviyede Öğretici - Django Öğreniyorum
+---
+<div data-gnl="kaplama">
+  <h1>İleri Seviyede Öğretici: Yeniden Kullanılabilir Uygulamalar Nasıl Yazılır?</h1>
+  <p>Bu sayfa <a href="{{site.belgeler_ogretici7}}">Öğretici 7</a>'nin kaldığı yerden başlıyor. Ağ anketimizi, yeni projelerde tekrar kullanabileceğiniz ve diğer insanlarla paylaşabileceğiniz bağımsız bir Python paketine dönüştürüyor olacağız.</p>
+  <p>Kısa bir süre çnce 1-7 öğreticilerini tamamladık. Örnek projeyi aşağıda açıklananlarla eşleşecek şekilde incelemenizi öneririz.</p>
+  <h2>Yeniden Kullanılabilirlik Önemlidir</h2>
+  <p>Bir ağ uygulamasını tasarlamak, oluşturmak, sınamak ve sürdürmek yoğun bir iştir. Birçok Python ve Django projeleri ortak sorunları paylaşmaktadır. Bu tekrarlanan işlerden bir kısmını kurtarabilirsek harika olmaz mı?</p>
+  <p>Yeniden kullanılabilirlik, Python'da yaşam biçimidir. Python Paket Dizini (PyPI) kendi Python programlarında kullanabileceğini geniş bir paket yelpazesine sahiptir. Projenize dahil edebileceğiniz mevcut yeniden kullanılabilir uygulamalar için <a href="#">Django Paketlerini</a> göz gezdirin. Django kendisi de sadece bir Python paketi. Bu, mevcut Python paketlerini veya Django uygulamalarını alıp kendi ağ projenize oluşturabileceğiniz anlamına gelir. Sadece projenizi benzersiz yapan parçaları yazmanız yeterlidir.</p>
+  <p>Üzerinde çalıştığımız gibi bir anket uygulamasına ihtiyaç duyan yeni bir proje başlattığınızı varsayalım. Bu uygulamayı nasıl yeniden kullanılabilir yaparız? Neyse ki, halen bu yolda ilerliyorsun. <a href="{{site.belgeler_ogretici3}}">Öğretici 3</a>'te, bir anket kullanarak anketleri proje düzeyinde URLconf'tan nasıl ayırdığımızı gördük. Bu yazıda, uygulamanın yeni projelerde kullanımı kolay hale getirilmesi ve başkalarının yükleyip kullanabilmesi, yayınlamaya hazır hale getirilmesi için daha ileri adımlar atacağız. </p>
+  <div data-bilget="genel">
+    <h3>Paket? Uygulama?</h3>
+    <p>Bir Python paketi kolayca yeniden kullanmak için ilgili Python kodunu gruplamaya bir yol sağlar. Bir paket Python kodunun bir veya daha fazla dosyasını içerir. Bunlar "modüller" olarak da bilinir.</p>
+    <p>Bir paket "import foo.bar" veya "from foo import bar" ile alınabilir. Bir paket oluşturmak için bir dizin (sandık gibi) __init__.py özel bir dosya içermelidir; bu dosya boş olsa bile.</p>
+    <p>Bir Django uygulaması sadece bir Django projesinde kullanılması amaçlanan bir Python paketidir. Bir uygulama, kalıplar, sınamalar, URL'ler ve görünümler alt modülleri olması gibi ortak Django sözleşmelerini kullanabilir.</p>
+    <p>Daha sonra başkalarının yüklemesi kolay bir Python paketinin oluşturulması sürecini tanımlamak için ambalaj terimini kullanıyoruz. Bu biraz karışık olabilir biliyoruz.</p>
+  </div>
+  <hr>
+  <h2>Projeniz ve tekrar kullanılabilir uygulamanız</h2>
+  <p>Önceki eğitimlerden sonra, projemiz şöyle görünmelidir:</p>
+  <pre data-gnl="1 1p"><code class="language-python">
+    benimsite/
+        manage.py
+        benimsite/
+            __init__.py
+            settings.py
+            urls.py
+            wsgi.py
+        anketler/
+            __init__.py
+            admin.py
+            migrations/
+                __init__.py
+                0001_initial.py
+            models.py
+            static/
+                anketler/
+                    images/
+                        background.png
+                    style.css
+            templates/
+                anketler/
+                    ayrinti.html
+                    index.html
+                    sonuclar.html
+            tests.py
+            urls.py
+            views.py
+        templates/
+            admin/
+                base_site.html
+  </code></pre>
+  <p><a href="{{site.belgeler_ogretici7}}">Öğretici 7</a>'de benimsite/templates oluşturdunuz ve <a href="{{site.belgeler_ogretiici3}}">Öğretici 3</a>'deki anketler/templates oluşturdunuz. Şimdi, belki de proje ve uygulama için ayrı şablon dizinleri seçmeyi seçmek daha açıktı: Anket uygulamasının parçası olan her şey anketlerde. Uygulamanın kendine yetebilmesini sağlar ve yeni bir projeye dahil edilmesini kolaylaştırır.</p>
+  <p>Anketler dizini şimdi yeni bir Django projesine kopyalanabilir ve derhal yeniden kullanılabilir. Yine de yayınlanmaya hazır değil. Bunun için başkalarının yüklemesini kolaylaştırmak için uygulamayı paketlemeliyiz.</p>
+  <hr>
+  <h2>Bazı önkoşulların yüklenmesi</h2>
+  <p>Mevcut Python paketleme durumu, çeşitli araçlar ile biraz karışıktır. Bu yazıda, paketimizi oluşturmak için <a href="https://pypi.python.org/pypi/setuptools">setuptools</a> kullanacağız. Tavsiye edilen paketleme aleti (dağıtma çatalıyla birleştirildi). Ayrıca, <a href="https://pypi.python.org/pypi/pip">pip</a>'i kurmak ve kaldırmak için kullanacağız. Şimdi bu iki paketi kurmalısın. yardıma ihtiyacınız varsa, <a href="{{site.basliklar_kurulum}}">Django'nun pip ile nasıl kurulacağına</a> bakabilirsiniz. Kurulum araçlarını aynı yolla yükleyebilirsiniz.</p>
+  <hr>
+  <h2>Uygulamanızı Paketleyin</h2>
+  <p>Python paketlemesi, uygulamanızı kolayca yüklenip kullanılabilecek belirli bir biçimde hazırlamak anlamına gelir. Django'nun kendisi buna çok benzer yapıdadır. Anketler gibi küçük bir uygulama için bu süreç çok zor değil.</p>
+  <ul class="liste">
+    <li>
+      <p>İlk olarak, anketler için Django projenizin dışında bir üst dizin oluşturun. Bu dizini django-anketler olarak adlandırın.</p>
+      <div data-bilget="genel">
+        <h3>Uygulamanız için bir ad seçme</h3>
+        <p>Paketiniz için bir ad seçerken mevcut paketlerle çakışan isimlendirmeyi önlemek için PyPI gibi kaynakları kontrol edin. Dağıtılacak bir paket oluştururken genellikle modül adının önüne koymak kullanılışlıdır. Bu, Django uygulamalarını arayan diğer kişilerin uygulamanızı Django'ya özgü olarak tanımlamasına yardımcı olur.</p>
+        <p>Uygulama etiketleri (diğer bir deyişle, uygulama paketlerine nokta şeklindeki yolun son kısmı) INSTALLED_APPS içinde benzersiz olmalıdır. Aynı etiketi Django <a href="#">katkı paketlerinden</a> herhangi biriyle (ör. Auth, admin veya messages) kullanmaktan kaçının.</p>
+      </div>
+    </li>
+    <li>Anketler dizinini django-anketler dizinine taşıyın.</li>
+    <li>
+      <p>Aşağıdaki içeriğe sahip bir django-anketler/README.rst dosyası oluşturun:</p>
+      <p>django-anketler/README.rst</p>
+      <pre data-gnl="1 1p"><code class="language-python">
+        =====
+        Anketler
+        =====
+
+        Anketler, ağ tabanlı anketleri yapmak için basit bir Django uygulamasıdır. Ziyaretçiler her soru için sabit sayıda cevap arasından seçim yapabilir.
+
+        Ayrıntılı belgeler "belgeler" dizininde yer almaktadır.
+
+        Hızlı Başla
+        -----------
+
+        1. Bunun gibi INSTALLED_APPS ayarlarınıza "anketler" ekleyin::
+
+            INSTALLED_APPS = [
+                ...
+                'anketler',
+            ]
+
+        2. Projenizin urls.py dosyasında anketler URLconf'a şöyle ekleyin::
+
+            path('anketler/', include('anketler.urls')),
+
+        3. Anket kalıplarını oluşturmak için 'python manage.py migrate' komutunu çalıştırın.
+
+        4. Bir anket oluşturmak için geliştirme sunucusunu başlatın ve http://127.0.0.1:8000 /admin/ adresini ziyaret edin (Yönetici uygulamasının etkinleştirilmesi gerekir).
+
+        5. http://127.0.0.1:8000/anketler/ ankete katılmak için ziyaret edin.
+      </code></pre>
+    </li>
+    <li>Bir django-anketler/lisans dosyası oluşturun. Bir yetki belgesi seçmek bu öğreticinin kapsamı dışındadır, ancak bir yetki belgesi olmadan halka açık olarak yayımlanan kodun işe yaramaz olduğunu söylemek yeterlidir. Django ve birçok Django uyumlu uygulamalar BSD yetki belgesi altında dağıtılır; bununla birlikte, kendi yetki belgenizi almakta özgürsünüzdür. Yetki belgesi seçiminizin kodunuzu kimin kullanabileceğini etkileyeceğini unutmayın.</li>
+    <li>
+      <p>Ardından, uygulamanın kurulması ve kurulum ayrıntıları sağlayan bir setup.py dosyası oluşturacağız. Bu dosyanın tam açıklaması bu öğreticinin kapsamı dışındadır. Ancak <a href="#">setuptools</a> belgelerinde iyi bir açıklama vardır. Aşağıdaki içeriğe sahip bir django-anketler/setup.py dosyası oluşturun:</p>
+      <p>django-anketler/setup.py</p>
+      <pre data-gnl="1 1p"><code class="language-python">
+        import os
+        from setuptools import find_packages, setup
+
+        with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
+            README = readme.read()
+
+        # setup.py'nin herhangi bir yoldan çalıştırılmasına izin ver
+        os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
+
+        setup(
+            name='django-anketler',
+            version='0.1',
+            packages=find_packages(),
+            include_package_data=True,
+            license='BSD License',  # örnek yetki belgesi
+            description='Ağ tabanlı anketleri yapmak için basit bir Django uygulaması.',
+            long_description=README,
+            url='https://www.orneksite.com/',
+            author='Senin İsmin',
+            author_email='seninismin@orneksite.com',
+            classifiers=[
+                'Environment :: Web Environment',
+                'Framework :: Django',
+                'Framework :: Django :: X.Y',  # uygun bir şekilde X.Y yerine sürüm yazın
+                'Intended Audience :: Developers',
+                'License :: OSI Approved :: BSD License',  # örnek yetki belgesi
+                'Operating System :: OS Independent',
+                'Programming Language :: Python',
+                'Programming Language :: Python :: 3.5',
+                'Programming Language :: Python :: 3.6',
+                'Topic :: Internet :: WWW/HTTP',
+                'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+            ],
+        )
+      </code></pre>
+    </li>
+    <li>
+      <p>Varsayılan olarak pakete sadece Python modülleri ve paketleri dahildir. Ek dosyalar eklemek için bir MANIFEST.in dosası oluşturmamız gerekir. Önceki adımda bahsedilen <a href="#">setuptools</a> belgeleri bu dosyayı daha ayrıntılı olarak ele alır. Şablonları README.rst ve yetki belgesi dosyamızı eklemek için aşağıdaki içeriğe sahip bir django-anketler/MANIFEST.in dosyası oluşturun: </p>
+      <p>django-anketler/MANIFEST.in</p>
+      <pre data-gnl="1 1p"><code class="language-python">
+        include LICENSE
+        include README.rst
+        recursive-include anketler/static *
+        recursive-include anketler/templates *
+      </code></pre>
+    </li>
+    <li>
+      <p>İsteğe bağlı, ancak uygulamanızla ayrıntılı belgeler eklemek için önerilir. Gelecekteki belgeler için boş bir dizin django-anketelr/docs oluşturun. Django-anketler/MANIFEST.in dosyasına ek bir satır ekleyin:</p>
+      <pre data-gnl="1 1p"><code class="language-python">
+recursive-include docs *
+      </code></pre>
+      <p>Bazı dosyalar eklemediğiniz sürece belgeler dizininin paketinize dahil edilmeyeceğini unutmayın. Pek çok Django uygulaması, belgelerini readthedocs.org gibi siteler aracılığıyla çevrimiçi olarak da sağlar.</p>
+    </li>
+    <li>Paketinizi python setup.py sdist ile oluşturmayı deneyin (django-anketler'den çalıştırın). Bu, dist adlı bir dizin oluşturur ve yeni paketiniz django-anketler-0.1.tar.gz dosyası olarak alırsınız.</li>
+  </ul>
+  <p>Paketleme hakkında daha fazla bilgi için bkz. <a href="https://packaging.python.org/distributing/">Python'un Paketleme ve Dağıtma Projesi Eğitimi</a> </p>
+  <hr>
+  <h2>Kendi paketini kullanma</h2>
+  <p>Anketler dizinini projenin dışına taşıdığımız için artık çalışmıyor. Şimdi bunu yeni django-anketler paketimizi yükleyerek çözeceğiz.</p>
+  <div data-bilget="genel">
+    <p>Aşağıdaki adımlar django-anketleri bir kullanıcı kitaplığı olarak yüklemektedir. Kullanıcı başına kurulumların paketin örgü genelinde kurulmasına göre çok daha fazla çıkarı vardır; örneğin yönetici erişimine sahip olmadığınız sistemlerde kullanılabilir ve kapetin sistem hizmetlerini ve makinenin diğer kullanıcılarını etkilemesini önler.</p>
+    <p>Kullanıcı başına yüklemelerin, o kullanıcı olarak çalışan örgü araçlarının davranışını hala etkileyebileceğini unutmayın, böylecek sanalenv daha sağlam bir çözümdür. (Aşağı bakın)</p>
+  </div>
+  <ul class="liste">
+    <li>
+      <p>Paketi yüklemek için pip kullanın (zaten kurmuştunuz değil mi?): </p>
+      <pre data-gnl="1 1p"><code class="language-python">
+        pip install --user django-anketler/dist/django-anketler-0.1.tar.gz
+      </code></pre>
+    </li>
+    <li>Şansla, Django projeniz şimdi tekrar düngün çalışmalıdır. Bunu onaylamak için sunucuyu yeniden başlatın.</li>
+    <li>
+      <p>Paketi kaldırmak içinse yine pip kullanın</p>
+      <pre data-gnl="1 1p"><code class="language-python">
+        pip uninstall django-anketler
+      </code></pre>
+    </li>
+  </ul>
+  <hr>
+  <h2>Uygulamanızın yayınlanması</h2>
+  <p>Artık django anketlerini paketledik ve sınadık. Dünyayla paylaşamya hazır durumda! Bu sadece bir örnek değilse, şimdi yapabilirsiniz.</p>
+  <ul class="liste">
+    <li>Paketi bir arkadaşınıza e-posta yoluyla gönderin.</li>
+    <li>Paketi ağ sitenize yükleyip paylaşın.</li>
+    <li>Paketi, <a href="https://pypi.python.org/pypi">Python Paket İndeksi (PyPI)</a> gibi birkamu havuzunda yayınlayın. <a href="https://packaging.python.org/distributing/#uploading-your-project-to-pypi">packaging.python.org</a> bunun için iyi bir öğreticiye sahiptir.</li>
+  </ul>
+  <hr>
+  <h2>Python paketlerini virtualenv ile yükleme</h2>
+  <p>Daha önce, anketler uygulamasını bir kullanıcı kitaplığı olarak kurduk. Bunun bazı olumsuzlukları var:</p>
+  <ul class="liste">
+    <li>Kullanıcı kitaplıklarının değiştirilmesi, örgümüzdeki diğer Python yazılımını etkileyebilir.</li>
+    <li>Bu paketin (veya aynı ada sahip diğerlerinin) birden fazla sürümünü çalıştırmanız mümkün olmayacaktır.</li>
+  </ul>
+  <p>Tipik olarak, bu durumlar yalnızca birkaç Django projesini korurken ortaya çıkar. Ne yaparlarsa yapsınlar, en iyi çözüm, <a href="https://virtualenv.pypa.io/">virtualenv</a> kullanmaktır. Bu araç, her biri kendi kitaplıkları ve paket ad alanının kopyasını içeren çok sayıda ayrılmış Python ortamını korumanıza izin verir.</p>
+
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  </code></pre>
+</div>
