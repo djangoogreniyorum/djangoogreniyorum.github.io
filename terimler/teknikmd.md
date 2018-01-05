@@ -29,7 +29,7 @@ Biçem sayfasında aşağıdaki kodu ekleyin:
 anketler/static/anketler/style.css
 
 
-```css{:data-gnl="1 1p"}
+```css
   li a {
     color: green;
   }
