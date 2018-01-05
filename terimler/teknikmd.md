@@ -2,7 +2,7 @@
 layout: general
 title: ooo - Django Öğreniyorum
 ---
-<div data-gnl="kaplama" markdown>
+<div data-gnl="kaplama" markdown="2">
   # İlk Django Uygulamanızı Yazma, Bölüm 6
 
   Bu eğitim [Öğretici 5]({{site.belgeler_ogretici5}}) 'in kaldığı yerden devam ediyor. Sınanmış bir anket uygulaması yaptık ve şimdi bir biçem düzeniyle resim ekleyeceğiz.
