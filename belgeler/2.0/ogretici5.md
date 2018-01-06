@@ -378,7 +378,7 @@ anketler/tests.py
           response = self.client.get(reverse('anketler:index'))
           self.assertQuerysetEqual(
               response.context['son_sorular_listesi'],
-              ['<Soru: Eski soru.>']
+              ['&lt;Soru: Eski soru.&gt;']
           )
 
       def sinama_gelecekteki_soru(self):
@@ -399,7 +399,7 @@ anketler/tests.py
           response = self.client.get(reverse('anketler:index'))
           self.assertQuerysetEqual(
               response.context['son_sorular_listesi'],
-              ['<Soru: Eski soru.>']
+              ['&lt;Soru: Eski soru.&gt;']
           )
 
       def sinama_iki_eski_soru(self):
@@ -411,7 +411,7 @@ anketler/tests.py
           response = self.client.get(reverse('anketler:index'))
           self.assertQuerysetEqual(
               response.context['son_sorular_listesi'],
-              ['<Soru: 2. eski soru>', '<Soru: 1. eski soru>']
+              ['&lt;Soru: 2. eski soru&gt;', '&lt;Soru: 1. eski soru&gt;']
           )
 </code></pre>
 
