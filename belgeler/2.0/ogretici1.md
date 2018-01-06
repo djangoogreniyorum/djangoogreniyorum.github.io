@@ -285,4 +285,4 @@ Keyifli anahtar sözcük konuları bir sözlükte hedef görünümde geçirilebi
 
 URL'nizi adlandırmak, Django'nun başka yerlerinden, özellikle de şablonlardan ayırt edici bir şekilde başvurmanıza izin verir. Bu güçlü özellik, yalnızca tek bir doyaya dokunurken projenizin URL kalıplarında genel değişiklikler yapmanıza olanak tanır.
 
-Temek istek ve yanıt akışından memnun kaldığınızda, veritabanıyla çalışmaya başlamak için bu [öğreticinin 2. bölümü]({{site.belgeler_ogretici2}}nü okuyun.
+Temek istek ve yanıt akışından memnun kaldığınızda, veritabanıyla çalışmaya başlamak için bu [öğreticinin 2. bölümü]({{site.belgeler_ogretici2}})nü okuyun.

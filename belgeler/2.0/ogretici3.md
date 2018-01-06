@@ -28,7 +28,7 @@ Django'da ağ sayfaları ve diğer içerikler görüntüleme yöntemiyle sunulmu
 
 Artık ağdaki zamanınızda 'ME2/Sites/dirmod.asp?sid=&amp;type=gen&amp;mod=Core+Pages&amp;gid=A6CD4967199A42D9B65B1B' gibi güzelliklere rastlamış olabilirsiniz. Django'nun bize göre çok daha zarif URL kalıpları sağladığını bilmekten mutluluk duyacaksınız.
 
-Bir URL kalıbı, basitçe bir URL'nin genel biçimidir. Örneğin: /haberarsivi/< yil >/< ay >
+Bir URL kalıbı, basitçe bir URL'nin genel biçimidir. Örneğin: /haberarsivi/&lt; yil &gt;/&lt; ay &gt;
 
 Bir URL'den bir görünüm elde etmek için Django, 'URLconf' olarak bilinenleri kullanır. Bir URLconf, URL kalıplarını görünümlere eşler
 
@@ -66,23 +66,23 @@ anketler/urls.py
         # örnek: /anketler/
         path('', views.index, name='index'),
         # örnek: /anketler/5/
-        path('<int:soru_id>/', views.ayrinti, name='ayrinti'),
+        path('&lt;int:soru_id&gt;/', views.ayrinti, name='ayrinti'),
         # örnek: /anketler/5/sonuclar/
-        path('<int:soru_id>/results/', views.sonuclar, name='sonuclar'),
+        path('&lt;int:soru_id&gt;/results/', views.sonuclar, name='sonuclar'),
         # örnek: /anketler/5/oy/
-        path('<int:soru_id>/vote/', views.oy, name='oy'),
+        path('&lt;int:soru_id&gt;/vote/', views.oy, name='oy'),
     ]
   </code></pre>
 
 Tarayıcınızda "/anketler/34/" adresinden bir göz atın. ayrinti() yöntemini çalıştırır ve URL'de sağladığınız kimliği görüntüler. "/anketler/34/sonuclar/" ve "/anketler/34/oy/" adreslerini de deneyin. Bunlar yer tutucu sonuçlarını ve oylama sayfalarını görüntüler.
 
-Birisi ağ sitenizden bir sayfa istediğinde "/anketler/34/" deneyin. Django benimsite.urls Python modülünü yükleyecektir. Çünkü ROOT_URLCONF ayarı öyle tanımlanmıştır. urlparrents adlı değişkeni bulur ve desenleri sırasıyla işleme geçirir. "anketler/" eşleşmesini bulduktan sonra bir sonraki "34/" değiştirgesini eşleştirir. Sonraki işleme için 'anketler.urls' URLconf'a gönderir. Orada '<int: soru_id>/' ile eşleşir ve ayrıntı() görünümüne şöyle bir çağrı gelir:
+Birisi ağ sitenizden bir sayfa istediğinde "/anketler/34/" deneyin. Django benimsite.urls Python modülünü yükleyecektir. Çünkü ROOT_URLCONF ayarı öyle tanımlanmıştır. urlparrents adlı değişkeni bulur ve desenleri sırasıyla işleme geçirir. "anketler/" eşleşmesini bulduktan sonra bir sonraki "34/" değiştirgesini eşleştirir. Sonraki işleme için 'anketler.urls' URLconf'a gönderir. Orada '&lt;int: soru_id&gt;/' ile eşleşir ve ayrıntı() görünümüne şöyle bir çağrı gelir:
 
   <pre data-gnl="1 1p"><code class="language-python">
-    ayrinti(request=<HttpRequest object>, soru_id=34)
+    ayrinti(request=&lt;HttpRequest object&gt;, soru_id=34)
   </code></pre>
 
-soru_id = 34 bölümü <int:soru_id>'den gelir. Köşeli parantezler kullanılarak URL'nin bir kısmı "yakalanır" ve onu görünüm işlevine anahtar sözcük ögesi olarak gönderir. :soru_id> dizesinin bir kısmı, eşleşen desen tanımlamak için kullanılacak adı ve <int: bölümü, URL yolunun bu bölümüyle hangi kalıpların eşleşmesi gerektiğini belirleyen dönüştürücüdür
+soru_id = 34 bölümü &lt;int:soru_id&gt;'den gelir. Köşeli parantezler kullanılarak URL'nin bir kısmı "yakalanır" ve onu görünüm işlevine anahtar sözcük ögesi olarak gönderir. :soru_id&gt; dizesinin bir kısmı, eşleşen desen tanımlamak için kullanılacak adı ve &lt;int: bölümü, URL yolunun bu bölümüyle hangi kalıpların eşleşmesi gerektiğini belirleyen dönüştürücüdür
 
 .html gibi URL cruft eklemenize gerek yoktur. İstemediğiniz durumda aşağıdakileri yapabilirsiniz.
 
@@ -302,7 +302,7 @@ Bunun çalışması, anketler.urls modülünde belirtilen URL tanımına bakmakt
 <pre data-gnl="1 1p"><code class="language-python">
   ...
   # 'name' değeri {&#37; url &#37;} şablon etiketi tarafından çağrıldığı gibi
-  path('<int:soru_id>/', views.ayrinti, name='ayrinti'),
+  path('&lt;int:soru_id&gt;/', views.ayrinti, name='ayrinti'),
   ...
 </code></pre>
 
@@ -311,7 +311,7 @@ Anketlerin ayrıntı görünümünün URL'sini şablonda (veya şablonlarda) yap
 <pre data-gnl="1 1p"><code class="language-python">
   ...
   # 'name' değeri {&#37; url &#37;} şablon etiketi tarafından çağrıldığı gibi
-  path('ozellikler/<int:soru_id>/', views.ayrinti, name='ayrinti'),
+  path('ozellikler/&lt;int:soru_id&gt;/', views.ayrinti, name='ayrinti'),
   ...
 </code></pre>
 
@@ -333,9 +333,9 @@ anketler/urls.py
   app_name = 'anketler'
   urlpatterns = [
       path('', views.index, name='index'),
-      path('<int:soru_id>/', views.ayrinti, name='ayrinti'),
-      path('<int:soru_id>/sonuclar/', views.sonuclar, name='sonuclar'),
-      path('<int:soru_id>/oy/', views.oy, name='oy'),
+      path('&lt;int:soru_id&gt;/', views.ayrinti, name='ayrinti'),
+      path('&lt;int:soru_id&gt;/sonuclar/', views.sonuclar, name='sonuclar'),
+      path('&lt;int:soru_id&gt;/oy/', views.oy, name='oy'),
   ]
 </code></pre>
 
