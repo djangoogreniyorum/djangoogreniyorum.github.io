@@ -68,6 +68,7 @@ anketler/views.py
           secim_secildi.save()
           # POST verileri her zmaan bir HttpResponseRedirect döndürür. Bu, bir kullanıcı "geri" düğmesine basarsa verilerin iki kez gönderilmesini önler.
           return HttpResponseRedirect(reverse('anketler:sonuclar', args=(soru.id,)))
+          
 </code></pre>
 
 Bu kod, bu derste henüz ele almadığımız birkaç şeyi içermektedir:
