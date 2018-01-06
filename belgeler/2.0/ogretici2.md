@@ -205,7 +205,7 @@ Aşağıdakilere dikkat edin:
 
 - Tablo isimleri, uygulamanın adını (anketler) ve modelin küçük harf adını - soru ve secim birleştirerek doğal olarak oluşturuluyor. (Bu davranışı geçersiz kılabilirsiniz.)
 - Birincil anahtarlar (id) doğal olarak eklenir. (Bunu da geçersiz kılabilirsiniz.)
-- Sözleşmeye göre, Django "_id" yabancı anahtar alan adına ekler. (Evet, bu da geçersiz kılınabilir.)
+- Sözleşmeye göre, Django **_id** yabancı anahtar alan adına ekler. (Evet, bu da geçersiz kılınabilir.)
 - Yabancı anahtar ilişkisi, bir ForeignKey kısıtlaması ile açıkça belirtilir. DEFERRABLE parçaları hakkında endişelenmeyin. Bu sadece PostgreSQL'e işlemin sonuna kadar yabancı anahtarı zorlamamasını söylüyor.
 - Kullanmakta olduğunuz veritabanına uyacak şekilde tasarlandığından, auto_increment (MySQL), seri (PostgreSQL) veya tamsayı birincil anahtar otomatik artış (SQLite) gibi veritabanına özel alan türleri otomatik olarak sizin için ele alınır. Aynı, alan adlarının alıntılanması için de geçerlidir. Örnek, çift tırnak işareti veya tek tırnak işareti kullanmak.
 - [sqlmigrate](#) komutu, veritabanınızdaki geçiş işlemini gerçekte yürütmez. Yalnızca SQL Django'nun düşündüğünü görebilmeniz için ekranda yazdırır. Django'nun ne yapacağını kontrol etmek veya değişiklikler için SQL komut dosyaları gerektiren veritabanı yöneticileri varsa yararlıdır.
@@ -253,7 +253,7 @@ manage.py kullanmayı tercih ederseniz sorun değil. Sadece DJANGO_SETTINGS_MODU
 >>> django.setup()
 </code></pre>
 
-Bu bir <a href="#">AttributeError</a> oluşturursa, muhtemelen Django'nun bu öğretici sürümle eşleşmeyen bir sürümünü kullanıyorsunuz demektir. Ya eski öğreticiye veya daya yeni Django sürümüne geçmek isteyeceksiniz.
+Bu bir [AttributeError](#) oluşturursa, muhtemelen Django'nun bu öğretici sürümle eşleşmeyen bir sürümünü kullanıyorsunuz demektir. Ya eski öğreticiye veya daya yeni Django sürümüne geçmek isteyeceksiniz.
 
 Manage.py dosyasının bulunduğu dizinden python çalıştırmalısınız veya bu dizinin python yolunda olduğundan emin olun. Böylece import benimsite çalışacaktır.
 
