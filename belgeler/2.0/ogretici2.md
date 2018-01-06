@@ -249,70 +249,70 @@ Bunu yalnızca basitçe "python" yazarak kullanıyoruz. Çünkü manage.py, DJAN
 manage.py kullanmayı tercih ederseniz sorun değil. Sadece DJANGO_SETTINGS_MODULE ortam değişkeni benimsite.settings, düz bir Python kabuğu başlatın ve Django'yu kurun:
 
 <pre data-gnl="1 1p"><code class="language-python">
->>> import django
->>> django.setup()
-</code></pre>
+  >>> import django
+  >>> django.setup()
+  </code></pre>
 
-Bu bir [AttributeError](#) oluşturursa, muhtemelen Django'nun bu öğretici sürümle eşleşmeyen bir sürümünü kullanıyorsunuz demektir. Ya eski öğreticiye veya daya yeni Django sürümüne geçmek isteyeceksiniz.
+  Bu bir [AttributeError](#) oluşturursa, muhtemelen Django'nun bu öğretici sürümle eşleşmeyen bir sürümünü kullanıyorsunuz demektir. Ya eski öğreticiye veya daya yeni Django sürümüne geçmek isteyeceksiniz.
 
-Manage.py dosyasının bulunduğu dizinden python çalıştırmalısınız veya bu dizinin python yolunda olduğundan emin olun. Böylece import benimsite çalışacaktır.
+  Manage.py dosyasının bulunduğu dizinden python çalıştırmalısınız veya bu dizinin python yolunda olduğundan emin olun. Böylece import benimsite çalışacaktır.
 
-Tüm bunlar hakkında daha fazla bilgi için <a href="#">django-admin belgelerine</a> bakın.
-</div>
+  Tüm bunlar hakkında daha fazla bilgi için <a href="#">django-admin belgelerine</a> bakın.
+  </div>
 
-Kabukta iken [veritabanı API](#)'sini keşfedin:
+  Kabukta iken [veritabanı API](#)'sini keşfedin:
 
-<pre data-gnl="1 1p"><code class="language-python">
->>> from anketler.models import Soru, Secim   # Sadece yazdığımız model sınıflarını içe aktarın.
+  <pre data-gnl="1 1p"><code class="language-python">
+  >>> from anketler.models import Soru, Secim   # Sadece yazdığımız model sınıflarını içe aktarın.
 
-# Sistemde henüz hiçbir soru yok.
->>> Soru.objects.all()
-&lt;QuerySet []&gt;
+  # Sistemde henüz hiçbir soru yok.
+  >>> Soru.objects.all()
+  &lt;QuerySet []&gt;
 
-# Yeni bir Soru oluştur.
-# Varsayılan ayarlar dosyasında zaman dilimlerinin desteği etkin olduğundan,
-# bu nedenle Django yayim_tarihi için tzinfo ile bir datetime bekliyor.
-# timezone.now() kullanın datatime.datetime.now() yerine... Ve doğru olanı yapacağız.
->>> from django.utils import timezone
->>> q = Soru(soru_metni="Yenilikler ne?", yayim_tarihi=timezone.now())
+  # Yeni bir Soru oluştur.
+  # Varsayılan ayarlar dosyasında zaman dilimlerinin desteği etkin olduğundan,
+  # bu nedenle Django yayim_tarihi için tzinfo ile bir datetime bekliyor.
+  # timezone.now() kullanın datatime.datetime.now() yerine... Ve doğru olanı yapacağız.
+  >>> from django.utils import timezone
+  >>> q = Soru(soru_metni="Yenilikler ne?", yayim_tarihi=timezone.now())
 
-# Nesneyi veritabanına kaydedin. save() öğesini açıkça çağırmalısınız.
->>> q.save()
+  # Nesneyi veritabanına kaydedin. save() öğesini açıkça çağırmalısınız.
+  >>> q.save()
 
-# Şimdi bir ID'si var.
->>> q.id
-1
+  # Şimdi bir ID'si var.
+  >>> q.id
+  1
 
-# Python nitelikleri üzerinden model alan değerlerine erişir.
->>> q.soru_metni
-"Yenilikler ne?"
->>> q.yayim_tarihi
-datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=<UTC>)
+  # Python nitelikleri üzerinden model alan değerlerine erişir.
+  >>> q.soru_metni
+  "Yenilikler ne?"
+  >>> q.yayim_tarihi
+  datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=&lt;UTC&gt;)
 
-# Öznitelikleri değiştirip sonra save() yöntemini çağırarak değerleri değiştirin.
->>> q.soru_metni = "N'haber?"
->>> q.save()
+  # Öznitelikleri değiştirip sonra save() yöntemini çağırarak değerleri değiştirin.
+  >>> q.soru_metni = "N'haber?"
+  >>> q.save()
 
-# objects.all() veritabanındaki tüm soruları görüntüler.
->>> Soru.objects.all()
-&lt;QuerySet [&lt;Soru: Soru object (1)&gt;]&gt;
-</code></pre>
+  # objects.all() veritabanındaki tüm soruları görüntüler.
+  >>> Soru.objects.all()
+  &lt;QuerySet [&lt;Soru: Soru object (1)&gt;]&gt;
+  </code></pre>
 
-Bir dakika bekle. &lt;Soru: Soru object (1)&gt, bu nesnenin yararlı bir gösterimi değil. Soru modelini (anketler/models.py dosyasında) düzebkeyerej ve hen Sıry hen de Secim bir __str__() yöntemi ekleyerek düzeltelim:
-anketler/models.py
+  Bir dakika bekle. &lt;Soru: Soru object (1)&gt;, bu nesnenin yararlı bir gösterimi değil. Soru modelini (anketler/models.py dosyasında) düzebkeyerej ve hen Sıry hen de Secim bir __str__() yöntemi ekleyerek düzeltelim:
+  anketler/models.py
 
-<pre data-gnl="1 1p"><code class="language-python">
-from django.db import models
+  <pre data-gnl="1 1p"><code class="language-python">
+  from django.db import models
 
-class Soru(models.Model):
-    # ...
-    def __str__(self):
-        return self.soru_metni
+  class Soru(models.Model):
+      # ...
+      def __str__(self):
+          return self.soru_metni
 
-class Secim(models.Model):
-    # ...
-    def __str__(self):
-        return self.secim_metni
+  class Secim(models.Model):
+      # ...
+      def __str__(self):
+          return self.secim_metni
 </code></pre>
 
 __str__() yöntemlerini modellerinize eklemek önemlidir; yalnızca etkileşimli istemle uğraşırken kendi kolaylığınız için değil, aynı zamanda nesnelerin temsilleri Django'nun doğal olarak oluşturulan yönetici tarafından kullanıldığı için de geçerlidir.
