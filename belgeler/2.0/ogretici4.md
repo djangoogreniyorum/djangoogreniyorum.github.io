@@ -74,11 +74,13 @@ anketler/views.py
 Bu kod, bu derste henüz ele almadığımız birkaç şeyi içermektedir:
 
 - **request.POST**, anahtar adına göre gönderilen verilere erişmenizi sağlayan sözdizimi benzeri bir nesnedir. Bu durumda request.POST['secim'], seçilen tercihin kimliğini bir dize olarak döndürür. request.POST değerleri her zaman dizelerdir.
+
    Django'nun aynı şekilde GET verisine erişmek için request.GET de sağladığını unutmayın. Ancak verilerimizin yalnızca bir POST çağrısı aracılığıyla değiştirilmesini sağlamak için request.POST kodumuzda açıkça kullanıyoruz.
 
 - request.POST['secim'] POST verilerinde seçim yapılmadığı takdirde KeyError değerini yükseltecektir. Yukarıdaki kod KeyError'u denetler ve seçim yapılmazsa soru biçimini bir hata mesajıyla tekrar görüntüler.
 
 - Seçim sayısını arttırdıktan sonra kod, normal bir HttpResponse yerine bir HttpResponseRedirect döndürür. HttpResponseRedirect, tek bir bağımsız değişkeni alır: kullanıcının yönlendirileceği URL (bu durumda URL'yi nasıl oluşturduğumuz konusunda aşağıdaki noktaya bakın).
+
    Yukarıdaki Python yorumunda dikkat çekildiği gibi, her zaman bir POST verisi ile uğraştıktan sonra HttpResponseRedirect döndürmelidir. Bu ipucu, Django'ya özgü değildir; sadece iyi bir ağ geliştirme adetidir.
 
 - Bu örnekte HttpResponseRedirect yapıcısında reverse() işlevini kullanıyoruz. Bu işlev, görünüm işlevinde bir URL'nin sabit kodlanması gerekmeden yardımcı olur. Kontrolden geçirmek istediğimiz görünümü ve bu görünümü imleyen URL kalıbının değişken bölümü verilir. Bu durumda, [Öğretici 3]({{site.belgeler_ogretici3}})'de kurduğumuz URLconf kullanılarak reverse() çağrısı aşağıdaki gibi bir dize döndürür:
