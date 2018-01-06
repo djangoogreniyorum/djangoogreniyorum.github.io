@@ -288,10 +288,10 @@ Hazır olduğunda, isemciden bizim için biraz çalışma yapmasını isteyebili
   >>> response.status_code
   200
   >>> response.content
-  b'\n    <ul>\n    \n    * <a href="/anketler/1/">Yenilikler ne?</a>\n    \n  \n\n'
+  b'\n    <ul>\n    \n    * &lt;a href="/anketler/1/"&gt;Yenilikler ne?&lt;/a&gt;\n    \n  \n\n'
   >>> response.context['son_sorular_listesi']
-  <QuerySet [<Soru: Yenilikler ne?>]>
-  
+  &lt;QuerySet [&lt;Soru: Yenilikler ne?&gt;]&gt;
+
 </code></pre>
 
 <hr>
