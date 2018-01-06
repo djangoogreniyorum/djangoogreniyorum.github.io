@@ -40,7 +40,7 @@ anketler/static/anketler/style.css
 
 Sonra, anketler/templates/anketler/index.html'in başına aşağıdakileri ekleyin:
 
-anketler/templates/anketler/index.html
+anketler/templates/anketler/index.html a a a
 ```
   {% load static %}
 
