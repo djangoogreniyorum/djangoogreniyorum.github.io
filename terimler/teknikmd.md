@@ -36,6 +36,7 @@ anketler/static/anketler/style.css
   li a {
     color: green;
   }
+  
 </code></pre>
 
 Sonra, anketler/templates/anketler/index.html'in başına aşağıdakileri ekleyin:
@@ -45,6 +46,7 @@ anketler/templates/anketler/index.html
   {&#37; load static &#37;}
 
   &lt;link rel="stylesheet" type="text/css" href="{&#37; static 'anketler/style.css' &#37;}" /&gt;
+
 </code></pre>
 
 {&#37; static &#37;} şablon etiketi, durgun dosyaların mutlak URL'lerini üretir.
@@ -64,6 +66,7 @@ anketler/static/anketler/style.css
   body {
     background: white url("images/arkaplan.png") no-repeat right bottom;
   }
+
 </code></pre>
 http://localhost:8000/anketler/ tarayıcıda yeniden yükleyin. Sağ alt kısmında yüklü arkaplan resmini görmelisiniz.
 
