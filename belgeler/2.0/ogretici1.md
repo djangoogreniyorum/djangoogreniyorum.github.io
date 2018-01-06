@@ -15,6 +15,7 @@ Zaten [Django'nun kurulu]({{site.belgeler_kurulum}}) olduğunu varsayıyoruz. Dj
 
 <pre data-gnl="1 1p"><code class="language-python">
 $ python -m django --version
+
 </code></pre>
 
 Django yüklüyse, kurulumunuzun sürümünü görmelisiniz. Değilse, "No module named django" diye bir hata mesajı alırsınız.
@@ -38,6 +39,7 @@ Komut satırından cd emrini proje dosyalarınızın bulunmasını istediğiniz 
 
 <pre data-gnl="1 1p"><code class="language-python">
 $ django-admin startproject benimsite
+
 </code></pre>
 
 Geçerli dizinde "benimsite" dizini oluşturacaktır. İşe yaramazsa, bkz. [Django-admin sorunlu çalışmalar](#)
@@ -63,6 +65,7 @@ benimsite/
         settings.py
         urls.py
         wsgi.py
+
 </code></pre>
 
 Bu dosyalar:
@@ -81,6 +84,7 @@ Django projenizin çalıştığını doğrulamamız gerekmekte. O halde doğrula
 
 <pre data-gnl="1 1p"><code class="language-python">
 $ python manage.py runserver
+
 </code></pre>
 
 Süreç devamında aşağıdaki çıktıyı komut satırında göreceksiniz
@@ -118,12 +122,14 @@ Sunucunun bağlantı noktasını değiştirmek istiyorsanız bunu bir komut sat�
 
   <pre data-gnl="1 1p"><code class="language-python">
 $ python manage.py runserver 8080
+
   </code></pre>
 
 Sunucun IP'sini değiştirmek isterseniz, geçit noktasının yanında belirtin. Örneğin, tüm mevcut ortak IP'leri dinlemek için (Vagrant çalıştırıyorsanız veya işinizi ağdaki diğer bilgisayarlarda göstermek istiyorsanız kullanışlıdır) kullanmak için için şunları yazın:
 
   <pre data-gnl="1 1p"><code class="language-python">
 python manage.py runserver 0:8000
+
   </code></pre>
 
 0 değeri 0.0.0.0 için kısayoldur. Geliştirme sunucusu için tam belgeler <a href="#">runserver</a> kaynakçasında bulunabilir.
@@ -143,6 +149,7 @@ Django'da yazdığınız her uygulama, belirli bir kurala uyan bir Python paketi
 
 <div data-bilget="genel" markdown="1">
 ### Proje ks uygulama
+
 Bir proje ile bir uygulama arasındaki fark nedir? Bir uygulama, bir şey yapan ağ uygulamasıdır. Örneğin, ağ günlüğü örgüsü, genel kayıtların bir veritabanı veya basit bir anket uygulaması. Bir proje ise belirli bir ağ sitesi için yapılandırma ve uygulama topluluğunu kapsamaktır. Bir proje birden fazla uygulama içerebilir. Bir uygulama birden fazla projede olabilir.
 </div>
 
@@ -164,6 +171,7 @@ Bu, şu şekilde düzenlenmiş bir dizin anketleri oluşturacaktır:
       models.py
       tests.py
       views.py
+
 </code></pre>
 
 Bu dizin yapısı anket uygulamasını barındıracaktır.
@@ -181,6 +189,7 @@ from django.http import HttpResponse
 
 def index(request):
     return HttpResponse("Merhaba dünya. Anket sayfasındasın.")
+
 </code></pre>
 
 Bu, Django'da mümkün olan en basit görünümdür. Görünümü çağırmak için onu bir URL'ye eşlemeliyiz ve bunun için bir URLconf'a ihtiyacımız var.
@@ -199,6 +208,7 @@ Uygulama dizininiz şu şekilde görünmelidir.
       tests.py
       urls.py
       views.py
+
 </code></pre>
 
 Şimdi anketler/urls.py dosyasına aşağıdaki kodları dahil edin:
@@ -225,6 +235,7 @@ urlpatterns = [
     path('anketler/', include('anketler.urls')),
     path('admin/', admin.site.urls),
 ]
+
 </code></pre>
 
 include() işlevi, diğer URLconf'ların kaynakça edilmesini sağlar. Django, include() ile karşılaştığında, o noktaya kadar eşleşen URL'nin herhangi bir bölümünü keser ve kalan dizeyi daha sonraki işlemler için URLconf'a gönderir.
@@ -241,6 +252,7 @@ URLconf'a bir dizin görüntüsü bağladınız. Çalıştığını doğrulamas�
 
 <pre data-gnl="1 1p"><code class="language-python">
 $ python manage.py runserver
+
 </code></pre>
 
 Tarayıcınızda http://localhost:8000/anketler/ adresine gidin ve "Merhaba dünya. Anket sayfasındasınız." görünümde tanımladığınız metni görün.
