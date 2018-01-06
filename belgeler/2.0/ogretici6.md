@@ -69,7 +69,7 @@ anketler/static/anketler/style.css
 </code></pre>
 http://localhost:8000/anketler/ tarayıcıda yeniden yükleyin. Sağ alt kısmında yüklü arkaplan resmini görmelisiniz.
 
-<div data-bilget="uyarı">
+<div data-bilget="uyarı" markdown="1">
 
 ### Uyarı
 

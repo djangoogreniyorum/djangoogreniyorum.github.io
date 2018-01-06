@@ -162,13 +162,13 @@ ve şöyle bir şey göreceksiniz:
 
 Burada ne oldu:
 
-{.liste}
 * python manage.py test anketler sınama için anketler uygulamasına baktı
 * django.test.TestCase sınıfının bir alt sınıfı bulundu.
 * Sınamanın amacı için özel bir veritabanı oluşturuldu.
 * Sınama yöntemleri için neyin adı 'test' ile başlıyor diye bakıldı.
 * sinama_gelecegin_sorusu_son_zamanlarda_gelme içinde yayim_tarihi 30 gün ertelenmiş olarak soru oluşturuldu.
 * ve assertls() yöntemi kullanılarak, was_published_recently() öğesinin True döndürdüğünü keşfettik, ancak False değeri bekliyorduk.
+{.liste}
 
 Sınama, hangi sınamanın başarısız olduğunu ve hatanın hangi satırda meydana geldiğini bildirir.
 
@@ -494,10 +494,10 @@ En kötü ihtimalle, gelişmeye devam ederken, artık gereksiz olan bazı sınam
 
 Sınamalarınız mantıklı bir şekilde düzenlendiği sürece, yönetilemez olmaz. İyi kurallar şunları içerir:
 
-{.liste}
 * Her kalıp veya görünüm için ayrı bir sınama sınıfı (TestClass)
 * sınamak istediğiniz her koşul kümesi için ayrı bir sınama yöntemi
 * İşlevlerini tanımlayan sınama yöntem adları
+{.liste}
 
 <hr>
 
