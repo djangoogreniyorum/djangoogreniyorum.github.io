@@ -276,10 +276,13 @@ Hazır olduğunda, isemciden bizim için biraz çalışma yapmasını isteyebili
   >>> # '/'dan cevap alın
   >>> response = client.get('/')
   Not Found: /
-  >>> # O adresden 404 beklemeliyiz; bunun yerine "geçersiz HTTP_HOST üstbilgisi" hatası ve bir 400 yanıtı görürseniz, daha önce açıklanan setup_test_environment() çağrısını olasılıkla ihmal ettiniz.
+  >>> # O adresden 404 beklemeliyiz; bunun yerine "geçersiz HTTP_HOST üstbilgisi"
+  hatası ve bir 400 yanıtı görürseniz, daha önce açıklanan setup_test_environment()
+  çağrısını olasılıkla ihmal ettiniz.
   >>> response.status_code
   404
-  >>> # Öte yandan '/anketler/' de bir şey bulmamız gerektiğini düşünüyoruz. Bunun yerine sabit kodlu URL yerine 'reverse()' kullanacağız.
+  >>> # Öte yandan '/anketler/' de bir şey bulmamız gerektiğini düşünüyoruz. Bunun
+  yerine sabit kodlu URL yerine 'reverse()' kullanacağız.
   >>> from django.urls import reverse
   >>> response = client.get(reverse('anketler:index'))
   >>> response.status_code
@@ -288,6 +291,7 @@ Hazır olduğunda, isemciden bizim için biraz çalışma yapmasını isteyebili
   b'\n    <ul>\n    \n    * <a href="/anketler/1/">Yenilikler ne?</a>\n    \n  \n\n'
   >>> response.context['son_sorular_listesi']
   <QuerySet [<Soru: Yenilikler ne?>]>
+  
 </code></pre>
 
 <hr>
