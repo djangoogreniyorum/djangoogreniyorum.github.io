@@ -241,7 +241,7 @@ benimsite/settings.py
 
 DIRS, Django şablonlarını yüklerken denetlenecek dosya örgüsünü dizinlerinin bir listesidir; bu bir arama yoludur.
 
-<div data-bilget="genel">
+<div data-bilget="genel" markdown="1">
 
 ### Şablonları düzenleme
 
@@ -251,7 +251,7 @@ Durgun dosyalar gibi tüm şablonlarımızı bir büyük şablon dizininde bir a
 
 Şimdi şablonların içinde admin adlı bir dizin oluşturun ve Django'nun kaynak kodundaki (django/contrib/admin/templates) varsayılan Django yönetici şablon dizininden bu dizine admin/base_site.html şablonunu kopyalayın.
 
-<div data-bilget="genel">
+<div data-bilget="genel" markdown="1">
 ### Django kaynak dosyaları nerdedir?
 
 Django kaynak dosyalarının işletim örgünüzde nerede bulunduğu konusunda zorluk çekiyorsanız, aşağıdaki komutu çalıştırın:
