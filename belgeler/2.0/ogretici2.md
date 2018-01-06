@@ -296,12 +296,12 @@ Kabukta iken [veritabanı API](#)'sini keşfedin:
   # objects.all() veritabanındaki tüm soruları görüntüler.
   &gt;&gt;&gt; Soru.objects.all()
   &lt;QuerySet [&lt;Soru: Soru object (1)&gt;]&gt;
-  </code></pre>
+</code></pre>
 
-  Bir dakika bekle. &lt;Soru: Soru object (1)&gt;, bu nesnenin yararlı bir gösterimi değil. Soru modelini (anketler/models.py dosyasında) düzebkeyerej ve hen Sıry hen de Secim bir __str__() yöntemi ekleyerek düzeltelim:
-  anketler/models.py
+Bir dakika bekle. &lt;Soru: Soru object (1)&gt;, bu nesnenin yararlı bir gösterimi değil. Soru modelini (anketler/models.py dosyasında) düzebkeyerej ve hen Sıry hen de Secim bir __str__() yöntemi ekleyerek düzeltelim:
 
-  <pre data-gnl="1 1p"><code class="language-python">
+anketler/models.py
+<pre data-gnl="1 1p"><code class="language-python">
   from django.db import models
 
   class Soru(models.Model):
@@ -383,9 +383,9 @@ Bu değişiklikleri kaydedin ve python manage.py kabuğunu tekrar çalıştırar
 
   # Üç seçenek oluşturun.
   &gt;&gt;&gt; q.secim_set.create(secim_metni='Fazla değil', oylar=0)
-  <Choice: Not much>
+  &lt;Secim: Not much&gt;
   &gt;&gt;&gt; q.secim_set.create(secim_metni='Gökyüzü', oylar=0)
-  <Choice: The sky>
+  &lt;Secim: The sky&gt;
   &gt;&gt;&gt; c = q.secim_set.create(secim_metni='Sadece tekrar hackleniyor', oylar=0)
 
   # Seçim nesnelerinin, ilgili Soru nesnelerine API erişimi vardır.
@@ -394,15 +394,15 @@ Bu değişiklikleri kaydedin ve python manage.py kabuğunu tekrar çalıştırar
 
   # Ve tersi de mümkün: Soru nesneleri Secim nesnelerine erişebilir.
   &gt;&gt;&gt; q.secim_set.all()
-  &lt;QuerySet [<Secim: Fazla değil>, <Secim: Gökyüzü>, <Secim: Sadece tekrar hackleniyor&gt;]&gt;
+  &lt;QuerySet [&lt;Secim: Fazla değil&gt;, &lt;Secim: Gökyüzü&gt;, &lt;Secim: Sadece tekrar hackleniyor&gt;]&gt;
   &gt;&gt;&gt; q.secim_set.count()
   3
 
   # API, ilişkileri ihtiyacınız olan yere kadar doğal olarak izler. İlişkileri ayırmak için çift altçizgi kullanın.
   # Bu istediğiniz kadar çok derinlikli olarak çalışır. Yani sınır yok. Bu sene yayim_tarihi olan herhangi bir sorunun
   # seçimini yapın (yukarıda oluşturduğumuz 'simdiki_yil' değişkenini tekrar kullanın.)
-  &gt;&gt;&gt; Choice.objects.filter(question__pub_date__year=current_year)
-  &lt;QuerySet [<Secim: Fazla değil>, <Secim: Gökyüzü>, <Secim: Sadece tekrar hackleniyor&gt;]&gt;
+  &gt;&gt;&gt; Secim.objects.filter(question__pub_date__year=current_year)
+  &lt;QuerySet [&lt;Secim: Fazla değil&gt;, &lt;Secim: Gökyüzü&gt;, &lt;Secim: Sadece tekrar hackleniyor&gt;]&gt;
 
   # Seçimlerden birini silelim. Bunun için delete() kullanın.
   &gt;&gt;&gt; c = q.secim_set.filter(secim_metni__startswith='Sadece tekrar')
