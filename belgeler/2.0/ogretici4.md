@@ -41,6 +41,7 @@ Hızlı bir özet:
 anketler/urls.py
 <pre data-gnl="1 1p"><code class="language-python">
   path('&lt;int:soru_id&gt;/oy/', views.oy, name='oy'),
+
 </code></pre>
 
 Ayrıca, oy() işlevinin kukla bir uygulamasını oluşturduk. Hay de, gerçek bir sürüm oluşturalım. anketler/views.py dosyasına aşağıdakileri ekleyin:
@@ -173,9 +174,9 @@ from . import views
 app_name = 'anketler'
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
-    path('<int:pk>/', views.AyrintiView.as_view(), name='ayrinti'),
-    path('<int:pk>/sonuclar/', views.SonuclarView.as_view(), name='sonuclar'),
-    path('<int:soru_id>/oy/', views.oy, name='oy'),
+    path('&lt;int:pk&gt;/', views.AyrintiView.as_view(), name='ayrinti'),
+    path('&lt;int:pk&gt;/sonuclar/', views.SonuclarView.as_view(), name='sonuclar'),
+    path('&lt;int:soru_id&gt;/oy/', views.oy, name='oy'),
 ]
 </code></pre>
 
