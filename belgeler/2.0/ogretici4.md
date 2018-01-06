@@ -29,12 +29,11 @@ anketler/templates/anketler/ayrinti.html
 
 Hızlı bir özet:
 
-  <ul class="liste">
-    <li>Yukarıdaki şablon, her soru seçimi için bir radyo düğmesi görüntüler. Her radyo düğmesinin değeri ilişkili soru seçimi kimliğidir. Her radyo düğmesinin adı "secim" dir. Yani birisi radyo düğmelerinden birini seçip biçimi gönderdiğinde, secim=# nerede # POST verisini gönderir demektir. HTML biçimlerinin yani form etiketinin temel kavramı budur.</li>
-    <li>HTML form etiketinin eylemini {&#37; url'anketler:oy' soru.id &#37;} olarak ayarladık ve yöntemide method="post" olarak ayarladık. method="post" (method="get" yerine) kullanılması çok önemlidir. Çünkü bu biçimi gönderme işlemi veri sunucusunda değişiklik yapacaktır. Veri sunucusu tarafında değişiklik yapan bir biçim oluşturduğunuzda, method="post" kullanın. Bu ipucu, Django'ya özgü değildir. Daha iyi bir ağ uygulaması geliştirmek amacıyla yapılır.</li>
-    <li>forloop.counter, for etiketinin kaç kez döngüden geçtiğini gösterir.</li>
-    <li>Bir POST biçimi oluşturduğumuzdan (veri değiştirme etkisine sahip olabilir), Siteler Arası İstek Hırsızlığı konusunda olağan şartlarda endişelenmeliyiz. Neyse ki endişenmenize gerek yok çünkü Django buna karşı koruma için çok kolay bir örgüyle geliyor. Kısacası, iç URL'leri hedefleyen tüm POST biçimlerinde {&#37; csrf_token &#37;} şablon etiketi kullanılmalıdır.</li>
-  </ul>
+
+- Yukarıdaki şablon, her soru seçimi için bir radyo düğmesi görüntüler. Her radyo düğmesinin değeri ilişkili soru seçimi kimliğidir. Her radyo düğmesinin adı "secim" dir. Yani birisi radyo düğmelerinden birini seçip biçimi gönderdiğinde, secim=# nerede # POST verisini gönderir demektir. HTML biçimlerinin yani form etiketinin temel kavramı budur.
+- HTML form etiketinin eylemini {&#37; url'anketler:oy' soru.id &#37;} olarak ayarladık ve yöntemide method="post" olarak ayarladık. method="post" (method="get" yerine) kullanılması çok önemlidir. Çünkü bu biçimi gönderme işlemi veri sunucusunda değişiklik yapacaktır. Veri sunucusu tarafında değişiklik yapan bir biçim oluşturduğunuzda, method="post" kullanın. Bu ipucu, Django'ya özgü değildir. Daha iyi bir ağ uygulaması geliştirmek amacıyla yapılır.
+- forloop.counter, for etiketinin kaç kez döngüden geçtiğini gösterir.
+- Bir POST biçimi oluşturduğumuzdan (veri değiştirme etkisine sahip olabilir), Siteler Arası İstek Hırsızlığı konusunda olağan şartlarda endişelenmeliyiz. Neyse ki endişenmenize gerek yok çünkü Django buna karşı koruma için çok kolay bir örgüyle geliyor. Kısacası, iç URL'leri hedefleyen tüm POST biçimlerinde {&#37; csrf_token &#37;} şablon etiketi kullanılmalıdır.
 
 Şimdi, gönderilen verileri işleyen ve onunla birlikte bir şey yapan bir Django görünümü oluşturalım. [Öğretici 3]({{site.belgeler_ogretici3}})'te, bu satırı içeren yoklama uygulamaları için bir URLconf oluşturduk:
 
