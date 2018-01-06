@@ -295,10 +295,10 @@ datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=<UTC>)
 
 # objects.all() veritabanındaki tüm soruları görüntüler.
 >>> Soru.objects.all()
-&lt;QuerySet [&lt;Soru: Soru object (1)>]>
+&lt;QuerySet [&lt;Soru: Soru object (1)&gt;]&gt;
 </code></pre>
 
-Bir dakika bekle. &lt;Soru: Soru object (1)>, bu nesnenin yararlı bir gösterimi değil. Soru modelini (anketler/models.py dosyasında) düzebkeyerej ve hen Sıry hen de Secim bir __str__() yöntemi ekleyerek düzeltelim:
+Bir dakika bekle. &lt;Soru: Soru object (1)&gt, bu nesnenin yararlı bir gösterimi değil. Soru modelini (anketler/models.py dosyasında) düzebkeyerej ve hen Sıry hen de Secim bir __str__() yöntemi ekleyerek düzeltelim:
 anketler/models.py
 
 <pre data-gnl="1 1p"><code class="language-python">
@@ -394,7 +394,7 @@ Bu değişiklikleri kaydedin ve python manage.py kabuğunu tekrar çalıştırar
 
   # Ve tersi de mümkün: Soru nesneleri Secim nesnelerine erişebilir.
   >>> q.secim_set.all()
-  &lt;QuerySet [<Secim: Fazla değil>, <Secim: Gökyüzü>, <Secim: Sadece tekrar hackleniyor>]>
+  &lt;QuerySet [<Secim: Fazla değil>, <Secim: Gökyüzü>, <Secim: Sadece tekrar hackleniyor&gt;]&gt;
   >>> q.secim_set.count()
   3
 
@@ -402,7 +402,7 @@ Bu değişiklikleri kaydedin ve python manage.py kabuğunu tekrar çalıştırar
   # Bu istediğiniz kadar çok derinlikli olarak çalışır. Yani sınır yok. Bu sene yayim_tarihi olan herhangi bir sorunun
   # seçimini yapın (yukarıda oluşturduğumuz 'simdiki_yil' değişkenini tekrar kullanın.)
   >>> Choice.objects.filter(question__pub_date__year=current_year)
-  &lt;QuerySet [<Secim: Fazla değil>, <Secim: Gökyüzü>, <Secim: Sadece tekrar hackleniyor>]>
+  &lt;QuerySet [<Secim: Fazla değil>, <Secim: Gökyüzü>, <Secim: Sadece tekrar hackleniyor&gt;]&gt;
 
   # Seçimlerden birini silelim. Bunun için delete() kullanın.
   >>> c = q.secim_set.filter(secim_metni__startswith='Sadece tekrar')
