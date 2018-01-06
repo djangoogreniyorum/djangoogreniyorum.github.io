@@ -272,7 +272,7 @@ Sonra sınama istemci sınıfını içeri aktarmanız gerekir. (daha sonra tests
 
 Hazır olduğunda, isemciden bizim için biraz çalışma yapmasını isteyebiliriz:
 
-<pre data-gnl="1 1p"><code class="language-html">
+<pre data-gnl="1 1p"><code class="language-python">
   >>> # '/'dan cevap alın
   >>> response = client.get('/')
   Not Found: /
