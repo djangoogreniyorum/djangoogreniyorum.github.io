@@ -301,4 +301,4 @@ Varsayılan olarak, INSTALLED_APPS'teki yönetici uygulamasına kayıtlı tüm u
 
 Acemi öğreticisi burada biter. Bu arada, <a href="#">buradan nereye gideceğinizle ilgili</a> bazı işaretçileri kontrol etmek isteyebilirsiniz.
 
-Python paketlemeyi biliyorsanız ve anketleri "yeniden kullanılabilir bir uygulamaya" dönüştürmeyi öğrenmek istiyorsanız gelişmiş öğretici: [Yeniden kullanılabilir uygulamalar nasıl yazılır?](#) bölümüne bakın.
+Python paketlemeyi biliyorsanız ve anketleri "yeniden kullanılabilir bir uygulamaya" dönüştürmeyi öğrenmek istiyorsanız gelişmiş öğretici: [Yeniden kullanılabilir uygulamalar nasıl yazılır?]({{site.belgeler_paket_yapma}}) bölümüne bakın.
