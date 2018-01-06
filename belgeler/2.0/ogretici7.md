@@ -239,9 +239,10 @@ benimsite/settings.py
   ]
 </code></pre>
 
-DIRS, Django şablonlarını yüklerken denetlenecek dosya örgüsünü dizinlerinin bir listesidir; bu bir arama yolu..
+DIRS, Django şablonlarını yüklerken denetlenecek dosya örgüsünü dizinlerinin bir listesidir; bu bir arama yoludur.
 
 <div data-bilget="genel">
+
 ### Şablonları düzenleme
 
 Durgun dosyalar gibi tüm şablonlarımızı bir büyük şablon dizininde bir araya getirebiliriz ve bu da mükemmel bir şekilde işe yarayabilir. Bununla birlikte, belirli bir uygulamaya ait şablonlar, projenin yerine bu uygulamanın şablon dizinine (örneğin anketler/templates) yerleştirilmelidir. Bunun neden tekrar kullanıldığını öğretici uygulamada daha ayrıntılı olarak tartışacağız.
