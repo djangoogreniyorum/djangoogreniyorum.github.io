@@ -52,6 +52,7 @@ anketler/admin.py
 </code></pre>
 
 Her taraftaki ilk öğeler, alan kümesinin başlığıdır. İşte biçimimizin şimdiki şekli bu resimdeki gibi olacaktır:
+
 <img src="https://docs.djangoproject.com/en/2.0/_images/admin08t.png" alt="">
 
 <hr>
@@ -153,7 +154,7 @@ anketler/admin.py
       list_display = ('soru_metni', 'yayim_tarihi')
 </code></pre>
 
-İyi bir önlem almak için, <a href="{{site.belgeler_ogretici2}}">Öğretici 2</a>'deki was_published_recently() yöntemini de dahil edelim:
+İyi bir önlem almak için, [Öğretici 2]({{site.belgeler_ogretici2}})'deki was_published_recently() yöntemini de dahil edelim:
 
 anketler/admin.py
 <pre data-gnl="1 1p"><code class="language-python">
