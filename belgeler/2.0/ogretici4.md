@@ -36,11 +36,11 @@ Hızlı bir özet:
     <li>Bir POST biçimi oluşturduğumuzdan (veri değiştirme etkisine sahip olabilir), Siteler Arası İstek Hırsızlığı konusunda olağan şartlarda endişelenmeliyiz. Neyse ki endişenmenize gerek yok çünkü Django buna karşı koruma için çok kolay bir örgüyle geliyor. Kısacası, iç URL'leri hedefleyen tüm POST biçimlerinde {&#37; csrf_token &#37;} şablon etiketi kullanılmalıdır.</li>
   </ul>
 
-Şimdi, gönderilen verileri işleyen ve onunla birlikte bir şey yapan bir Django görünümü oluşturalım. <a href="{{site.belgeler_ogretici3}}">Öğretici 3</a>'te, bu satırı içeren yoklama uygulamaları için bir URLconf oluşturduk:
+Şimdi, gönderilen verileri işleyen ve onunla birlikte bir şey yapan bir Django görünümü oluşturalım. [Öğretici 3]({{site.belgeler_ogretici3}})'te, bu satırı içeren yoklama uygulamaları için bir URLconf oluşturduk:
 
 anketler/urls.py
 <pre data-gnl="1 1p"><code class="language-python">
-  path('<int:soru_id>/oy/', views.oy, name='oy'),
+  path('&lt;int:soru_id&gt;/oy/', views.oy, name='oy'),
 </code></pre>
 
 Ayrıca, oy() işlevinin kukla bir uygulamasını oluşturduk. Hay de, gerçek bir sürüm oluşturalım. anketler/views.py dosyasına aşağıdakileri ekleyin:
