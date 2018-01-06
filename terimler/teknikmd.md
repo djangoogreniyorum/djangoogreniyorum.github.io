@@ -2,7 +2,6 @@
 layout: general
 title: ooo - Django Öğreniyorum
 ---
-<div data-gnl="kaplama" markdown="1">
 # İlk Django Uygulamanızı Yazma, Bölüm 6
 
 Bu eğitim [Öğretici 5]({{site.belgeler_ogretici5}}) 'in kaldığı yerden devam ediyor. Sınanmış bir anket uygulaması yaptık ve şimdi bir biçem düzeniyle resim ekleyeceğiz.
@@ -36,7 +35,7 @@ anketler/static/anketler/style.css
   li a {
     color: green;
   }
-  
+
 </code></pre>
 
 Sonra, anketler/templates/anketler/index.html'in başına aşağıdakileri ekleyin:
@@ -81,5 +80,3 @@ Elbette {&#37; static &#37;} şablon etiketi, biçem sayfanız gibi Django taraf
 Bunların temelleri, Ayarlarla ve çerçeveyle birlikte gelen diğer bitlerle ilgili daha fazla bilgi için [durgun dosyalar](#)a ve [staticfiles kaynakçası](#)na bakın. [Durgun dosyaları dağıtmak](#), durgun dosyaların gerçek bir sunucuda nasıl kullanılacağını anlatır.
 
 Durgun dosyalardan memnun olduğunuzda, Django'nun doğal oalrak oluşturulan yönetici sitesini nasıl özelleştireceğinizi öğrenmek için [Öğretici 7]({{site.belgeler_ogretici7}}) bölümünü okuyun.
-
-</div>
