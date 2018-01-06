@@ -249,52 +249,52 @@ Bunu yalnızca basitçe "python" yazarak kullanıyoruz. Çünkü manage.py, DJAN
 manage.py kullanmayı tercih ederseniz sorun değil. Sadece DJANGO_SETTINGS_MODULE ortam değişkeni benimsite.settings, düz bir Python kabuğu başlatın ve Django'yu kurun:
 
 <pre data-gnl="1 1p"><code class="language-python">
-  >>> import django
-  >>> django.setup()
-  </code></pre>
+  &gt;&gt;&gt; import django
+  &gt;&gt;&gt; django.setup()
+</code></pre>
 
-  Bu bir [AttributeError](#) oluşturursa, muhtemelen Django'nun bu öğretici sürümle eşleşmeyen bir sürümünü kullanıyorsunuz demektir. Ya eski öğreticiye veya daya yeni Django sürümüne geçmek isteyeceksiniz.
+Bu bir [AttributeError](#) oluşturursa, muhtemelen Django'nun bu öğretici sürümle eşleşmeyen bir sürümünü kullanıyorsunuz demektir. Ya eski öğreticiye veya daya yeni Django sürümüne geçmek isteyeceksiniz.
 
-  Manage.py dosyasının bulunduğu dizinden python çalıştırmalısınız veya bu dizinin python yolunda olduğundan emin olun. Böylece import benimsite çalışacaktır.
+Manage.py dosyasının bulunduğu dizinden python çalıştırmalısınız veya bu dizinin python yolunda olduğundan emin olun. Böylece import benimsite çalışacaktır.
 
-  Tüm bunlar hakkında daha fazla bilgi için <a href="#">django-admin belgelerine</a> bakın.
-  </div>
+Tüm bunlar hakkında daha fazla bilgi için <a href="#">django-admin belgelerine</a> bakın.
+</div>
 
-  Kabukta iken [veritabanı API](#)'sini keşfedin:
+Kabukta iken [veritabanı API](#)'sini keşfedin:
 
-  <pre data-gnl="1 1p"><code class="language-python">
-  >>> from anketler.models import Soru, Secim   # Sadece yazdığımız model sınıflarını içe aktarın.
+<pre data-gnl="1 1p"><code class="language-python">
+  &gt;&gt;&gt; from anketler.models import Soru, Secim   # Sadece yazdığımız model sınıflarını içe aktarın.
 
   # Sistemde henüz hiçbir soru yok.
-  >>> Soru.objects.all()
+  &gt;&gt;&gt; Soru.objects.all()
   &lt;QuerySet []&gt;
 
   # Yeni bir Soru oluştur.
   # Varsayılan ayarlar dosyasında zaman dilimlerinin desteği etkin olduğundan,
   # bu nedenle Django yayim_tarihi için tzinfo ile bir datetime bekliyor.
   # timezone.now() kullanın datatime.datetime.now() yerine... Ve doğru olanı yapacağız.
-  >>> from django.utils import timezone
-  >>> q = Soru(soru_metni="Yenilikler ne?", yayim_tarihi=timezone.now())
+  &gt;&gt;&gt; from django.utils import timezone
+  &gt;&gt;&gt; q = Soru(soru_metni="Yenilikler ne?", yayim_tarihi=timezone.now())
 
   # Nesneyi veritabanına kaydedin. save() öğesini açıkça çağırmalısınız.
-  >>> q.save()
+  &gt;&gt;&gt; q.save()
 
   # Şimdi bir ID'si var.
-  >>> q.id
+  &gt;&gt;&gt; q.id
   1
 
   # Python nitelikleri üzerinden model alan değerlerine erişir.
-  >>> q.soru_metni
+  &gt;&gt;&gt; q.soru_metni
   "Yenilikler ne?"
-  >>> q.yayim_tarihi
+  &gt;&gt;&gt; q.yayim_tarihi
   datetime.datetime(2012, 2, 26, 13, 0, 0, 775217, tzinfo=&lt;UTC&gt;)
 
   # Öznitelikleri değiştirip sonra save() yöntemini çağırarak değerleri değiştirin.
-  >>> q.soru_metni = "N'haber?"
-  >>> q.save()
+  &gt;&gt;&gt; q.soru_metni = "N'haber?"
+  &gt;&gt;&gt; q.save()
 
   # objects.all() veritabanındaki tüm soruları görüntüler.
-  >>> Soru.objects.all()
+  &gt;&gt;&gt; Soru.objects.all()
   &lt;QuerySet [&lt;Soru: Soru object (1)&gt;]&gt;
   </code></pre>
 
@@ -337,76 +337,76 @@ class Soru(models.Model):
 Bu değişiklikleri kaydedin ve python manage.py kabuğunu tekrar çalıştırarak yeni bir Python etkileşimli kabuğu başlatın:
 
 <pre data-gnl="1 1p"><code class="language-python">
-  >>> from polls.models import Soru, Secim
+  &gt;&gt;&gt; from polls.models import Soru, Secim
 
   # __str__() ekimizin çalıştığından emin olun.
-  >>> Soru.objects.all()
+  &gt;&gt;&gt; Soru.objects.all()
   &lt;QuerySet [&lt;Soru: Yenilikler ne?&gt;]&gt;
 
   # Django, tamamen anahtar sözcükler tarafından yönlendirilen
   # zengin bir veritabanı arama API'si sağlar.
-  >>> Soru.objects.filter(id=1)
+  &gt;&gt;&gt; Soru.objects.filter(id=1)
   &lt;QuerySet [&lt;Soru: Yenilikler ne?&gt;]&gt;
-  >>> Soru.objects.filter(soru_metni__startswith='Yenilikler')
+  &gt;&gt;&gt; Soru.objects.filter(soru_metni__startswith='Yenilikler')
   &lt;QuerySet [&lt;Soru: Yenilikler ne?&gt;]&gt;
 
   # Bu yıl yayınlanan soruyu cevaplayın.
-  >>> from django.utils import timezone
-  >>> simdiki_yil = timezone.now().year
-  >>> Soru.objects.get(yayim_tarihi__year=simdiki_yil)
+  &gt;&gt;&gt; from django.utils import timezone
+  &gt;&gt;&gt; simdiki_yil = timezone.now().year
+  &gt;&gt;&gt; Soru.objects.get(yayim_tarihi__year=simdiki_yil)
   &lt;Soru: Yenilikler ne?&gt;
 
   # Var olmayan bir kimlik isteğinde bulunduğunuzda, bu bir istisna oluşturacaktır.
-  >>> Soru.objects.get(id=2)
+  &gt;&gt;&gt; Soru.objects.get(id=2)
   Traceback (most recent call last):
       ...
   DoesNotExist: Soru matching query does not exist.
 
   # Birincil anahtarla arama en yaygın olanıdır. bu yüzden Django, birincil anahtar tam aramaları için kısayol sağlar.
   # Aşağıdakiler Soru.objects.get(id=1) ile aynıdır.
-  >>> Soru.objects.get(pk=1)
+  &gt;&gt;&gt; Soru.objects.get(pk=1)
   &lt;Soru: Yenilikler ne?&gt;
 
   # Özel yöntemimizin çalıştığından emin olun.
-  >>> q = Soru.objects.get(pk=1)
-  >>> q.was_published_recently()
+  &gt;&gt;&gt; q = Soru.objects.get(pk=1)
+  &gt;&gt;&gt; q.was_published_recently()
   True
 
   # Soru için birkaç seçenek verin. Create çağrısı yeni bir
   # Secim nesnesi oluşturur, INSERT deyimi yapar, seiçimi kullanılabilir seçenekler
   # grubuna ekler ve yeni Secim nesnesini döndürür.
-  >>> q = Soru.objects.get(pk=1)
+  &gt;&gt;&gt; q = Soru.objects.get(pk=1)
 
   # İlgili nesne setinden herhangi bir seçeneği görüntüler. Şimdiye kadar hiçbiri görüntüleniyor.
-  >>> q.secim_set.all()
+  &gt;&gt;&gt; q.secim_set.all()
   &lt;QuerySet []&gt;
 
   # Üç seçenek oluşturun.
-  >>> q.secim_set.create(secim_metni='Fazla değil', oylar=0)
+  &gt;&gt;&gt; q.secim_set.create(secim_metni='Fazla değil', oylar=0)
   <Choice: Not much>
-  >>> q.secim_set.create(secim_metni='Gökyüzü', oylar=0)
+  &gt;&gt;&gt; q.secim_set.create(secim_metni='Gökyüzü', oylar=0)
   <Choice: The sky>
-  >>> c = q.secim_set.create(secim_metni='Sadece tekrar hackleniyor', oylar=0)
+  &gt;&gt;&gt; c = q.secim_set.create(secim_metni='Sadece tekrar hackleniyor', oylar=0)
 
   # Seçim nesnelerinin, ilgili Soru nesnelerine API erişimi vardır.
-  >>> c.soru
+  &gt;&gt;&gt; c.soru
   &lt;Question: Yenilikler ne?&gt;
 
   # Ve tersi de mümkün: Soru nesneleri Secim nesnelerine erişebilir.
-  >>> q.secim_set.all()
+  &gt;&gt;&gt; q.secim_set.all()
   &lt;QuerySet [<Secim: Fazla değil>, <Secim: Gökyüzü>, <Secim: Sadece tekrar hackleniyor&gt;]&gt;
-  >>> q.secim_set.count()
+  &gt;&gt;&gt; q.secim_set.count()
   3
 
   # API, ilişkileri ihtiyacınız olan yere kadar doğal olarak izler. İlişkileri ayırmak için çift altçizgi kullanın.
   # Bu istediğiniz kadar çok derinlikli olarak çalışır. Yani sınır yok. Bu sene yayim_tarihi olan herhangi bir sorunun
   # seçimini yapın (yukarıda oluşturduğumuz 'simdiki_yil' değişkenini tekrar kullanın.)
-  >>> Choice.objects.filter(question__pub_date__year=current_year)
+  &gt;&gt;&gt; Choice.objects.filter(question__pub_date__year=current_year)
   &lt;QuerySet [<Secim: Fazla değil>, <Secim: Gökyüzü>, <Secim: Sadece tekrar hackleniyor&gt;]&gt;
 
   # Seçimlerden birini silelim. Bunun için delete() kullanın.
-  >>> c = q.secim_set.filter(secim_metni__startswith='Sadece tekrar')
-  >>> c.delete()
+  &gt;&gt;&gt; c = q.secim_set.filter(secim_metni__startswith='Sadece tekrar')
+  &gt;&gt;&gt; c.delete()
 </code></pre>
 
 Model ilişkileri hakkında daha fazla bilgi için bkz. [İlgili nesnelere erişme](#). API aracılığıyla alan araştırmaları yapmak için çift altçizgi kullanma konusunda daha fazla bilgi için bkz: [Alan arama](#). Veritabanı API'si ile ilgili tüm ayrıntılar için [Veritabanı API'si başvuru](#)muza bakın.
