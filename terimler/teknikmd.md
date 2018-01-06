@@ -41,11 +41,11 @@ anketler/static/anketler/style.css
 Sonra, anketler/templates/anketler/index.html'in başına aşağıdakileri ekleyin:
 
 anketler/templates/anketler/index.html
-<pre data-gnl="1 1p"><code class="language-html">
-  {&#37; load static &#37;}
+```
+  {% load static %}
 
   &lt;link rel="stylesheet" type="text/css" href="{&#37; static 'anketler/style.css' &#37;}" /&gt;
-</code></pre>
+```
 
 {&#37; static &#37;} şablon etiketi, durgun dosyaların mutlak URL'lerini üretir.
 
