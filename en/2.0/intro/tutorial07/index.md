@@ -4,7 +4,7 @@ title: Öğretici 7 - Django Öğreniyorum
 ---
 # İlk Django Uygulamanızı Yazma, Bölüm 7
 
-Bu sayfa [Öğretici 6](/en/20/intro/tutorial06/)'nın kaldığı yerden devam ediyor. Anket uygulamasına devam ediyoruz. Önce [Öğretici 2](/en/20/intro/tutorial02/)'de keşfettiğimiz Django'nun doğal olarak oluşturulan yönetici sayfalarını özelleştirme üzerine odaklanacağız.
+Bu sayfa [Öğretici 6](/en/2.0/intro/tutorial06/)'nın kaldığı yerden devam ediyor. Anket uygulamasına devam ediyoruz. Önce [Öğretici 2](/en/2.0/intro/tutorial02/)'de keşfettiğimiz Django'nun doğal olarak oluşturulan yönetici sayfalarını özelleştirme üzerine odaklanacağız.
 
 ## Yönetci biçimini özelleştirin
 
@@ -154,7 +154,7 @@ anketler/admin.py
       list_display = ('soru_metni', 'yayim_tarihi')
 </code></pre>
 
-İyi bir önlem almak için, [Öğretici 2](/en/20/intro/tutorial02/)'deki was_published_recently() yöntemini de dahil edelim:
+İyi bir önlem almak için, [Öğretici 2](/en/2.0/intro/tutorial02/)'deki was_published_recently() yöntemini de dahil edelim:
 
 anketler/admin.py
 <pre data-gnl="1 1p"><code class="language-python">
@@ -271,7 +271,7 @@ Ardından, dosyayı düzenleyin ve uygun gördüğünüz gibi &#123;{site_header
 
 Bu yaklaşımı şablonları geçersiz kılmayı öğretmek için kullanırız. Gerçek bir projede muhtemelen bu özelleştirmeyi daha kolay yapmak için django.contrib.admin.AdminSite.site_header özniteliğini kullanırsınız.
 
-Bu şablon dosyası &#123;% block branding %&#125; ve &#123;{ title }&#125; gibi birçok betin içeriyor. &#123;% ve &#123;{ etiketleri, Django'nun şablon dilinin bir parçasıdır. Django admin/base_site.html'i işlerken, bu şablon dili, [Öğretici 3](/en/20/intro/tutorial03/)'te gördüğümüz gibi son HTML sayfasını üretmek üzere değerlendirilecektir.
+Bu şablon dosyası &#123;% block branding %&#125; ve &#123;{ title }&#125; gibi birçok betin içeriyor. &#123;% ve &#123;{ etiketleri, Django'nun şablon dilinin bir parçasıdır. Django admin/base_site.html'i işlerken, bu şablon dili, [Öğretici 3](/en/2.0/intro/tutorial03/)'te gördüğümüz gibi son HTML sayfasını üretmek üzere değerlendirilecektir.
 
 Django'nun varsayılan yönetici şablonlarından herhangi birinin geçersiz kılınabileceğini unutmayın. Bir şablonu geçersiz kılmak için, yalnızca base_site.html ile yaptığınız şeyi yapın. Varsayılan dizinden kendi özel dizininize kopyalayın ve dğişiklik yapın.
 

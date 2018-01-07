@@ -4,7 +4,7 @@ title: Öğretici 5 - Django Öğreniyorum
 ---
 # İlk Django Uygulamanızı Yazma, Bölüm 5
 
-Bu eğitim, [Öğretici 4](/en/20/intro/tutorial04/)'ün kaldığı yerden devam ediyor. Anket uygulaması yaptık ve bunun için bazı doğal sınamalar oluşturacağız.
+Bu eğitim, [Öğretici 4](/en/2.0/intro/tutorial04/)'ün kaldığı yerden devam ediyor. Anket uygulaması yaptık ve bunun için bazı doğal sınamalar oluşturacağız.
 
 ## Doğal sınama tanıtma
 
@@ -12,7 +12,7 @@ Bu eğitim, [Öğretici 4](/en/20/intro/tutorial04/)'ün kaldığı yerden devam
 
 Deneyler, kodunuzun çalışmasını sınayan basit işlemlerdir.
 
-Sınamalar farklı seviyelerde çalışır. Bazı sınamalar küçücük bir ayrıntı için geçerli olabilir (belirli bir kalıp yöntemi, değerleri beklendiği gibi döndürür mü?). Diğerleri yazılımın genel işlemini incelemektedir (sitedeki bir dizi kullanıcı girişi istenilen sonucu verir mi?). [Öğretici 2](/en/20/intro/tutorial02/)'de daha önce yapılan sınamalardan farklı değil, bir yöntemin davranışını incelemek için kabuğu kullanarak veya uygulamayı çalıştırarak veri girme işlemi yapılır.
+Sınamalar farklı seviyelerde çalışır. Bazı sınamalar küçücük bir ayrıntı için geçerli olabilir (belirli bir kalıp yöntemi, değerleri beklendiği gibi döndürür mü?). Diğerleri yazılımın genel işlemini incelemektedir (sitedeki bir dizi kullanıcı girişi istenilen sonucu verir mi?). [Öğretici 2](/en/2.0/intro/tutorial02/)'de daha önce yapılan sınamalardan farklı değil, bir yöntemin davranışını incelemek için kabuğu kullanarak veya uygulamayı çalıştırarak veri girme işlemi yapılır.
 
 Doğal sınamalarda farklı olan şey, sınama çalışmalarının sizin tarafınızdan yapılmasıdır. Bir kez bir dizi sınama oluşturursunuz ve daha sonra uygulamanızda değişiklik yaparken, kodunuzun başlangıçta tasarlandığı gibi çalışıp çalışmadığını zaman alıcı el sınamaları yapmak zorunda kalamadan halledebilirsiniz.
 
@@ -300,7 +300,7 @@ Hazır olduğunda, isemciden bizim için biraz çalışma yapmasını isteyebili
 
 Anketler listesi henüz yayınlanmamış anketleri (yani gelecekte olan bir yayim_tarihi olan anketleri) göstermektedir. Onu düzeltelim.
 
-[Öğretici 4](/en/20/intro/tutorial04/)'de, ListeView temel alınarak sınıf tabanlı bir görünüm sunduk:
+[Öğretici 4](/en/2.0/intro/tutorial04/)'de, ListeView temel alınarak sınıf tabanlı bir görünüm sunduk:
 
 anketler/views.py
 <pre data-gnl="1 1p"><code class="language-python">
@@ -519,4 +519,4 @@ Django'da sınama hakkında kapsamlı bilgi içerir.
 
 Sınama ile ilgili tüm ayrıntılar için [Django'da Sınama](#) konusuna bakınız.
 
-Django görünümlerini sınamaya razı olduğunuzda, sabit dosya yönetimi hakkında bilgi edinmek için [Öğretici 6](/en/20/intro/tutorial06/) bölümünü okuyun.
+Django görünümlerini sınamaya razı olduğunuzda, sabit dosya yönetimi hakkında bilgi edinmek için [Öğretici 6](/en/2.0/intro/tutorial06/) bölümünü okuyun.

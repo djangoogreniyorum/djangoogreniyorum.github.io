@@ -4,7 +4,7 @@ title: ooo - Django Öğreniyorum
 ---
 # İlk Django Uygulamanızı Yazma, Bölüm 6
 
-Bu eğitim [Öğretici 5](/en/20/intro/tutorial05/) 'in kaldığı yerden devam ediyor. Sınanmış bir anket uygulaması yaptık ve şimdi bir biçem düzeniyle resim ekleyeceğiz.
+Bu eğitim [Öğretici 5](/en/2.0/intro/tutorial05/) 'in kaldığı yerden devam ediyor. Sınanmış bir anket uygulaması yaptık ve şimdi bir biçem düzeniyle resim ekleyeceğiz.
 
 Sunucu tarafıdnan üretilen HTML dışında, ağ uygulamalarının genellikle, eksiksiz ağ sayfasını oluşturmak için gerekli olan resimler, JavaScript veya CSS gibi ek dosyalar sunmaları gerekir. Django'da, bu dosyalara durgun dosyalar diyoruz. Teknik olarak statik dosya diyeceğiz.
 
@@ -79,4 +79,4 @@ Elbette {&#37; static &#37;} şablon etiketi, biçem sayfanız gibi Django taraf
 
 Bunların temelleri, Ayarlarla ve çerçeveyle birlikte gelen diğer bitlerle ilgili daha fazla bilgi için [durgun dosyalar](#)a ve [staticfiles kaynakçası](#)na bakın. [Durgun dosyaları dağıtmak](#), durgun dosyaların gerçek bir sunucuda nasıl kullanılacağını anlatır.
 
-Durgun dosyalardan memnun olduğunuzda, Django'nun doğal oalrak oluşturulan yönetici sitesini nasıl özelleştireceğinizi öğrenmek için [Öğretici 7](/en/20/intro/tutorial07/) bölümünü okuyun.
+Durgun dosyalardan memnun olduğunuzda, Django'nun doğal oalrak oluşturulan yönetici sitesini nasıl özelleştireceğinizi öğrenmek için [Öğretici 7](/en/2.0/intro/tutorial07/) bölümünü okuyun.

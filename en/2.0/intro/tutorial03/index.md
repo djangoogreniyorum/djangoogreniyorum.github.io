@@ -4,7 +4,7 @@ title: Öğretici 3 - Django Öğreniyorum
 ---
 # İlk Django Uygulamanızı Yazma, Bölüm 3
 
-Bu sayfa [Öğretici 2](/en/20/intro/tutorial02/)'nin kaldığı yerden devam ediyor. Ağ siteleri uygulamasına devam ediyoruz. Ortak bir arayüz oluşturmaya odaklanacağız. Konumuz "görünümler" (views).
+Bu sayfa [Öğretici 2](/en/2.0/intro/tutorial02/)'nin kaldığı yerden devam ediyor. Ağ siteleri uygulamasına devam ediyoruz. Ortak bir arayüz oluşturmaya odaklanacağız. Konumuz "görünümler" (views).
 
 ## Önbakış
 
@@ -101,7 +101,7 @@ Görünüm bir veritabanındaki kayıtları okuyabilir veya okyuamaz. Django'nun
 
 Django'nun istediği HttpResponse olmasıdır. Ya da bir istisna.
 
-Çünkü kullanışlıdır, Django'nun [Öğretici 2](/en/20/intro/tutorial02/)'de ele aldığı kendi veritabanı API'sini kullanalım. İşte yeni bir index() görünümde, yayın tarihine göre, sistemdeki en son 5 anket sorusunu virgüllerle ayırarak gösteren bir tutsak var:
+Çünkü kullanışlıdır, Django'nun [Öğretici 2](/en/2.0/intro/tutorial02/)'de ele aldığı kendi veritabanı API'sini kullanalım. İşte yeni bir index() görünümde, yayın tarihine göre, sistemdeki en son 5 anket sorusunu virgüllerle ayırarak gösteren bir tutsak var:
 
 anketler/views.py
 
@@ -172,7 +172,7 @@ anketler/views.py
 
 Bu kod, anketler/index.html adlı şablonu yükler ve bir bağlamı iletir. Bağlam, Python nesnelerine bir sözlük eşleme şablon adlarıdır.
 
-Tarayıcınısı "/anketler/" adresine getirerek sayfayı yükleyin ve [Öğretici 2](/en/20/intro/tutorial02/)'nin "Yenilikler ne?" sorusunu içeren madde işaretli bir liste görmelisiniz. Bağlantı, sorununun ayrıntı sayfasına işaret eder.
+Tarayıcınısı "/anketler/" adresine getirerek sayfayı yükleyin ve [Öğretici 2](/en/2.0/intro/tutorial02/)'nin "Yenilikler ne?" sorusunu içeren madde işaretli bir liste görmelisiniz. Bağlantı, sorununun ayrıntı sayfasına işaret eder.
 
 ### Kısayol: render()
 
@@ -353,4 +353,4 @@ ad alanı 'ayrinti' görünümünü işaret etmek için:
 &lt;li&gt;&lt;a href=&quot;{&#37; url 'anketler:ayrinti' soru.id &#37;}&quot;&gt;{&#123; soru.soru_metni &#125;}&lt;/a&gt;&lt;/li&gt;
 </code></pre>
 
-Görünümler yazarken rahat edersiniz, basit biçim işleme ve genel görünümler hakkında bilgi edinmek için [öğretici 4](/en/20/intro/tutorial04/) gölümüne geçin.
+Görünümler yazarken rahat edersiniz, basit biçim işleme ve genel görünümler hakkında bilgi edinmek için [öğretici 4](/en/2.0/intro/tutorial04/) gölümüne geçin.
