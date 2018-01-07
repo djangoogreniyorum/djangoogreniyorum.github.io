@@ -6,6 +6,19 @@ description: Bu proje CSS'nin tüm imkanlarını zorlayarak daha gelişmiş bir 
 twitter_username: datadeveb
 github_username:  data-deveb
 
+
+# Redirect settings
+collections:
+  redirects:
+    output: true
+
+defaults:
+  -
+    scope:
+      type: redirects
+    values:
+      layout: redirect
+
 # Build settings
 markdown: kramdown
 theme: minima
