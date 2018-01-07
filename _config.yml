@@ -17,7 +17,7 @@ defaults:
     scope:
       type: redirects
     values:
-layout: redirect
+      layout: redirect
 
 # Build settings
 markdown: kramdown
