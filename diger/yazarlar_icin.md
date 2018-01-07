@@ -2,25 +2,63 @@
 layout: general
 title: Django Öğreniyorum
 ---
-  <h1>Nasıl Başlayacağım?</h1>
-  <p>Github sayfamıza <a href="https://github.com/djangoogreniyorum/djangoogreniyorum.github.io/">https://github.com/djangoogreniyorum/djangoogreniyorum.github.io/</a> geçin. Dosyaları yüzeysel inceleyin. Projeyi yerel sunucunuza indirin. Jekyll düzenini bilgisayarda yüklü değilse yükleyin. Talimatlar için <a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/">https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/</a>. </p>
-  <p>Resmi django sitesine giriş yapın <a href="https://djangoproject.com">https://djangoproject.com</a> ve türkçeleştirilen sayfalarda olmayan sayfaları keşfedip çeviriye başlayın.</p>
-  <h1>URL düzeni</h1>
-  <p>Html dosyalarında sabit url yerine değişmeli url düzeni kullanmamız gerekmektedir. Yani gelecekte değişmesi ihtimaline karşı değişkenler kullanılarak urlleri çağırmalıyız. Bunun için dosyaları oluştururken kullanacağımız URL düzeni "_config.yml" içinde oluşturulmuştur. URL ler için mevcut tanımlamalar haricinde yeni tanımlamalarda yapabilirsiniz. İhtiyaç duyulan URL için tanımlanan değiştirgeyi aşağıdaki örnekteki gibi oluşturduğunuz HTML içinde kullanabilirsiniz.</p>
-  <code>
-&#123;&#123; site.degisken_adi &#125;&#125;
-  </code>
+# Yazarlar İçin
 
-  <h1>Yeni HTML oluşturduğunuzda</h1>
-  <p>İlk defa bir html dosyası oluşturuyorsanız eğer dosyanın en başına ayarları tanımlamanız gerekmektedir. Div içine de makale için temel HTML etiketlerini yazabilirsiniz. Bunlar şöyledir;</p>
-  <p>
+Bu belge yazarların uygulaması gereken yönergeler için yazılmıştır. Yazarlar en başta Django 2.0 sürümünün belgelerini türkçeleştirmek amacıyla aramıza katılır. Bu nedenle bahsedilecek olan konular ağırlıklı olarak türkçeleştirme işleri üzerinedir. Eğer [yazar başvurusu](https://github.com/djangoogreniyorum/djangoogreniyorum.github.io/issues/1) yaparak yazar olmamışsanız ilk olarak okumanız gereken sayfadasınız.
+
+## Nasıl Başlayacağım?
+
+- İlk olarak github sayfamıza [github | djangoogreniyorum.github.io](https://github.com/djangoogreniyorum/djangoogreniyorum.github.io/) geçin.
+- Dosyaları yüzeysel inceleyin.
+- Projeyi yerel sunucunuza indirin.
+- Yerel sunucu kullanmak istiyorsanız eğer şu şartlara sağlayın.
+   - Jekyll düzenini bilgisayarda yüklü değilse yükleyin. Talimatlar için [tıklayın](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/).
+- Resmi django sitesine giriş yapın <a href="https://djangoproject.com">https://djangoproject.com</a> ve türkçeleştirilen sayfalarda olmayan sayfaları keşfedip çeviriye başlayın.
+
+## URL düzeni
+
+Resmi djangoproject.com sitesinde alanadı altında bulunan url sözdizimlerini birebir kullanacağız. Örnek vermek gerekirse; url'de https://docs.djangoproject.com/en/2.0/intro/tutorial01/ şöyle bir değer görmektesiniz diyelim. Alan adı https://docs.djangoproject.com kullanılmakta. Bu kısım türkçeleştirme aşamasında bağ belirtirken silinir. Böylelikle sözdizimi birebir kullanılarak dosyalar sözdizimine göre oluşturulur ve kullanılır.
+
+Örneğin biz bu sayfayı daha önceden çevirmiştik. Şimdi her iki bağlantıyı alt alta yazıp arasındaki farkı görelim.
+
+- https://docs.djangoproject.com/en/2.0/intro/tutorial01/
+- https://djangoogreniyorum.github.io/en/2.0/intro/tutorial01/
+
+Dikkat ettiğiniz üzere sadece alan adları değiştirildi. Bunu bir değiştirilmez kural olarak görün. Çeviri yapacağınız sayfanın sadece alan adını silerek bağlantı bilgisi yanımlayacaksını. Eğer .md dosyası yazıyorsanız parantezler içine şöyle yazacaksınız;
+
+- &#91;&#93;(/en/2.0/intro/tutorial01/)
+
+Eğer html dosya oluşturuyorsanız şöyle yazacaksınız;
+
+- <a href="/en/2.0/intro/tutorial01/"></a>
+
+Böylelikle urlleri doğru bir şekilde belirtmiş olursunuz. Şimdi bir sonraki aşamaya gelelim.
+
+## Dizin oluşturma ve dosyalandırma
+
+Bir sayfayı türkçeleştirmeye karar verdiğiniz. Peki dosyayı nereye nasıl yerleştireceğiz? İşte burada dosyaları URL yoluna uygun şekilde dizinler içine yerleştireceğiz. Yukarıda verilen bağ değerine bakarak dizinler içinde ilgili dosyayı bulmaya çalışın. Böylelikle kurguyu anlamış olacaksınız.
+
+### Değişmeli bağlar
+
+Bazı durumlarda katı url yerine değişmeli url düzeni kullanmamız gerekir. Yani gelecekte değişme olasılığı bulunan bağlardan bahsediyoruz. İşte bu durumda bir değişken tanımlar gibi config.yml dosyası içinde bağ imi tanımlıyoruz.
+
+Kullanımına gelince, config.yml dosyasındaki bağ imini çağırmak için süslü parantezlerden 2 tane açıp 2 tane kapatarak arasına **site.kullanilacak_bag_degeri** yazıyoruz. Böylelikle tek bir yerden bağ değerini değiştirerek her yere yansıtmamız mümkün ve hızlı olabiliyor. Örnek kullanım aşağıdaki gibidir.
+
+  <pre><code>
+&#123;&#123; site.degisken_adi &#125;&#125;
+  </code></pre>
+
+## Yeni belge oluşturduğunuzda
+
+İlk defa bir belge dosyası oluşturuyorsanız eğer dosyanın en başına ayarları tanımlamanız gerekmektedir. Bunlar şöyledir;
+
   <pre><code>
   &ndash;&ndash;&ndash;
   layout: general
   title: Django Öğreniyorum Pencere Başlığı
   &ndash;&ndash;&ndash;
-  &lt;div data-gnl="kaplama"&gt;&lt;div&gt;
   </code></pre>
-  </p>
-  <p>devamında html satırlarınızı h1 p kodlarını yazarak ilerletebilirsiniz. Diğer html dosyalarına bakarak kendizine örnekler alacağınız ufak tekef şeyler görebilirsiniz.</p>
-  <p>Kolay gelsin.</p>
+
+### Kolay gelsin.
+
+- **not:** Eğer bu belge yeterli gelmiyorsa Django Öğrenim topluluğuna konuyu dile getirmeyi ihmal etmeyiniz.
