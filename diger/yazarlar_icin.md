@@ -30,7 +30,7 @@ Dikkat ettiğiniz üzere sadece alan adları değiştirildi. Bunu bir değiştir
 
 Eğer html dosya oluşturuyorsanız şöyle yazacaksınız;
 
-- <a href="/en/2.0/intro/tutorial01/"></a>
+- &lt;a href="/en/2.0/intro/tutorial01/"&gt;&lt;/a&gt;
 
 Böylelikle urlleri doğru bir şekilde belirtmiş olursunuz. Şimdi bir sonraki aşamaya gelelim.
 
