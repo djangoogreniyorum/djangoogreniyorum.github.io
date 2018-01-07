@@ -4,7 +4,7 @@ title: Kurulum - Django Öğreniyorum
 ---
 # Sıradaki Konu Ne?
 
-Yani tüm [giriş konuları]({{site.belgeler_giris}})nı okudunuz ve Django'yu kullanmaya devam etmek istediğinize karar verdiniz. Bu tanıtım ile sadece yüzeysel çizdik (aslında, her bir sözcüğü okuduysanız, genel belgelerin yaklaşık 5%'ini okudunuz demektir).
+Yani tüm [giriş konuları](/en/2.0/intro/)nı okudunuz ve Django'yu kullanmaya devam etmek istediğinize karar verdiniz. Bu tanıtım ile sadece yüzeysel çizdik (aslında, her bir sözcüğü okuduysanız, genel belgelerin yaklaşık 5%'ini okudunuz demektir).
 
 ## Sırada ne var?
 
@@ -26,7 +26,7 @@ Veya sayfalarda gelişi güzel gezinin!
 
 Django'nun temel belgeleri farklı ihtiyaçları karşılamak üzere tasarlanarak "parçalara" bölünmüştür.
 
-- [Giriş belgesi]({{site.belgeler_giris}}), Django'ya yeni gelen insanlar için veya genel olarak ağ geliştirmeye gelenlere yöneliktir. Derinliği olan herhangi bir şeyi kapsamak. Bunun yerine Django'nun "hislerini" anlatan üst düzey bir bakış sunar.
+- [Giriş belgesi](/en/2.0/intro/), Django'ya yeni gelen insanlar için veya genel olarak ağ geliştirmeye gelenlere yöneliktir. Derinliği olan herhangi bir şeyi kapsamak. Bunun yerine Django'nun "hislerini" anlatan üst düzey bir bakış sunar.
 - Öte yandan, [konu başlıkları](#), Django'nun ayrı bölümlerine derinlemesine dalıyor. Django'nun [kalıp örgüsü (model system)](#), [şablon motoru (template engine)](#), [biçim çerçevesi (forms framework)](#) ve daha fazlası için eksiksiz kılavuzlar var.
 - Olasılıkla zamanımızın çığunu harcamak istediğiniz yer burasıdır; kılavuzlarla yolunuzu bulursanız, Django hakkında bilmek zorunda olduğunuz her şeyi bilmeniz gerekir.
 - Ağ geliştirme genellikle belirgindir, derin değildir. Sorunlar birçok alana yayılır. Sık karşılaşdığımız "Nasıl yaparım" sorularına cevap veren bir dizi "[Nasıl yapılır?](#)" kılavuzları yazdık. Burada, Django ile PDF'ler oluşturma, özel şablon etiketleri yazma ve daha fazlası hakkında bilgi bulacaksınız.
