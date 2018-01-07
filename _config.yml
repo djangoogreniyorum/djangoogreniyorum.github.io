@@ -27,8 +27,12 @@ theme: minima
 start: /start/
 overview: /start/overview/
 belgeler: /belgeler/index
-belgeler_kurulum: /belgeler/2.0/kurulum
+
 en_20_intro_overview: /en/2.0/intro/overview/
+en_20_topics_security: /en/2.0/topics/security/
+
+
+belgeler_kurulum: /belgeler/2.0/kurulum
 belgeler_giris: /belgeler/2.0/giris
 belgeler_ogretici1: /belgeler/2.0/ogretici1
 belgeler_ogretici2: /belgeler/2.0/ogretici2
