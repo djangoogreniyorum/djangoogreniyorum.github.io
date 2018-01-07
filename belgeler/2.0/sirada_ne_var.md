@@ -71,9 +71,9 @@ Django (aka "trunk") geliştirme sürümünü kullanıyorsanız, dizinin tüm be
 
 Metin belgelerinden yararlanmanın düşük teknoloji bir yolu, tüm belgelerde bir cümle aramak için Unix grep yardımcı programını kullanmaktadır. Örneğin, bu size herhangi bir Django belgesinde "max_length" ifadesinin her bir sözünü gösterecektir:
 
-<pre data-gnl="1 1p"><code class="language-python">
-$ grep -r max_length /path/to/django/docs/
-</code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  $ grep -r max_length /path/to/django/docs/
+  </code></pre>
 
 ### HTML gibi, yerelce
 
@@ -83,7 +83,6 @@ HTML belgelerinin yerel bir kopyasını birkaç basit adresten edinebilirsiniz:
 
    <pre data-gnl="1 1p"><code class="language-python">
     $ grep -r max_length /path/to/django/docs/
-
     </code></pre>
 
 - Ardından belgeleri HTML'ye çevirmek için sadece birlikte gelen Makefile'yi kullanın:
@@ -91,7 +90,6 @@ HTML belgelerinin yerel bir kopyasını birkaç basit adresten edinebilirsiniz:
    <pre data-gnl="1 1p"><code class="language-python">
    $ cd path/to/django/docs
    $ make html
-
    </code></pre>
 
    Bunun için [GNU Make](https://www.gnu.org/software/make/)'in kurulu olması gerekir.
@@ -101,7 +99,6 @@ HTML belgelerinin yerel bir kopyasını birkaç basit adresten edinebilirsiniz:
    <pre data-gnl="1 1p"><code class="language-python">
    cd path&#92;to&#92;django&#92;docs
    make.bat html
-
    </code></pre>
 
    HTML bekleri docs/&#95;build/html ye yerleştirilecektir.
