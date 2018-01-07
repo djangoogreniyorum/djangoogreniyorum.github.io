@@ -69,4 +69,4 @@ Sizde Django'nun başka bir sürümü kurulu olabilir.
 
 ## İşte Bu Kadar!
 
-Öğreticiye geçebilirsiniz... [Buradan devam edin.]({{site.belgeler_ogretici1}})
+Öğreticiye geçebilirsiniz... [Buradan devam edin.](/en/20/intro/tutorial01/)

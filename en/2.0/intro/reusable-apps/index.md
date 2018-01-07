@@ -4,7 +4,7 @@ title: İleri Seviyede Öğretici - Django Öğreniyorum
 ---
 # İleri Seviyede Öğretici: Yeniden Kullanılabilir Uygulamalar Nasıl Yazılır?
 
-Bu sayfa <a href="{{site.belgeler_ogretici7}}">Öğretici 7</a>'nin kaldığı yerden başlıyor. Ağ anketimizi, yeni projelerde tekrar kullanabileceğiniz ve diğer insanlarla paylaşabileceğiniz bağımsız bir Python paketine dönüştürüyor olacağız.
+Bu sayfa <a href="/en/20/intro/tutorial07/">Öğretici 7</a>'nin kaldığı yerden başlıyor. Ağ anketimizi, yeni projelerde tekrar kullanabileceğiniz ve diğer insanlarla paylaşabileceğiniz bağımsız bir Python paketine dönüştürüyor olacağız.
 
 Kısa bir süre çnce 1-7 öğreticilerini tamamladık. Örnek projeyi aşağıda açıklananlarla eşleşecek şekilde incelemenizi öneririz.
 
@@ -14,7 +14,7 @@ Bir ağ uygulamasını tasarlamak, oluşturmak, sınamak ve sürdürmek yoğun b
 
 Yeniden kullanılabilirlik, Python'da yaşam biçimidir. Python Paket Dizini (PyPI) kendi Python programlarında kullanabileceğini geniş bir paket yelpazesine sahiptir. Projenize dahil edebileceğiniz mevcut yeniden kullanılabilir uygulamalar için <a href="#">Django Paketlerini</a> göz gezdirin. Django kendisi de sadece bir Python paketi. Bu, mevcut Python paketlerini veya Django uygulamalarını alıp kendi ağ projenize oluşturabileceğiniz anlamına gelir. Sadece projenizi benzersiz yapan parçaları yazmanız yeterlidir.
 
-Üzerinde çalıştığımız gibi bir anket uygulamasına ihtiyaç duyan yeni bir proje başlattığınızı varsayalım. Bu uygulamayı nasıl yeniden kullanılabilir yaparız? Neyse ki, halen bu yolda ilerliyorsun. <a href="{{site.belgeler_ogretici3}}">Öğretici 3</a>'te, bir anket kullanarak anketleri proje düzeyinde URLconf'tan nasıl ayırdığımızı gördük. Bu yazıda, uygulamanın yeni projelerde kullanımı kolay hale getirilmesi ve başkalarının yükleyip kullanabilmesi, yayınlamaya hazır hale getirilmesi için daha ileri adımlar atacağız.
+Üzerinde çalıştığımız gibi bir anket uygulamasına ihtiyaç duyan yeni bir proje başlattığınızı varsayalım. Bu uygulamayı nasıl yeniden kullanılabilir yaparız? Neyse ki, halen bu yolda ilerliyorsun. <a href="/en/20/intro/tutorial03/">Öğretici 3</a>'te, bir anket kullanarak anketleri proje düzeyinde URLconf'tan nasıl ayırdığımızı gördük. Bu yazıda, uygulamanın yeni projelerde kullanımı kolay hale getirilmesi ve başkalarının yükleyip kullanabilmesi, yayınlamaya hazır hale getirilmesi için daha ileri adımlar atacağız.
 
 <div data-bilget="genel" markdown="1">
 ### Paket? Uygulama?
@@ -66,7 +66,7 @@ Daha sonra başkalarının yüklemesi kolay bir Python paketinin oluşturulması
             admin/
                 base_site.html
   </code></pre>
-[Öğretici 7]({{site.belgeler_ogretici7}})'de benimsite/templates oluşturdunuz ve [Öğretici 3]({{site.belgeler_ogretiici3}})'deki anketler/templates oluşturdunuz. Şimdi, belki de proje ve uygulama için ayrı şablon dizinleri seçmeyi seçmek daha açıktı: Anket uygulamasının parçası olan her şey anketlerde. Uygulamanın kendine yetebilmesini sağlar ve yeni bir projeye dahil edilmesini kolaylaştırır.
+[Öğretici 7](/en/20/intro/tutorial07/)'de benimsite/templates oluşturdunuz ve [Öğretici 3]({{site.belgeler_ogretiici3}})'deki anketler/templates oluşturdunuz. Şimdi, belki de proje ve uygulama için ayrı şablon dizinleri seçmeyi seçmek daha açıktı: Anket uygulamasının parçası olan her şey anketlerde. Uygulamanın kendine yetebilmesini sağlar ve yeni bir projeye dahil edilmesini kolaylaştırır.
 
 Anketler dizini şimdi yeni bir Django projesine kopyalanabilir ve derhal yeniden kullanılabilir. Yine de yayınlanmaya hazır değil. Bunun için başkalarının yüklemesini kolaylaştırmak için uygulamayı paketlemeliyiz.
 

@@ -4,7 +4,7 @@ title: Öğretici 4 - Django Öğreniyorum
 ---
 # İlk Django Uygulamanızı Yazma, Bölüm 4
 
-Bu sayfa <a href="{{site.belgeler_ogretici3}}">Öğretici 3</a>'ün kaldığı yerden devam ediyor. Anket uygulamasına devam ediyoruz ve basit biçim işleme ve kodumuzu kesme üzerine odaklanacağız.
+Bu sayfa <a href="/en/20/intro/tutorial03/">Öğretici 3</a>'ün kaldığı yerden devam ediyor. Anket uygulamasına devam ediyoruz ve basit biçim işleme ve kodumuzu kesme üzerine odaklanacağız.
 
 ## Basit bir biçim yazın
 
@@ -35,7 +35,7 @@ Hızlı bir özet:
 - forloop.counter, for etiketinin kaç kez döngüden geçtiğini gösterir.
 - Bir POST biçimi oluşturduğumuzdan (veri değiştirme etkisine sahip olabilir), Siteler Arası İstek Hırsızlığı konusunda olağan şartlarda endişelenmeliyiz. Neyse ki endişenmenize gerek yok çünkü Django buna karşı koruma için çok kolay bir örgüyle geliyor. Kısacası, iç URL'leri hedefleyen tüm POST biçimlerinde {&#37; csrf_token &#37;} şablon etiketi kullanılmalıdır.
 
-Şimdi, gönderilen verileri işleyen ve onunla birlikte bir şey yapan bir Django görünümü oluşturalım. [Öğretici 3]({{site.belgeler_ogretici3}})'te, bu satırı içeren yoklama uygulamaları için bir URLconf oluşturduk:
+Şimdi, gönderilen verileri işleyen ve onunla birlikte bir şey yapan bir Django görünümü oluşturalım. [Öğretici 3](/en/20/intro/tutorial03/)'te, bu satırı içeren yoklama uygulamaları için bir URLconf oluşturduk:
 
 anketler/urls.py
 <pre data-gnl="1 1p"><code class="language-python">
@@ -83,14 +83,14 @@ Bu kod, bu derste henüz ele almadığımız birkaç şeyi içermektedir:
 
    Yukarıdaki Python yorumunda dikkat çekildiği gibi, her zaman bir POST verisi ile uğraştıktan sonra HttpResponseRedirect döndürmelidir. Bu ipucu, Django'ya özgü değildir; sadece iyi bir ağ geliştirme adetidir.
 
-- Bu örnekte HttpResponseRedirect yapıcısında reverse() işlevini kullanıyoruz. Bu işlev, görünüm işlevinde bir URL'nin sabit kodlanması gerekmeden yardımcı olur. Kontrolden geçirmek istediğimiz görünümü ve bu görünümü imleyen URL kalıbının değişken bölümü verilir. Bu durumda, [Öğretici 3]({{site.belgeler_ogretici3}})'de kurduğumuz URLconf kullanılarak reverse() çağrısı aşağıdaki gibi bir dize döndürür:
+- Bu örnekte HttpResponseRedirect yapıcısında reverse() işlevini kullanıyoruz. Bu işlev, görünüm işlevinde bir URL'nin sabit kodlanması gerekmeden yardımcı olur. Kontrolden geçirmek istediğimiz görünümü ve bu görünümü imleyen URL kalıbının değişken bölümü verilir. Bu durumda, [Öğretici 3](/en/20/intro/tutorial03/)'de kurduğumuz URLconf kullanılarak reverse() çağrısı aşağıdaki gibi bir dize döndürür:
    <pre data-gnl="1 1p"><code class="language-python">
 '/anketler/3/sonuclar/'
 </code></pre>
 
    burada soru.id'nin değeri 3'tür. Bu yönlendirilen URL daha sonra, sonuç sayfasını görüntülemek için 'sonuclar' görünümünü çağırır.
 
-[Öğretici 3]({{site.belgeler_ogretici3}})'de belirtildiği gibi, request bir HttpRequest nesnesidir. HttpRequest nesneleri hakkında daha fazla bilgi için <a href="#">istek ve yanıt (request ve response) belgeleri</a>ne bakın.
+[Öğretici 3](/en/20/intro/tutorial03/)'de belirtildiği gibi, request bir HttpRequest nesnesidir. HttpRequest nesneleri hakkında daha fazla bilgi için <a href="#">istek ve yanıt (request ve response) belgeleri</a>ne bakın.
 
 Birisi bir soruyu oylamaya başladıktan sonra, oylama() görünümü sorunun sonuçlar sayfasına yönlendirilir. Bu görünümü yazalım:
 
@@ -104,7 +104,7 @@ anketler/views.py
       return render(request, 'anketler/sonuclar.html', {'soru': soru})
 </code></pre>
 
-Bu, [Öğretici 3]({{site.belgeler_ogretici3}})'deki ayrinti() görünümüyle hemen hemen aynıdır. Tek fark şablon adıdır. Bu fazlalığı sonra çözeceğiz.
+Bu, [Öğretici 3](/en/20/intro/tutorial03/)'deki ayrinti() görünümüyle hemen hemen aynıdır. Tek fark şablon adıdır. Bu fazlalığı sonra çözeceğiz.
 
 Şimdi bir anketler/sonuclar.html şablonu oluşturun:
 
@@ -135,7 +135,7 @@ Buna yarış durumu denir. eğer ilgileniyorsanız bu sorunu nasıl çözebilece
 
 ## Genel görünümler kullanın: Az kod daha iyidir
 
-ayrinti() (<a href="{{site.belgeler_ogretici3}}">Öğretici 3</a>'den) ve sonuclar() görünümleri çok basittir. Yukarıda belirtildiği gibi gereğinden fazla... Anketlerin bir listesini görüntüleyen index() görünümüne benzer.
+ayrinti() (<a href="/en/20/intro/tutorial03/">Öğretici 3</a>'den) ve sonuclar() görünümleri çok basittir. Yukarıda belirtildiği gibi gereğinden fazla... Anketlerin bir listesini görüntüleyen index() görünümüne benzer.
 
 Bu görünümler, temel ağ geliştirmesinin ortak bir örneğini temsil eder: URL'den geçirilen bir değiştirgeye göre veritabanından veri alma, bir şablon yükleme ve işlenmiş şablonu iade etme. Bu çok yaygın olduğu için Django 'genel görünümler' örgüsü olarak adlandırılan bir kısayol sağlar.
 
@@ -235,4 +235,4 @@ Sunucuyu çalıştırın ve genel görünümlere dayalı yeni anket uygulamanız
 
 Genel görünümler hakkında ayrıntılı bilgi için [genel görünüm belgelerine](#) bakın.
 
-Biçimlere ve genel görünümlere uygun olduğunda, anket uygulamalarımızı denemek hakkında bilgi edinebilirsiniz. Bunun için [Öğretici 5]({{site.belgeler_ogretici5}}) bölümünü okuyun.
+Biçimlere ve genel görünümlere uygun olduğunda, anket uygulamalarımızı denemek hakkında bilgi edinebilirsiniz. Bunun için [Öğretici 5](/en/20/intro/tutorial05/) bölümünü okuyun.

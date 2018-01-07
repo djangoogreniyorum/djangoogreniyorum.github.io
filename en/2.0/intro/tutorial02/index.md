@@ -4,7 +4,7 @@ title: Öğretici 2 - Django Öğreniyorum
 ---
 # İlk Django Uygulamanızı Yazma, Bölüm 2
 
-Bu eğitim <a href="{{site.belgeler_ogretici1}}">öğretici 1</a>'in kaldığı yerden devam ediyor. Veritabanını kuracağız, ilk kalıbımızı oluşturacağız ve Django'nun doğal olarak oluşturulan yönetici sitesine hızlı bir giriş yapacağız.
+Bu eğitim <a href="/en/20/intro/tutorial01/">öğretici 1</a>'in kaldığı yerden devam ediyor. Veritabanını kuracağız, ilk kalıbımızı oluşturacağız ve Django'nun doğal olarak oluşturulan yönetici sitesine hızlı bir giriş yapacağız.
 
 ## Veritabanu Kurulumu
 
@@ -526,10 +526,10 @@ Sayfanın alt kısmı size birkaç seçenek sunar:
 - Kaydet ve başka ekle: Değişiklikleri kaydeder ve bu nesne türü için yeni, boş bir form yükler.
 - Sil: Silme onayı sayfası görüntüler.
 
-"Yayınlanan tarih" in değeri [Öğretici 1]({{site.belgeler_ogretici1}})'de soru oluşturduğunuz saatle eşleşmiyorsa, muhtemelen [TIME_ZONE](#) ayarı için doğru değeri ayarlamayı unuttuğunuz anlamına gelir. Değiştirin, sayfayı yeniden yükleyin ve doğru değerin göründüğünden emin olun.
+"Yayınlanan tarih" in değeri [Öğretici 1](/en/20/intro/tutorial01/)'de soru oluşturduğunuz saatle eşleşmiyorsa, muhtemelen [TIME_ZONE](#) ayarı için doğru değeri ayarlamayı unuttuğunuz anlamına gelir. Değiştirin, sayfayı yeniden yükleyin ve doğru değerin göründüğünden emin olun.
 
 "Bugün" ve "Şimdi" kısayollarını tıklatarak "Yayınlanan tarihi" değiştirin. Daha sonra "Kaydet ve devam et"i tıklayın. Ardından sağ üst köşedeki "Geçmiş"i tıklayın. Bu nesne yapılan değişikliklerin tümünü Django yöneticisi aracılığıyla, değişikliği yapan kişinin zaman damgası ve kullanıcı adı ile birlikte listelendiği bir sayfa görürsünüz:
 
 <img src="" alt="">
 
-Modeller API'sinden memnun kaldıysanız ve kendinizi yönetici sitesiyle tanıdıysanız, anket uygulamalarımıza daha fazla görünüm ekleme hakkında bilgi edinmek için [Öğretici 3]({{site.belgeler_ogretici3}}) bölümünü okuyun.
+Modeller API'sinden memnun kaldıysanız ve kendinizi yönetici sitesiyle tanıdıysanız, anket uygulamalarımıza daha fazla görünüm ekleme hakkında bilgi edinmek için [Öğretici 3](/en/20/intro/tutorial03/) bölümünü okuyun.
