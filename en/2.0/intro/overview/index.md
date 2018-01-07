@@ -1,14 +1,14 @@
 ---
 layout: general
-title: Derslere Giriş - Django Öğreniyorum
+title: Bir Bakışta Django - Django Öğreniyorum
 ---
-# Bir bakışta Django
+# Bir Bakışta Django
 
 Django, hızlı bir haber odası ortamında geliştirildiğinden, ortak ağ geliştirme görevlerinih ızlı ve kolay kapmak için tasarlandı. Django ile veritabanı odaklı bir ağ uygulaması yazmanın nasıl yapıldığına dair gayri resmi bir genel bakış atalım.
 
 Bu belgenin amacı, Django'nun nasıl çalıştığını anlamak için yeterli teknik ayrıntıları vermektir. Ancak bu bir ders veya kaynak olarak tasarlanmamıştır. Bir projeye başlamaya hazır olduğunuzda, <a href="/belgeler/2.0/ogretici1.html">öğreticiyle</a> başlayabilir veya <a href="/belgeler/2.0/basliklar/index.html">daha ayrıntılı belgelere</a> dalabilirsiniz.
 
-## Modelinizi Tasarlayın
+## Kalıbınızı Tasarlayın
 
 Django'yu bir veritabanı olmadan kullanabilmenize rağman, veritabanı düzeninizi Python kodunda tanımladığınız bir nesne-ilişkisel eşlemeyle birlikte gelir.
 
