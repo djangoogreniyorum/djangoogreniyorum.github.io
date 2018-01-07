@@ -6,13 +6,13 @@ title: Bir Bakışta Django - Django Öğreniyorum
 
 Django, hızlı bir haber odası ortamında geliştirildiğinden, ortak ağ geliştirme görevlerinih ızlı ve kolay kapmak için tasarlandı. Django ile veritabanı odaklı bir ağ uygulaması yazmanın nasıl yapıldığına dair gayri resmi bir genel bakış atalım.
 
-Bu belgenin amacı, Django'nun nasıl çalıştığını anlamak için yeterli teknik ayrıntıları vermektir. Ancak bu bir ders veya kaynak olarak tasarlanmamıştır. Bir projeye başlamaya hazır olduğunuzda, <a href="/belgeler/2.0/ogretici1.html">öğreticiyle</a> başlayabilir veya <a href="/belgeler/2.0/basliklar/index.html">daha ayrıntılı belgelere</a> dalabilirsiniz.
+Bu belgenin amacı, Django'nun nasıl çalıştığını anlamak için yeterli teknik ayrıntıları vermektir. Ancak bu bir ders veya kaynak olarak tasarlanmamıştır. Bir projeye başlamaya hazır olduğunuzda, [öğreticiyle](/en/2.0/intro/tutorial01/) başlayabilir veya [daha ayrıntılı belgelere](/en/2.0/topics/) dalabilirsiniz.
 
 ## Kalıbınızı Tasarlayın
 
 Django'yu bir veritabanı olmadan kullanabilmenize rağman, veritabanı düzeninizi Python kodunda tanımladığınız bir nesne-ilişkisel eşlemeyle birlikte gelir.
 
-Veri modeli sözdizimi, modellerinizi göstermek için birçok zengin yol sunar. Şu ana kadar, yıllarca süren veritabanı şeması sorunlarını çözmüştür. İşte hızlı bir örnek:
+[Veri-kalıbı sözdizimi](/en/2.0/topics/db/models/), kalıplarınızı göstermek için birçok zengin yol sunar. Şu ana kadar, yıllarca süren veritabanı şeması sorunlarını çözmüştür. İşte hızlı bir örnek:
 
 benimsite/haberler/models.py
 <pre data-gnl="1 1p"><code class="language-python">
@@ -41,13 +41,13 @@ $ python manage.py migrate
 
 </code></pre>
 
-Göç komutu (migrate) mevcut tüm modellerinize bakar ve halihazırda var olmayan tablolar için veritabanınızda tablolar oluşturur ve isteğe bağlı olarak daha [zengin şema kontrolü](/belgeler/2.0/basliklar/migrations.html) sağlanır.
+Göç komutu (migrate) mevcut tüm modellerinize bakar ve halihazırda var olmayan tablolar için veritabanınızda tablolar oluşturur ve isteğe bağlı olarak daha [zengin şema kontrolü](/en/2.0/topics/migrations/) sağlanır.
 
 <hr>
 
 ## Ücretsiz API'nin tadını çıkarın
 
-Bununla, verilerinize erişmek için özgür ve zengin bir Python API'si var. API anında oluşturulur, kod üretimi gerekli değildir:
+Bununla, verilerinize erişmek için özgür ve zengin bir [Python API](/en/2.0/topics/db/queries/)'si var. API anında oluşturulur, kod üretimi gerekli değildir:
 
 <pre data-gnl="1 1p"><code class="language-python">
   # Oluşturduğumuz modelleri &quot;haber&quot; uygulamamızdan i&ccedil;e aktarın
@@ -122,7 +122,7 @@ Bununla, verilerinize erişmek için özgür ve zengin bir Python API'si var. AP
 
 ## Dinamik bir yönetici arayüzü: sadece iskele değil, tüm ev var.
 
-Django, modelleriniz tanımlandıktan sonra kimliği doğrulanmış kullanıcıların nesneleri ekleme, değiştirme ve silme olanağı veren bir ağ sitesi olan, usta, üretime hazır bir idari arabirimi doğal olarak oluşturabilir. Modelinizi yönetici sitesine kaydetmek kadar kolaydır:
+Django, kalıplarınızı tanımlandıktan sonra kimliği doğrulanmış kullanıcıların nesneleri ekleme, değiştirme ve silme olanağı veren bir ağ sitesi olan, usta, üretime hazır bir [yönetici arabirimi](/en/2.0/ref/contrib/admin/) doğal olarak oluşturabilir. Kalıbınızı yönetici sitesine kaydetmek kadar kolaydır:
 
 benimsite/haberler/models.py
 <pre data-gnl="1 1p"><code class="language-python">
@@ -153,7 +153,7 @@ Django uygulamalarını oluştururken kullanılan tipik bir iş akışı, modell
 
 Temiz, şık bir URL şeması, yüksek kaliteli bir ağ uygulamasında önemli bir ayrıntıdır. Django güzel bir URL tasarımını teşvik eder ve .php veya .asp gibi URL'lerde herhangi bir hata yapmaz.
 
-Bir uygulama için URL'ler tasarlamak için bir URLconf adlı Python eklentisi oluşturursunuz. Uygulamanız için içindekiler tablosu, URL kalıpları ile Python geri arama işlevleri arasında basit bir imgeleme içerir. URLconf'lar, URL'leri Python kodundan ayırmak için de kullanılır. Yukarıdaki Haberci / Makale örneği için URLconf nasıl olacağını aşağıda görebilirsiniz:
+Bir uygulama için URL'ler tasarlamak için bir [URLconf](/en/2.0/topics/http/urls/) adlı Python eklentisi oluşturursunuz. Uygulamanız için içindekiler tablosu, URL kalıpları ile Python geri arama işlevleri arasında basit bir imgeleme içerir. URLconf'lar, URL'leri Python kodundan ayırmak için de kullanılır. Yukarıdaki Haberci / Makale örneği için URLconf nasıl olacağını aşağıda görebilirsiniz:
 
 benimsite/haberler/urls.py
 <pre data-gnl="1 1p"><code class="language-python">
@@ -178,7 +178,7 @@ URL kalıpları eşleştiğinde, Django, Python işlevi olan belirli görünüm�
 
 ## Görünümleri yaz (views)
 
-Her görünüm, iki şeyden birini yapmaktan sorumludur: İstenen sayfa için içeriği içeren bir HttpResonse nesenesini döndürme veya Http404 gibi bir istisna yükseltere. Gerisi size kalmış.
+Her görünüm, iki şeyden birini yapmaktan sorumludur: İstenen sayfa için içeriği içeren bir [HttpResonse](/en/2.0/ref/request-response/#django.http.HttpResponse) nesenesini döndürme veya [Http404](/en/2.0/topics/http/views/#django.http.Http404) gibi bir istisna yükseltere. Gerisi size kalmış.
 
 Genellikle, bir görünüm değiştirgelere göre veri alır, bir şablon yükler ve şablonu alınan verilerle işler. Yukarıdaki yillik_arsiv için bir örnek görüntü var:
 
@@ -195,7 +195,7 @@ def yillik_arsiv(request, yil):
 
 </code></pre>
 
-Bu örnek, birkaç güçlü özelliklere sahip olan Django <a href="/belgeler/2.0/basliklar/sablonlar">şablon örgüsünü</a> kullanmaktadır; ancak programcı olmayanların kullanması için yeterince basit kalmaya çabalamaktadır.
+Bu örnek, birkaç güçlü özelliklere sahip olan Django [şablon örgüsünü](/en/2.0/topics/templates/) kullanmaktadır; ancak programcı olmayanların kullanması için yeterince basit kalmaya çabalamaktadır.
 
 <hr>
 
@@ -203,7 +203,7 @@ Bu örnek, birkaç güçlü özelliklere sahip olan Django <a href="/belgeler/2.
 
 Yukarıdaki kod, haberler/yillik_arsiv.html şablonunu yükler.
 
-Django, şablonlar arasında fazlalığı azaltmanızı sağlayan bir şablon arama yoluna sahiptir. Django ayarlarınızda, DIRS ile şablonları denetlemek için dizinlerin bir listesini belirtirsiniz. İlk dizinde bir şablon yoksa, ikinci dizini denetler, vb.
+Django, şablonlar arasında fazlalığı azaltmanızı sağlayan bir şablon arama yoluna sahiptir. Django ayarlarınızda, [DIRS](/en/2.0/ref/settings/#std:setting-TEMPLATES-DIRS) ile şablonları denetlemek için dizinlerin bir listesini belirtirsiniz. İlk dizinde bir şablon yoksa, ikinci dizini denetler, vb.
 
 Diyelim ki haberler/yillik_arsiv.html şablon bulundu. İşte bunun gibi görünebilir:
 
@@ -226,13 +226,13 @@ benimsite/haberler/templates/haberler/yillik_arsiv.html
 
 </code></pre>
 
-Değişkenler çift kıvrımlı parantezlerle çevrilidir. {{makale.baslik}}, "Makale başlığı özniteliğinin değerini verin" anlamına gelir. Ancak noktalar yalnızca özellik taramasıiçin kullanılmaz. Ayrıca sözlük anahtarlı arama, dizin arama ve işlev çağrıları yapabilirler.
+Değişkenler çift kıvrımlı parantezlerle çevrilidir. **{{makale.baslik}}**, "Makale başlığı özniteliğinin değerini verin" anlamına gelir. Ancak noktalar yalnızca özellik taramasıiçin kullanılmaz. Ayrıca sözlük anahtarlı arama, dizin arama ve işlev çağrıları yapabilirler.
 
-Not: {{makale.yayim_tarihi | date:"F j, Y"}} bir Unix tarzı "boru" yani "|" karakterini kullanır. Buna şablon süzgeci denir ve bir değişkenin değerini süzmek için bir yöntemdir. Bu durumda tarih süzgeci bir Python datetime nesnesini biçim olarak biçimler (PHP date işlevinde olduğu gibi)
+Not: **{{makale.yayim_tarihi | date:"F j, Y"}}** bir Unix tarzı "boru" yani "|" karakterini kullanır. Buna şablon süzgeci denir ve bir değişkenin değerini süzmek için bir yöntemdir. Bu durumda tarih süzgeci bir Python datetime nesnesini biçim olarak biçimler (PHP date işlevinde olduğu gibi)
 
-Birlikte istediğiniz kadar süzgeç zinciri yapabilirsiniz. Özel şablon süzgeçleri yazabilirsiniz. Sahnelerin arkasında özel Python kodunu çalıştıran özel şablon etiketleri yazabilirsiniz.
+Birlikte istediğiniz kadar süzgeç zinciri yapabilirsiniz. [Özel şablon süzgeçleri](/en/2.0/howto/custom-template-tags/#howto-writing-custom-template-filters) yazabilirsiniz. Sahnelerin arkasında özel Python kodunu çalıştıran [özel şablon etiketleri](/en/2.0/howto/custom-template-tags/) yazabilirsiniz.
 
-Son olarak, Django "şablon kalıtımı" kavramını kullanmaktadır. {&#37; Extends "temel.html" &#37;} ne işe yarar? İlk önce bir blok yığını tanımlayan "temel" adındaki şablonu yükleyin ve blogkları aşağıdaki bloklarla doldurun anlamına gelir. Kısacası, şablonlarda fazlalıkları önemli ölçüde azaltabilirsiniz. Her şablon yalnızca ilgili şablon için benzersi olanları tanımlamalıdır.
+Son olarak, Django "şablon kalıtımı" kavramını kullanmaktadır. **{&#37; Extends "temel.html" &#37;}** ne işe yarar? İlk önce bir blok yığını tanımlayan "temel" adındaki şablonu yükleyin ve blogkları aşağıdaki bloklarla doldurun anlamına gelir. Kısacası, şablonlarda fazlalıkları önemli ölçüde azaltabilirsiniz. Her şablon yalnızca ilgili şablon için benzersi olanları tanımlamalıdır.
 
 İşe sabit dosyaların kullanımı da dahil olmak üzere "temel.html" şablonu şöyle görünebilir.
 
@@ -262,8 +262,8 @@ Başka bir örgüyü tercih ederseniz, Django'nun şablon görügüsünü kullan
 
 Bu sadece Django'nun işlevselliği hakkında hızlı bir genel bakış olmuştur. Bazı kullanışlı özellikler şöyle:
 
-- Memcached veya diğer arka uçlarla bütünleşen bir [önbellekleme çerçevesi](/belgeler/2.0/basliklar/onbellekleme.html).
-- RSS ve Atom oluşturma işlemini küçük bir Python sınıfı yazmak kadar kolaylaştıran bir [sendikasyon çerçevesi](/belgeler/2.0/basliklar/onbellekleme.html).
+- Memcached veya diğer arka uçlarla bütünleşen bir [önbellekleme çerçevesi](/en/2.0/topics/cache/).
+- RSS ve Atom oluşturma işlemini küçük bir Python sınıfı yazmak kadar kolaylaştıran bir [sendikasyon çerçevesi](/en/2.0/ref/contrib/syndication/).
 - Doğal olarak oluşturulan daha çekici doğal yönetici özellikleri
 
-Bir sonraki belirgin adımlar <a href="#">Django'yu indirmek</a>, <a href="#">dersleri okumak</a>, <a href="#">topluluğa katılmak</a> içindir. İlginiz için teşekkürler.
+Bir sonraki belirgin adımlar [Django'yu indirmek](/download/), [dersleri okumak](/en/2.0/intro/tutorial01/), [topluluğa katılmak](/community/) içindir. İlginiz için teşekkürler.
