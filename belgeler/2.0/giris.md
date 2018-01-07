@@ -6,7 +6,7 @@ title: Derslere Giriş - Django Öğreniyorum
 
 Django için yeni misiniz? Ya da genel olarak ağ geliştirmede? Eh, doğru yere geldiniz. Hızlı bir şekilde çalışmak ve ayaklanmak için bu belgeyi okuyun.
 
-- [Bir bakışta Django]({{site.belgeler_bakis}})
+- [Bir bakışta Django]({{site.en_20_intro_overview}})
 - [Hızlı kurulum rehberi]({{site.belgeler_kurulum}})
 - [İlk django uygulamanızı yazma, bölüm 1]({{site.belgeler_ogretici1}})
 - [İlk django uygulamanızı yazma, bölüm 2]({{site.belgeler_ogretici2}})
