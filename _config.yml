@@ -25,7 +25,7 @@ theme: minima
 
 # Açık bağlar
 start: /start/
-onbakis: /belgeler/basla/onbakis
+overview: /start/overview/
 belgeler: /belgeler/index
 belgeler_kurulum: /belgeler/2.0/kurulum
 belgeler_bakis: /belgeler/2.0/bakis
