@@ -24,7 +24,7 @@ markdown: kramdown
 theme: minima
 
 # Açık bağlar
-basla: /belgeler/basla
+basla: /start/
 onbakis: /belgeler/basla/onbakis
 belgeler: /belgeler/index
 belgeler_kurulum: /belgeler/2.0/kurulum
