@@ -11,7 +11,7 @@ Temel bir anket uygulamasının oluşturulması konusunu bu ders boyunca işleye
 - Herkesin anketlere katılmasını ve oy vermesini sağlayan bir site
 - Anketler eklemenize, değiştirmenize ve silmenize izin veren bir yönetici sitesi.
 
-Zaten [Django'nun kurulu]({{site.belgeler_kurulum}}) olduğunu varsayıyoruz. Django'nun kurulu olduğunu söyleyebilirsiniz ve kabuk isteminde hangi sürümün çalıştırıldığını $ önekiyle belirtilen yere aşağıdaki komutu yazarak görebilirsiniz.
+Zaten [Django'nun kurulu](/en/2.0/install/) olduğunu varsayıyoruz. Django'nun kurulu olduğunu söyleyebilirsiniz ve kabuk isteminde hangi sürümün çalıştırıldığını $ önekiyle belirtilen yere aşağıdaki komutu yazarak görebilirsiniz.
 
 <pre data-gnl="1 1p"><code class="language-python">
 $ python -m django --version
@@ -22,7 +22,7 @@ Django yüklüyse, kurulumunuzun sürümünü görmelisiniz. Değilse, "No modul
 
 Bu öğretici Python 3.4 ve sonrasını destekleyen Django 2.0 için yazılmıştır. Django sürümü eşleşmiyorsa, bu sayfanın sağ alt köşesindeki sürüm değiştiriciyi kullanarak Django sürümüne ilişkin öğreticiye gidebilir veya Django'yu en yeni sürüme güncelleyebilirsiniz. Python'un daha eski bir sürümünü kullanıyosanız, "<a href="#">Django ile hangi Python sürümünü kullanabilirim?</a>" konusuna bakarak uyumlu sürümü bulabilirsiniz.
 
-Django'nun eski sürümlerini kaldırma ve yeni bir tane kurma konusunda <a href="{{site.belgeler_kurulum}}">Django'nun nasıl kurulacağı</a> konusuna bakın.
+Django'nun eski sürümlerini kaldırma ve yeni bir tane kurma konusunda <a href="/en/2.0/install/">Django'nun nasıl kurulacağı</a> konusuna bakın.
 
 <div data-bilget="genel" markdown="1">
 Yardım alınabilecek yer:
