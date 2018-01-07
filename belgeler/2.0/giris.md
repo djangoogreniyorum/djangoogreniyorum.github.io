@@ -16,7 +16,7 @@ Django için yeni misiniz? Ya da genel olarak ağ geliştirmede? Eh, doğru yere
 - [İlk django uygulamanızı yazma, bölüm 6]({{site.belgeler_ogretici6}})
 - [İlk django uygulamanızı yazma, bölüm 7]({{site.belgeler_ogretici7}})
 - [İleri düzey öğretici: Yeniden kullanılabilir uygulamalar nasıl yazılır?]({{site.belgeler_paket_yapma}})
-- [Sonraki okunacak şey](#)
+- [Sonraki okunacak şey]({{site.belgeler_sirada_ne_var}})
 - [Django için ilk yamanızı yazma](#)
 
 # Ayrıca bakınız
