@@ -16,7 +16,7 @@ Djang'nun çok sayıda belgeleri var. Nasıl düzenlendiğine ilişkin üst düz
 
 <hr>
 
-##(#index-first-steps) İlk Adımlar
+## İlk Adımlar {#index-first-steps}
 
 Programlamada veya Django'da yeni misiniz? Burası başlamak için uygun bir yer!
 
