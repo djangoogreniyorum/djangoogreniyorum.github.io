@@ -8,7 +8,7 @@ Bu belge yazarların uygulaması gereken yönergeler için yazılmıştır. Yaza
 
 ## Nasıl Başlayacağım?
 
-- İlk olarak github sayfamıza [github | djangoogreniyorum.github.io](https://github.com/djangoogreniyorum/djangoogreniyorum.github.io/) geçin.
+- İlk olarak github sayfamıza [github djangoogreniyorum.github.io](https://github.com/djangoogreniyorum/djangoogreniyorum.github.io/) geçin.
 - Dosyaları yüzeysel inceleyin.
 - Projeyi yerel sunucunuza indirin.
 - Yerel sunucu kullanmak istiyorsanız eğer şu şartlara sağlayın.
