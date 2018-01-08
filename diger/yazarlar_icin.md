@@ -15,6 +15,10 @@ Bu belge yazarların uygulaması gereken yönergeler için yazılmıştır. Yaza
    - Jekyll düzenini bilgisayarda yüklü değilse yükleyin. Talimatlar için [tıklayın](https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll/).
 - Resmi django sitesine giriş yapın <a href="https://djangoproject.com">https://djangoproject.com</a> ve türkçeleştirilen sayfalarda olmayan sayfaları keşfedip çeviriye başlayın.
 
+## .md dosyalarıyla çalışacağız
+
+Çevirilerimizi .md uzantılı dosyalara yapacağız. Bazı durumlarda .html kullanabiliriz. Ancak genel olarak .md ile çalışacağız. md dosyaları hakkında bilgi için [tıklayın](https://guides.github.com/features/mastering-markdown/). Eğer ilk defa bir md dosyası görüyorsanız kaynak dosyalarımızda oluşturulmuş md dosyalarını inceleyebilirsiniz. HTML çalışması yapmaktan daha kolay olduğunu fark edeceksiniz. Bu arada md markdown demektir. Bilmeniz gereken diğer konulara yazının devamında değindik.
+
 ## URL düzeni
 
 Resmi djangoproject.com sitesinde alanadı altında bulunan url sözdizimlerini birebir kullanacağız. Örnek vermek gerekirse; url'de https://docs.djangoproject.com/en/2.0/intro/tutorial01/ şöyle bir değer görmektesiniz diyelim. Alan adı https://docs.djangoproject.com kullanılmakta. Bu kısım türkçeleştirme aşamasında bağ belirtirken silinir. Böylelikle sözdizimi birebir kullanılarak dosyalar sözdizimine göre oluşturulur ve kullanılır.
