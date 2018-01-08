@@ -9,10 +9,10 @@ Django hakkında ihtiyaç duyabileceğin her şey.
 
 Djang'nun çok sayıda belgeleri var. Nasıl düzenlendiğine ilişkin üst düzey bir bakış, bazı şeyleri nerede bulacağınıza bilmenize yardımcı olur:
 
-- [Dersler](/en/2.0/intro/), ağ uygulaması oluşturmak için sizi bir dizi adımla ilerletir. Django'ya veya ağ uygulamanın geliştirilmesine yeni başladıysanız buradan başlayın. Ayrıca aşağıdaki "İlk adımlar" a bakın.
-- [Konu başlıkları](#), önemli konuları ve kavramları oldukça yüksek bir seviyede tartışmakta ve yararlı geçmiş bilgileri açıklamaları sağlamaktadır.
-- [Kaynakça rehberi](#), API'ler ve Django'nun makinelerinin diğer yönleri için teknik kaynakçalar içerir. Nasıl çalıştığını ve nasıl kullanılacağını açıklarlar, ancak temel kavramları temel bir anlayışa sahip olduğunuzu varsayarlar.
-- [Nasıl yapılır rehberi](#) tariflerdir. Temel sorunlara ve kullanım durumlarına yönelik adımlarla size rehberlik ediyorlar. Derslerden daha ileri düzeydedirler ve Django'nun nasıl çalıştığına dair bazı bilgileri varsaymaktadırlar.
+- [Dersler](/en/2.0/intro/), ağ uygulaması oluşturmak için sizi bir dizi adımla ilerletir. Django'ya veya ağ uygulamanın geliştirilmesine yeni başladıysanız buradan başlayın. Ayrıca aşağıdaki "[İlk adımlar](/en/2.0/#index-first-steps)" a bakın.
+- [Konu başlıkları](/en/2.0/topics/), önemli konuları ve kavramları oldukça yüksek bir seviyede tartışmakta ve yararlı geçmiş bilgileri açıklamaları sağlamaktadır.
+- [Kaynakça rehberi](/en/2.0/ref/), API'ler ve Django'nun makinelerinin diğer yönleri için teknik kaynakçalar içerir. Nasıl çalıştığını ve nasıl kullanılacağını açıklarlar, ancak temel kavramları temel bir anlayışa sahip olduğunuzu varsayarlar.
+- [Nasıl yapılır rehberi](/en/2.0/howto/) tariflerdir. Temel sorunlara ve kullanım durumlarına yönelik adımlarla size rehberlik ediyorlar. Derslerden daha ileri düzeydedirler ve Django'nun nasıl çalıştığına dair bazı bilgileri varsaymaktadırlar.
 
 <hr>
 
