@@ -231,7 +231,7 @@ benimsite/haberler/templates/haberler/yillik_arsiv.html
 
 Değişkenler çift kıvrımlı parantezlerle çevrilidir. **{{makale.baslik}}**, "Makale başlığı özniteliğinin değerini verin" anlamına gelir. Ancak noktalar yalnızca özellik taramasıiçin kullanılmaz. Ayrıca sözlük anahtarlı arama, dizin arama ve işlev çağrıları yapabilirler.
 
-Not: **{{makale.yayim_tarihi | date:"F j, Y"}}** bir Unix tarzı "boru" yani "|" karakterini kullanır. Buna şablon süzgeci denir ve bir değişkenin değerini süzmek için bir yöntemdir. Bu durumda tarih süzgeci bir Python datetime nesnesini biçim olarak biçimler (PHP date işlevinde olduğu gibi)
+Not: **{{makale.yayim_tarihi &#124; date:"F j, Y"}}** bir Unix tarzı "boru" yani "&#124;" karakterini kullanır. Buna şablon süzgeci denir ve bir değişkenin değerini süzmek için bir yöntemdir. Bu durumda tarih süzgeci bir Python datetime nesnesini biçim olarak biçimler (PHP date işlevinde olduğu gibi)
 
 Birlikte istediğiniz kadar süzgeç zinciri yapabilirsiniz. [Özel şablon süzgeçleri](/en/2.0/howto/custom-template-tags/#howto-writing-custom-template-filters) yazabilirsiniz. Sahnelerin arkasında özel Python kodunu çalıştıran [özel şablon etiketleri](/en/2.0/howto/custom-template-tags/) yazabilirsiniz.
 
