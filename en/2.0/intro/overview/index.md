@@ -10,7 +10,7 @@ Bu belgenin amacı, Django'nun nasıl çalıştığını anlamak için yeterli t
 
 ## Kalıbınızı Tasarlayın
 
-Django'yu bir veritabanı olmadan kullanabilmenize rağman, veritabanı düzeninizi Python kodunda tanımladığınız bir nesne-ilişkisel eşlemeyle birlikte gelir.
+Django'yu bir veritabanı olmadan kullanabilmenize rağman, veritabanı düzeninizi Python kodunda tanımladığınız bir [nesne-ilişkisel eşlemeyle](https://en.wikipedia.org/wiki/Object-relational_mapping) birlikte gelir.
 
 [Veri-kalıbı sözdizimi](/en/2.0/topics/db/models/), kalıplarınızı göstermek için birçok zengin yol sunar. Şu ana kadar, yıllarca süren veritabanı şeması sorunlarını çözmüştür. İşte hızlı bir örnek:
 
@@ -33,15 +33,18 @@ class Makale(models.Model):
   def __str__(self):
       return self.baslik
   </code></pre>
+
   <hr>
+
 ## Kurulumu Yap
-  Şimdi, veritabanı tablolarını doğal olarak oluşturmak için Django komut satırı yardımcı programını çalıştırın:
+
+Şimdi, veritabanı tablolarını doğal olarak oluşturmak için Django komut satırı yardımcı programını çalıştırın:
+
   <pre data-gnl="1 1p"><code class="language-python">
 $ python manage.py migrate
+  </code></pre>
 
-</code></pre>
-
-Göç komutu (migrate) mevcut tüm modellerinize bakar ve halihazırda var olmayan tablolar için veritabanınızda tablolar oluşturur ve isteğe bağlı olarak daha [zengin şema kontrolü](/en/2.0/topics/migrations/) sağlanır.
+[Göç komutu](/en/2.0/ref/django-admin/#django-admin-migrate) (migrate) mevcut tüm modellerinize bakar ve halihazırda var olmayan tablolar için veritabanınızda tablolar oluşturur ve isteğe bağlı olarak daha [zengin şema kontrolü](/en/2.0/topics/migrations/) sağlanır.
 
 <hr>
 
@@ -151,9 +154,9 @@ Django uygulamalarını oluştururken kullanılan tipik bir iş akışı, modell
 
 ## URLleri tasarlayın
 
-Temiz, şık bir URL şeması, yüksek kaliteli bir ağ uygulamasında önemli bir ayrıntıdır. Django güzel bir URL tasarımını teşvik eder ve .php veya .asp gibi URL'lerde herhangi bir hata yapmaz.
+Temiz, şık bir URL şeması, yüksek kaliteli bir ağ uygulamasında önemli bir ayrıntıdır. Django güzel bir URL tasarımını teşvik eder ve **.php** veya **.asp** gibi URL'lerde herhangi bir hata yapmaz.
 
-Bir uygulama için URL'ler tasarlamak için bir [URLconf](/en/2.0/topics/http/urls/) adlı Python eklentisi oluşturursunuz. Uygulamanız için içindekiler tablosu, URL kalıpları ile Python geri arama işlevleri arasında basit bir imgeleme içerir. URLconf'lar, URL'leri Python kodundan ayırmak için de kullanılır. Yukarıdaki Haberci / Makale örneği için URLconf nasıl olacağını aşağıda görebilirsiniz:
+Bir uygulama için URL'ler tasarlamak için bir [URLconf](/en/2.0/topics/http/urls/) adlı Python eklentisi oluşturursunuz. Uygulamanız için içindekiler tablosu, URL kalıpları ile Python geri arama işlevleri arasında basit bir imgeleme içerir. URLconf'lar, URL'leri Python kodundan ayırmak için de kullanılır. Yukarıdaki **Haberci/Makale** örneği için URLconf nasıl olacağını aşağıda görebilirsiniz:
 
 benimsite/haberler/urls.py
 <pre data-gnl="1 1p"><code class="language-python">
@@ -172,15 +175,15 @@ Yukarıdaki kod, URL yollarını Python geri arama işlevlerine ("views") eşle�
 
 URL kalıpları eşleştiğinde, Django, Python işlevi olan belirli görünümü çağırır. Her görünüm ('views') bir istek nesnesi tarafından iletilir - talep meta verileri içerir - ve desende yaklanan değerler de.
 
-Örneğin, bir kullanıcı "/makaleler/2005/05/39323" URL'sini isterse, Django haberler.views.makale_ayrintisi(request, year=2005, ay=5, pk=39323) işlevini çağırır.
+Örneğin, bir kullanıcı "/makaleler/2005/05/39323" URL'sini isterse, Django **haberler.views.makale_ayrintisi(request, year=2005, ay=5, pk=39323)** işlevini çağırır.
 
 <hr>
 
 ## Görünümleri yaz (views)
 
-Her görünüm, iki şeyden birini yapmaktan sorumludur: İstenen sayfa için içeriği içeren bir [HttpResonse](/en/2.0/ref/request-response/#django.http.HttpResponse) nesenesini döndürme veya [Http404](/en/2.0/topics/http/views/#django.http.Http404) gibi bir istisna yükseltere. Gerisi size kalmış.
+Her görünüm, iki şeyden birini yapmaktan sorumludur: İstenen sayfa için içeriği içeren bir [**HttpResonse**](/en/2.0/ref/request-response/#django.http.HttpResponse) nesenesini döndürme veya [**Http404**](/en/2.0/topics/http/views/#django.http.Http404) gibi bir istisna yükseltere. Gerisi size kalmış.
 
-Genellikle, bir görünüm değiştirgelere göre veri alır, bir şablon yükler ve şablonu alınan verilerle işler. Yukarıdaki yillik_arsiv için bir örnek görüntü var:
+Genellikle, bir görünüm değiştirgelere göre veri alır, bir şablon yükler ve şablonu alınan verilerle işler. Yukarıdaki **yillik_arsiv** için bir örnek görüntü var:
 
 benimsite/haberler/views.py
 <pre data-gnl="1 1p"><code class="language-python">
@@ -201,11 +204,11 @@ Bu örnek, birkaç güçlü özelliklere sahip olan Django [şablon örgüsünü
 
 ## Şablonlarınızı tasarlayın
 
-Yukarıdaki kod, haberler/yillik_arsiv.html şablonunu yükler.
+Yukarıdaki kod, **haberler/yillik_arsiv.html** şablonunu yükler.
 
-Django, şablonlar arasında fazlalığı azaltmanızı sağlayan bir şablon arama yoluna sahiptir. Django ayarlarınızda, [DIRS](/en/2.0/ref/settings/#std:setting-TEMPLATES-DIRS) ile şablonları denetlemek için dizinlerin bir listesini belirtirsiniz. İlk dizinde bir şablon yoksa, ikinci dizini denetler, vb.
+Django, şablonlar arasında fazlalığı azaltmanızı sağlayan bir şablon arama yoluna sahiptir. Django ayarlarınızda, [**DIRS**](/en/2.0/ref/settings/#std:setting-TEMPLATES-DIRS) ile şablonları denetlemek için dizinlerin bir listesini belirtirsiniz. İlk dizinde bir şablon yoksa, ikinci dizini denetler, vb.
 
-Diyelim ki haberler/yillik_arsiv.html şablon bulundu. İşte bunun gibi görünebilir:
+Diyelim ki **haberler/yillik_arsiv.html** şablon bulundu. İşte bunun gibi görünebilir:
 
 benimsite/haberler/templates/haberler/yillik_arsiv.html
 
@@ -234,7 +237,7 @@ Birlikte istediğiniz kadar süzgeç zinciri yapabilirsiniz. [Özel şablon süz
 
 Son olarak, Django "şablon kalıtımı" kavramını kullanmaktadır. **{&#37; Extends "temel.html" &#37;}** ne işe yarar? İlk önce bir blok yığını tanımlayan "temel" adındaki şablonu yükleyin ve blogkları aşağıdaki bloklarla doldurun anlamına gelir. Kısacası, şablonlarda fazlalıkları önemli ölçüde azaltabilirsiniz. Her şablon yalnızca ilgili şablon için benzersi olanları tanımlamalıdır.
 
-İşe sabit dosyaların kullanımı da dahil olmak üzere "temel.html" şablonu şöyle görünebilir.
+İşe [sabit dosyalar](/en/2.0/howto/static-files/)ın kullanımı da dahil olmak üzere "temel.html" şablonu şöyle görünebilir.
 
 <pre data-gnl="1 1p"><code class="language-html">
 {&#37;load static &#37;}
