@@ -45,6 +45,9 @@ font-size: 1.2rem;
     margin: 25px 0;
     position: relative;
 }
+[data-bilget] h3{
+  margin:5px 0;
+}
 .headertext{
   font-size:24px;
   background-color: #44B78B;
