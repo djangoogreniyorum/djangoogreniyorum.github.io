@@ -28,14 +28,14 @@ Programlamada veya Django'da yeni misiniz? Burası başlamak için uygun bir yer
 
 Django, ağ uygulamalarınızın verilerini yapılandırmak ve işlemek için bir soyutlama katmanı (modeller) sağlar. Aşağıda bununla ilgili daha fazla bilgi edinebilirsiniz:
 
-- Kalıplar: [Modellere Giriş](/en/2.0/topics/db/models/) &#124; [Alan biçimleri](/en/2.0/ref/models/fields/) &#124; [Dizinler](/en/2.0/ref/models/indexes/) &#124; [Meta seçenekleri](/en/2.0/ref/models/options/) &#124; [Model sınıfı](/en/2.0/ref/models/class/)
-- Sorgu Setleri: [Sorgular oluşturma](/en/2.0/topics/db/queries/) &#124; [QuerySet yöntemi başvurusu](/en/2.0/ref/models/querysets/) &#124; [Arama ifadeleri](/en/2.0/ref/models/lookups/)
+- Kalıplar: [Kalıplara Giriş](/en/2.0/topics/db/models/) &#124; [Alan türleri](/en/2.0/ref/models/fields/) &#124; [Dizinler](/en/2.0/ref/models/indexes/) &#124; [Meta seçenekleri](/en/2.0/ref/models/options/) &#124; [Kalıp sınıfı](/en/2.0/ref/models/class/)
+- Sorgu Setleri: [Sorgular oluşturma](/en/2.0/topics/db/queries/) &#124; [SorguKümesi yöntemi başvurusu](/en/2.0/ref/models/querysets/) &#124; [Arama ifadeleri](/en/2.0/ref/models/lookups/)
 - Model Örnekleri: [Örnek yöntemleri](/en/2.0/ref/models/instances/) &#124; [İlgili nesnelere erişme](/en/2.0/ref/models/relations/)
-- Göçler: [Göç Giriş](/en/2.0/topics/migrations/) &#124; [İşlem referansları](/en/2.0/ref/migration-operations/) &#124; [ŞemaEditör](/en/2.0/ref/schema-editor/) &#124; [Taşıma yazıları yazma](/en/2.0/howto/writing-migrations/)
+- Göçler: [Göç Giriş](/en/2.0/topics/migrations/) &#124; [İşlem kaynakları](/en/2.0/ref/migration-operations/) &#124; [ŞemaDüzenleyici](/en/2.0/ref/schema-editor/) &#124; [Taşıma yazıları yazma](/en/2.0/howto/writing-migrations/)
 - İleri düzey: [Yöneticiler](/en/2.0/topics/db/managers/) &#124; [Ham SQL](/en/2.0/topics/db/sql/) &#124; [İşlemler](/en/2.0/topics/db/transactions/) &#124; [Birleştirme](/en/2.0/topics/db/aggregation/) &#124; [Arama](/en/2.0/topics/db/search/) &#124; [Özel Alanlar](/en/2.0/howto/custom-model-fields/) &#124; [Çoklu veritabanları](/en/2.0/topics/db/multi-db/) &#124; [Özel bakışlar](/en/2.0/howto/custom-lookups/) [Sorgu ifadeleri](/en/2.0/ref/models/expressions/) &#124; [Koşullu ifadeler](/en/2.0/ref/models/conditional-expressions/) &#124; [Veritabanı işlevleri](/en/2.0/ref/models/database-functions/)
 - Diğer: [Desteklenen veritabanları](/en/2.0/ref/databases/) &#124; [Eski veritabanları](/en/2.0/howto/legacy-databases/) &#124; [İlk veri sağlanması](/en/2.0/howto/initial-data/) &#124; [Veritabanı erişimini uyarlama](/en/2.0/topics/db/optimization/) &#124; [PostgreSQL'e özgü özellikler](/en/2.0/ref/contrib/postgres/)
 
-## Görünüm (View) Katmanı
+## Görünüm Katmanı (View)
 
 Django, bir kullanıcının isteğini işlemekten ve cevabı geri getirmekten sorumlu mantığı kapsüllemek için "görünümler" (views) kavramına sahiptir. Görünümlerle ilgili bilmeniz gereken her şeyi aşağıdaki bağlantılardan bulabilirsiniz:
 
