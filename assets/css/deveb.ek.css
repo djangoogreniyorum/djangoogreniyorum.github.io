@@ -47,6 +47,7 @@ font-size: 1.2rem;
 }
 [data-bilget] h3{
   margin:5px 0;
+  font-size: 16px;
 }
 .headertext{
   font-size:24px;

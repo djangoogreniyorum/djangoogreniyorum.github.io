@@ -186,4 +186,40 @@ Django'nun kök dizinine gidin (bu, django belgeleri, sınamalar, yazarlar vb. i
 
 <hr>
 
+## İlk kez Django'nun sınama paketini çalıştırmak {#running-django-s-test-suite-for-the-first-time}
+
+Django'ya katkıda bulunurken, kod değişikliklerinizin hataları Django'nun diğer alanlarına dahil etmemesi çok önemlidir. Değişikliklerinizi yaptıktan sonra Django'nun hala çalışıp çalışmadığının sağlamasını yapmanın bir yolu Django'nun sınama paketini çalıştırmaktır. Tüm sınamalar geçerse, değişikliklerin Django'yu tamamen kırmadığından emin olabilirsiniz. Daha önce hiç Django'nun sınama paketini çalıştırmadıysanız, çıktısının nasıl görüneceğini öğrenmek için yalnızca bir kere çalıştırmanız iyi bir fikirdir.
+
+Sınama paketini çalıştırmadan önce Django **tests/** dizinindeki ilk **cd**-ing bağlılıklarını yükleyin ve sonra çalıştırın:
+
+  <pre data-gnl="1 1p"><code class="language-python">
+  $ pip install -r requirements/py3.txt
+  </code></pre>
+
+Kurulum sırasında bir hata ile karşılaşırsanız, örgünüz Python paketlerinden birine veya daha fazlasına bağımlılık eksik çıkabilir. Karşılaştığınız hata iletisiyse başarısız olan paketin belgelerine bakın veya ağda arama yapın.
+
+Şimdi sınama paketini çalıştırmaya hazırız. GNU/Linux, macOS veya Unix'in bir başka lezzetini kullanıyorsanız şunu çalıştırın:
+
+  <pre data-gnl="1 1p"><code class="language-python">
+  $ ./runtests.py
+  </code></pre>
+
+Şimdi arkanıza yaslanın ve rahatlayın. Django'nun tüm sınama paketi 9600'den fazla farklı sınamaya sahiptir, bu nedenle bilgisayarınızın hızına bağlı olarak 5 ila 15 dakika arasında bir sürede çalışabilir.
+
+Django'nun sınama paketi çalışıyorken, her sınamanın durumunu göstereren bir karakter akışı görürsünüz. **E**, bir sınama sırasında bir hata oluştuğunu ve **F**, bir sanımanın onaylamasının başarısız olduğunu gösterir. Bunların her ikisi de sınamaları arızalı olarak kabul edilir. Bu arada, **x** ve **s** beklenen arızaları ve atlanan sınamaları belirtir. Nokta, geçen sınamaları gösterir.
+
+Atlanan sınamalar genellikle sınamayı çalıştırmak için gereken eksik harici kütüphanelerden kaynaklanır. Bknz. Yaptığınız değişikliklerle ilgili sınamalar için [tüm sınamaları](/en/2.0/internals/contributing/writing-code/unit-tests/#running-unit-tests-dependencies) bağımlılıkların bir listesi için çalıştırın ve bunlardan herhangi birini yüklediğinizden emin olun (bu öğretici için herhangi bir şey gerekmez). Bazı sınamalar belirli bir veritabanı arka ucuna özgüdür ve bu arka uçla sınama edilmezse atlanır. SQLite, varsayılan ayarlar için veritabanı arka ucudur. Sınamaları farklı bir arka plan kullanarak çalıştırmak için başka bir [ayar modülünü kullanma konusu](https://docs.djangoproject.com/en/2.0/internals/contributing/writing-code/unit-tests/#running-unit-tests-settings)na bakın.
+
+Sınamalar tamamlandıktan sonra, sınama paketinin geçip geçmediğini veya başarısız olup olmadığını bildiren bir mesajla karşılanmanız gerekir. Django2nun kodunda herhangi bir değişiklik yapmadığınız için tüm sınama paketi *geçmelidir*. Başarısızlık veya hata alırsanız, önceki adımların tümünü doğru bir şekilde uyguladığınızdan emin olun. Daha fazla bilgi için [aşama sınamalarını çalıştırma](https://docs.djangoproject.com/en/2.0/internals/contributing/writing-code/unit-tests/#running-unit-tests-settings) bölümüne bakın. Python 3.5+ kullanıyorsanız, gözardı edilebilecek kullanımdan kaldırılma uyarılarıyla ilgili birkaç başarısızlık olacaktır. Bu hatalar Django'da düzeltildi.
+
+En son Django gövdesinin her zaman kararlı olmayabileceğini unutmayın. Hataya karşı geliştirirken hataların makinenize özgü olup olmadığını veya [Django'nun resmi yapıları](https://djangoci.com/)nda olup olmadığını belirlemek için Django'nun sürekli gömülü yapılarını kontrol edebilirsiniz. Belli bir kurumu görüntülemek için tıklarsanız, başarısızlıkları Python sürümü ve veritabanı arka uçlarıyla ayrılmış olarak gösteren "Yapılandırma Matrisi"ni görüntüleyebilirsiniz.
+
+<div data-bilget="genel" markdown="1">
+### Not
+
+Bu öğretici ve üzerinde çalıştığımız bilet için SQLite'a karşı sınama yapmak yeterlidir, ancak sınamaları [farklı bir veritabanı kullanarak yürütmek](https://docs.djangoproject.com/en/2.0/internals/contributing/writing-code/unit-tests/#running-unit-tests-settings) de mümkündür (bazen gereklidir).
+</div>
+
+<hr>
+
 # DEVAMI y-a-k-ı-n-d-a
