@@ -421,10 +421,10 @@ Yukarı ve aşağı taşımak için ok tuşlarını kullanın.
   index 3bc39cd..008170d 100644
   &#45;&#45;&#45; a/docs/ref/forms/api.txt
   &#43;&#43;&#43; b/docs/ref/forms/api.txt
-  &#64;&#64; -1065,3 &#43;1065,13 &#64;&#64; You can put several Django forms inside one ``<form>`` tag. To give each
+  &#64;&#64; -1065,3 &#43;1065,13 &#64;&#64; You can put several Django forms inside one ``&#60;form&#62;`` tag. To give each
        &gt;&gt;&gt; print(father.as_ul())
-       <li><label for="id_father-first_name">First name:</label> <input type="text" name="father-first_name" id="id_father-first_name" /></li>
-       <li><label for="id_father-last_name">Last name:</label> <input type="text" name="father-last_name" id="id_father-last_name" /></li>
+       &#60;li&#62;&#60;label for="id_father-first_name"&#62;First name:&#60;/label&#62; &#60;input type="text" name="father-first_name" id="id_father-first_name" /&#62;&#60;/li&#62;
+       &#60;li&#62;&#60;label for="id_father-last_name"&#62;Last name:&#60;/label&#62; &#60;input type="text" name="father-last_name" id="id_father-last_name" /&#62;&#60;/li&#62;
   &#43;
   &#43;The prefix can also be specified on the form class::
   &#43;
