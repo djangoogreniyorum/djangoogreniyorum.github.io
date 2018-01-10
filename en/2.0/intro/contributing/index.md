@@ -51,7 +51,7 @@ Eğer bu öğreticide sorun yaşıyorsanız, lütfen django geliştiricilerine b
 <div data-bilget="genel" markdown="1">
 ### Python 3 gerekli!
 
-Django'nun geçerli sürümü (2.0+) Python 2.7'yi desteklemez. Python 3'ü [Python'nun indirme sayfası](https://www.python.org/downloads/)ndan veya işletim örgünüzün paket yöneticisinden edinin.
+Django'nun geçerli sürümü (2.0&#43;) Python 2.7'yi desteklemez. Python 3'ü [Python'nun indirme sayfası](https://www.python.org/downloads/)ndan veya işletim örgünüzün paket yöneticisinden edinin.
 </div>
 
 <div data-bilget="genel" markdown="1">
@@ -210,7 +210,7 @@ Django'nun sınama paketi çalışıyorken, her sınamanın durumunu göstereren
 
 Atlanan sınamalar genellikle sınamayı çalıştırmak için gereken eksik harici kütüphanelerden kaynaklanır. Bknz. Yaptığınız değişikliklerle ilgili sınamalar için [tüm sınamaları](/en/2.0/internals/contributing/writing-code/unit-tests/#running-unit-tests-dependencies) bağımlılıkların bir listesi için çalıştırın ve bunlardan herhangi birini yüklediğinizden emin olun (bu öğretici için herhangi bir şey gerekmez). Bazı sınamalar belirli bir veritabanı arka ucuna özgüdür ve bu arka uçla sınama edilmezse atlanır. SQLite, varsayılan ayarlar için veritabanı arka ucudur. Sınamaları farklı bir arka plan kullanarak çalıştırmak için başka bir [ayar modülünü kullanma konusu](https://docs.djangoproject.com/en/2.0/internals/contributing/writing-code/unit-tests/#running-unit-tests-settings)na bakın.
 
-Sınamalar tamamlandıktan sonra, sınama paketinin geçip geçmediğini veya başarısız olup olmadığını bildiren bir mesajla karşılanmanız gerekir. Django2nun kodunda herhangi bir değişiklik yapmadığınız için tüm sınama paketi **geçmelidir**. Başarısızlık veya hata alırsanız, önceki adımların tümünü doğru bir şekilde uyguladığınızdan emin olun. Daha fazla bilgi için [aşama sınamalarını çalıştırma](https://docs.djangoproject.com/en/2.0/internals/contributing/writing-code/unit-tests/#running-unit-tests-settings) bölümüne bakın. Python 3.5+ kullanıyorsanız, gözardı edilebilecek kullanımdan kaldırılma uyarılarıyla ilgili birkaç başarısızlık olacaktır. Bu hatalar Django'da düzeltildi.
+Sınamalar tamamlandıktan sonra, sınama paketinin geçip geçmediğini veya başarısız olup olmadığını bildiren bir mesajla karşılanmanız gerekir. Django2nun kodunda herhangi bir değişiklik yapmadığınız için tüm sınama paketi **geçmelidir**. Başarısızlık veya hata alırsanız, önceki adımların tümünü doğru bir şekilde uyguladığınızdan emin olun. Daha fazla bilgi için [aşama sınamalarını çalıştırma](https://docs.djangoproject.com/en/2.0/internals/contributing/writing-code/unit-tests/#running-unit-tests-settings) bölümüne bakın. Python 3.5&#43; kullanıyorsanız, gözardı edilebilecek kullanımdan kaldırılma uyarılarıyla ilgili birkaç başarısızlık olacaktır. Bu hatalar Django'da düzeltildi.
 
 En son Django gövdesinin her zaman kararlı olmayabileceğini unutmayın. Hataya karşı geliştirirken hataların makinenize özgü olup olmadığını veya [Django'nun resmi yapıları](https://djangoci.com/)nda olup olmadığını belirlemek için Django'nun sürekli gömülü yapılarını kontrol edebilirsiniz. Belli bir kurumu görüntülemek için tıklarsanız, başarısızlıkları Python sürümü ve veritabanı arka uçlarıyla ayrılmış olarak gösteren "Yapılandırma Matrisi"ni görüntüleyebilirsiniz.
 
@@ -395,80 +395,80 @@ Yukarı ve aşağı taşımak için ok tuşlarını kullanın.
 
 
   <pre data-gnl="1 1p"><code class="language-python">
-  diff --git a/django/forms/forms.py b/django/forms/forms.py
+  diff &#45;&#45;git a/django/forms/forms.py b/django/forms/forms.py
   index 509709f..d1370de 100644
   --- a/django/forms/forms.py
-  +++ b/django/forms/forms.py
-  @@ -75,6 +75,7 @@ class BaseForm:
+  &#43;&#43;&#43; b/django/forms/forms.py
+  @@ -75,6 &#43;75,7 @@ class BaseForm:
        # information. Any improvements to the form API should be made to *this*
        # class, not to the Form class.
        field_order = None
-  +    prefix = None
+  &#43;    prefix = None
 
        def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None,
                     initial=None, error_class=ErrorList, label_suffix=None,
-  @@ -83,7 +84,8 @@ class BaseForm:
+  @@ -83,7 &#43;84,8 @@ class BaseForm:
            self.data = data or {}
            self.files = files or {}
            self.auto_id = auto_id
   -        self.prefix = prefix
-  +        if prefix is not None:
-  +            self.prefix = prefix
+  &#43;        if prefix is not None:
+  &#43;            self.prefix = prefix
            self.initial = initial or {}
            self.error_class = error_class
            # Translators: This is the default suffix added to form field labels
   diff --git a/docs/ref/forms/api.txt b/docs/ref/forms/api.txt
   index 3bc39cd..008170d 100644
-  --- a/docs/ref/forms/api.txt
-  +++ b/docs/ref/forms/api.txt
-  @@ -1065,3 +1065,13 @@ You can put several Django forms inside one ``<form>`` tag. To give each
+  &#45;&#45;&#45; a/docs/ref/forms/api.txt
+  &#43;&#43;&#43; b/docs/ref/forms/api.txt
+  @@ -1065,3 &#43;1065,13 @@ You can put several Django forms inside one ``<form>`` tag. To give each
        &gt;&gt;&gt; print(father.as_ul())
        <li><label for="id_father-first_name">First name:</label> <input type="text" name="father-first_name" id="id_father-first_name" /></li>
        <li><label for="id_father-last_name">Last name:</label> <input type="text" name="father-last_name" id="id_father-last_name" /></li>
-  +
-  +The prefix can also be specified on the form class::
-  +
-  +    &gt;&gt;&gt; class PersonForm(forms.Form):
-  +    ...     ...
-  +    ...     prefix = 'person'
-  +
-  +.. versionadded:: 1.9
-  +
-  +    The ability to specify ``prefix`` on the form class was added.
+  &#43;
+  &#43;The prefix can also be specified on the form class::
+  &#43;
+  &#43;    &gt;&gt;&gt; class PersonForm(forms.Form):
+  &#43;    ...     ...
+  &#43;    ...     prefix = 'person'
+  &#43;
+  &#43;.. versionadded:: 1.9
+  &#43;
+  &#43;    The ability to specify ``prefix`` on the form class was added.
   diff --git a/docs/releases/1.9.txt b/docs/releases/1.9.txt
   index 5b58f79..f9bb9de 100644
-  --- a/docs/releases/1.9.txt
-  +++ b/docs/releases/1.9.txt
-  @@ -161,6 +161,9 @@ Forms
+  &#45;&#45;&#45; a/docs/releases/1.9.txt
+  &#43;&#43;&#43; b/docs/releases/1.9.txt
+  @@ -161,6 &#43;161,9 @@ Forms
      :attr:`~django.forms.Form.field_order` attribute, the ``field_order``
      constructor argument , or the :meth:`~django.forms.Form.order_fields` method.
 
-  +* A form prefix can be specified inside a form class, not only when
-  +  instantiating a form. See :ref:`form-prefix` for details.
-  +
+  &#43;* A form prefix can be specified inside a form class, not only when
+  &#43;  instantiating a form. See :ref:`form-prefix` for details.
+  &#43;
    Generic Views
    ^^^^^^^^^^^^^
 
   diff --git a/tests/forms_tests/tests/test_forms.py b/tests/forms_tests/tests/test_forms.py
   index 690f205..e07fae2 100644
   --- a/tests/forms_tests/tests/test_forms.py
-  +++ b/tests/forms_tests/tests/test_forms.py
-  @@ -1671,6 +1671,18 @@ class FormsTestCase(SimpleTestCase):
+  &#43;&#43;&#43; b/tests/forms_tests/tests/test_forms.py
+  @@ -1671,6 &#43;1671,18 @@ class FormsTestCase(SimpleTestCase):
            self.assertEqual(p.cleaned_data['last_name'], 'Lennon')
            self.assertEqual(p.cleaned_data['birthday'], datetime.date(1940, 10, 9))
 
-  +    def test_class_prefix(self):
-  +        # Prefix can be also specified at the class level.
-  +        class Person(Form):
-  +            first_name = CharField()
-  +            prefix = 'foo'
-  +
-  +        p = Person()
-  +        self.assertEqual(p.prefix, 'foo')
-  +
-  +        p = Person(prefix='bar')
-  +        self.assertEqual(p.prefix, 'bar')
-  +
+  &#43;    def test_class_prefix(self):
+  &#43;        # Prefix can be also specified at the class level.
+  &#43;        class Person(Form):
+  &#43;            first_name = CharField()
+  &#43;            prefix = 'foo'
+  &#43;
+  &#43;        p = Person()
+  &#43;        self.assertEqual(p.prefix, 'foo')
+  &#43;
+  &#43;        p = Person(prefix='bar')
+  &#43;        self.assertEqual(p.prefix, 'bar')
+  &#43;
        def test_forms_with_null_boolean(self):
            # NullBooleanField is a bit of a special case because its presentation (widget)
            # is different than its data. This is handled transparently, though.
