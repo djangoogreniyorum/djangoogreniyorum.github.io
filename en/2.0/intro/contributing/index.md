@@ -89,7 +89,7 @@ Django'ya katkıda bulunmanın ilk adımı, kaynak kodun bir kopyasını edinmek
 Aşağıdaki komutu kullanarak Django kaynak kodu havuzunu indirin:
 
   <pre data-gnl="1 1p"><code class="language-python">
-  $ git clone git@github.com:YourGitHubName/django.git
+  $ git clone git&#64;github.com:YourGitHubName/django.git
   </code></pre>
 
 Django'nun yerel bir kopyasına sahip olduğunuza göre, **pip**'i kullanarak herhangi bir paketi indirdiğiniz gibi kurabilirsiniz. Bunu yapmanın en kolay yolu, projelerinizin her birine birbirine karışmaması için yüklü paketlerin ayrı bir dizinini saklamanıza izin veren Python'da yerleşik bir özellik olan sanal ortam (veya virtualenv) kullanmaktır.
@@ -399,7 +399,7 @@ Yukarı ve aşağı taşımak için ok tuşlarını kullanın.
   index 509709f..d1370de 100644
   --- a/django/forms/forms.py
   &#43;&#43;&#43; b/django/forms/forms.py
-  @@ -75,6 &#43;75,7 @@ class BaseForm:
+  &#64;&#64; -75,6 &#43;75,7 &#64;&#64; class BaseForm:
        # information. Any improvements to the form API should be made to *this*
        # class, not to the Form class.
        field_order = None
@@ -407,7 +407,7 @@ Yukarı ve aşağı taşımak için ok tuşlarını kullanın.
 
        def __init__(self, data=None, files=None, auto_id='id_%s', prefix=None,
                     initial=None, error_class=ErrorList, label_suffix=None,
-  @@ -83,7 &#43;84,8 @@ class BaseForm:
+  &#64;&#64; -83,7 &#43;84,8 &#64;&#64; class BaseForm:
            self.data = data or {}
            self.files = files or {}
            self.auto_id = auto_id
@@ -421,7 +421,7 @@ Yukarı ve aşağı taşımak için ok tuşlarını kullanın.
   index 3bc39cd..008170d 100644
   &#45;&#45;&#45; a/docs/ref/forms/api.txt
   &#43;&#43;&#43; b/docs/ref/forms/api.txt
-  @@ -1065,3 &#43;1065,13 @@ You can put several Django forms inside one ``<form>`` tag. To give each
+  &#64;&#64; -1065,3 &#43;1065,13 &#64;&#64; You can put several Django forms inside one ``<form>`` tag. To give each
        &gt;&gt;&gt; print(father.as_ul())
        <li><label for="id_father-first_name">First name:</label> <input type="text" name="father-first_name" id="id_father-first_name" /></li>
        <li><label for="id_father-last_name">Last name:</label> <input type="text" name="father-last_name" id="id_father-last_name" /></li>
@@ -439,7 +439,7 @@ Yukarı ve aşağı taşımak için ok tuşlarını kullanın.
   index 5b58f79..f9bb9de 100644
   &#45;&#45;&#45; a/docs/releases/1.9.txt
   &#43;&#43;&#43; b/docs/releases/1.9.txt
-  @@ -161,6 &#43;161,9 @@ Forms
+  &#64;&#64; -161,6 &#43;161,9 &#64;&#64; Forms
      :attr:`~django.forms.Form.field_order` attribute, the ``field_order``
      constructor argument , or the :meth:`~django.forms.Form.order_fields` method.
 
@@ -453,7 +453,7 @@ Yukarı ve aşağı taşımak için ok tuşlarını kullanın.
   index 690f205..e07fae2 100644
   --- a/tests/forms_tests/tests/test_forms.py
   &#43;&#43;&#43; b/tests/forms_tests/tests/test_forms.py
-  @@ -1671,6 &#43;1671,18 @@ class FormsTestCase(SimpleTestCase):
+  &#64;&#64; -1671,6 &#43;1671,18 &#64;&#64; class FormsTestCase(SimpleTestCase):
            self.assertEqual(p.cleaned_data['last_name'], 'Lennon')
            self.assertEqual(p.cleaned_data['birthday'], datetime.date(1940, 10, 9))
 
