@@ -114,4 +114,4 @@ Django kodunuzu zaman zaman son hata düzeltmeleri ve yeniliklerle güncelleyebi
     </code></pre>
     Bu, Django'nun kodunu içe aktarılabilir kılar ve ayrıca django-admin yardımcı programı komutunu kullanılabilir hale getirecektir. Başka bir deyişle, hepiniz hazırsınız!
 
-Django kaynak kodunun kopyasını güncellemek istediğinizde **git pull** komutunu django dizininden çalıştırın. Bunu yaptığınızda, Git herhangi bir değişikliği doğallıkla indirir.
+Django kaynak kodunun kopyasını güncellemek istediğinizde **git pull** komutunu django dizininden çalıştırın. Bunu yaptığınızda, Git herhangi bir değişikliği doğal olarak indirir.
