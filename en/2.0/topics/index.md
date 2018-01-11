@@ -7,11 +7,13 @@ title: Konular - Django Öğreniyorum
 Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
 
 - [Django nasıl kurulur](/en/2.0/topics/install/)
+
     - [Python kurulumu](/en/2.0/topics/install/#install-python)
     - [Apache ve **mod_wsgi** kurulumu](/en/2.0/topics/install/#install-apache-and-mod-wsgi)
     - [Veritabanınızı çalıştırın](/en/2.0/topics/install/#get-your-database-running)
     - [Django'nun eski sürümlerini kaldırın](/en/2.0/topics/install/#remove-any-old-versions-of-django)
     - [Django kodunu yükleyin](/en/2.0/topics/install/#install-the-django-code)
+
 - [Kalıplar ve veritabanları](/en/2.0/topics/db/)
     - [Kalıplar](/en/2.0/topics/db/models/)
     - [Sorgular oluşturmak](/en/2.0/topics/db/queries/)
@@ -26,6 +28,7 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [Veritabanı enstrümantasyonu](/en/2.0/topics/db/instrumentation/)
     - [Kalıp ilişkisi API kullanımı örnekleri](/en/2.0/topics/db/examples/)
 - [HTTP isteklerini işleme](/en/2.0/topics/http/)
+
     - [URL dispatcher](/en/2.0/topics/http/urls/)
     - [Görüşler yazma](/en/2.0/topics/http/views/)
     - [Süsleyicileri görüntüle](/en/2.0/topics/http/decorators/)
@@ -34,7 +37,9 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [Genel görünümler](/en/2.0/topics/http/generic-views/)
     - [Ara katman](/en/2.0/topics/http/middleware/)
     - [Oturumlar nasıl kullanılır?](/en/2.0/topics/http/sessions/)
+
 - [Biçimlerle çalışma](/en/2.0/topics/forms/)
+
     - [HTML biçimleri](/en/2.0/topics/forms/#html-forms)
     - [Django'nun biçimdeki rolü](/en/2.0/topics/forms/#django-s-role-in-forms)
     - [Django'daki biçimler](/en/2.0/topics/forms/#forms-in-django)
@@ -54,6 +59,7 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [URLconf'unuzada basit kullanım](/en/2.0/topics/class-based-views/#simple-usage-in-your-urlconf)
     - [Genel görünümleri alt sınıflara ayırma](/en/2.0/topics/class-based-views/#subclassing-generic-views)
 - [Göçler](/en/2.0/topics/migrations/)
+
     - [Komutlar](/en/2.0/topics/migrations/#the-commands)
     - [Geriuç desteği](/en/2.0/topics/migrations/#backend-support)
     - [İş akışı](/en/2.0/topics/migrations/#workflow)
@@ -67,18 +73,22 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [Değerleri serileştirmek](/en/2.0/topics/migrations/#serializing-values)
     - [Çoklu Django sürümünü destekleme](/en/2.0/topics/migrations/#supporting-multiple-django-versions)
 - [Dosyaları yönetme](/en/2.0/topics/files/)
+
     - [Kalıplarda dosyaları kullanma](/en/2.0/topics/files/#using-files-in-models)
     - [Dosya nesnesi](/en/2.0/topics/files/#the-file-object)
     - [Dosya depolama](/en/2.0/topics/files/#file-storage)
 - [Django'da sınama](/en/2.0/topics/testing/)
+
     - [Sınamaların yazımı ve çalıştırılması](/en/2.0/topics/testing/overview/)
     - [Sınama araçları](/en/2.0/topics/testing/tools/)
     - [Gelişmiş sınama konuları](/en/2.0/topics/testing/advanced/)
 - [Django'da kullanıcı kimlik doğrulaması](/en/2.0/topics/auth/)
+
     - [Genel bakış](/en/2.0/topics/auth/#overview)
     - [Kurulum](/en/2.0/topics/auth/#installation)
     - [Kullanım](/en/2.0/topics/auth/#usage)
 - [Django'nun önbellek çerçevesi](/en/2.0/topics/cache/)
+
     - [Önbellek ayarlama](/en/2.0/topics/cache/#setting-up-the-cache)
     - [Site başına önbellek](/en/2.0/topics/cache/#the-per-site-cache)
     - [Görünüm başına önbellek](/en/2.0/topics/cache/#the-per-view-cache)
@@ -89,14 +99,17 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [Önbellek denetimi: Diğer üstbilgileri kullanma](/en/2.0/topics/cache/#controlling-cache-using-other-headers)
     - [MIDDLEWARE Dizilimi](/en/2.0/topics/cache/#order-of-middleware)
 - [Şartlı görünüm işleme](/en/2.0/topics/conditional-view-processing/)
+
     - [Durum süsleyici](/en/2.0/topics/conditional-view-processing/#the-condition-decorator)
     - [Yalnızca bir değer hesaplamak için kısayollar](/en/2.0/topics/conditional-view-processing/#shortcuts-for-only-computing-one-value)
     - [Süsleyicileri diğer HTTP yöntemleriyle kullanma](/en/2.0/topics/conditional-view-processing/#using-the-decorators-with-other-http-methods)
     - [Ara katman koşullu işleme ile karşılaştırma](/en/2.0/topics/conditional-view-processing/#comparison-with-middleware-conditional-processing)
 - [Şifreleme imzalama](/en/2.0/topics/signing/)
+
     - [SECRET_KEY'i korumak](/en/2.0/topics/signing/#protecting-the-secret-key)
     - [Düşük düzey API'yi kullanma](/en/2.0/topics/signing/#using-the-low-level-api)
 - [E-posta göndermek](/en/2.0/topics/email/)
+
     - [Hızlı örnek](/en/2.0/topics/email/#quick-example)
     - [posta göndermek()](/en/2.0/topics/email/#send-mail)
     - [send_mass_mail()](/en/2.0/topics/email/#send-mass-mail)
@@ -108,20 +121,24 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [E-posta arka uçları](/en/2.0/topics/email/#email-backends)
     - [Geliştirme için e-postaları yapılandırma](/en/2.0/topics/email/#configuring-email-for-development)
 - [Uluslararasılaşma ve yerelleştirme](/en/2.0/topics/i18n/)
+
     - [Genel bakış](/en/2.0/topics/i18n/#overview)
     - [Tanımlar](/en/2.0/topics/i18n/#definitions)
 - [Günlükleme](/en/2.0/topics/logging/)
+
     - [Hızlı bir günlük astarı](/en/2.0/topics/logging/#a-quick-logging-primer)
     - [Günlük kaydını kullanma](/en/2.0/topics/logging/#using-logging)
     - [Günlüğü yapılandırma](/en/2.0/topics/logging/#configuring-logging)
     - [Django'nun günlüğe kaydetme uzantıları](/en/2.0/topics/logging/#django-s-logging-extensions)
     - [Django'nun varsayılan günlük kaydı yapılandırması](/en/2.0/topics/logging/#django-s-default-logging-configuration)
 - [Sayfalandırma](/en/2.0/topics/pagination/)
+
     - [Örnek](/en/2.0/topics/pagination/#example)
     - [Sayfalandırıcıyı bir görünümde kullanma](/en/2.0/topics/pagination/#using-paginator-in-a-view)
     - [Sayfalandırıcı nesneleri](/en/2.0/topics/pagination/#paginator-objects)
     - [Sayfa nesneleri](/en/2.0/topics/pagination/#invalidpage-exceptions)
 - [Django'da güvenlik](/en/2.0/topics/security/)
+
     - [Siteler arası komut dosyası (XSS) koruması](/en/2.0/topics/security/#cross-site-scripting-xss-protection)
     - [Siteler arası istek fişeği (CSRF) koruması](/en/2.0/topics/security/#cross-site-request-forgery-csrf-protection)
     - [SQL bulaştırma koruması](/en/2.0/topics/security/#sql-injection-protection)
@@ -132,6 +149,7 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [Kullanıcı tarafından yüklenen içerik](/en/2.0/topics/security/#user-uploaded-content)
     - [Ek güvenlik konuları](/en/2.0/topics/security/#additional-security-topics)
 - [Başarım ve uygunlaştırma](/en/2.0/topics/performance/)
+
     - [Giriş](/en/2.0/topics/performance/#introduction)
     - [Genel yaklaşımlar](/en/2.0/topics/performance/#general-approaches)
     - [Çerezlemek](/en/2.0/topics/performance/#caching)
@@ -141,11 +159,13 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [Şablon başarımı](/en/2.0/topics/performance/#template-performance)
     - [Mevcut yazılımın farklı sürümlerini kullanma](/en/2.0/topics/performance/#using-different-versions-of-available-software)
 - [Django nesnelerini serileştirmek](/en/2.0/topics/serialization/)
+
     - [Verileri seri hale getirme](/en/2.0/topics/serialization/#serializing-data)
     - [Verileri seri hale getirme](/en/2.0/topics/serialization/#deserializing-data)
     - [Seri hale getirme biçimleri](/en/2.0/topics/serialization/#serialization-formats)
     - [Doğal tuşlar](/en/2.0/topics/serialization/#natural-keys)
 - [Django ayarları](/en/2.0/topics/settings/)
+
     - [Temeller](/en/2.0/topics/settings/#the-basics)
     - [Ayarları belirleme](/en/2.0/topics/settings/#designating-the-settings)
     - [Varsayılan ayarları](/en/2.0/topics/settings/#default-settings)
@@ -156,12 +176,15 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [Kendi ayarlarınızı oluşturma](/en/2.0/topics/settings/#creating-your-own-settings)
     - [DJANGO_SETTINGS_MODULE ayarlarını yapmadan ayarları kullanma](/en/2.0/topics/settings/#using-settings-without-setting-django-settings-module)
 - [İmler](/en/2.0/topics/signals/)
+
     - [İm dinleme](/en/2.0/topics/signals/#listening-to-signals)
     - [İm tanımlama ve gönderme](/en/2.0/topics/signals/#defining-and-sending-signals)
     - [İmlerin ayrılması](/en/2.0/topics/signals/#disconnecting-signals)
 - [Örgü kontrol çerçevesi](/en/2.0/topics/checks/)
+
     - [Kendi onaylatmalarınızı yazma](/en/2.0/topics/checks/#writing-your-own-checks)
 - [Dış paketler](/en/2.0/topics/external-packages/)
+
     - [Yerel tatlar](/en/2.0/topics/external-packages/#localflavor)
     - [Yorumlar](/en/2.0/topics/external-packages/#comments)
     - [Biçim araçları](/en/2.0/topics/external-packages/#formtools)
