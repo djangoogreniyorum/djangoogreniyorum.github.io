@@ -4,7 +4,7 @@ title: Konular - Django Öğreniyorum
 ---
 # Django Kullanmak {#using-django}
 
-Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
+Django'nun önemli kısımlarına ilişkin tüm konuları bilmeniz gerekir:
 
 - [Django nasıl kurulur](/en/2.0/topics/install/)
 
@@ -49,9 +49,11 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [Biçim şablonlarıyla çalışma](/en/2.0/topics/forms/#working-with-form-templates)
     - [Diğer konular](/en/2.0/topics/forms/#further-topics)
 - [Şablonlar](/en/2.0/topics/templates/)
+
     - [Şablon motorları için destek](/en/2.0/topics/templates/#support-for-template-engines)
     - [Django şablon dili](/en/2.0/topics/templates/#the-django-template-language)
 - [Sınıf tabanlı görünümler](/en/2.0/topics/class-based-views/)
+
     - [Sınıf tabanlı görünümlere giriş](/en/2.0/topics/class-based-views/intro/)
     - [Dahili sınıf tabanlı genel görünümler](/en/2.0/topics/class-based-views/generic-display/)
     - [Sınıf tabanlı görünümlerle biçim işleme](/en/2.0/topics/class-based-views/generic-editing/)
