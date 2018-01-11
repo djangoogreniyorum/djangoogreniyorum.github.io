@@ -15,6 +15,7 @@ Django'nun tüm önemli kısımlarına ilişkin tanıtımlar bilmeniz gerekir:
     - [Django kodunu yükleyin](/en/2.0/topics/install/#install-the-django-code)
 
 - [Kalıplar ve veritabanları](/en/2.0/topics/db/)
+
     - [Kalıplar](/en/2.0/topics/db/models/)
     - [Sorgular oluşturmak](/en/2.0/topics/db/queries/)
     - [Toplama](/en/2.0/topics/db/aggregation/)
