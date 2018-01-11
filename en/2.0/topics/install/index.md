@@ -2,126 +2,116 @@
 layout: general
 title: Kurulum - Django Öğreniyorum
 ---
-# Django Nasıl Yüklenir?
+# Django Nasıl Yüklenir? {#how-to-install-django}
 
-Bu belge sizi Django'ya götürecek, ve birlikte çalışmaya başlatacak.
+Bu belge sizi Django'ya götürecek ve birlikte çalışmaya başlatacak.
 
-## Python Yükleyin
+## Python Yükleyin {#install-python}
 
-Python ağ çatısı olmak için Django'ya ihtiyaç duyar. Ayrıntılar için [Django ile hangi Python sürümünü kullanabilirim?](#) konusuna bakın.
+Python ağ çatısı olmak için Django'ya ihtiyaç duyar. Ayrıntılar için [Django ile hangi Python sürümünü kullanabilirim?](/en/2.0/faq/install/#faq-python-version-support) konusuna bakın.
 
 Python'un en son sürümünü [https://www.python.org/downloads/](https://www.python.org/downloads/) adresinden indirebilir ya da işletim sisteminizin paket yöneticisinden yükleyebilirsiniz.
 
 <div data-bilget="genel" markdown="1">
 ### Jython'da Django
 
-[Jython](#) (Python, Java platformu için bir uygulamadır.) Bu yüzden Python 3 ile uyumlu değildir, bu yüzden Django ≥ 2.0 Jython'da çalıştırılamaz.
+[Jython](http://www.jython.org/) (Python, Java platformu için bir uygulamadır.) Bu yüzden Python 3 ile uyumlu değildir, bu yüzden Django ≥ 2.0 Jython'da çalıştırılamaz.
 </div>
 
 <div data-bilget="genel" markdown="1">
 ### Python on Windows
 
-If you are just starting with Django and using Windows, you may find <a href="#">How to install Django on Windows</a> useful.
+Sadece Django'dan başlıyorsanız ve Windows işletim örgüsü kullanıyorsanız, [Djago'nun Windows'a nasıl kurulacağı](/en/2.0/howto/windows/) konusu yararlı olabilir.
 </div>
 
 <hr>
 
-## Install Apache and mod_wsgi
+## Kurulum Apache ve mod_wsgi {#install-apache-and-mod-wsgi}
 
-If you just want to experiment with Django, skip ahead to the next section; Django includes a lightweight web server you can use for testing, so you won’t need to set up Apache until you’re ready to deploy Django in production.
+Django ile denemek istiyorsanız bir sonraki bölüme geçelim; Django, sınamak için kullanabileceğiniz hafif bir ağ sunucusu içerir. Bu nedenle Django'yu üretim aşamasında dağıtmaya hazır olana kadar [Apache](https://httpd.apache.org/)'yi kurmanız gerekmez.
 
-If you want to use Django on a production site, use <a href="https://httpd.apache.org/">Apache</a> with <a href="http://www.modwsgi.org/">mod_wsgi</a>. mod_wsgi can operate in one of two modes: an embedded mode and a daemon mode. In embedded mode, mod_wsgi is similar to mod_perl – it embeds Python within Apache and loads Python code into memory when the server starts. Code stays in memory throughout the life of an Apache process, which leads to significant performance gains over other server arrangements. In daemon mode, mod_wsgi spawns an independent daemon process that handles requests. The daemon process can run as a different user than the Web server, possibly leading to improved security, and the daemon process can be restarted without restarting the entire Apache Web server, possibly making refreshing your codebase more seamless. Consult the mod_wsgi documentation to determine which mode is right for your setup. Make sure you have Apache installed, with the mod_wsgi module activated. Django will work with any version of Apache that supports mod_wsgi.
+Django'yu bir üretim sitesinde kullanmak isterseniz, [mod_wsgi](http://www.modwsgi.org/) ile [Apache](https://httpd.apache.org/)'yi kullanın. [mod_wsgi](http://www.modwsgi.org/), iki durumdan birinde çalışabilir: gömülü bir durum ve bir daemon durumu. Katıştırılmış durumda, [mod_wsgi](http://www.modwsgi.org/) mod_perl'e benzer: Paython'u [Apache](https://httpd.apache.org/) içine yerleştirir ve sunucu başlatıldığında Python kodunu belleğe yükler. Kod, bir Apache sürecinin ömrü boyunca bellekte kalır. Bu da diğer sunucu düzenlemelerine göre önemli başarım artışı sağlar. Daemon durumunda, mod_wsgi istekleri işleyen bağımsız bir arka plan programı oluşturur. Süreç işlemi, ağ sunucusundan farklı bir kullanıcı olarak çalışabilir. Bu da muhtemelen geliştirilmiş güvenliği sağlar ve tüm Apache ağ sunucusunu yeniden başlatmaya gerek kalmadan daemon işlemi yeniden başlatılabilir. Bu da kod tabanımızı daha sorunsuz bir şekilde yenilemektedir. Kurulumunuz için hangi kipin doğru olduğunu belirlemek için mod_wsgi bileşeni etkinleştirildi. Django mod_wsgi'yi destekleyen herhangi bir Apache sürümüyle çalışacaktır.
 
-See [How to use Django with mod_wsgi](#) for information on how to configure mod_wsgi once you have it installed.
+Mod_wsgi'yi kurduktan sonra nasıl yapılandırılacağı hakkında bilgi için Django'yu [mod_wsgi ile birlikte nasıl kullanacağınıza](/en/2.0/howto/deployment/wsgi/modwsgi/) bakın.
 
-If you can’t use mod_wsgi for some reason, fear not: Django supports many other deployment options. One is [uWSGI](#); it works very well with [nginx](#). Additionally, Django follows the WSGI spec ([PEP 3333](https://www.python.org/dev/peps/pep-3333)), which allows it to run on a variety of server platforms.
+Herhangi bir nedenle mod_wsgi'yi kullanamazsanız, korkmayın: Django diğer dağıtım seçeneklerini destekler. Biri [uWSGI](/en/2.0/howto/deployment/wsgi/uwsgi/); [nginx](https://nginx.org/) ile çok iyi çalışır. Buna ek olarak, Django çeşitli sunucu düzlemlerinde çalışmasına izin veren WSGI özgülleşimini ([PEP 333](https://www.python.org/dev/peps/pep-3333)) izler.
 
-<hr>
-## Get your database running
+## Veritabanınızı çalıştırın {#get-your-database-running}
 
-If you plan to use Django’s database API functionality, you’ll need to make sure a database server is running. Django supports many different database servers and is officially supported with [PostgreSQL](https://www.postgresql.org/), [MySQL](https://www.mysql.com/), [Oracle](https://www.oracle.com/) and [SQLite](https://www.sqlite.org/).
+Django'nun veritabanı API işlevselliğini kullanmayı planlıyorsanız, bir veritabanı sunucusunun çalıştığından emin olmanız gerekir. Django birçok farklı veritabanı sunucusunu destekler ve [PostgreSQL](https://www.postgresql.org/), [MySQL](https://www.mysql.com/), [Oracle](https://www.oracle.com/) ve [SQLite](https://www.sqlite.org/) ile resmi olarak desteklenir.
 
-If you are developing a simple project or something you don’t plan to deploy in a production environment, SQLite is generally the simplest option as it doesn’t require running a separate server. However, SQLite has many differences from other databases, so if you are working on something substantial, it’s recommended to develop with the same database as you plan on using in production.
+Basit bir proje veya bir üretim ortamında dağıtmayı planlamadığınız bir şey geliştiriyorsanız, ayrı bir sunucu çalıştırmayı gerektirmeyen SQLite genellikle en basit seçenektir. Bununla birlikte, SQLite diğer veritabanlarından pek çok farklılığa sahiptir, dolayısıyla önemli bir şey üzerinde çalışıyorsanız, üretimde kullanmayı planladığınız aynı veritabanıyla geliştirilmesi önerilir.
 
-In addition to the officially supported databases, there are [backends provided by 3rd parties](#) that allow you to use other databases with Django.
+Resmen desteklenen veritabanlarına ek olarak, diğer veritabanlarını Django ile kullanmanıza izin veren [3. taraflar tarafından sağlanan arka uçlar](/en/2.0/ref/databases/#third-party-notes) da vardır.
 
-In addition to a database backend, you’ll need to make sure your Python database bindings are installed.
+Bir veritabanı arka uç ek olarak, Python veritabanı bağlamalarınızın yüklü olduğundan emin olmanız gerekir.
 
+- PostgreSQL kullanıyorsanız, [psycopg2](http://initd.org/psycopg/) paketine ihtiyacınız olacaktır. Daha fazla ayrıntı için [PostgreSQL](/en/2.0/ref/databases/#postgresql-notes) notlarına bakın.
+- MySQL kullanıyorsanız, **mysqlclient** gibi bir [V.T. API sürücüsüne](/en/2.0/ref/databases/#mysql-db-api-drivers) ihtiyacınız olacaktır. Ayrıntılar için [MySQL arka uç için notlara](/en/2.0/ref/databases/#mysql-notes) bakın.
+- SQLite kullanıyorsanız, [SQLite arka uç noktalarını](/en/2.0/ref/databases/#sqlite-notes) okumak isteyebilirsiniz.
+- Oracle kullanıyorsanız, [cx_Orcale](https://oracle.github.io/python-cx_Oracle/)'ın bir kopyasına ihtiyacınız olacak, ancak **Oracle** ve **cx_Oracle**'ın desteklenen sürümleri ile ilgili ayrıntılar için lütfen [Oracle arka planının notlarını](/en/2.0/ref/databases/#oracle-notes) okuyun.
+- Resmi olmayan bir 3. taraf arka plan kullanıyorsanız, ek gereksinimler için lütfen verilen belgelere bakın.
 
-- If you’re using PostgreSQL, you’ll need the [psycopg2](http://initd.org/psycopg/) package. Refer to the [PostgreSQL](#) notes for further details.
-- If you’re using MySQL, you’ll need a [DB API driver](#) like mysqlclient. See [notes for the MySQL backend](#) for details.
-- If you’re using SQLite you might want to read the [SQLite backend notes](#).
-- If you’re using Oracle, you’ll need a copy of [cx_Oracle](https://oracle.github.io/python-cx_Oracle/), but please read the [notes for the Oracle backend](#) for details regarding supported versions of both Oracle and [cx_Oracle](https://oracle.github.io/python-cx_Oracle/).
-- If you’re using an unofficial 3rd party backend, please consult the documentation provided for any additional requirements.
+Django'nun **manage.py göç** komutunu, kalıplarınız için doğal olarak veritabanı tabloları oluşturmak için kullanmayı planlıyorsanız (ilk olarak Django yüklendikten ve bir proje oluşturduktan sonra), Django'nun sizin ouşturduğunuz veritabanında tablolar oluşturmasına ve değiştirmesine izin vermeniz gerekir. Yeniden kullanıyor; tablolar elle oluşturmayı planlıyorsanız, Django **SELECT**, **INSERT**, **UPDATE** ve **DELETE** izinleri verebilirsiniz. Bu izinlere sahip bir veritabanı kullanıcısı oluşturduktan sonra, ayrıntılarınızı projenizin ayarlar dosyasında belirtin, ayrıntılar için **DATABASES**'e bakın.
 
-If you plan to use Django’s manage.py migrate command to automatically create database tables for your models (after first installing Django and creating a project), you’ll need to ensure that Django has permission to create and alter tables in the database you’re using; if you plan to manually create the tables, you can simply grant Django SELECT, INSERT, UPDATE and DELETE permissions. After creating a database user with these permissions, you’ll specify the details in your project’s settings file, see DATABASES for details.
-
-If you’re using Django’s <a href="#">testing framework</a> to test database queries, Django will need permission to create a test database.
+Veritabanı sorgularını sınamak için Django'nun [sınama çerçevesini](/en/2.0/topics/testing/) kullanıyorsanız, Django'nun bir sınama veritabanı oluşturmak için izin alması gerekir.
 
 <hr>
+## Django'nun eski sürümlerini kaldırın {#remove-any-old-versions-of-django}
 
-## Remove any old versions of Django
+Django yüklemenizi önceki bir sürümden yükseltiyorsanız, yeni sürümü yüklemeden önce eski Django sürümünü kaldırmanız gerekecektir.
 
-If you are upgrading your installation of Django from a previous version, you will need to uninstall the old Django version before installing the new version.
+Django'yu daha önce [pip](https://pip.pypa.io/) veya **easy_install** kullanarak kurduysanız, [pip](https://pip.pypa.io/) veya **easy_install** ile yeniden yüklemek doğal olarak eski sürüme dikkat eder; bu nedenle kendiniz yapmanız gerekmez.
 
-If you installed Django using [pip](https://pip.pypa.io/) or easy_install previously, installing with pip or easy_install again will automatically take care of the old version, so you don’t need to do it yourself.
+Django'yu daha önce **python setup.py install** kullanarak kurduysanız, kaldırma işlemi, **django dizinini** Python **site-paketlerinizden** silmek kadar basittir. Kaldırmanız gereken dizini bulmak için, aşağıdaki kabuk komut isteminde (etkileşimli Python isteminde değil) çalıştırabilirsiniz:
 
-If you previously installed Django using python setup.py install, uninstalling is as simple as deleting the django directory from your Python site-packages. To find the directory you need to remove, you can run the following at your shell prompt (not the interactive Python prompt):
-
-<pre data-gnl="1 1p"><code class="language-python">
-$ python -c "import django; print(django.__path__)"
-</code></pre>
+  <pre data-gnl="1 1p"><code class="language-python">
+  $ python -c "import django; print(django.__path__)"
+  </code></pre>
 
 <hr>
 
-## Install the Django code
+## Django kodunu yükleyin {#install-the-django-code}
 
-Installation instructions are slightly different depending on whether you’re installing a distribution-specific package, downloading the latest official release, or fetching the latest development version.
+Yükleme yönergeleri, dağıtıma özgü bir paketi yüklemek, en yeni resmi sürümü karşıdan yüklemek veya son geliştirme sürümünü getirip yüklemediğinize bağlı olarak biraz farklıdır.
 
-It’s easy, no matter which way you choose.
+Hangi yoldan giderseniz gidin, kolaydır.
 
-### Installing an official release with pip
+### Pip ile resmi bir sürüm kurmak {#installing-an-official-release-with-pip}
 
-This is the recommended way to install Django.
-
-- Install [pip](https://pip.pypa.io/). The easiest is to use the [standalone pip installer](https://pip.pypa.io/en/latest/installing/#installing-with-get-pip-py). If your distribution already has pip installed, you might need to update it if it’s outdated. If it’s outdated, you’ll know because installation won’t work.
-- Take a look at [virtualenv](https://virtualenv.pypa.io/) and [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/). These tools provide isolated Python environments, which are more practical than installing packages systemwide. They also allow installing packages without administrator privileges. The [contributing tutorial](#) walks through how to create a virtualenv.
-- After you’ve created and activated a virtual environment, enter the command pip install Django at the shell prompt.
+- [Pip](https://pip.pypa.io/)'i kurun. En kolay olan, [bağımsız pip kurulumcusunu](#installing-with-get-pip-py) kullanmaktır. Dağıtımınızda zaten pip varsa, güncelliğini yitirmişse güncellemeniz gerekebilir. Eskiyse, yükleme yapmadan çalışmayacağını bilirsiniz.
+- [Viertualenv](https://virtualenv.pypa.io/) ve [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)'a bir göz atın. Bu araçlar, örgü çapında paketler yüklemekten daha basit olan ayrılmış Python ortamları sağlar. Ayrıca, yönetici ayrıcalıklarına sahip olmayan paketleri yüklemeye de izin verirler. [Katkıda bulunan ders](/en/2.0/intro/contributing/) bir sanallaştırmanın nasıl oluşturulacağıyla ilgilenir.
+- Sanal bir ortam oluşturduktan ve etkinleştirdikten sonra, kabuk komut istemine Django yükle komutunu girin **pip install Django**.
 
 <hr>
 
-## Installing a distribution-specific package
+### Dağıtıma özgür bir paketin kurulması {#installing-a-distribution-specific-package}
 
-Check the [distribution specific notes](#) to see if your platform/distribution provides official Django packages/installers. Distribution-provided packages will typically allow for automatic installation of dependencies and easy upgrade paths; however, these packages will rarely contain the latest release of Django.
+Düzlem / dağıtımınızın resmi Django paketleri / kurulumcuları sağladığını görmek için [dağıtıma özgül notları](/en/2.0/misc/distributions/) kontrol edin. Dağıtım tarafından sağlanan paketler genellikle bağımlılıkların doğal olarak yüklenmesine ve kolay yükseltme yollarına izin verir. Bununla birlikte, bu kapetler nadiren Django'nun en yeni sürümünü içerecektir.
 
 <hr>
 
-## Installing the development version
+### Geliştirme sürümünü yükleme {#installing-the-development-version}
+
 <div data-bilget="genel" markdown="1">
+### Django geliştirme takibi
 
-### Tracking Django development
-
-If you decide to use the latest development version of Django, you’ll want to pay close attention to [the development timeline](#), and you’ll want to keep an eye on the [release notes for the upcoming release](#). This will help you stay on top of any new features you might want to use, as well as any changes you’ll need to make to your code when updating your copy of Django. (For stable releases, any necessary changes are documented in the release notes.)
+Django'nun en son geliştirme sürümünü kullanmaya karar verirseniz, [geliştirme zaman çizelgesine](https://code.djangoproject.com/timeline) dikkat etmeniz gerekir ve [yaklaşan sürüm için sürüm notlarına](/en/2.0/releases/#development-release-notes) göz kulak olmanız gerekir. Bu kullanmak isteyebileceğiniz yeni özelliklerin yanı sıra Django kopyanızı güncellerken kodunuzda yapmanız gereken değişikler üzreinde size yardımcı olacaktır. (Kararlı sürümler için gerekli değişiklikler sürüm notlarında belgelenmiştir.)
 </div>
 
-If you’d like to be able to update your Django code occasionally with the latest bug fixes and improvements, follow these instructions:
+Django kodunuzu zaman zaman son hata düzeltmeleri ve yeniliklerle güncelleyebilmek için şu yönergeleri uygulayın:
 
-- Make sure that you have [Git](https://git-scm.com/) installed and that you can run its commands from a shell. (Enter git help at a shell prompt to test this.)
-- Check out Django’s main development branch like so:
+- [Git](https://git-scm.com/)'in kurulu olduğundan ve komutlarını bir kabuktan çalıştırabildiğinizden emin olun. (Bunu sınamak için bir kabuk isteminde git yardımını **git help** girin.)
+- Django'nun ana geliştirme dalına şöyle bir göz atın:
+    <pre data-gnl="1 1p"><code class="language-python">
+    $ git clone https://github.com/django/django.git
+    </code></pre>
+    Bu, geçerli dizinde django dizini oluşturacaktır.
+- Python çeviricinin Django'nun kodunu yükleyebildiğinden emin olun. Bunu yapmanın en kolay yolu, [virtualenv](https://virtualenv.pypa.io/), [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/) ve [pip](https://pip.pypa.io/) kullanmaktır. [Katkıda bulunan öğretici](/en/2.0/intro/contributing/) sanallaştırmanın nasıl oluşturulacağızla ilgilenir.
+- Virtualenv'i kurduktan ve etkinleştirdikten sonra aşağıdaki komutu çalıştırın:
+    <pre data-gnl="1 1p"><code class="language-python">
+    $ pip install -e django/
+    </code></pre>
+    Bu, Django'nun kodunu içe aktarılabilir kılar ve ayrıca django-admin yardımcı programı komutunu kullanılabilir hale getirecektir. Başka bir deyişle, hepiniz hazırsınız!
 
-<pre data-gnl="1 1p"><code class="language-python">
-$ git clone https://github.com/django/django.git
-</code></pre>
-
-This will create a directory django in your current directory.
-
-- Make sure that the Python interpreter can load Django’s code. The most convenient way to do this is to use [virtualenv](https://virtualenv.pypa.io/), [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/), and [pip](https://pip.pypa.io/). The [contributing tutorial](#) walks through how to create a virtualenv.
-- After setting up and activating the virtualenv, run the following command:
-
-<pre data-gnl="1 1p"><code class="language-python">
-$ pip install -e django/
-</code></pre>
-
-This will make Django’s code importable, and will also make the django-admin utility command available. In other words, you’re all set!
-
-When you want to update your copy of the Django source code, just run the command git pull from within the django directory. When you do this, Git will automatically download any changes.
+Django kaynak kodunun kopyasını güncellemek istediğinizde **git pull** komutunu django dizininden çalıştırın. Bunu yaptığınızda, Git herhangi bir değişikliği doğallıkla indirir.
