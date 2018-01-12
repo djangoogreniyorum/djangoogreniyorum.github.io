@@ -3,11 +3,11 @@ layout: general
 title: Django Kurulumu - Django Öğreniyorum
 ---
 
-# Hızlı Kurulum Rehberi {/en/2.0/intro/install/#quick-install-guide}
+# Hızlı Kurulum Rehberi {#quick-install-guide}
 
 Django'yu kullanmadan önce, onu yüklemeniz gerekli. Tüm olasılıkları kapsayan eksiksiz bir [kurulum rehberimiz](/en/2.0/topics/install/) var; bu rehber size kurulum süreci boyunca ihtiyacınız olan adımları gösterecek.
 
-## Python Kur {/en/2.0/intro/install/#install-python}
+## Python Kur {#install-python}
 
 Python ağ çatısına dönüştürülebilmesi için Django'ya gerek duyar. [Django ile hangi Python sürümünü kullanabilirim?](/en/2.0/faq/install/#faq-python-version-support) konusunun ayrıntılarını inceleyin. Python, [SQLite](https://sqlite.org/) adlı hafif bir veritabanına sahiptir. Bu nedenle başlangıçta veritabanı kurmanıza gerek kalmayacaktır.
 
@@ -24,19 +24,19 @@ Kabuğunuzdan **python** yazarak Python'un kurulu oluşunu doğrulayabilirsiniz;
 
 <hr>
 
-## Veritabanı Kurmak {/en/2.0/intro/install/#set-up-a-database}
+## Veritabanı Kurmak {#set-up-a-database}
 
 Bu adım yalnızda PostgreSQL, MySQL veya Oracle gibi "büyük" bir veritabanı motoruyla çalışmak istiyorsanız gereklidir. Böyle bir veritabanı yüklemek için [veritabanı kurulum bilgilerine](/en/2.0/topics/install/#database-installation) bakın.
 
 <hr>
 
-## Django'nun Eski Sürümlerini Kaldırın {/en/2.0/intro/install/#remove-any-old-versions-of-django}
+## Django'nun Eski Sürümlerini Kaldırın {#remove-any-old-versions-of-django}
 
 Django yüklemenizi önceki bir sürümden yükselterek yapıyorsanız, yeni sürümü yüklemeden önce [eski Django sürümünü kaldırmanız](/en/2.0/topics/install/#removing-old-versions-of-django) gerekecektir.
 
 <hr>
 
-## Django'yu Yükle {/en/2.0/intro/install/#install-django}
+## Django'yu Yükle {#install-django}
 
 Django'yu yüklemek için üç basit seçeneğiniz var.
 
@@ -52,7 +52,7 @@ Django'yu yüklemek için üç basit seçeneğiniz var.
 
 <hr>
 
-## Doğrulama {/en/2.0/intro/install/#verifying}
+## Doğrulama {#verifying}
 
 Django'nun Python taraından görülebildiğini doğrulamak için kabuğunuzdan **python** yazın. Sonra Python komut isteminde Django'yu almayı deneyin:
 
@@ -66,7 +66,7 @@ Sizde Django'nun başka bir sürümü kurulu olabilir.
 
 <hr>
 
-## İşte Bu Kadar! {/en/2.0/intro/install/#that-s-it}
+## İşte Bu Kadar! {#that-s-it}
 
 Öğreticiye geçebilirsiniz... [Buradan devam edin.](/en/2.0/intro/tutorial01/)
 
