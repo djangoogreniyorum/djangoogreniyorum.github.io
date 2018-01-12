@@ -272,3 +272,4 @@ Bu sadece Django'nun işlevselliği hakkında hızlı bir genel bakış olmuştu
 Bir sonraki belirgin adımlar [Django'yu indirmek](/download/), [dersleri okumak](/en/2.0/intro/tutorial01/), [topluluğa katılmak](/community/) içindir. İlginiz için teşekkürler.
 
 [**Başlangıç**](/en/2.0/intro/) | [**Hızlı Kurulum Rehberi**](/en/2.0/intro/install/)
+{: .sayfalandırma}

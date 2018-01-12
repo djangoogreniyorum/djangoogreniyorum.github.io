@@ -23,6 +23,17 @@ height: 3px;
 border: 1px dotted #cfcfcf;
 width: 100%;
 }
+.sayfalandırma{
+  padding:20px 0;
+  border-top:1px solid gray;
+  border-bottom: 1px solid gray;
+}
+.sayfalandırma td{
+  width: 50%;
+}
+.sayfalandırma tr td:nth-child(2){
+  text-align:right;
+}
 [data-basmal~="genel"]{
   display: inline-block;
 padding: 1em 50px 1.1em;
