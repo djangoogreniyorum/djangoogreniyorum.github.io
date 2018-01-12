@@ -266,7 +266,7 @@ Desenler GET ve POST değiştirgelerini veya etki alanı adını aramaz. Örneğ
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: görünüm (view){#path-argument-view}
+## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: görünüm (view) {#path-argument-view}
 
 Django eşleşen bir desen bulduğu zaman, belirtilen görüntüleme işlevini bir [**HttpRequest**](/en/2.0/ref/request-response/#django.http.HttpRequest) (Httpİstek) nesenesi ile ilk konu olarak çağırır ve anahtar sözcükleri olarak route (rota) daki yakalanmış tüm değerleri de. Buna biraz örnek vereceğiz.
 
@@ -282,7 +282,7 @@ Keyifli anahtar sözcük konuları bir sözlükte hedef görünümde geçirilebi
 
 URL'nizi adlandırmak, Django'nun başka yerlerinden, özellikle de şablonlardan ayırt edici bir şekilde başvurmanıza izin verir. Bu güçlü özellik, yalnızca tek bir doyaya dokunurken projenizin URL kalıplarında genel değişiklikler yapmanıza olanak tanır.
 
-Temek istek ve yanıt akışından memnun kaldığınızda, veritabanıyla çalışmaya başlamak için bu [öğreticinin 2. bölümü](/en/2.0/intro/tutorial02/)nü okuyun.
+Temel istek ve yanıt akışından memnun kaldığınızda, veritabanıyla çalışmaya başlamak için bu [öğreticinin 2. bölümü](/en/2.0/intro/tutorial02/)nü okuyun.
 
 [**Hızlı Kurulum Rehberi**](/en/2.0/intro/install/) | [**İlk django uygulamanızı yazma, bölüm 2**](/en/2.0/intro/tutorial02/)
 {: .sayfalandırma}
