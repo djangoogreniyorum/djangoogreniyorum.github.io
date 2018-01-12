@@ -1,6 +1,6 @@
 ---
 layout: general
-title: Search - Django Öğreniyorum
+title: Arama - Django Öğreniyorum
 ---
 # Arama {#search}
 
