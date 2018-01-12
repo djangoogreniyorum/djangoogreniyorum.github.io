@@ -16,7 +16,7 @@ Metin tabanlı alanlar, basit eşleme işlemleri için bir seçime sahiptir. Ör
 
   <pre data-gnl="1 1p"><code class="language-python">
   &gt;&gt;&gt; Author.objects.filter(name__contains='Terry')
-  [&lt;Author: Terry Gilliam&gt;, &lt;Author: Terry Jones&gt;]
+  &#91;&lt;Author: Terry Gilliam&gt;, &lt;Author: Terry Jones&gt;&#93;
   </code></pre>
 
 Bu, kullanıcıların yazarın adının tam bir alt dizilimini bilmesini gerektirdiğinden, çok kırılgan bir çözümdür. Daha iyi bir yaklaşım, büyük küçük harf duyarlılığı olmayan bir eşleşme olabilir (icontains), ancak bu sadece marjinal olarak daha iyidir.
@@ -38,7 +38,7 @@ Yukarıdaki örnekte, büyük küçük harfe duyarsız bir aramanın daha yararl
 
   <pre data-gnl="1 1p"><code class="language-python">
   &gt;&gt;&gt; Author.objects.filter(name__unaccent__icontains='Helen')
-  [&lt;Author: Helen Mirren&gt;, &lt;Author: Helena Bonham Carter&gt;, &lt;Author: Hélène Joy&gt;]
+  &#91;&lt;Author: Helen Mirren&gt;, &lt;Author: Helena Bonham Carter&gt;, &lt;Author: Hélène Joy&gt;&#93;
   </code></pre>
 
 Bu, adın farklı bir harflerle eşleştirildiği başka bir orunu gösteriyor. Bu durumda uyumsuzluk var. **Helen** aramaları **Helena** ya da **Hélène**'i alacak ama tersi değil. Başka bir seçenek ise, harf dizilerini karıştıran [**trigram_similar**](/en/2.0/ref/contrib/postgres/lookups/#std:fieldlookup-trigram_similar) karşılaştırmasını kullanmaktır.
@@ -47,7 +47,7 @@ Bu, adın farklı bir harflerle eşleştirildiği başka bir orunu gösteriyor. 
 
   <pre data-gnl="1 1p"><code class="language-python">
   &gt;&gt;&gt; Author.objects.filter(name__unaccent__lower__trigram_similar='Helen')
-  [&lt;Author: Helen Mirren&gt;, &lt;Author: Hélène Joy&gt;]
+  &#91;&lt;Author: Helen Mirren&gt;, &lt;Author: Hélène Joy&gt;&#93;
   </code></pre>
 
 Şimdi farklı bir sorunumuz var. Çok daha uzun olduğu gibi "Helena Bonham Carter"'ın uzun adı görünmüyor. Trigram aramaları, üç harfin tüm olasılıklarını dikkate alır ve kaç tane arama ve kaynak dizesinde gördüğünü karşılaştırır. Daha uzun isimler için, kaynak dizesinde görünen ve dolayısıyla yakın eşleşme olarak nitelendirilmeyen daha fazla olasılık var.
@@ -74,7 +74,7 @@ PostgreSQL'in dahili olarak tam metin arama uygulaması vardır. Bazı diğer ar
 
   <pre data-gnl="1 1p"><code class="language-python">
   &gt;&gt;&gt; Entry.objects.filter(body_text__search='cheese')
-  [&lt;Entry: Cheese on Toast recipes&gt;, &lt;Entry: Pizza recipes&gt;]
+  &#91;&lt;Entry: Cheese on Toast recipes&gt;, &lt;Entry: Pizza recipes&gt;&#93;
   </code></pre>
 
 Ayrıca alanları ve ilgili kalıpları bir arada süzebilirsiniz:
@@ -83,11 +83,11 @@ Ayrıca alanları ve ilgili kalıpları bir arada süzebilirsiniz:
   &gt;&gt;&gt; Entry.objects.annotate(
   ...     search=SearchVector('blog__tagline', 'body_text'),
   ... ).filter(search='cheese')
-  [
+  &#91;
       &lt;Entry: Cheese on Toast recipes&gt;,
       &lt;Entry: Pizza Recipes&gt;,
       &lt;Entry: Dairy farming in Argentina&gt;,
-  ]
+  &#93;
   </code></pre>
 
 Ayrıntılı bilgi için **contrib.postgres** [tam metin arama belgesi](/en/2.0/ref/contrib/postgres/search/)ne bakın.
