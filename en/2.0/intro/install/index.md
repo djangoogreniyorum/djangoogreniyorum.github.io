@@ -73,6 +73,6 @@ Sizde Django'nun başka bir sürümü kurulu olabilir.
 <hr>
 
 [**Bir bakışta Django**](/en/2.0/intro/overview/) | [**İlk django uygulamanızı yazma, bölüm 1**](/en/2.0/intro/tutorial01/)
-{.sayfalandırma}
+{: .sayfalandırma}
 
 <hr>
