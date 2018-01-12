@@ -15,6 +15,7 @@ a{
 }
 a strong{
   color:#0C3C26;
+  text-decoration: underline;
 }
 p{
   line-height: 1.5em;
