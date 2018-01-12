@@ -70,4 +70,8 @@ Sizde Django'nun başka bir sürümü kurulu olabilir.
 
 Öğreticiye geçebilirsiniz... [Buradan devam edin.](/en/2.0/intro/tutorial01/)
 
-[Bir bakışta Django](/en/2.0/intro/overview/) | [İlk django uygulamanızı yazma, bölüm 1](/en/2.0/intro/tutorial01/)
+<hr>
+
+{.sayfalandırma} [**Bir bakışta Django**](/en/2.0/intro/overview/) | [**İlk django uygulamanızı yazma, bölüm 1**](/en/2.0/intro/tutorial01/)
+
+<hr>
