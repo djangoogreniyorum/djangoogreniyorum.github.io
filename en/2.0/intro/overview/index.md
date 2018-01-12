@@ -2,13 +2,13 @@
 layout: general
 title: Bir Bakışta Django - Django Öğreniyorum
 ---
-# Bir Bakışta Django
+# Bir Bakışta Django {#django-at-a-glance}
 
 Django, hızlı bir haber odası ortamında geliştirildiğinden, ortak ağ geliştirme görevlerinih ızlı ve kolay kapmak için tasarlandı. Django ile veritabanı odaklı bir ağ uygulaması yazmanın nasıl yapıldığına dair gayri resmi bir genel bakış atalım.
 
 Bu belgenin amacı, Django'nun nasıl çalıştığını anlamak için yeterli teknik ayrıntıları vermektir. Ancak bu bir ders veya kaynak olarak tasarlanmamıştır. Bir projeye başlamaya hazır olduğunuzda, [öğreticiyle](/en/2.0/intro/tutorial01/) başlayabilir veya [daha ayrıntılı belgelere](/en/2.0/topics/) dalabilirsiniz.
 
-## Kalıbınızı Tasarlayın
+## Kalıbınızı Tasarlayın {#design-your-model}
 
 Django'yu bir veritabanı olmadan kullanabilmenize rağman, veritabanı düzeninizi Python kodunda tanımladığınız bir [nesne-ilişkisel eşlemeyle](https://en.wikipedia.org/wiki/Object-relational_mapping) birlikte gelir.
 
@@ -36,7 +36,7 @@ class Makale(models.Model):
 
   <hr>
 
-## Kurulumu Yap
+## Kurulumu Yap {#install-it}
 
 Şimdi, veritabanı tablolarını doğal olarak oluşturmak için Django komut satırı yardımcı programını çalıştırın:
 
@@ -48,7 +48,7 @@ $ python manage.py migrate
 
 <hr>
 
-## Ücretsiz API'nin tadını çıkarın
+## Ücretsiz API'nin tadını çıkarın {#enjoy-the-free-api}
 
 Bununla, verilerinize erişmek için özgür ve zengin bir [Python API](/en/2.0/topics/db/queries/)'si var. API anında oluşturulur, kod üretimi gerekli değildir:
 
@@ -123,7 +123,7 @@ Bununla, verilerinize erişmek için özgür ve zengin bir [Python API](/en/2.0/
   &gt;&gt;&gt; r.delete()
 </code></pre>
 
-## Dinamik bir yönetici arayüzü: sadece iskele değil, tüm ev var.
+## Dinamik bir yönetici arayüzü: sadece iskele değil, tüm ev var. {#a-dynamic-admin-interface-it-s-not-just-scaffolding-it-s-the-whole-house}
 
 Django, kalıplarınızı tanımlandıktan sonra kimliği doğrulanmış kullanıcıların nesneleri ekleme, değiştirme ve silme olanağı veren bir ağ sitesi olan, usta, üretime hazır bir [yönetici arabirimi](/en/2.0/ref/contrib/admin/) doğal olarak oluşturabilir. Kalıbınızı yönetici sitesine kaydetmek kadar kolaydır:
 
@@ -152,7 +152,7 @@ Django uygulamalarını oluştururken kullanılan tipik bir iş akışı, modell
 
 <hr>
 
-## URLleri tasarlayın
+## URLleri tasarlayın {#design-your-urls}
 
 Temiz, şık bir URL şeması, yüksek kaliteli bir ağ uygulamasında önemli bir ayrıntıdır. Django güzel bir URL tasarımını teşvik eder ve **.php** veya **.asp** gibi URL'lerde herhangi bir hata yapmaz.
 
@@ -179,7 +179,7 @@ URL kalıpları eşleştiğinde, Django, Python işlevi olan belirli görünüm�
 
 <hr>
 
-## Görünümleri yaz (views)
+## Görünümleri yaz (views) {#write-your-views}
 
 Her görünüm, iki şeyden birini yapmaktan sorumludur: İstenen sayfa için içeriği içeren bir [**HttpResonse**](/en/2.0/ref/request-response/#django.http.HttpResponse) nesenesini döndürme veya [**Http404**](/en/2.0/topics/http/views/#django.http.Http404) gibi bir istisna yükseltere. Gerisi size kalmış.
 
@@ -202,7 +202,7 @@ Bu örnek, birkaç güçlü özelliklere sahip olan Django [şablon örgüsünü
 
 <hr>
 
-## Şablonlarınızı tasarlayın
+## Şablonlarınızı tasarlayın {#design-your-templates}
 
 Yukarıdaki kod, **haberler/yillik_arsiv.html** şablonunu yükler.
 
@@ -261,7 +261,7 @@ Başka bir örgüyü tercih ederseniz, Django'nun şablon görügüsünü kullan
 
 <hr>
 
-## Bu sadece yüzey
+## Bu sadece yüzey {#this-is-just-the-surface}
 
 Bu sadece Django'nun işlevselliği hakkında hızlı bir genel bakış olmuştur. Bazı kullanışlı özellikler şöyle:
 
@@ -270,3 +270,5 @@ Bu sadece Django'nun işlevselliği hakkında hızlı bir genel bakış olmuştu
 - Doğal olarak oluşturulan daha çekici doğal yönetici özellikleri
 
 Bir sonraki belirgin adımlar [Django'yu indirmek](/download/), [dersleri okumak](/en/2.0/intro/tutorial01/), [topluluğa katılmak](/community/) içindir. İlginiz için teşekkürler.
+
+[**Başlangıç**](/en/2.0/intro/) | [**Hızlı Kurulum Rehberi**](/en/2.0/intro/install/)
