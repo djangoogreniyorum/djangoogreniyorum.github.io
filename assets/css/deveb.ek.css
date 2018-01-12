@@ -13,6 +13,9 @@ header{
 a{
   color:crimson;
 }
+a strong{
+  color:#0C3C26;
+}
 p{
   line-height: 1.5em;
 }
