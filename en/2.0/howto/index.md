@@ -30,3 +30,6 @@ Burada "... Nasıl Yapılır?" tipinde sorulara kısa kısa cevaplar bulacaksın
 
 Genel Django topluluğunun içeriğini topladığımız [Django topluluğu toplama aracı](https://www.djangoproject.com/community/). Toplayıcıdaki birçok yazar bu türde nasıl yapılır konuları yazmaktadır.
 </div>
+
+[**Dış paketler**](/en/2.0/topics/external-packages/) | [**REMOTE_USER kullanarak kimlik doğrulama**](/en/2.0/howto/auth-remote-user/)
+{: .sayfalandırma}
