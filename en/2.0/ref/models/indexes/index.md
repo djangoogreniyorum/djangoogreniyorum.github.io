@@ -2,8 +2,7 @@
 layout: general
 title: Model index reference - Django Öğreniyorum
 ---
-<span id="module-django.db.models.indexes"></span>
-# Kalıp dizini kaynakça / Model index reference
+<h1 id="module-django.db.models.indexes">Kalıp dizini kaynakça / Model index reference</h1>
 
 <div data-bilget="varsayılan" markdown="1">
 **Django 1.11. da yeni**
@@ -23,8 +22,7 @@ title: Model index reference - Django Öğreniyorum
 Veritabanında  bir indeks (B-Tree) oluşturur.
 
 ## **fields** {#fields}
-<span id="django.db.models.Index.fields"></span>
-### Index.fields
+<h3 id="django.db.models.Index.fields">Index.fields</h3>
 
 Dizinin (indeks) istenildiği alanların adının bir listesi.
 
@@ -41,16 +39,14 @@ Sütun sıralaması, SQLite 3.3.0+ ve yalnızca bazı veritabanı dosya biçimle
 <hr>
 
 ## **name** {#name}
-<span id="django.db.models.Index.name"></span>
-### **Index.name**
+<h3 id="django.db.models.Index.name">Index.name</h3>
 
 İsim dizinindir. İsim yani **name** verilmemişse Django doğal olarak bir isim çıkaracaktır. Farklı veritabanları ile uyumluluk için dizin isimleri 30 karakterden uzun olamaz ve bir sayı (0-9) veya altçizgi ( _ ) ile başlaması gerekir.
 
 <hr>
 
 ## **db_tablespace** {#db-tablespace}
-<span id="django.db.models.Index.db_tablespace"></span>
-### **Index.db_tablespace**
+<h3 id="django.db.models.Index.db_tablespace">Index.db_tablespace</h3>
 <div data-bilget="varsayılan" markdown="1">
 **Django 2.0. da yeni**
 </div>
