@@ -1,6 +1,6 @@
 ---
 layout: general
-title: 'Nasıl yapılır?' Rehberi - Django Öğreniyorum
+title: Nasıl yapılır? Rehberi - Django Öğreniyorum
 ---
 # "Nasıl Yapılır?" Rehberi {#how-to-guides}
 
