@@ -2,7 +2,7 @@
 layout: general
 title: Model index reference - Django Öğreniyorum
 ---
-# Kalıp dizini kaynakça / Model index reference {#module-django&#46;db&#46;models&#46;indexes}
+# Kalıp dizini kaynakça / Model index reference {: #module-django&#46;db&#46;models&#46;indexes}
 
 <div data-bilget="varsayılan" markdown="1">
 **Django 1.11. da yeni**
