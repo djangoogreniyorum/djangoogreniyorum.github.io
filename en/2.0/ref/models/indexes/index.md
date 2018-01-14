@@ -23,7 +23,6 @@ title: Model index reference - Django Öğreniyorum
 Veritabanında  bir indeks (B-Tree) oluşturur.
 
 ## **fields** {#fields}
-
 <span id="django.db.models.Index.fields"></span>
 ### Index.fields
 
@@ -42,7 +41,6 @@ Sütun sıralaması, SQLite 3.3.0+ ve yalnızca bazı veritabanı dosya biçimle
 <hr>
 
 ## **name** {#name}
-
 <span id="django.db.models.Index.name"></span>
 ### **Index.name**
 
@@ -51,7 +49,6 @@ Sütun sıralaması, SQLite 3.3.0+ ve yalnızca bazı veritabanı dosya biçimle
 <hr>
 
 ## **db_tablespace** {#db-tablespace}
-
 <span id="django.db.models.Index.db_tablespace"></span>
 ### **Index.db_tablespace**
 <div data-bilget="varsayılan" markdown="1">
