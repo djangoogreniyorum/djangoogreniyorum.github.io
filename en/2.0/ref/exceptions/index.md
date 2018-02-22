@@ -6,7 +6,7 @@ title: Django İstisnaları - Django Öğreniyorum
 
 Django, bazı istisnaların yanı sıra standarPython istisnalarını da yükseltmektedir.
 
-## Django Çekirdek İstisnaları {#module-django.core.exceptions}
+## Django Çekirdek İstisnaları {#module-django&#46;core&#46;exceptions}
 
 Django çekirdek istisna sınıfları **django.core.exceptions**'da tanımlanmıştır.
 
