@@ -68,9 +68,9 @@ anketler/urls.py
         # örnek: /anketler/5/
         path('&lt;int:soru_id&gt;/', views.ayrinti, name='ayrinti'),
         # örnek: /anketler/5/sonuclar/
-        path('&lt;int:soru_id&gt;/results/', views.sonuclar, name='sonuclar'),
+        path('&lt;int:soru_id&gt;/sonuclar/', views.sonuclar, name='sonuclar'),
         # örnek: /anketler/5/oy/
-        path('&lt;int:soru_id&gt;/vote/', views.oy, name='oy'),
+        path('&lt;int:soru_id&gt;/oy/', views.oy, name='oy'),
     ]
   </code></pre>
 
