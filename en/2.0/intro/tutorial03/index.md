@@ -164,10 +164,10 @@ anketler/views.py
   def index(request):
       son_sorular_listesi = Soru.objects.order_by('-yayim_tarihi')[:5]
       template = loader.get_template('anketler/index.html')
-      context = {
+      cikti = {
           'son_sorular_listesi': son_sorular_listesi,
       }
-      return HttpResponse(template.render(context, request))
+      return HttpResponse(template.render(cikti, request))
 </code></pre>
 
 Bu kod, anketler/index.html adlı şablonu yükler ve bir bağlamı iletir. Bağlam, Python nesnelerine bir sözlük eşleme şablon adlarıdır.
@@ -188,8 +188,8 @@ anketler/views.py
 
   def index(request):
       son_sorular_listesi = Soru.objects.order_by('-yayim_tarihi')[:5]
-      context = {'son_sorular_listesi': son_sorular_listesi}
-      return render(request, 'anketler/index.html', context)
+      cikti = {'son_sorular_listesi': son_sorular_listesi}
+      return render(request, 'anketler/index.html', cikti)
 </code></pre>
 
 Bunu tüm bu görünümlerde yaptıktan sonra yükleyici ve HttpRepsonse'u artık içe aktarmamız gerekmediğini unutmayın (ayrıntılar, sonuçlar ve oy için saplama yöntemleri hala varsa HttpRepsonse'u saklamak istersiniz).
