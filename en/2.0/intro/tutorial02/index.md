@@ -340,7 +340,7 @@ class Soru(models.Model):
 Bu değişiklikleri kaydedin ve **python manage.py shell** tekrar çalıştırarak yeni bir Python etkileşimli kabuğu başlatın:
 
 <pre data-gnl="1 1p"><code class="language-python">
-  &gt;&gt;&gt; from polls.models import Soru, Secim
+  &gt;&gt;&gt; from anketler.models import Soru, Secim
 
   # __str__() ekimizin çalıştığından emin olun.
   &gt;&gt;&gt; Soru.objects.all()
