@@ -6,16 +6,46 @@ description: Bu proje CSS'nin tüm imkanlarını zorlayarak daha gelişmiş bir 
 twitter_username: datadeveb
 github_username:  data-deveb
 
+
+# Redirect settings
+collections:
+  redirects:
+    output: true
+
+defaults:
+  -
+    scope:
+      type: redirects
+    values:
+      layout: redirect
+
 # Build settings
 markdown: kramdown
 theme: minima
 
 # Açık bağlar
-basla: /belgeler/basla.html
-onbakis: /belgeler/basla/onbakis.html
-belgeler: /belgeler/index.html
-belgeler_bakis: /belgeler/2.0/bakis.html
-belgeler_giris: /belgeler/2.0/giris.html
+start: /start/
+overview: /start/overview/
+belgeler: /belgeler/index
+
+en_20_intro_overview: /en/2.0/intro/overview/
+en_20_topics_security: /en/2.0/topics/security/
+
+
+belgeler_kurulum: /belgeler/2.0/kurulum
+belgeler_giris: /belgeler/2.0/giris
+belgeler_ogretici1: /belgeler/2.0/ogretici1
+belgeler_ogretici2: /belgeler/2.0/ogretici2
+belgeler_ogretici3: /belgeler/2.0/ogretici3
+belgeler_ogretici4: /belgeler/2.0/ogretici4
+belgeler_ogretici5: /belgeler/2.0/ogretici5
+belgeler_ogretici6: /belgeler/2.0/ogretici6
+belgeler_ogretici7: /belgeler/2.0/ogretici7
+belgeler_paket_yapma: /belgeler/2.0/paket_yapma
+belgeler_sirada_ne_var: /belgeler/2.0/sirada_ne_var
+
+basliklar_models: /belgeler/2.0/basliklar/models
+basliklar_kurulum: /belgeler/2.0/basliklar/kurulum
 
 # Ders bağları
-dersler_onbakis: /diger.html
+dersler_onbakis: /diger

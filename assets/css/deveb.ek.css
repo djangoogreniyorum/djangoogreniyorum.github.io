@@ -1,3 +1,4 @@
+
 body{
   color:#0C3C26;
 }
@@ -11,6 +12,57 @@ header{
 }
 a{
   color:crimson;
+}
+a strong{
+  color:#0C3C26;
+  text-decoration: underline;
+}
+p{
+  line-height: 1.5em;
+}
+[data-ayar~="basit"] ul li{list-style: disc;
+margin-left:15px; margin-bottom:15px;}
+hr{
+height: 3px;
+border: 1px dotted #cfcfcf;
+width: 100%;
+}
+.sayfalandırma{
+  padding:20px 0;
+  border-top:1px solid gray;
+  border-bottom: 1px solid gray;
+}
+.sayfalandırma td{
+  width: 50%;
+}
+.sayfalandırma tr td:nth-child(2){
+  text-align:right;
+}
+[data-basmal~="genel"]{
+  display: inline-block;
+padding: 1em 50px 1.1em;
+margin-bottom: 40px;
+background: #44B78B;
+color: white;
+border: 0;
+font-weight: 700;
+font-size: 1.2rem;
+}
+[data-basmal~="genel"]:hover{
+  background-color: #51be95;
+}
+[data-bilget~="genel"] {
+    width: 100%;
+    background: #F1FFF7;
+    padding: 10px 20px 10px 30px;
+    border: 1px solid #C9F0DD;
+    border-radius: 4px;
+    margin: 25px 0;
+    position: relative;
+}
+[data-bilget] h3{
+  margin:5px 0;
+  font-size: 16px;
 }
 .headertext{
   font-size:24px;
@@ -42,7 +94,7 @@ display: block;
   margin: 1em auto .5em;
   color: #0C3C26;
   font-size: 36px;
-  font-size: 3.6rem;
+  font-size: 2.4rem;
 }
 dl.özellik-listesi{
   margin: 50px 0 40px;
