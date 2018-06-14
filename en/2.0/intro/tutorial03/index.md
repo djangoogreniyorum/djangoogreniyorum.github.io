@@ -68,9 +68,9 @@ anketler/urls.py
         # örnek: /anketler/5/
         path('&lt;int:soru_id&gt;/', views.ayrinti, name='ayrinti'),
         # örnek: /anketler/5/sonuclar/
-        path('&lt;int:soru_id&gt;/results/', views.sonuclar, name='sonuclar'),
+        path('&lt;int:soru_id&gt;/sonuclar/', views.sonuclar, name='sonuclar'),
         # örnek: /anketler/5/oy/
-        path('&lt;int:soru_id&gt;/vote/', views.oy, name='oy'),
+        path('&lt;int:soru_id&gt;/oy/', views.oy, name='oy'),
     ]
   </code></pre>
 
@@ -164,10 +164,10 @@ anketler/views.py
   def index(request):
       son_sorular_listesi = Soru.objects.order_by('-yayim_tarihi')[:5]
       template = loader.get_template('anketler/index.html')
-      context = {
+      cikti = {
           'son_sorular_listesi': son_sorular_listesi,
       }
-      return HttpResponse(template.render(context, request))
+      return HttpResponse(template.render(cikti, request))
 </code></pre>
 
 Bu kod, anketler/index.html adlı şablonu yükler ve bir bağlamı iletir. Bağlam, Python nesnelerine bir sözlük eşleme şablon adlarıdır.
@@ -188,8 +188,8 @@ anketler/views.py
 
   def index(request):
       son_sorular_listesi = Soru.objects.order_by('-yayim_tarihi')[:5]
-      context = {'son_sorular_listesi': son_sorular_listesi}
-      return render(request, 'anketler/index.html', context)
+      cikti = {'son_sorular_listesi': son_sorular_listesi}
+      return render(request, 'anketler/index.html', cikti)
 </code></pre>
 
 Bunu tüm bu görünümlerde yaptıktan sonra yükleyici ve HttpRepsonse'u artık içe aktarmamız gerekmediğini unutmayın (ayrıntılar, sonuçlar ve oy için saplama yöntemleri hala varsa HttpRepsonse'u saklamak istersiniz).
@@ -267,10 +267,10 @@ Anket uygulaması için ayrinti() görünümüne geri dönün. Bağlam değişke
 anketler/templates/anketler/ayrinti.html
 
 <pre data-gnl="1 1p"><code class="language-python">
-  &lt;h1&gt;{&#123; question.question_text &#125;}&lt;/h1&gt;
+  &lt;h1&gt;{&#123; soru.soru_metni &#125;}&lt;/h1&gt;
   &lt;ul&gt;
-  {&#37; for choice in question.choice_set.all &#37;}
-      &lt;li&gt;{&#123; choice.choice_text &#125;}&lt;/li&gt;
+  {&#37; for secim in soru.secim_set.all &#37;}
+      &lt;li&gt;{&#123; secim.secim_metni &#125;}&lt;/li&gt;
   {&#37; endfor &#37;}
   &lt;/ul&gt;
 </code></pre>
