@@ -267,10 +267,10 @@ Anket uygulaması için ayrinti() görünümüne geri dönün. Bağlam değişke
 anketler/templates/anketler/ayrinti.html
 
 <pre data-gnl="1 1p"><code class="language-python">
-  &lt;h1&gt;{&#123; question.question_text &#125;}&lt;/h1&gt;
+  &lt;h1&gt;{&#123; soru.soru_metni &#125;}&lt;/h1&gt;
   &lt;ul&gt;
-  {&#37; for choice in question.choice_set.all &#37;}
-      &lt;li&gt;{&#123; choice.choice_text &#125;}&lt;/li&gt;
+  {&#37; for secim in soru.secim_set.all &#37;}
+      &lt;li&gt;{&#123; secim.secim_metni &#125;}&lt;/li&gt;
   {&#37; endfor &#37;}
   &lt;/ul&gt;
 </code></pre>
