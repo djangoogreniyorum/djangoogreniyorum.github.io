@@ -85,7 +85,7 @@ Hatanın gerçekten olup olmadığını sınamak için yöneticiyi kullanarak ta
 <pre data-gnl="1 1p"><code class="language-python">
   >>> import datetime
   >>> from django.utils import timezone
-  >>> from polls.models import Soru
+  >>> from anketler.models import Soru
   >>> # 30 gün sonra yayım tarihli bir Soru örneği oluşturma
   >>> gelecegin_sorusu = Soru(yayim_tarihi=timezone.now() + datetime.timedelta(days=30))
   >>> # Son zamanlarda basıldı mı?
