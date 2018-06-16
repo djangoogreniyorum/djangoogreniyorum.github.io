@@ -2,7 +2,7 @@
 layout: general
 title: Öğretici 1 - Django Öğreniyorum
 ---
-# İlk Django Uygulamanızı Yazma, Bölüm 1 
+# İlk Django Uygulamanızı Yazma, Bölüm 1 {#writing-your-first-django-app-part-1}
 
 Örnekle öğrenelim.
 Temel bir anket uygulamasının oluşturulması konusunu bu ders boyunca işleyeceğiz.
@@ -30,7 +30,7 @@ Bu öğreticide sorun yaşıyorsanız, lütfen [Django Öğreniyorum grubuna](ht
 
 </div>
 
-## Proje oluşturma
+## Proje oluşturma {#creating-a-project}
 
 Django'yu ilk defa kullanıyorsanız, bazı ilk kurulumlara dikkat etmeni gerekir. Yani, bir [Django projesi](/en/2.0/glossary/#term-project) veritabanı yapılandırması, Django'ya özgü seçenekler ve uygulamaya özel ayarlar dahil olmak üzere Django örneği için bir ayarlar kümesi oluşturan bazı kodları doğallıkla üretmeniz gerekecek.
 
@@ -77,7 +77,7 @@ Bu dosyalar:
 - **benimsite/benimsite/urls.py**: Django projesinin URL bildirimleridir; Django destekli sitenizin “içindekiler tablosu” şeklinde ifade edilebilir. [URL gönderim](/en/2.0/topics/http/urls/) programındaki URL'lerle ilgili daha fazla bilgiyi okuyabilirsiniz.
 - **benimsite/benimsite/wsgi.py**: WSGI uyumlu ağ sunucuları için projenize hizmet edecek bir giriş noktasıdır. Daha fazla bilgi için [WSGI ile nasıl dağıtılacağına](/en/2.0/howto/deployment/wsgi/) bakın.
 
-## Geliştirme sunucusu 
+## Geliştirme sunucusu {#the-development-server}
 
 Django projenizin çalıştığını doğrulayalım. Henüz yapmadıysanız **benimsite** kök dizinine geçin ve aşağıdaki komutları çalıştırın:
 
@@ -137,7 +137,7 @@ Sunucun IP’sini değiştirmek isterseniz, portun yanında belirtin. Örneğin,
 Geliştirme sunucusu, her istekte Python kodunu otomatik olarak yeniden yükler. Kod değişikliklerinin etkili olması için sunucuyu yeniden başlatmanıza gerek yoktur. Bununla birlikte, dosya ekleme gibi bazı işlemler yeniden başlatma çalıştırılmaz, bu nedenle bu durumlarda sunucuyu yeniden elle başlatmanız gerekir. Çünkü otomatik olarak yenilenmeyecektir.
 </div>
 
-## Anket uygulamasını oluşturma
+## Anket uygulamasını oluşturma {#creating-the-polls-app}
 
 Artık bir "proje" için ortamınız kuruldu, işinizi yapmaya başladınız demektir.
 
@@ -176,7 +176,7 @@ Bu dizin yapısı anket uygulamasını barındıracaktır.
 
 <hr>
 
-## İlk görünümüzü yazın (views.py)
+## İlk görünümüzü yazın (views.py) {#write-your-first-view}
 
 **anketler/views.py** dosyasını açın ve aşağıdaki Python kodunu buraya yerleştirin:
 
@@ -259,7 +259,7 @@ Tarayıcınızda [http://localhost:8000/anketler/](http://localhost:8000/anketle
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: rota (route) 
+## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: rota (route) {#path-argument-route}
 
 **route**, bir URL kalıbı içeren dizedir. Bir isteği işlerken, Django **urlpatterns**'deki ilk desenden başlar ve istenilen URL'yi her desene eşleyene kadar karşılaştırarak listeden aşğı doğru yol alır.
 
@@ -267,19 +267,19 @@ Desenler GET ve POST değiştirgelerini veya etki alanı adını aramaz. Örneğ
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: görünüm (view)
+## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: görünüm (view) {#path-argument-view}
 
 Django eşleşen bir desen bulduğu zaman, belirtilen görüntüleme işlevini bir [**HttpRequest**](/en/2.0/ref/request-response/#django.http.HttpRequest) (Httpİstek) nesenesi ile ilk konu olarak çağırır ve anahtar sözcükleri olarak route (rota) daki yakalanmış tüm değerleri de. Buna biraz örnek vereceğiz.
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: kwargs 
+## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: kwargs {#path-argument-kwargs}
 
 Keyifli anahtar sözcük konuları bir sözlükte hedef görünümde geçirilebilir. Öğreticide Django'nun bu özelliğini kullanmayacağız.
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: isim (name) 
+## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: isim (name) {#path-argument-name}
 
 URL'nizi adlandırmak, Django'nun başka yerlerinden, özellikle de şablonlardan ayırt edici bir şekilde başvurmanıza izin verir. Bu güçlü özellik, yalnızca tek bir doyaya dokunurken projenizin URL kalıplarında genel değişiklikler yapmanıza olanak tanır.
 
