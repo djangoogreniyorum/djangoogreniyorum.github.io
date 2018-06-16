@@ -40,21 +40,22 @@ Komut satırından **cd** komutunu proje dosyalarınızın bulunmasını istedi�
   $ django-admin startproject benimsite
   </code></pre>
 
-Geçerli dizinde "**benimsite**" dizini oluşturacaktır. İşe yaramazsa, bkz. [Django-admin sorunlu çalışmalar](/en/2.0/faq/troubleshooting/#troubleshooting-django-admin)
+Geçerli dizinde "**benimsite**" dizini oluşturacaktır. İşe yaramazsa,[Django-admin'i çalıştırırken oluşan sorunlar](/en/2.0/faq/troubleshooting/#troubleshooting-django-admin)'a bakın.
 <div data-bilget="genel" markdown="1">
 ### Not
 
 Yerleşik Python veya Django bileşenleri sonrasında projeleri adlandırmaktan kaçınmanız gerekir. Özellikle, django veya test gibi yerleşik bir Python paketiyle çakışabilecek isimleri kullanmamanız gerektiği anlamına gelir.
 </div>
 <div data-bilget="genel" markdown="1">
-###  Bu kod nerede yaşayacak?
+###  Bu kod nerede çalışacak?
 
-Arka planınız düz eski PHP (günümüz çatıları kullanmadan) ise, büyük olasılıkla ağ sunucusunun belge kökü altına (/var/www gibi bir yere) kod koymak için kullanırsınız. Django ile ise bunu yapamazsın. Bu Python kodundan herhangi birini ağ sunucunuzun belge kökü içine koymak iyi bir fikir değil. Çünkü insanların kodunuzu ağ üzerinden görüntüleyebilecekleri riskini taşıyor. Bu güvenlik açısından iyi değil.
+Arka planınız düz eski PHP (günümüz çatıları kullanmadan) ise, büyük olasılıkla ağ sunucusunun belge kökü altına (/var/www gibi bir yere) kod koymak için kullanırsınız. Django ile ise bunu yapamazsınız. Bu Python kodundan herhangi birini ağ sunucunuzun belge kökü içine koymak iyi bir fikir değildir.Çünkü insanların ağ üzerinden kodunuzu
+görüntüleyebilme riskini taşıyabilir.Bu güvenlik açısından iyi değildir.
 
 Bu nedenle kodunuzu (/home/benimkodum gibi) belge kökü dışında bir dizine yerleştirin.
 </div>
 
-[**startproject**](/en/2.0/ref/django-admin/#django-admin-startproject) komutunun oluşturduğu şeylere bir göz atalım:
+[**startproject**](/en/2.0/ref/django-admin/#django-admin-startproject) komutunun oluşturduklarına bir göz atalım:
 <pre data-gnl="1 1p"><code class="language-python">
 benimsite/
     manage.py
@@ -71,14 +72,14 @@ Bu dosyalar:
 - **benimsite/**: kök dizinidir. Yalnızca projeniz için kapsayıcı dizindir. Adının ne olduğu Django için önemli değildir; yeniden adlandırmada sorun yaşamazsınız.
 - **benimsite/manage.py**: Django projenizle çeşitli şekillerde etkileşimde bulunmanıza izin veren bir komut satırı yardımcı programıdır. Manage.py ile ilgili tüm ayrıntıları [django-admin ve manage.py](/en/2.0/ref/django-admin/) bölümlerinde okuyabilirsiniz.
 - **benimsite/benimsite/**: projenizin öz Python paketidir. Adı, içindeki herhangi bir içeriği içe aktarmak için kullanmanız gereken Python paketinin adıdır. Örnek kullanım: **benimsite.urls**
-- **benimsite/benimsite/__init__.py**: Bu dizinin bir Python paketi olduğu düşüncesiyle Python'a bildirilen boş bir dosya. Bir Python acemi kullanıcısıysanız, [resmi Python belgelerindeki paketler hakkında](https://docs.python.org/3/tutorial/modules.html#tut-packages) daha fazla bilgi edinin.
+- **benimsite/benimsite/__init__.py**: Bu dizinin bir Python paketi olarak ele alınması gerektiğini söyleyen boş bir dosyadır. Acemi bir Python kullanıcısıysanız, [resmi Python belgelerindeki paketler hakkında](https://docs.python.org/3/tutorial/modules.html#tut-packages) daha fazla bilgi edinin.
 - **benimsite/benimsite/settings.py**: Django projesi için ayarlar yapılandırması yapılır. [Django ayarları](/en/2.0/topics/settings/) belgesi ayarların size nasıl çalıştığını gösterecektir.
-- **benimsite/benimsite/urls.py**: Django projesinin URL bildirimleridir; Django destekli sitenizin "içindekiler tablosu". [URL gönderim](/en/2.0/topics/http/urls/) programındaki URL'lerle ilgili daha fazla bilgiyi okuyabilirsiniz.
-- **benimsite/benimsite/wsgi.py**: WSGI uyumlu ağ sunucuları için projenize hizmet edecek bir giriş noktası. Daha fazla bilgi için [WSGI ile nasıl dağıtılacağına](/en/2.0/howto/deployment/wsgi/) bakın.
+- **benimsite/benimsite/urls.py**: Django projesinin URL bildirimleridir; Django destekli sitenizin “içindekiler tablosu” şeklinde ifade edilebilir. [URL gönderim](/en/2.0/topics/http/urls/) programındaki URL'lerle ilgili daha fazla bilgiyi okuyabilirsiniz.
+- **benimsite/benimsite/wsgi.py**: WSGI uyumlu ağ sunucuları için projenize hizmet edecek bir giriş noktasıdır. Daha fazla bilgi için [WSGI ile nasıl dağıtılacağına](/en/2.0/howto/deployment/wsgi/) bakın.
 
 ## Geliştirme sunucusu {#the-development-server}
 
-Django projenizin çalıştığını doğrulamamız gerekmekte. O halde doğrulayalım. Henüz yapmadıysanız **benimsite** kök dizinine geçin ve aşağıdaki komutları çalıştırın:
+Django projenizin çalıştığını doğrulayalım. Henüz yapmadıysanız **benimsite** kök dizinine geçin ve aşağıdaki komutları çalıştırın:
 
   <pre data-gnl="1 1p"><code class="language-python">
   $ python manage.py runserver
@@ -107,43 +108,43 @@ Süreç devamında aşağıdaki çıktıyı komut satırında göreceksiniz
 
 Yalnızca Python'da yazılmış olan hafif bir ağ sunucu olan Django geliştirme sunucusunu başlattınız. Bunu üretime hazır oluncaya kadar Apache gibi bir üretim sunucusunun yapılandırılmasıyla uğraşmak zorunda kalmadan hızla geliştirebilmeniz için Django'ya ekledik.
 
-Şimdi dikkat edilmesi gereken güzel bir an: Bu sunucuyu bir üretim ortamına benzeyen herhangi bir şeyde **kullanmayın**. Geliştirilmesi sırasında sadece kullanım için tasarlanmıştır. Amacımız sunucu yapmak değil, çatı yapmak.
+Şimdi, güzel bir not alma zamanı: Bu sunucuyu bir üretim ortamına benzeyen herhangi bir şeyde **kullanmayın**. Geliştirilmesi sırasında sadece kullanım için tasarlanmıştır. (Amacımız sunucu yapmak değildir, bir web çatısı yapmaktır.)
 
 Artık sunucu çalışıyor, ağ tarayıcınızla (firefox, chrome, edge, opera vb...) http://127.0.0.1:8000/ adresini ziyaret edin. Karşınıza "Tebrikler!" diye çıkan karşılama sayfasını göreceksiniz.
 
 <div data-bilget="genel" markdown="1">
-### Bağlantı noktasını değiştirme
-Varsayılan olarak [**runserver**](/en/2.0/ref/django-admin/#django-admin-runserver) komutu 8000 numaralı bağlantı noktasındaki dahili IP adresinde geliştirme sunucusunu başlatır.
+### Port değiştirme
+Varsayılan olarak [**runserver**](/en/2.0/ref/django-admin/#django-admin-runserver) komutu 8000 portunda yerel IP adresinde geliştirme sunucusunu başlatır.
 
-Sunucunun bağlantı noktasını değiştirmek istiyorsanız bunu bir komut satırı değişkeni olarak iletin. Örneğin bu komut sunucuyu 8080 numaralı bağlantı noktasından başlatır:
+Sunucunun portunu değiştirmek istiyorsanız, bunu komut satırının yanına ekleyin. Örneğin bu komut sunucuyu 8080 numaralı bağlantı noktasından başlatır:
 
   <pre data-gnl="1 1p"><code class="language-python">
   $ python manage.py runserver 8080
   </code></pre>
 
-Sunucun IP'sini değiştirmek isterseniz, geçit noktasının yanında belirtin. Örneğin, tüm mevcut ortak IP'leri dinlemek için (Vagrant çalıştırıyorsanız veya işinizi ağdaki diğer bilgisayarlarda göstermek istiyorsanız kullanışlıdır) kullanmak için için şunları yazın:
+Sunucun IP’sini değiştirmek isterseniz, portun yanında belirtin. Örneğin, tüm mevcut ortak IP'leri dinlemek için (Vagrant çalıştırıyorsanız veya işinizi ağdaki diğer bilgisayarlarda göstermek istiyorsanız kullanışlıdır) kullanmak için için şunları yazın:
 
   <pre data-gnl="1 1p"><code class="language-python">
   $ python manage.py runserver 0:8000
   </code></pre>
 
-**0** değeri **0.0.0.0** için kısayoldur. Geliştirme sunucusu için tam belgeler [**runserver**](/en/2.0/ref/django-admin/#django-admin-runserver) kaynakçasında bulunabilir.
+**0** değeri **0.0.0.0** için kısayoldur. Geliştirme sunucusu için bütün belgeler [**runserver**](/en/2.0/ref/django-admin/#django-admin-runserver) kaynakçasında bulunabilir.
 </div>
 
 <div data-bilget="genel" markdown="1">
-### [**runserver**](/en/2.0/ref/django-admin/#django-admin-runserver)'ın doğal olarak yeniden yüklenmesi
+### [**runserver**](/en/2.0/ref/django-admin/#django-admin-runserver)'ın otomatik olarak yeniden yüklenmesi
 
-Geliştirme sunucusu, her istekte Python kodunu otomatik olarak yeniden yükler. Kod değişikliklerinin etkili olması için sunucuyu yeniden başlatmanız gerekemz. Bununla birlikte, dosya ekleme gibi bazı işlemler yeniden başlatma tetiklemez, bu nedenle bu durumlarda sunucuyu yeniden elle başlatmanız gerekir. Çünkü doğal olarak yenilenmeyecektir.
+Geliştirme sunucusu, her istekte Python kodunu otomatik olarak yeniden yükler. Kod değişikliklerinin etkili olması için sunucuyu yeniden başlatmanıza gerek yoktur. Bununla birlikte, dosya ekleme gibi bazı işlemler yeniden başlatma çalıştırılmaz, bu nedenle bu durumlarda sunucuyu yeniden elle başlatmanız gerekir. Çünkü otomatik olarak yenilenmeyecektir.
 </div>
 
 ## Anket uygulamasını oluşturma {#creating-the-polls-app}
 
-Artık bir "proje" olan kapsayıcınız kuruldu, işinizi yapmaya başladınız demektir.
+Artık bir "proje" için ortamınız kuruldu, işinizi yapmaya başladınız demektir.
 
-Django'da yazdığınız her uygulama, belirli bir kurala uyan bir Python paketinden oluşur. Django, bir uygulamanın temel dizin yapısını doğal olarak üreten bir yardımcı programla birlikte gelir. Böylece dizinleri oluşturmak yerine kod yazmaya odaklanabilirsiniz.
+Django'da yazdığınız her uygulama, belirli bir kurala uyan bir Python paketinden oluşur. Django, bir uygulamanın temel dizin yapısını otomatik olarak üreten bir yardımcı programla birlikte gelir. Böylece dizinleri oluşturmak yerine kod yazmaya odaklanabilirsiniz.
 
 <div data-bilget="genel" markdown="1">
-### Projeler ks. uygulamalar
+### Projeler ve Uygulamaların Kıyaslanması
 
 Bir proje ile bir uygulama arasındaki fark nedir? Bir uygulama, bir şey yapan ağ uygulamasıdır. Örneğin, ağ günlüğü örgüsü, genel kayıtların bir veritabanı veya basit bir anket uygulaması. Bir proje ise belirli bir ağ sitesi için yapılandırma ve uygulama topluluğunu kapsamaktır. Bir proje birden fazla uygulama içerebilir. Bir uygulama birden fazla projede olabilir.
 </div>
@@ -175,7 +176,7 @@ Bu dizin yapısı anket uygulamasını barındıracaktır.
 
 <hr>
 
-## İlk görünümü yazın (views.py) {#write-your-first-view}
+## İlk görünümüzü yazın (views.py) {#write-your-first-view}
 
 **anketler/views.py** dosyasını açın ve aşağıdaki Python kodunu buraya yerleştirin:
 
@@ -189,9 +190,9 @@ def index(request):
 
 </code></pre>
 
-Bu, Django'da mümkün olan en basit görünümdür. Görünümü çağırmak için onu bir URL'ye eşlemeliyiz ve bunun için bir URLconf'a ihtiyacımız var.
+Bu, Django'da mümkün olan en basit görünümdür. Görünümü çağırmak için onu bir URL’ye eşlemeliyiz ve bunun için bir URL ayarına ihtiyacımız var.
 
-Yoklamalar dizininde bir URLconf oluşturmak için **urls.py** adlı bir dosya oluşturun.
+Anketler dizininde bir URL ayarı oluşturmak için **urls.py** adlı bir dosya oluşturun.
 
 Uygulama dizininiz şu şekilde görünmelidir.
 <pre data-gnl="1 1p"><code class="language-python">
