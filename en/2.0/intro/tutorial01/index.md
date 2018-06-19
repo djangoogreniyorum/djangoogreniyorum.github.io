@@ -259,31 +259,31 @@ Tarayıcınızda [http://localhost:8000/anketler/](http://localhost:8000/anketle
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: rota (route) {#path-argument-route}
+## [path()](/en/2.0/ref/urls/#django.urls.path) argümanı: rota (route) {#path-argument-route}
 
-**route**, bir URL kalıbı içeren dizedir. Bir isteği işlerken, Django **urlpatterns**'deki ilk desenden başlar ve istenilen URL'yi her desene eşleyene kadar karşılaştırarak listeden aşğı doğru yol alır.
+**route**, bir URL kalıbı içeren dizedir. Bir isteği işlerken, Django **urlpatterns**'deki ilk desenden başlar ve istenilen URL'yi her desene eşleyene kadar karşılaştırarak listeden aşağıya doğru ilerler.
 
 Desenler GET ve POST değiştirgelerini veya etki alanı adını aramaz. Örneğin, **https://www.örnek.com/benimuygulama/** adresine yapılan bir istekte, URLconf **benimuygulama/** ögesini arar. **https://www.örnek.com/benimuygulama/?sayfa=3** adresine bir istekte bulunursa, URLconf yine **benimuygulama/** adresini arar.
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: görünüm (view) {#path-argument-view}
+## [path()](/en/2.0/ref/urls/#django.urls.path) argümanı: görünüm (view) {#path-argument-view}
 
 Django eşleşen bir desen bulduğu zaman, belirtilen görüntüleme işlevini bir [**HttpRequest**](/en/2.0/ref/request-response/#django.http.HttpRequest) (Httpİstek) nesenesi ile ilk konu olarak çağırır ve anahtar sözcükleri olarak route (rota) daki yakalanmış tüm değerleri de. Buna biraz örnek vereceğiz.
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: kwargs {#path-argument-kwargs}
+## [path()](/en/2.0/ref/urls/#django.urls.path) argümanı: kwargs {#path-argument-kwargs}
 
-Keyifli anahtar sözcük konuları bir sözlükte hedef görünümde geçirilebilir. Öğreticide Django'nun bu özelliğini kullanmayacağız.
+Rastgele anahtar kelime argumanları bir sözlük ile hedef görünüme geçirilebilir.Biz öğreticide bu Django özelliğini kullanmayacağız.
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) konusu: isim (name) {#path-argument-name}
+## [path()](/en/2.0/ref/urls/#django.urls.path) argümanı: isim (name) {#path-argument-name}
 
-URL'nizi adlandırmak, Django'nun başka yerlerinden, özellikle de şablonlardan ayırt edici bir şekilde başvurmanıza izin verir. Bu güçlü özellik, yalnızca tek bir doyaya dokunurken projenizin URL kalıplarında genel değişiklikler yapmanıza olanak tanır.
+URL'nizi adlandırmak, Django'nun başka yerlerinden, özellikle de şablonlardan ayırt edici bir şekilde başvurmanıza izin verir. Bu güçlü özellik, yalnızca tek bir dosyaya ulaşırken projenizin URL kalıplarında genel değişiklikler yapmanıza olanak tanır.
 
-Temel istek ve yanıt akışından memnun kaldığınızda, veritabanıyla çalışmaya başlamak için bu [öğreticinin 2. bölümü](/en/2.0/intro/tutorial02/)nü okuyun.
+Temel istek ve yanıt akışından memnun kaldıysanız, veritabanıyla çalışmaya başlamak için bu [öğreticinin 2. bölümü](/en/2.0/intro/tutorial02/)nü okuyun.
 
 [**Hızlı Kurulum Rehberi**](/en/2.0/intro/install/) | [**İlk django uygulamanızı yazma, bölüm 2**](/en/2.0/intro/tutorial02/)
 {: .sayfalandırma}
