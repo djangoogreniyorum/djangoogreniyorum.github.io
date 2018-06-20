@@ -4,53 +4,53 @@ title: Öğretici 2 - Django Öğreniyorum
 ---
 # İlk Django Uygulamanızı Yazma, Bölüm 2 {#writing-your-first-django-app-part-2}
 
-Bu öğretici, [öğretici 1](/en/2.0/intro/tutorial01/)'in kaldığı yerden devam ediyor. Veritabanını kuracağız, ilk kalıbımızı oluşturacağız ve Django'nun doğal olarak oluşturulan yönetici sitesine hızlı bir giriş yapacağız.
+Bu öğretici, [öğretici 1](/en/2.0/intro/tutorial01/)'in kaldığı yerden devam ediyor. Veritabanını kuracağız, ilk kalıbımızı (modelimizi) oluşturacağız ve Django’nun otomatik olarak oluşturduğu yönetici sitesine hızlı bir giriş yapacağız.
 
-## Veritabanu Kurulumu {#database-setup}
+## Veritabanı Kurulumu {#database-setup}
 
-Şimdi, **benimsite/settings.py** dosyasını açın. Bu dosya, Django ayarlarını temsil eden kalıp düzerinde değişkenleri olan normal bir Python modülüdür.
+Şimdi, **benimsite/settings.py** dosyasını açın. Bu dosya, Django ayarlarını temsil eden modül seviyesindeki değişkenlere sahip normal bir Python modülüdür.
 
-Varsayılan olarak yapılandırılmış veritabanı SQLite'dır. Veritabanları konusunda yeniyseniz veya sadece Django'yu denemekle ilgileniyorsanız, bu en kolay seçimdir. SQLite Python'a dahildir. Bu nedenle veritabanınızı desteklemek için başka bir şey yüklemeniz gerekmez. Bununla birlikte, ilk gerçek projenizi başlatırken, veritabanı geçişindeki baş ağılarından kaçınmak için PostgreSQL gibi daha ölçeklenebilir bir veritabanı kullanmak isteyebilirsiniz.
+Varsayılan olarak yapılandırılmış veritabanı SQLite'dır. Veritabanları konusunda yeniyseniz veya sadece Django'yu denemekle ilgileniyorsanız, bu en kolay seçimdir. SQLite Python'a dahildir. Bu nedenle veritabanınızı desteklemek için başka bir şey yüklemeniz gerekmez. Bununla birlikte, ilk gerçek projenizi başlatırken, veritabanı geçişindeki baş ağrılarından kaçınmak için PostgreSQL gibi daha ölçeklenebilir bir veritabanı kullanmak isteyebilirsiniz.
 Başka bir veritabanı kullanmak isterseniz, uygun [veritabanı bağlamalarını](/en/2.0/topics/install/#database-installation) yükleyin ve aşağıdaki anahtarları [DATABASES](/en/2.0/ref/settings/#std:setting-DATABASES)'ın varsayılan ('**default**') öğesinde veritabanı bağlantı ayarlarınıza uyacak şekilde değiştirin:
 
 
 - [**ENGINE**](/en/2.0/ref/settings/#std:setting-DATABASE-ENGINE): '**django.db.backends.sqlite3**', '**django.db.backends.postgresql**', '**django.db.backends.mysql**' veya '**django.db.backends.oracle**'. [Diğerarka uçlar](/en/2.0/ref/databases/#third-party-notes)da mevcuttur.
-- [**NAME**](/en/2.0/ref/settings/#std:setting-NAME): Veritabanızın adı. SQLite kullanıyorsanız, veritabanı bilgisayarındaki bir dosya olacaktır. Bu durumda, [**NAME**](/en/2.0/ref/settings/#std:setting-NAME)</a> dosyasının dosya adı da dahil olmak üzere tam mutlak yol olmalıdır. Varsayılan değer olan **os.path.join(BASE_DIR, 'db.sqlite3')**, dosyayı proje dizininizde depolar.
+- [**NAME**](/en/2.0/ref/settings/#std:setting-NAME): Veritabanınızın adıdır. SQLite kullanıyorsanız, veritabanı bilgisayarınızdaki bir dosya olacaktır. Bu durumda, [**NAME**](/en/2.0/ref/settings/#std:setting-NAME)</a> dosya adı da dahil olmak üzere kesin bir yol olmalıdır. Varsayılan değer olan **os.path.join(BASE_DIR, 'db.sqlite3')**, dosyayı proje dizininizde depolar.
 
 SQLite veritabanınız olarak kullanılıyorsa, [**USER** (kullanıcı)]([NAME](/en/2.0/ref/settings/#std:setting-NAME)), [PASSWORD (şifre)](/en/2.0/ref/settings/#std:setting-PASSWORD) ve [**HOST** (sunucu)](/en/2.0/ref/settings/#std:setting-HOST) gibi ek ayarlar eklenmelidir. Daha fazla bilgi için, [**DATABASES**](/en/2.0/ref/settings/#std:setting-DATABASES) etkinleştirme belgelerine bakın.
 
 <div data-bilget="genel" markdown="1">
 ### SQLite dışındaki veritabanları için
 
-SQLite dışıdna bir veritabanı kullanıyorsanız, bu noktaya kadar bir veritabanı oluşturduğunuzdan emin olun. Bunu "**CREATE DATABASE database_name;**" ile veritabanınızın etkileşimli isteminde yapın.
+SQLite dışında bir veritabanı kullanıyorsanız, bu noktaya kadar bir veritabanı oluşturduğunuzdan emin olun. Bunu "**CREATE DATABASE database_name;**" ile veritabanınızın etkileşimli isteminde yapın.
 
-Ayrıca, **benimsite/settings.py** dosyasında sağlanan veritabanı kullanıcısının "veritabanı oluştur" ayrılacılıklarına sahip olduğundan emin olun. Bu, daha sonraki bir öğreticide ihtiyaç duyulacak bir [sınama veritabanının](/en/2.0/topics/testing/overview/#the-test-database) doğal olarak oluşturulmasını sağlar.
+Ayrıca, **benimsite/settings.py** dosyasında sağlanan veritabanı kullanıcısının "veritabanı oluştur" ayrıcalıklarına sahip olduğundan emin olun. Bu, daha sonraki bir öğreticide ihtiyaç duyulacak bir [sınama veritabanının](/en/2.0/topics/testing/overview/#the-test-database) doğal olarak oluşturulmasını sağlar.
 
-SQLite kullanıyorsanız, önceden bir şey oluşturmanız gerekmez - veritabanı dosyası gerektiğinde doğal olarak oluşacaktır.
+SQLite kullanıyorsanız, önceden bir şey oluşturmanız gerekmez.Veritabanı dosyası gerektiğinde otomatik olarak oluşacaktır.
 </div>
 
-**benimsite/settings.py** dosyasını düzenlerken, [**TIME_ZONE**](/en/2.0/ref/settings/#std:setting-TIME_ZONE) değerini sat diliminizde ayarlayın.
+**benimsite/settings.py** dosyasını düzenlerken, [**TIME_ZONE**](/en/2.0/ref/settings/#std:setting-TIME_ZONE) değerini saat diliminize göre ayarlayın.
 
 Ayrıca, dosyanın üst kısmındaki [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) ayarına dikkat edin. Bu Django örneğinde etkinleştirilen tüm Django uygulamalarının adlarını tutar. Uygulamalar birden fazla projede kullanılabilir ve bunları başkaları tarafından projelerinde kullanılmak üzere paketleyebilir veya dağıtabilirsiniz.
 
 Varsayılan olarak, [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS), hepsi Django ile birlikte gelen aşağıdaki uygulamaları içerir:
 
-- [**django.contrib.admin**](/en/2.0/ref/contrib/admin/#module-django.contrib.admin): Yönetici sitesi. Kısa süre kullanacaksın.
-- [**django.contrib.auth**](/en/2.0/topics/auth/#module-django.contrib.auth): Bir kimlik doğrulama örgüsü.
+- [**django.contrib.admin**](/en/2.0/ref/contrib/admin/#module-django.contrib.admin): Yönetici sitesi.Kısa süreli kullanacaksınız.
+- [**django.contrib.auth**](/en/2.0/topics/auth/#module-django.contrib.auth): Bir kimlik doğrulama sistemi.
 - [**django.contrib.contenttypes**](/en/2.0/ref/contrib/contenttypes/#module-django.contrib.contenttypes): İçerik türleri için bir çatı.
 - [**django.contrib.sessions**](/en/2.0/topics/http/sessions/#module-django.contrib.sessions): Bir oturum çatısı.
 - [**django.contrib.messages**](/en/2.0/ref/contrib/messages/#module-django.contrib.messages): Bir mesajlaşma çatısı.
 - [**django.contrib.staticfiles**](/en/2.0/ref/contrib/staticfiles/#module-django.contrib.staticfiles): Sabit dosyaları yönetmek için bir çatı.
 
-Bu uygulamalar, genel durum için bir kolaylık olarak varsayılan olarak bulunur.
+Bu uygulamalar, genel durumlar için bir kolaylık olarak varsayılan olarak bulunur.
 
-Bu uygulamalardan bazıları en az bir veritabanı tablosu kullanıyor, bu nedenle tabloları kullanabilmeniz için önce veritabanında oluşturmamız gerekiyor. Bunu yapmak için aşağıdaki komutu çalıştırın:
+Bu uygulamalardan bazıları en az bir veritabanı tablosundan yararlanır, bu nedenle tabloları kullanabilmeniz için önce veritabanında oluşturmamız gerekiyor. Bunu yapmak için aşağıdaki komutu çalıştırın:
 
   <pre data-gnl="1 1p"><code class="language-python">
   $ python manage.py migrate
   </code></pre>
 
-[**migrate (Göç)**](/en/2.0/ref/django-admin/#django-admin-migrate) komutu, [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) ayarına bakar ve **benimsite/settings.py** dosyanızdaki veritabanı ayarlarına ve uygulama ile birlikte gelen veritabanı göçlerine göre gerekli tüm veritabanı tablolarını oluşturur (bunları daha sonra ele alacağız). Uygulandığı her bir taşıma işlemi için bir ileti görürsünüz. Eğer ilgileniyorsanız, veritabanınız için komut satırı istemcisini çalıştırın ve
+[**migrate (Göç)**](/en/2.0/ref/django-admin/#django-admin-migrate) komutu, [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) ayarına bakar ve **benimsite/settings.py** dosyanızdaki veritabanı ayarlarına ve uygulama ile birlikte gelen veritabanı göçlerine göre gerekli tüm veritabanı tablolarını oluşturur (bunları daha sonra ele alacağız). Uygulandığı her bir göç işlemi için bir ileti görürsünüz. Eğer ilgileniyorsanız, veritabanınız için komut satırı istemcisini çalıştırın ve
 
 - **\dt** (PostgreSQL),
 - **SHOW_TABLES;** (MySQL),
@@ -59,27 +59,28 @@ Bu uygulamalardan bazıları en az bir veritabanı tablosu kullanıyor, bu neden
 
 Django'nun oluşturduğu tabloları görüntülemek için kullanın.
 
-<div data-bilget="genel">
+<div data-bilget="genel" markdown="1">
 ### Minimalistler için
 
-Yukarıda söylediğimiz gibi, varsayılan durum, genel durum için dahil edilmiş ancak herkesin bunlara ihtiyacı yok. Bunların herhangi birine veya tamamına ihtiyacınız yoksa, [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS)çalıştırmadan önce [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) uygun satırları yorumlamaktan veya silmekten çekinmeyin. [**migrate (Göç)**](/en/2.0/ref/django-admin/#django-admin-migrate) komutu yalnızca [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) uygulamasındaki [**migrate (Göç)**](/en/2.0/ref/django-admin/#django-admin-migrate) işlemlerini [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS).
+Yukarıda da söylediğimiz gibi, varsayılan uygulamalar genel duruma dahil edilir, ancak herkesin ihtiyacı yoktur.Herhangi birine veya tümüne ihtiyacınız yoksa, [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS)çalıştırmadan önce [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) uygun satırları yorum olarak yazabilir veya silebilirsiniz. [**migrate (Göç)**](/en/2.0/ref/django-admin/#django-admin-migrate)  komutu yalnızca [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) uygulamasındaki [**migrate (Göç)**](/en/2.0/ref/django-admin/#django-admin-migrate) işlemlerini [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) alanındaki uygulamalar için göçleri çalıştıracaktır.
 </div>
 
 <hr>
 
 ## Kalıp (Model) Oluşturma {#creating-models}
 
-Şimdi, modellerinizi - aslında, veritabanı düzeninizle (ek meta verilerle) tanımlayacağız.
+Şimdi modellerinizi(temelde veritabanı düzeninizi),ek meta verilerle tanımlayacağız.
 
 <div data-bilget="genel" markdown="1">
 ### Felsefe
 
-Bir kalıp, verilerinizle ilgili gerçeğin tek ve kesin kaynağıdır. Sakladığınız verilerin önemli alanlarını ve davranışlarını içerir. Django, [KURU Prensibi](/en/2.0/misc/design-philosophies/#dry)'ni izler. Amaç, veri modelinizi tek bir yerde tanımlamak ve bunlardan doğal olarak türetmektir.
+Bir kalıp,  verilerinizle ilgili gerçeğin tek ve kesin kaynağıdır. Sakladığınız verilerin önemli alanlarını ve davranışlarını içerir. Django, [KURU Prensibi](/en/2.0/misc/design-philosophies/#dry)'ni izler. Amaç, veri modelinizi tek bir yerde tanımlamak ve bu modelden otomatik olarak türetmektir.
 
-Bu, göçleri de içerir - örneğin Ruby On Rails'in aksine, göçler tamamen modeller dosyanızdan türetilir ve aslında yalnızca mevcut modellerinize uyacak şekilde veritabanı şemasını güncellemek için Django'nun kullanabileceği bir geçmişi vardır.
+Bu, göçleri de içerir.Örneğin Ruby On Rails’in aksine, göçler tamamen modeller dosyanızdan türetilir ve aslında yalnızca mevcut modellerinize uyacak şekilde veritabanı şemasını güncellemek için Django’nun kullanabileceği bir geçmişi vardır.
+
 </div>
 
-Basit anket uygulamamızda, iki kalıp oluşturacağız: **Soru** ve **Seçim** . Bir sorunun bir soru ve yayın tarihi vardır. **Seçim** iki alana sahiptir: seçim metni ve oy toplaması. Her **Seçim** bir Soru ile ilişkilendirilir.
+Basit anket uygulamamızda, iki kalıp oluşturacağız: **Soru** ve **Seçim** . Bir soru, bir soru ve yayın tarihine  sahiptir. **Seçim** iki alana sahiptir: seçim metni ve toplam oy. Her **Seçim** bir Soru ile ilişkilendirilir.
 
 anketler/models.py
   <pre data-gnl="1 1p"><code class="language-python">
@@ -88,7 +89,7 @@ anketler/models.py
 
   class Soru(models.Model):
       soru_metni = models.CharField(max_length=200)
-      yayim_tarihi = models.DateTimeField('date published')
+      yayim_tarihi = models.DateTimeField('yayınlanma tarihi')
 
 
   class Secim(models.Model):
@@ -99,15 +100,15 @@ anketler/models.py
 
 Kod basittir. Her model, [**django.db.models.Model**](/en/2.0/ref/models/instances/#django.db.models.Model) alt sınıflarının sınıfıyla temsil edilir. Her modelin sınıf değişkenleri vardır, bunların her biri modelin bir veritabanı alanını temsil eder.
 
-Her alan bir [**Field**](/en/2.0/ref/models/fields/#django.db.models.Field) sınıfı örneği ile temsil edilir - örneğin, karakter alanları için [**CharField**](/en/2.0/ref/models/fields/#django.db.models.CharField) ve tarih [**CharField**](/en/2.0/ref/models/fields/#django.db.models.CharField) için [**DateTimeField**](/en/2.0/ref/models/fields/#django.db.models.DateTimeField) . Bu, Django'ya her alanın ne tür verilere sahip olduğunu söyler.
+Her alan bir [**Field**](/en/2.0/ref/models/fields/#django.db.models.Field) sınıfı örneği ile temsil edilir.Örneğin, karakter alanları için CharField [**CharField**](/en/2.0/ref/models/fields/#django.db.models.CharField) ve tarih [**CharField**](/en/2.0/ref/models/fields/#django.db.models.CharField) için [**DateTimeField**](/en/2.0/ref/models/fields/#django.db.models.DateTimeField) . Bu, Django'ya her alanın ne tür verilere sahip olduğunu söyler.
 
-Her bir [**Field**](/en/2.0/ref/models/fields/#django.db.models.Field) örneğinin adı (örneğin; **soru_metni** veya **yayim_tarihi**) makinenin dostu biçiminde olduğu alanın adıdır. Bu değeri Python kodunuzda kullanacaksınız ve veritabanınız bu sütun adı olarak kullanılacaktır.
+Her bir [**Field**](/en/2.0/ref/models/fields/#django.db.models.Field) Field örneğinin adı (örneğin; **soru_metni** veya **yayim_tarihi**) makinece okunabilir biçimde olan alanın adıdır. Bu değeri Python kodunuzda kullanacaksınız ve veritabanınız bu sütun adı olarak kullanılacaktır.
 
-İnsanlar tarafından okunabilen bir isim belirlemek için [**Field**](/en/2.0/ref/models/fields/#django.db.models.Field) isteğe bağlı olarak ilk konumsal durumunu kullanabilirsiniz. Bu, Django'nun içgözlem birkaç bölümünde kullanılır ve belgelendirme olarak iki katına çıkar. Bu alan sağlanmazsa, Django makine tarafından okunabilen adı kullanacaktır. Bu örnekte, yalnızca **Soru.yayim_tarihi** için insan taraınfan okunabilen bir tanım tanımladık. Bu modeldeki diğer tüm alanlar için alanın makine tarafından okunabilen adı insan tarafından okunabilir bir ad olarak yeterlidir.  
+İnsanlar tarafından okunabilen bir isim belirlemek için [**Field**](/en/2.0/ref/models/fields/#django.db.models.Field) isteğe bağlı olarak ilk konumsal durumunu kullanabilirsiniz. BBu, Django’nun iç yapısının birkaç bölümünde kullanılır ve belgelendirme olarak iki katına çıkar.Bu alan sağlanmazsa, Django makinece okunabilir adı kullanacaktır. Bu örnekte, yalnızca **Soru.yayim_tarihi** insanlar tarafından okunabilen bir tanım tanımladık.Bu modeldeki diğer tüm alanlar için alanın makinece okunabilir adı, insanlar tarafından okunabilen adı olarak yeterli olacaktır.
 
-Bazı [**Field**](/en/2.0/ref/models/fields/#django.db.models.Field) sınıflarının durumları gereklidir. Örneğin, [**CharField**](/en/2.0/ref/models/fields/#django.db.models.CharField), size bir [**max_length**](/en/2.0/ref/models/fields/#django.db.models.CharField.max_length) gerektirir. Bu, yalnızca veritabanı şemasında değil, doğrulamada da kullanılmaktadır. Yakında yakından göreceğiz.
+Bazı [**Field**](/en/2.0/ref/models/fields/#django.db.models.Field) sınıfları için parametreler gereklidir. Örneğin, [**CharField**](/en/2.0/ref/models/fields/#django.db.models.CharField), size bir [**max_length**](/en/2.0/ref/models/fields/#django.db.models.CharField.max_length) gerektirir. Bu, yalnızca veritabanı şemasında değil, doğrulamada da kullanılmaktadır. İleride yakından göreceğiz.
 
-Bir [**Field**](/en/2.0/ref/models/fields/#django.db.models.Field) ayrıca çeşitli isteğe bağlı bağımsız değişkenlere sahip olabilir; Bu durumda, oylar alanının [**default**](/en/2.0/ref/models/fields/#django.db.models.Field.default) **değeri** 0 olması gerekir.  
+Bir [**Field**](/en/2.0/ref/models/fields/#django.db.models.Field) ayrıca çeşitli isteğe bağlı parametrelere sahip olabilir. Bu durumda, oylar alanının [**default**](/en/2.0/ref/models/fields/#django.db.models.Field.default) **değeri** 0 olması gerekir.  
 
 Son olarak [**ForeignKey**](/en/2.0/ref/models/fields/#django.db.models.ForeignKey) kullanarak bir ilişkinin tanımlandığını unutmayın. Django'ya her **Seçim**'in tek bir **Soru** ile alakalı olduğunu söyler. Django, tüm ortak veritabanı ilişkilerini desteklemektedir. Bire-bir, bire-çok, çoğa-bir, çoğa-çok  
 
@@ -115,10 +116,10 @@ Son olarak [**ForeignKey**](/en/2.0/ref/models/fields/#django.db.models.ForeignK
 
 ## Kalıpları (Model) Etkinleştirme {#activating-models}
 
-Model kodun birazı bile Django'ya çok fazla bilgi verir. Bununla birlikte, Django şunları yapabilir:
+Model kodunun küçük bir kısmı bile Django’ya çok fazla bilgi verir.Bununla birlikte, Django şunları yapabilir:
 
-- Bu uygulama için bir veritabanı şeması oluşturun (**CREATE TABLE** ifadeleri)
-- **Soru** ve **Seçim** nesnelerine erişmek için bir Python veritabanı erişim API'si oluşturun.
+- Bu uygulama için bir veritabanı şeması oluşturmak. (**CREATE TABLE** ifadeleri)
+- **Soru** ve **Seçim** nesnelerine erişmek için bir Python veritabanı erişim API’si oluşturmak
 
 Ancak önce projemize **anketler** uygulamasının yüklenmesini söylemeleyiz.
 <div data-bilget="genel" markdown="1">
@@ -127,7 +128,7 @@ Ancak önce projemize **anketler** uygulamasının yüklenmesini söylemeleyiz.
 Django uygulamaları "takılabilir": Bir uygulamayı birden fazla projede kullanabilirsiniz ve belirli bir Django yüklemesine bağlı olmak zorunda olmadıkları için uygulamaları dağıtabilirsiniz.
 </div>
 
-Uygulamayı projemize eklemek için [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) ayar bölümünde yapılandırma sınıfına bir kaynakça eklememiz gerekiyor. **AnketlerAyar** sınıfı **anketler/apps.py** dosyasında yer alır. Bu nedenle noktalı yolu '**anketler.apps.AnketlerAyar**' bu şekildedir. **benimsite/settings.py** dosyasını düzenleyin ve bu noktalı yolu [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) ayarına ekleyin. Dosya şöyledir:
+Uygulamayı projemize eklemek için [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) ayar yapılandırma bölümüne eklememiz gerekiyor. **AnketlerAyar** sınıfı **anketler/apps.py** dosyasında yer alır. Bu nedenle noktalı yolu '**anketler.apps.AnketlerAyar**' bu şekildedir. **benimsite/settings.py** dosyasını düzenleyin ve bu noktalı yolu [**INSTALLED_APPS**](/en/2.0/ref/settings/#std:setting-INSTALLED_APPS) ayarına ekleyin. Dosya şöyledir:
 
 benimsite/settings.py
 <pre data-gnl="1 1p"><code class="language-python">
@@ -142,7 +143,7 @@ benimsite/settings.py
    ]
 </code></pre>
 
-Şimdi Django **anketler** uygulamasını projeye nasıl eklendiğini biliyorsunuz. Örgüye tamamen dahil etmek için devam ediyoruz. Aşağıdaki komutu çalıştırın.
+Şimdi Django **anketler** uygulamasının projeye nasıl eklendiğini biliyorsunuz. Örgüye tamamen dahil etmek için devam ediyoruz. Aşağıdaki komutu çalıştırın.  
 
 <pre data-gnl="1 1p"><code class="language-python">
   $ python manage.py makemigrations anketler
@@ -157,11 +158,12 @@ Sonuç olarak şöyle bir karşılık almalısınız:
       - Add field soru to secim
 </code></pre>
 
-**makemigrations** çalıştırarak, modellerinizde bazı değişiklikler yaptınız (bu durumda yeni olanları) ve değişikliklerin bir geçiş olarak saklanmasını istediğinizi Django'ya belirttiniz.
+**makemigrations**  çalıştırarak, modellerinizde bazı değişiklikler yaptınız (bu durumda yeni olanları) ve değişikliklerin bir göç olarak saklanmasını istediğinizi Django’ya belirttiniz.
 
-Göçler (migrations), Django'nun modellerinizdeki değişiklikleri depolamasını sağlar. Bunlar sadece diskte olan dosyalardır. İsterseniz yeni modeliniz için taşıma işlemini okuyabilirsiniz; bu dosya **anketler/migrations/0001_initial.py** dosyasıdır. Endişelenmeyin, Django birtane oluşturdğunda bunları okumayı beklemeyin. Ancak Django'nun birşeyleri nasıl değiştirdiğini elle değiştirmek istiyorsanız yeniden düzenlenebilir olacak şekilde tasarlanmıştır.
+Göçler (migrations), Django'nun modellerinizdeki değişiklikleri depolamasını sağlar. Bunlar sadece diskte olan dosyalardır. İsterseniz yeni modeliniz için taşıma işlemini okuyabilirsiniz; bu dosya **anketler/migrations/0001_initial.py** dosyasıdır. Endişelenmeyin, Django bunları her defasında oluşturduğunda okumanız beklenmiyor.
+Ancak Django’nun birşeyleri nasıl değiştirdiğini elle değiştirmek istediğinizde yeniden düzenlenebilir olacak şekilde tasarlanmıştır.
 
-Geçişleri sizin için gerçekleştirecek ve veritabanınızın şemasını doğal olarak yönetebilecek bir komut var. Bu komuta [migrate](/en/2.0/ref/django-admin/#django-admin-migrate) veriyoruz. Ancak önce hangi göç işleminin olacağını göreceğiz. [sqlmigrate](/en/2.0/ref/django-admin/#django-admin-sqlmigrate) komutu geçiş adlarını alır ve [sqlmigrate](/en/2.0/ref/django-admin/#django-admin-sqlmigrate) döndürür:
+Göçleri sizin için gerçekleştirecek ve veritabanınızın şemasını otomatik olarak yönetebilecek bir komut var. Bu komuta [migrate](/en/2.0/ref/django-admin/#django-admin-migrate) diyoruz. Ancak önce hangi göç işleminin olacağını göreceğiz. [sqlmigrate](/en/2.0/ref/django-admin/#django-admin-sqlmigrate) komutu geçiş adlarını alır ve [sqlmigrate](/en/2.0/ref/django-admin/#django-admin-sqlmigrate) döndürür:
 
 <pre data-gnl="1 1p"><code class="language-python">
   $ python manage.py sqlmigrate anketler 0001
