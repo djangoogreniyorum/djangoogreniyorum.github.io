@@ -259,7 +259,7 @@ Tarayıcınızda [http://localhost:8000/anketler/](http://localhost:8000/anketle
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) argümanı: rota (route) {#path-argument-route}
+## [path()](/en/2.0/ref/urls/#django.urls.path) değiştirgesi: rota (route) {#path-argument-route}
 
 **route**, bir URL kalıbı içeren dizedir. Bir isteği işlerken, Django **urlpatterns**'deki ilk desenden başlar ve istenilen URL'yi her desene eşleyene kadar karşılaştırarak listeden aşağıya doğru ilerler.
 
@@ -267,19 +267,19 @@ Desenler GET ve POST değiştirgelerini veya etki alanı adını aramaz. Örneğ
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) argümanı: görünüm (view) {#path-argument-view}
+## [path()](/en/2.0/ref/urls/#django.urls.path) değiştirgesi: görünüm (view) {#path-argument-view}
 
 Django eşleşen bir desen bulduğu zaman, belirtilen görüntüleme işlevini bir [**HttpRequest**](/en/2.0/ref/request-response/#django.http.HttpRequest) (Httpİstek) nesenesi ile ilk konu olarak çağırır ve anahtar sözcükleri olarak route (rota) daki yakalanmış tüm değerleri de. Buna biraz örnek vereceğiz.
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) argümanı: kwargs {#path-argument-kwargs}
+## [path()](/en/2.0/ref/urls/#django.urls.path) değiştirgesi: kwargs {#path-argument-kwargs}
 
 Rastgele anahtar kelime argumanları bir sözlük ile hedef görünüme geçirilebilir.Biz öğreticide bu Django özelliğini kullanmayacağız.
 
 <hr>
 
-## [path()](/en/2.0/ref/urls/#django.urls.path) argümanı: isim (name) {#path-argument-name}
+## [path()](/en/2.0/ref/urls/#django.urls.path) değiştirgesi: isim (name) {#path-argument-name}
 
 URL'nizi adlandırmak, Django'nun başka yerlerinden, özellikle de şablonlardan ayırt edici bir şekilde başvurmanıza izin verir. Bu güçlü özellik, yalnızca tek bir dosyaya ulaşırken projenizin URL kalıplarında genel değişiklikler yapmanıza olanak tanır.
 
